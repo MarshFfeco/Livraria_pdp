@@ -1,0 +1,1 @@
+{"version":3,"file":"css/style.css","mappings":";;;AAAA;IACI,WAAW;AACf,C","sources":["webpack://livrariasaber/./frontend/assets/css/test.css"],"sourcesContent":["h1 {\r\n    color: aqua;\r\n}"],"names":[],"sourceRoot":""}
