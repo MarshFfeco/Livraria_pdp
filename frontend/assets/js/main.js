@@ -1,3 +1,5 @@
-import "../css/test.css"
+import "../css/erro.css"
+import "../css/loginorsignup.css"
 
-console.log("Teste de tudo")
+import * as img from "../img/image_erro.png";
+import * as green from "../img/green.png";

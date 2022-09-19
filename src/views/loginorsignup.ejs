@@ -1,0 +1,60 @@
+<%- include("includes/head")%>
+
+<div id="green"><img src="/assets/images/green.png"></div>
+<section id="formularios">
+    <!--ESTE É PARA O CADASTRO-->
+    <div class="card">
+        <h2>Registrar</h2>
+        <form action="/Register" method="post">
+            <!--CAMPO PARA USUARIO-->
+            <div class="textfield">
+                <label >Nome</label>
+                <input type="text" id="nome">
+            </div>
+            <!--CAMPO PARA EMAIL-->
+            <div class="textfield">
+                <label>E-mail</label>
+                <input type="email" id="email">
+            </div>
+            <!--CAMPO PARA SENHA-->
+            <div class="textfield">
+                <label>Senha</label>
+                <input type="password" id="senha">
+            </div>
+            <!--CAMPO PARA REPETIR SENHA-->
+            <div class="textfield">
+                <label>Repetir Senha</label>
+                <input type="password" id="repetirSenha">
+            </div>
+
+            <div class="accept">
+                <h3>
+                    Ao clicar em Cadastre-se, você concorda com nossos Termos, Política de Privacidade e Política de Cookies. 
+                    Você poderá receber notificações por SMS e cancelar isso quando quiser.
+                </h3>
+            </div>
+
+            <!--BOTAO PARA FAZER O CADASTRO-->
+            <button class="btn">Registrar</button>
+        </form>
+    </div>
+
+    <!--ESTE É PARA O LOGIN-->
+    <div class="card">
+        <h2>login</h2>
+        <form action="/Login:id" method="post" class="centralizacao-flex">
+            <!--CAMPO PARA EMAIL-->
+            <div class="textfield">
+                <label>E-mail</label>
+                <input type="email" id="email">
+            </div>
+            <!--CAMPO PARA SENHA-->
+            <div class="textfield">
+                <label>Senha</label>
+                <input type="password" id="senha">
+            </div>
+            <!--BOTAO PARA FAZER O LOGIN-->
+            <button class="btn">Retornar</button>
+    </div>
+</section>
+<%- include("includes/footer")%>
