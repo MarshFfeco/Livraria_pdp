@@ -157,6 +157,8 @@ nav {
 
     background-color: #ffffff;
 
+    transition: all 0.5s ease-in-out;
+
 }
 
 nav ul:nth-child(2) {

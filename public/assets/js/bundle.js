@@ -2,6 +2,38 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./frontend/assets/js/nav.js":
+/*!***********************************!*\
+  !*** ./frontend/assets/js/nav.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ init)
+/* harmony export */ });
+function init() {
+  var nav = document.getElementById("navegacao");
+
+  function anime() {
+    var top = window.pageYOffset;
+    return top;
+  }
+
+  window.addEventListener("scroll", function (e) {
+    var result = anime();
+
+    if (!result != 0) {
+      nav.style.backgroundColor = "#ffffff";
+      return;
+    }
+
+    nav.style.backgroundColor = "#fbfbfbbf";
+  });
+}
+
+/***/ }),
+
 /***/ "./frontend/assets/img/car.png":
 /*!*************************************!*\
   !*** ./frontend/assets/img/car.png ***!
@@ -226,6 +258,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _img_search_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../img/search.png */ "./frontend/assets/img/search.png");
 /* harmony import */ var _img_logo_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../img/logo.png */ "./frontend/assets/img/logo.png");
 /* harmony import */ var _img_person_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../img/person.png */ "./frontend/assets/img/person.png");
+/* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./nav */ "./frontend/assets/js/nav.js");
 
 
 
@@ -235,6 +268,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+(0,_nav__WEBPACK_IMPORTED_MODULE_9__["default"])();
 })();
 
 /******/ })()

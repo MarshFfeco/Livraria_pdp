@@ -8,3 +8,9 @@ import * as car from "../img/car.png";
 import * as search from "../img/search.png";
 import * as logo from "../img/logo.png";
 import * as person from "../img/person.png";
+
+import navegacao from "./nav"
+
+navegacao();
+
+
