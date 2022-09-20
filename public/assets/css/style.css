@@ -142,7 +142,7 @@ h3 {
 /*!**************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./frontend/assets/css/navigation.css ***!
   \**************************************************************************************/
-nav {
+#navegacao {
     width: 100%;
     height: 7vh;
 
@@ -161,34 +161,64 @@ nav {
 
 }
 
-nav ul:nth-child(2) {
-    display: flex;
-    flex-direction: row;
+#logo, #options {
+    margin: 0 50px;
 }
 
-nav ul:nth-child(2) li a {
+#logo img {
+    width: 50%;
+    opacity: 0.6;
+
+    transition: opacity 0.5s ease-in-out;
+}
+
+#logo img:hover {
+    opacity: 1;
+}
+
+#options button{
+    border: none;
+    background: none;
+}
+
+#options svg {
+    width: 25px;
+    height: 25px;
+
+    vertical-align: middle;
+}
+
+#options {
     display: flex;
+    flex-direction: row;
     justify-content: flex-end;
     align-items: center;
 }
 
-nav ul li img {
-    width: 50%;
-
-    opacity: 0.6;
-
-    transition: all 0.5s ;
+#options a {
+    position: relative;
+    z-index: -1;
 }
 
-ul {
-    list-style: none;
-    margin: 0 50px;
+#options button {
+    padding: 10px;
 }
 
-nav ul li img:hover {
-    opacity: 1;
+#options button:hover {
+    border-radius: 50%;
+
+    background-color: var(--main-color);
 }
 
+#options svg path{
+    fill: #239273;
+
+    transition: fill 0.5s ease-in-out;
+}
+
+#options button:hover svg path {
+    fill: white;
+}
 
 
 /*# sourceMappingURL=style.css.map*/
