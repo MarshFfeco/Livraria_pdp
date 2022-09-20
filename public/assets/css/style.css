@@ -202,10 +202,14 @@ h3 {
 
 #options button {
     padding: 10px;
+
+    transition: all 0.2s ease-out;
 }
 
 #options button:hover {
     border-radius: 50%;
+
+    cursor: pointer;
 
     background-color: var(--main-color);
 }
