@@ -2,6 +2,57 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./frontend/assets/js/mobileNav.js":
+/*!*****************************************!*\
+  !*** ./frontend/assets/js/mobileNav.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ MobileNavBar)
+/* harmony export */ });
+//MENU ROLAGEM
+function MobileNavBar(mobileMenu) {
+  this.mobileMenu = mobileMenu;
+  var active = "active";
+
+  this.init = function () {
+    var _this = this;
+
+    mobileMenu.addEventListener("click", function (e) {
+      var options = document.getElementById("options");
+
+      _this.verifyClass(options);
+    });
+  };
+
+  this.verifyClass = function (options) {
+    var button = mobileMenu.getElementsByTagName("button");
+    var buttonCssActive = "background-color: var(--main-color);  border-radius: 50%;";
+    var buttonCssDisabled = "background-color: white;  border-radius: 0;";
+    var path = mobileMenu.getElementsByTagName("path");
+    var pathCssActive = "fill: white;";
+    var pathCssDisabled = "fill: var(--main-color);";
+
+    if (options.classList.contains("active")) {
+      options.classList.remove("active");
+      this.changeCss(button, path, buttonCssDisabled, pathCssDisabled);
+      return;
+    }
+
+    options.classList.add(active);
+    this.changeCss(button, path, buttonCssActive, pathCssActive);
+  };
+
+  this.changeCss = function (button, path, buttonCss, pathCss) {
+    button[0].style.cssText = buttonCss;
+    path[0].style.cssText = pathCss;
+  };
+}
+
+/***/ }),
+
 /***/ "./frontend/assets/js/nav.js":
 /*!***********************************!*\
   !*** ./frontend/assets/js/nav.js ***!
@@ -10,18 +61,23 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ init)
+/* harmony export */   "default": () => (/* binding */ ChangeColor)
 /* harmony export */ });
-function init() {
-  var nav = document.getElementById("navegacao");
+function ChangeColor(nav) {
+  this.nav = nav;
+  var limit = 999; //CHAMA AS FUNÇÕES
 
-  function anime() {
-    var top = window.pageYOffset;
-    return top;
-  }
+  this.init = function () {
+    var _this = this;
 
-  window.addEventListener("scroll", function (e) {
-    var result = anime();
+    window.addEventListener("scroll", function (e) {
+      _this.change();
+    });
+  }; //MUDA A COR DA NAV
+
+
+  this.change = function () {
+    var result = this.verifiYPosition();
 
     if (!result != 0) {
       nav.style.backgroundColor = "#ffffff";
@@ -29,8 +85,36 @@ function init() {
     }
 
     nav.style.backgroundColor = "#fbfbfbbf";
-  });
+  }; //VERIFICA SE DESCEU A TELA
+
+
+  this.verifiYPosition = function () {
+    var canChange = this.canChange();
+
+    if (!canChange) {
+      return 0;
+    }
+
+    var top = window.scrollY;
+    return top;
+  }; //VERIFICA O TAMANHO DA TELA
+
+
+  this.canChange = function () {
+    if (window.innerWidth > limit) return true;
+    window.addEventListener("resize", function (e) {
+      var telaWidth = window.innerWidth;
+
+      if (telaWidth > limit) {
+        return true;
+      }
+
+      return false;
+    });
+    return false;
+  };
 }
+;
 
 /***/ }),
 
@@ -214,6 +298,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _img_green_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../img/green.png */ "./frontend/assets/img/green.png");
 /* harmony import */ var _img_logo_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../img/logo.png */ "./frontend/assets/img/logo.png");
 /* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nav */ "./frontend/assets/js/nav.js");
+/* harmony import */ var _mobileNav__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./mobileNav */ "./frontend/assets/js/mobileNav.js");
 
 
 
@@ -221,7 +306,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-(0,_nav__WEBPACK_IMPORTED_MODULE_6__["default"])();
+
+var nav = document.getElementById("navegacao");
+var mudaCor = new _nav__WEBPACK_IMPORTED_MODULE_6__["default"](nav);
+mudaCor.init();
+var mobileMenu = document.getElementById("mobile_menu");
+var mobileNav = new _mobileNav__WEBPACK_IMPORTED_MODULE_7__["default"](mobileMenu);
+mobileNav.init();
 })();
 
 /******/ })()

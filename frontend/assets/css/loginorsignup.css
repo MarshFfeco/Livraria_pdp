@@ -1,13 +1,15 @@
 :root {
     --main-color: #239273;
     --second-color: #FBFBFB;
+    --shadow-color: #0000004e;
 }
 
 body {
     padding-top: 7vh;
+    min-width: 400px;;
 }
 
-*{
+* {
     max-width: 100vw;
 
     box-sizing: border-box;
@@ -54,7 +56,7 @@ h3 {
     background: var(--second-color);
     
     border-radius: 20px;
-    box-shadow: 0 4px 4px #0000004e;
+    box-shadow: 0 4px 4px var(--shadow-color);
 }
 
 .textfield{

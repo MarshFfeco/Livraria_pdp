@@ -139,3 +139,7 @@ $ git push
     </td>
   </tr>
 </table>
+
+## Versão
+- 0.4.4
+
