@@ -24,7 +24,7 @@ $ git clone https://github.com/MarshFfeco/Livraria_pdp.git
 
 ```bash
 $ git clone https://github.com/MarshFfeco/Livraria_pdp.git
-> Cloning into `Spoon-Knife`...
+> Cloning into `Livraria_pdp`...
 > remote: Counting objects: 10, done.
 > remote: Compressing objects: 100% (8/8), done.
 > remove: Total 10 (delta 1), reused 10 (delta 1)
@@ -141,5 +141,5 @@ $ git push
 </table>
 
 ## Versão
-- 0.6.1
+- 0.8.0
 

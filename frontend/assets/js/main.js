@@ -1,5 +1,7 @@
 import "../css/principal.css"
+import "../css/footer.css"
 import "../css/load.css"
+import "../css/scrollbar.css"
 import "../css/erro.css"
 import "../css/loginorsignup.css"
 import "../css/navigation.css"

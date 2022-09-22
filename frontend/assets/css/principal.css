@@ -20,17 +20,18 @@ body {
     min-width: 350px;
 }
 
-button:hover {
-    cursor: pointer;
-
-    background-color: #175E4A;
+button {
+    border: none;
+    background: none;
 }
 
-button:active {
-    background-color: var(--active-color);
+button:hover {
+    cursor: pointer;
 }
 
 #content-prin {
     display: none;
     padding-top: 7vh;
 }
+
+
