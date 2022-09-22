@@ -8,6 +8,9 @@ export default function ChangeColor(nav) {
         window.addEventListener("scroll", e => {
             this.change();
         });
+        window.addEventListener("resize", e => {
+            this.change();
+        })
     };
     
     //MUDA A COR DA NAV
@@ -37,15 +40,6 @@ export default function ChangeColor(nav) {
     //VERIFICA O TAMANHO DA TELA
     this.canChange = function() {
         if(window.innerWidth > limit) return true
-         
-        window.addEventListener("resize", e => {
-            const telaWidth = window.innerWidth;
-            if(telaWidth > limit) {
-                return true;
-            }
-
-            return false;
-        })
 
         return false;
     };

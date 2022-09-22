@@ -2,6 +2,26 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./frontend/assets/js/load.js":
+/*!************************************!*\
+  !*** ./frontend/assets/js/load.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Carregando)
+/* harmony export */ });
+function Carregando(content, loading) {
+  var conteudo = content;
+  var load = loading; //MUDANDO OS DISPLAY QUANDO CARREGADO
+
+  conteudo.style.display = 'block';
+  load.style.display = "none";
+}
+
+/***/ }),
+
 /***/ "./frontend/assets/js/mobileNav.js":
 /*!*****************************************!*\
   !*** ./frontend/assets/js/mobileNav.js ***!
@@ -34,20 +54,23 @@ function MobileNavBar(mobileMenu) {
     var path = mobileMenu.getElementsByTagName("path");
     var pathCssActive = "fill: white;";
     var pathCssDisabled = "fill: var(--main-color);";
+    var optionCssActive = "visible";
+    var optionCssDisable = "hidden";
 
     if (options.classList.contains("active")) {
       options.classList.remove("active");
-      this.changeCss(button, path, buttonCssDisabled, pathCssDisabled);
+      this.changeCss(button, path, buttonCssDisabled, pathCssDisabled, optionCssDisable);
       return;
     }
 
     options.classList.add(active);
-    this.changeCss(button, path, buttonCssActive, pathCssActive);
+    this.changeCss(button, path, buttonCssActive, pathCssActive, optionCssActive);
   };
 
-  this.changeCss = function (button, path, buttonCss, pathCss) {
+  this.changeCss = function (button, path, buttonCss, pathCss, optionsCss) {
     button[0].style.cssText = buttonCss;
     path[0].style.cssText = pathCss;
+    options.style.visibility = optionsCss;
   };
 }
 
@@ -71,6 +94,9 @@ function ChangeColor(nav) {
     var _this = this;
 
     window.addEventListener("scroll", function (e) {
+      _this.change();
+    });
+    window.addEventListener("resize", function (e) {
       _this.change();
     });
   }; //MUDA A COR DA NAV
@@ -102,15 +128,6 @@ function ChangeColor(nav) {
 
   this.canChange = function () {
     if (window.innerWidth > limit) return true;
-    window.addEventListener("resize", function (e) {
-      var telaWidth = window.innerWidth;
-
-      if (telaWidth > limit) {
-        return true;
-      }
-
-      return false;
-    });
     return false;
   };
 }
@@ -172,6 +189,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./frontend/assets/css/load.css":
+/*!**************************************!*\
+  !*** ./frontend/assets/css/load.css ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./frontend/assets/css/loginorsignup.css":
 /*!***********************************************!*\
   !*** ./frontend/assets/css/loginorsignup.css ***!
@@ -188,6 +217,18 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************************************!*\
   !*** ./frontend/assets/css/navigation.css ***!
   \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./frontend/assets/css/principal.css":
+/*!*******************************************!*\
+  !*** ./frontend/assets/css/principal.css ***!
+  \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -291,14 +332,17 @@ var __webpack_exports__ = {};
   !*** ./frontend/assets/js/main.js ***!
   \************************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _css_erro_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/erro.css */ "./frontend/assets/css/erro.css");
-/* harmony import */ var _css_loginorsignup_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../css/loginorsignup.css */ "./frontend/assets/css/loginorsignup.css");
-/* harmony import */ var _css_navigation_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../css/navigation.css */ "./frontend/assets/css/navigation.css");
-/* harmony import */ var _img_image_erro_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../img/image_erro.png */ "./frontend/assets/img/image_erro.png");
-/* harmony import */ var _img_green_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../img/green.png */ "./frontend/assets/img/green.png");
-/* harmony import */ var _img_logo_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../img/logo.png */ "./frontend/assets/img/logo.png");
-/* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nav */ "./frontend/assets/js/nav.js");
-/* harmony import */ var _mobileNav__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./mobileNav */ "./frontend/assets/js/mobileNav.js");
+/* harmony import */ var _css_principal_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/principal.css */ "./frontend/assets/css/principal.css");
+/* harmony import */ var _css_load_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../css/load.css */ "./frontend/assets/css/load.css");
+/* harmony import */ var _css_erro_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../css/erro.css */ "./frontend/assets/css/erro.css");
+/* harmony import */ var _css_loginorsignup_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../css/loginorsignup.css */ "./frontend/assets/css/loginorsignup.css");
+/* harmony import */ var _css_navigation_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../css/navigation.css */ "./frontend/assets/css/navigation.css");
+/* harmony import */ var _img_image_erro_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../img/image_erro.png */ "./frontend/assets/img/image_erro.png");
+/* harmony import */ var _img_green_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../img/green.png */ "./frontend/assets/img/green.png");
+/* harmony import */ var _img_logo_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../img/logo.png */ "./frontend/assets/img/logo.png");
+/* harmony import */ var _load__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./load */ "./frontend/assets/js/load.js");
+/* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./nav */ "./frontend/assets/js/nav.js");
+/* harmony import */ var _mobileNav__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./mobileNav */ "./frontend/assets/js/mobileNav.js");
 
 
 
@@ -307,11 +351,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+var conteudo = document.getElementById('content-prin');
+var loading = document.getElementById("load");
+var load = new _load__WEBPACK_IMPORTED_MODULE_8__["default"](conteudo, loading);
+load;
 var nav = document.getElementById("navegacao");
-var mudaCor = new _nav__WEBPACK_IMPORTED_MODULE_6__["default"](nav);
+var mudaCor = new _nav__WEBPACK_IMPORTED_MODULE_9__["default"](nav);
 mudaCor.init();
 var mobileMenu = document.getElementById("mobile_menu");
-var mobileNav = new _mobileNav__WEBPACK_IMPORTED_MODULE_7__["default"](mobileMenu);
+var mobileNav = new _mobileNav__WEBPACK_IMPORTED_MODULE_10__["default"](mobileMenu);
 mobileNav.init();
 })();
 

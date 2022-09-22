@@ -23,7 +23,7 @@ $ git clone https://github.com/MarshFfeco/Livraria_pdp.git
 2. Pressione **ENTER** para criar seu clone local.
 
 ```bash
-$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+$ git clone https://github.com/MarshFfeco/Livraria_pdp.git
 > Cloning into `Spoon-Knife`...
 > remote: Counting objects: 10, done.
 > remote: Compressing objects: 100% (8/8), done.
@@ -141,5 +141,5 @@ $ git push
 </table>
 
 ## Versão
-- 0.4.4
+- 0.6.1
 

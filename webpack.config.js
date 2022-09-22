@@ -48,7 +48,7 @@ module.exports = {
               options: {
                 mozjpeg: {
                   progressive: true,
-                  quality: 50
+                  quality: 60
                 },
                 optipng: {
                   enabled: false,
