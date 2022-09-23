@@ -8,6 +8,7 @@
     --active-color: #35DEAE;
     --hover-color: #175E4A;
     --back-load: #0e1538;
+    --erro-color: #ff6347;
 }
 
 * {
@@ -214,7 +215,7 @@ main{
 }
 
 .msg-erro {
-    color: tomato;
+    color: var(--erro-color);
 
     font-size: 10px;
 

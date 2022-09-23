@@ -1,26 +1,27 @@
-export default function ValidateForm(){
-    this.form = document.getElementById("form-register");
+export default class ValidateForms {
 
-    this.init = function() {
+    constructor(formulario){
+        this.form = formulario;
+        
         this.event();
     };
 
-    this.event = function() {
+    event() {
         this.form.addEventListener("submit", e => {
             this.preventDefault(e)
         })
     }
 
-    this.preventDefault = function(e) {
+    preventDefault(e) {
         e.preventDefault();
 
         const isValid = this.checkInputValue();
-        const isPasswordEqual = this.isPasswordEqual();
+        const isPassword = this.isPassword();
 
-        if(isValid && isPasswordEqual) this.form.submit();
+        if(isValid && isPassword) this.form.submit();
     };
 
-    this.checkInputValue = function() {
+    checkInputValue() {
         let valid = true;
 
         this.cleaned();
@@ -34,18 +35,19 @@ export default function ValidateForm(){
                 valid = false;
             }
 
-            console.log(input.type);
-
             switch(input.type){
                 case "text":
-                    if(!this.validText(input, label, 2)) valid = false;
+                    if(!this.validText(input, label)) valid = false;
+                break;
+                case "email":
+                    if(!this.validEmail(input, label)) valid = false;
                 break;
             }
         }
         return valid;
     };
 
-    this.validText = function(input, label) {
+    validText(input, label) {
         const value = input.value;
         let valid = true;
 
@@ -62,19 +64,30 @@ export default function ValidateForm(){
             valid = false;
         }
 
+        if(valid) this.changeInputColor(input, "var(--main-color)");
+
         return valid;
     };
 
-    this.isPasswordEqual = function(){
+    validEmail(input, label) {
+        const value = input.value;
         let valid = true;
+        const rfc_2822 = /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/;
 
-        const pass = this.form.getElementsByTagName("input")[2];
-        const rePass = this.form.getElementsByTagName("input")[3];
-
-        if(pass.value != rePass.value) {
-            this.makeErro(rePass, `Valor diferente`);
+        if(!value.match(rfc_2822)) {
+            this.makeErro(input, `${label} Precisa conter email@email.com`);
             valid = false;
         }
+
+        if(valid) this.changeInputColor(input, "var(--main-color)");
+
+        return valid;
+    };
+
+    isPassword() {
+        let valid = true;
+
+        const pass = this.form.getElementsByTagName("input")[1];
 
         if(pass.value.length < 9) {
             valid = false;
@@ -84,16 +97,20 @@ export default function ValidateForm(){
             this.makeErro(pass, `Campo Senha precisa ter menos que 20 caractere`);
         }
 
+        if(valid) {
+            this.changeInputColor(pass, "var(--main-color)");
+       }
+
         return valid;
     };
 
-    this.cleaned = function() {
+    cleaned() {
         for(let erroMsg of this.form.querySelectorAll(".msg-erro")) {
             erroMsg.remove();
         }
     };
 
-    this.makeErro = function(input, msg) {
+    makeErro(input, msg) {
         const formated = `<div class="msg-erro">
             <ul>
                 <li>${msg}</li>
@@ -101,5 +118,11 @@ export default function ValidateForm(){
         </div>`
 
         input.insertAdjacentHTML('afterend', formated);
+
+        this.changeInputColor(input, "var(--erro-color)")       
+    };
+
+    changeInputColor(input, color) {
+        input.style.border = `2px solid ${color}`; 
     };
 }

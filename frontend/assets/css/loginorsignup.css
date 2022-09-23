@@ -8,7 +8,7 @@ main{
 }
 
 .msg-erro {
-    color: tomato;
+    color: var(--erro-color);
 
     font-size: 10px;
 
