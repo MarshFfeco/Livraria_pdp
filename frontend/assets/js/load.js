@@ -1,4 +1,5 @@
-export default function carregando() {
+export default function load() {
+    
     const conteudo = document.getElementById('content-prin');
     const load = document.getElementById("load");
 
@@ -6,5 +7,3 @@ export default function carregando() {
     conteudo.style.display = 'block';
     load.style.display = "none"
 }
-
-carregando();

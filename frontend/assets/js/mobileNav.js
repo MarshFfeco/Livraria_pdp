@@ -1,6 +1,8 @@
 //MENU ROLAGEM
-export default function MobileNavBar(mobileMenu){
+export default function MobileNavBar(mobileMenu, nav){
     this.mobileMenu = mobileMenu; 
+    this.nav = nav
+
     const active = "active";
 
     this.init = function() {
@@ -27,12 +29,14 @@ export default function MobileNavBar(mobileMenu){
             options.classList.remove("active");
 
             this.changeCss(button, path, buttonCssDisabled, pathCssDisabled, optionCssDisable);
+            nav.style.backgroundColor = "#fbfbfbbf";
             return
         }
 
         options.classList.add(active);
 
         this.changeCss(button, path, buttonCssActive, pathCssActive, optionCssActive);
+        nav.style.backgroundColor = "#ffffff";
 
     };
 

@@ -10,16 +10,15 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ carregando)
+/* harmony export */   "default": () => (/* binding */ load)
 /* harmony export */ });
-function carregando() {
+function load() {
   var conteudo = document.getElementById('content-prin');
   var load = document.getElementById("load"); //MUDANDO OS DISPLAY QUANDO CARREGADO
 
   conteudo.style.display = 'block';
   load.style.display = "none";
 }
-carregando();
 
 /***/ }),
 
@@ -34,8 +33,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ MobileNavBar)
 /* harmony export */ });
 //MENU ROLAGEM
-function MobileNavBar(mobileMenu) {
+function MobileNavBar(mobileMenu, nav) {
   this.mobileMenu = mobileMenu;
+  this.nav = nav;
   var active = "active";
 
   this.init = function () {
@@ -61,11 +61,13 @@ function MobileNavBar(mobileMenu) {
     if (options.classList.contains("active")) {
       options.classList.remove("active");
       this.changeCss(button, path, buttonCssDisabled, pathCssDisabled, optionCssDisable);
+      nav.style.backgroundColor = "#fbfbfbbf";
       return;
     }
 
     options.classList.add(active);
     this.changeCss(button, path, buttonCssActive, pathCssActive, optionCssActive);
+    nav.style.backgroundColor = "#ffffff";
   };
 
   this.changeCss = function (button, path, buttonCss, pathCss, optionsCss) {
@@ -88,8 +90,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ ChangeColor)
 /* harmony export */ });
 function ChangeColor(nav) {
-  this.nav = nav;
-  var limit = 999; //CHAMA AS FUNÇÕES
+  this.nav = nav; //CHAMA AS FUNÇÕES
 
   this.init = function () {
     var _this = this;
@@ -124,12 +125,18 @@ function ChangeColor(nav) {
 
     var top = window.scrollY;
     return top;
-  }; //VERIFICA O TAMANHO DA TELA
+  }; //VERIFICA SE O MOBILE MENU ESTÁ ATIVADO
 
 
   this.canChange = function () {
-    if (window.innerWidth > limit) return true;
-    return false;
+    var options = document.getElementById("options");
+
+    if (options.classList.contains("active")) {
+      nav.style.backgroundColor = "#fbfbfbbf";
+      return false;
+    }
+
+    return true;
   };
 }
 ;
@@ -728,14 +735,28 @@ var nav = document.getElementById("navegacao");
 var mudaCor = new _nav__WEBPACK_IMPORTED_MODULE_11__["default"](nav);
 mudaCor.init();
 var mobileMenu = document.getElementById("mobile_menu");
-var mobileNav = new _mobileNav__WEBPACK_IMPORTED_MODULE_12__["default"](mobileMenu);
-mobileNav.init();
-var formRegister = document.getElementById("form-register");
-var registerForm = new _validatedForm_ValidateFormRegister__WEBPACK_IMPORTED_MODULE_13__["default"](formRegister);
-registerForm;
-var formLogin = document.getElementById("form-login");
-var loginForm = new _validatedForm_ValidateFormLogin__WEBPACK_IMPORTED_MODULE_14__["default"](formLogin);
-loginForm;
+var mobileNav = new _mobileNav__WEBPACK_IMPORTED_MODULE_12__["default"](mobileMenu, nav);
+mobileNav.init(); //CHAMA A TELA DE LOAD
+
+document.body.addEventListener("load", exeCarregando());
+
+function exeCarregando() {
+  (0,_load__WEBPACK_IMPORTED_MODULE_10__["default"])();
+} //CHAMA A VALIDAÇÃO DO FORMULÁRIO DE REGISTRO
+
+
+function exeFormRegister() {
+  var formRegister = document.getElementById("form-register");
+  var registerForm = new _validatedForm_ValidateFormRegister__WEBPACK_IMPORTED_MODULE_13__["default"](formRegister);
+  registerForm;
+} //CHAMA A VALIDAÇÃO DO FORMULÁRIO DE LOGIN
+
+
+function exeFormLogin() {
+  var formLogin = document.getElementById("form-login");
+  var loginForm = new _validatedForm_ValidateFormLogin__WEBPACK_IMPORTED_MODULE_14__["default"](formLogin);
+  loginForm;
+}
 })();
 
 /******/ })()

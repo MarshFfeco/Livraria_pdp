@@ -1,7 +1,5 @@
 export default function ChangeColor(nav) {
     this.nav = nav;
-    
-    const limit = 999;
 
     //CHAMA AS FUNÇÕES
     this.init = function(){
@@ -37,10 +35,15 @@ export default function ChangeColor(nav) {
         return top;
     };
 
-    //VERIFICA O TAMANHO DA TELA
+    //VERIFICA SE O MOBILE MENU ESTÁ ATIVADO
     this.canChange = function() {
-        if(window.innerWidth > limit) return true
+        const options = document.getElementById("options");
 
-        return false;
+        if(options.classList.contains("active")) {
+            nav.style.backgroundColor = "#fbfbfbbf";
+            return false;
+        } 
+
+        return true;
     };
 };
