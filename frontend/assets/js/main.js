@@ -13,6 +13,7 @@ import * as logo from "../img/logo.png";
 import Carregando from "./load"
 import MudaCor from "./nav"
 import MobileNav from "./mobileNav"
+import form from "./validateForm"
 
 const conteudo = document.getElementById('content-prin');
 const loading = document.getElementById("load");
@@ -26,5 +27,9 @@ mudaCor.init();
 const mobileMenu = document.getElementById("mobile_menu");
 const mobileNav = new MobileNav(mobileMenu)
 mobileNav.init();
+
+const formu = new form();
+formu.init();
+
 
 

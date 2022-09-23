@@ -135,6 +135,143 @@ function ChangeColor(nav) {
 
 /***/ }),
 
+/***/ "./frontend/assets/js/validateForm.js":
+/*!********************************************!*\
+  !*** ./frontend/assets/js/validateForm.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ValidateForm)
+/* harmony export */ });
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function ValidateForm() {
+  this.form = document.getElementById("form-register");
+
+  this.init = function () {
+    this.event();
+  };
+
+  this.event = function () {
+    var _this = this;
+
+    this.form.addEventListener("submit", function (e) {
+      _this.preventDefault(e);
+    });
+  };
+
+  this.preventDefault = function (e) {
+    e.preventDefault();
+    var isValid = this.checkInputValue();
+    var isPasswordEqual = this.isPasswordEqual();
+    if (isValid && isPasswordEqual) this.form.submit();
+  };
+
+  this.checkInputValue = function () {
+    var valid = true;
+    this.cleaned();
+
+    var _iterator = _createForOfIteratorHelper(this.form.getElementsByTagName("input")),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var input = _step.value;
+        var label = input.previousElementSibling.innerHTML;
+
+        if (!input.value) {
+          this.makeErro(input, "Campo ".concat(label, " vazio!"));
+          valid = false;
+        }
+
+        console.log(input.type);
+
+        switch (input.type) {
+          case "text":
+            if (!this.validText(input, label, 2)) valid = false;
+            break;
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+
+    return valid;
+  };
+
+  this.validText = function (input, label) {
+    var value = input.value;
+    var valid = true;
+
+    if (value.length < 2) {
+      this.makeErro(input, "Campo ".concat(label, " precisa ter mais que 2 caractere"));
+      valid = false;
+    } else if (value.length > 20) {
+      this.makeErro(input, "Campo ".concat(label, " precisa ter menos que 20 caractere"));
+      valid = false;
+    }
+
+    if (value.match(/[0-9]+/g)) {
+      this.makeErro(input, "".concat(label, " Precisa conter apenas letras"));
+      valid = false;
+    }
+
+    return valid;
+  };
+
+  this.isPasswordEqual = function () {
+    var valid = true;
+    var pass = this.form.getElementsByTagName("input")[2];
+    var rePass = this.form.getElementsByTagName("input")[3];
+
+    if (pass.value != rePass.value) {
+      this.makeErro(rePass, "Valor diferente");
+      valid = false;
+    }
+
+    if (pass.value.length < 9) {
+      valid = false;
+      this.makeErro(pass, "Campo senha precisa ter mais que 9 caractere");
+    } else if (pass.value.length > 20) {
+      valid = false;
+      this.makeErro(pass, "Campo Senha precisa ter menos que 20 caractere");
+    }
+
+    return valid;
+  };
+
+  this.cleaned = function () {
+    var _iterator2 = _createForOfIteratorHelper(this.form.querySelectorAll(".msg-erro")),
+        _step2;
+
+    try {
+      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+        var erroMsg = _step2.value;
+        erroMsg.remove();
+      }
+    } catch (err) {
+      _iterator2.e(err);
+    } finally {
+      _iterator2.f();
+    }
+  };
+
+  this.makeErro = function (input, msg) {
+    var formated = "<div class=\"msg-erro\">\n            <ul>\n                <li>".concat(msg, "</li>\n            </ul>\n        </div>");
+    input.insertAdjacentHTML('afterend', formated);
+  };
+}
+
+/***/ }),
+
 /***/ "./frontend/assets/img/green.png":
 /*!***************************************!*\
   !*** ./frontend/assets/img/green.png ***!
@@ -369,6 +506,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _load__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./load */ "./frontend/assets/js/load.js");
 /* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./nav */ "./frontend/assets/js/nav.js");
 /* harmony import */ var _mobileNav__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./mobileNav */ "./frontend/assets/js/mobileNav.js");
+/* harmony import */ var _validateForm__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./validateForm */ "./frontend/assets/js/validateForm.js");
+
 
 
 
@@ -392,6 +531,8 @@ mudaCor.init();
 var mobileMenu = document.getElementById("mobile_menu");
 var mobileNav = new _mobileNav__WEBPACK_IMPORTED_MODULE_12__["default"](mobileMenu);
 mobileNav.init();
+var formu = new _validateForm__WEBPACK_IMPORTED_MODULE_13__["default"]();
+formu.init();
 })();
 
 /******/ })()

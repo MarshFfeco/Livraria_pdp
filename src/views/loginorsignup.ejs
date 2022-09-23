@@ -7,7 +7,7 @@
     <!--ESTE É PARA O CADASTRO-->
     <div class="card">
         <h2>Registrar</h2>
-        <form action="/Register" method="post">
+        <form action="/registerComplete" method="POST" id="form-register">
             <!--CAMPO PARA USUARIO-->
             <div class="textfield">
                 <label >Nome</label>
@@ -37,14 +37,14 @@
             </div>
 
             <!--BOTAO PARA FAZER O CADASTRO-->
-            <button class="btn">Registrar</button>
+            <button type="submit" class="btn">Registrar</button>
         </form>
     </div>
 
     <!--ESTE É PARA O LOGIN-->
     <div class="card">
         <h2>login</h2>
-        <form action="/Login:id" method="post" class="centralizacao-flex">
+        <form action="/loginComplete" method="post" id="form-login">
             <!--CAMPO PARA EMAIL-->
             <div class="textfield">
                 <label>E-mail</label>
@@ -56,7 +56,7 @@
                 <input type="password" name="senha">
             </div>
             <!--BOTAO PARA FAZER O LOGIN-->
-            <button class="btn">Retornar</button>
+            <button type="submit" class="btn">Retornar</button>
     </div>
 </div>
 </main>

@@ -141,5 +141,5 @@ $ git push
 </table>
 
 ## Versão
-- 0.8.0
+- 0.9.0
 
