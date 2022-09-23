@@ -1,6 +1,6 @@
 {
   "name": "livrariasaber",
-  "version": "0.0.0",
+  "version": "0.10.0",
   "description": "",
   "main": "serve.js",
   "scripts": {
@@ -16,6 +16,8 @@
     "@babel/preset-env": "^7.19.1",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
+    "file-loader": "^6.2.0",
+    "image-webpack-loader": "^8.1.0",
     "mini-css-extract-plugin": "^2.6.1",
     "nodemon": "^2.0.20",
     "webpack": "^5.74.0",
