@@ -1,10 +1,12 @@
 header {
     width: 100vw;
-    height: 7vh;
+    height: 5vh;
 
     position: fixed;
 
     top: 0;
+
+    z-index: 1;
 }
 
 #navegacao {
@@ -23,14 +25,16 @@ header {
 
 #logo, 
 #options {
-    margin: 0 50px;
+   margin: 0 50px;
+
+   visibility: visible;
 }
 
 #logo img {
-    width: 50%;
+    width: 40%;
     opacity: 0.6;
 
-    transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s;
 }
 
 #logo img:hover {
@@ -38,22 +42,19 @@ header {
 }
 
 #options {
+    width: 150px;
+
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-around;
     align-items: center;
-}
-
-#options a {
-    position: relative;
-    z-index: -1;
 }
 
 #options button {
     border: none;
     background: none;
 
-    padding: 10px;
+    padding: 5px;
 
     transition: all 0.2s ease-out;
 }
@@ -85,30 +86,23 @@ header {
 
 /*MOBILE*/
 #mobile_menu {
-    cursor: pointer;
     display: none;
-}
-
-#mobile_menu div {
-    width: 32px;
-    height: 2px;
-
-    margin: 8px;
-
-    background-color: #ffffff;
 }
 
 @media (max-width: 999px) {
     #mobile_menu {
         display: block;
+
         margin-right: 50px;
+
+        cursor: pointer;
     }
 
     #mobile_menu button {
         border: none;
         background: none;
     
-        padding: 10px;
+        padding: 5px;
     
         transition: all 0.2s ease-out;
     }
@@ -117,7 +111,7 @@ header {
         visibility: hidden;
 
         position: absolute;
-        top: 7vh;
+        top: 5vh;
         right: 0;
 
         width: 100%;

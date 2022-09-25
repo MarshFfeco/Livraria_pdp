@@ -1,14 +1,34 @@
-export default function ChangeColor(nav) {
+export default function ChangeColor(nav, mobileMenu, mobileNav, options) {
     this.nav = nav;
+
+    //MOBILE
+    this.mobileMenu = mobileMenu;
+    this.mobileNav = mobileNav;
+    this.options = options;
 
     //CHAMA AS FUNÇÕES
     this.init = function(){
+        this.validationWidth();
+        this.event();
+    };
+
+    this.event = function() {
         window.addEventListener("scroll", e => {
             this.change();
         });
         window.addEventListener("resize", e => {
             this.change();
+            this.validationWidth();
         })
+    };
+
+    this.validationWidth = function() {
+        if(window.innerWidth <= 999) {
+            this.mobileNav.init();
+            return;
+        };
+
+        this.options.style.visibility = "visible";
     };
     
     //MUDA A COR DA NAV

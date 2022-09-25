@@ -9,6 +9,7 @@
     --hover-color: #175E4A;
     --back-load: #0e1538;
     --erro-color: #ff6347;
+    --cinza-color: #B2B8C3;
 }
 
 * {
@@ -19,6 +20,37 @@
     padding: 0;
 
     font-family: 'Nunito', sans-serif;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.render {
+    visibility: visible;
+
+    opacity: 1;
+
+    transition: all 0.2s;
+}
+
+.noRender {
+    visibility: hidden;
+
+    opacity: 0;
+
+    transition: all 0.2s;
+}
+
+.quadrado{
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--main-color);
+
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 80%);
 }
 
 body {
@@ -34,9 +66,15 @@ button:hover {
     cursor: pointer;
 }
 
+p {
+    font-size: small;
+}
+
 #content-prin {
     display: none;
-    padding-top: 7vh;
+    padding-top: 5vh;
+
+    overflow-x: hidden;
 }
 
 
@@ -46,7 +84,7 @@ button:hover {
   \**********************************************************************************/
 footer {
     width: 100%;
-    height: 7vh;
+    height: 5vh;
 
     display: flex;
     flex-direction: row;
@@ -60,6 +98,8 @@ footer {
 
 footer p, #social_media {
     margin: 0 50px;
+
+    vertical-align: middle;
 }
 
 footer svg {
@@ -180,7 +220,8 @@ body::-webkit-scrollbar-track {
 }
   
 body::-webkit-scrollbar-thumb {
-    background-color: var(--main-color);   
+    background-color: var(--main-color);  
+
     border-radius: 20px;      
     border: 3px solid var(--back-load);  
 }
@@ -189,7 +230,7 @@ body::-webkit-scrollbar-thumb {
   \********************************************************************************/
 #erro {
     width: 100%;
-    height: 93vh;
+    height: 86vh;
     
     display: flex;
     justify-content: center;
@@ -205,9 +246,9 @@ body::-webkit-scrollbar-thumb {
 /*!*****************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./frontend/assets/css/loginorsignup.css ***!
   \*****************************************************************************************/
-main{
+#main-form{
     width: 100%;
-    height: auto;
+    height: 90vh;
 
     display: flex;
     justify-content: center;
@@ -215,12 +256,25 @@ main{
 }
 
 .msg-erro {
+    font-size: 12px;
+
+    margin: 0px 0px 0px 25px;
+
     color: var(--erro-color);
+}
 
-    font-size: 10px;
+.msg-erro ul { list-style: none; }
 
-    margin: 10px 0px 0px 25px;
+#limit-loginsignup {
+    width: 100%;
+    height: 60%;
 
+    position: absolute;
+
+    top: 5vh;
+    left: 0;
+
+    z-index: -1;
 }
 
 #formularios{
@@ -235,17 +289,14 @@ main{
 }
 
 h2{
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 
     text-align: center;
 
     color: #000000;
-
-    font-size: 2em;
 }
 
-h3 {
-    font-size: 1em;
+h4 {
     font-weight: lighter;
 }
 
@@ -253,8 +304,6 @@ h3 {
     width: 40%;
     min-width: 380px;
     height: auto;
-
-    margin: 50px 0;
 
     padding: 30px 50px;
 
@@ -276,7 +325,7 @@ h3 {
 
 .textfield > input {
     width: 100%;
-    padding: 15px;
+    padding: 10px;
     
 
     border: 1px solid var(--main-color);
@@ -298,6 +347,8 @@ h3 {
     margin-bottom: 5px;
 
     color: rgb(0, 0, 0);
+
+    font-size: small;
 }
 
 .btn {
@@ -322,22 +373,8 @@ h3 {
 
 .btn:focus { background-color: var(--active-color); }
 
-#green img{ 
-    width: 100%;
-    height: 60%;
-
-    position: absolute;
-
-    top: 7vh;
-    left: 0;
-
-    z-index: -1;
-}
-
 @media (max-width: 999px) {
-    main { 
-        height: auto;
-    }
+    #main-form { height: auto; }
 
     .card {
         margin-bottom: 50px;
@@ -355,11 +392,13 @@ h3 {
   \**************************************************************************************/
 header {
     width: 100vw;
-    height: 7vh;
+    height: 5vh;
 
     position: fixed;
 
     top: 0;
+
+    z-index: 1;
 }
 
 #navegacao {
@@ -378,14 +417,16 @@ header {
 
 #logo, 
 #options {
-    margin: 0 50px;
+   margin: 0 50px;
+
+   visibility: visible;
 }
 
 #logo img {
-    width: 50%;
+    width: 40%;
     opacity: 0.6;
 
-    transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s;
 }
 
 #logo img:hover {
@@ -393,22 +434,19 @@ header {
 }
 
 #options {
+    width: 150px;
+
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-around;
     align-items: center;
-}
-
-#options a {
-    position: relative;
-    z-index: -1;
 }
 
 #options button {
     border: none;
     background: none;
 
-    padding: 10px;
+    padding: 5px;
 
     transition: all 0.2s ease-out;
 }
@@ -440,30 +478,23 @@ header {
 
 /*MOBILE*/
 #mobile_menu {
-    cursor: pointer;
     display: none;
-}
-
-#mobile_menu div {
-    width: 32px;
-    height: 2px;
-
-    margin: 8px;
-
-    background-color: #ffffff;
 }
 
 @media (max-width: 999px) {
     #mobile_menu {
         display: block;
+
         margin-right: 50px;
+
+        cursor: pointer;
     }
 
     #mobile_menu button {
         border: none;
         background: none;
     
-        padding: 10px;
+        padding: 5px;
     
         transition: all 0.2s ease-out;
     }
@@ -472,7 +503,7 @@ header {
         visibility: hidden;
 
         position: absolute;
-        top: 7vh;
+        top: 5vh;
         right: 0;
 
         width: 100%;
@@ -524,5 +555,135 @@ header {
         vertical-align: middle;
     }
 }
+/*!********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./frontend/assets/css/home.css ***!
+  \********************************************************************************/
+#main-slider:not(#limit-home) {
+    width: 100%;
+    height: 70vh;
+
+    justify-content: space-between;
+}
+/*STYLE DO FUNDO VERDE*/
+#limit-home { 
+    width: 100%;
+    height: inherit;
+
+    position: absolute;
+
+    top: 5vh;
+    left: 0;
+
+    z-index: -1;
+}
+/*FIM STYLE DO FUNDO VERDE*/
+
+/*STYLE DAS SETAS DO SLIDER PRINCIPAL*/
+#main-slider > #arrow-right, 
+#arrow-left {
+    width: 25px;
+    height: 100%;
+
+    justify-content: flex-start;
+
+    cursor: pointer;
+}
+
+#main-slider > #arrow-right:hover, 
+#arrow-left:hover {
+    background-color: var(--shadow-color);
+}
+
+#main-slider > #arrow-left svg path, 
+#arrow-right svg path {
+    fill: #fff; 
+}
+
+#arrow-right svg {
+    transform: rotate(180deg);
+}
+/*FIM DO STYLE DAS SETAS DO SLIDER PRINCIPAL*/
+
+/*STYLE DO CONTEUDO DO SLIDER PRINCIPAL*/
+#main-slider-content {
+    width: 90%;
+    height: 90%;
+
+    /*background-color: thistle;*/
+}
+
+#main-slider-content .row {
+    width: 100%;
+    height: 100%;
+
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#main-slider-content .column {
+    width: 50%;
+    height: 80%;
+
+    flex-direction: column;
+
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+#main-slider-content #main-slider-title {
+    color: #fff;
+}
+
+#main-slider-content #main-slider-text {
+    width: 80%;
+    height: 100px;
+
+    overflow-y: scroll;
+
+    color: var(--cinza-color);
+}
+
+#main-slider-content #main-slider-text::-webkit-scrollbar {
+    width: 5px;               
+}
+  
+#main-slider-content #main-slider-text::-webkit-scrollbar-track {
+    background: transparent;        
+}
+  
+#main-slider-content #main-slider-text::-webkit-scrollbar-thumb {
+    background-color: var(--cinza-color);  
+
+    border-radius: 20px;      
+    /*border: 3px solid var(--back-load);  */
+}
+/*FIM DO STYLE DO CONTEUDO DO SLIDER PRINCIPAL*/
+#arrow_bottom {
+    position: relative;
+    
+    vertical-align: middle;
+
+    animation: sobeDesce 0.5s infinite ease-out;
+}
+
+#arrow_bottom a:hover svg path {
+    fill: var(--active-color);
+}
+
+@keyframes sobeDesce {
+    0% {
+        bottom: 0px;
+    }
+
+    50% {
+        bottom: 5px;
+    }
+
+    100% {
+        bottom: 0px;
+    }
+}
+/*STYLE DO BOTÃO PARA BAIXO*/
+/*FIM DO STYLE DO BOTÃO PARA BAIXO*/
 
 /*# sourceMappingURL=style.css.map*/

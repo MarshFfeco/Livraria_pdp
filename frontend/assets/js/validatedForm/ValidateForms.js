@@ -3,7 +3,7 @@ export default class ValidateForms {
     constructor(formulario){
         this.form = formulario;
         
-        this.event();
+        //this.event();
     };
 
     event() {
@@ -51,10 +51,10 @@ export default class ValidateForms {
         const value = input.value;
         let valid = true;
 
-        if(value.length < 2) {
-            this.makeErro(input, `Campo ${label} precisa ter mais que 2 caractere`);
+        if(value.length < 3) {
+            this.makeErro(input, `Campo ${label} precisa ter mais que 3 caractere`);
             valid = false
-        } else if(value.length > 20) {
+        } else if(value.length > 50) {
             this.makeErro(input, `Campo ${label} precisa ter menos que 20 caractere`);
             valid = false;
         }

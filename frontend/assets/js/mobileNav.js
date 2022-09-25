@@ -1,22 +1,23 @@
 //MENU ROLAGEM
-export default function MobileNavBar(mobileMenu, nav){
+export default function MobileNavBar(mobileMenu, nav, options){
     this.mobileMenu = mobileMenu; 
     this.nav = nav
+
+    this.options = options;
 
     const active = "active";
 
     this.init = function() {
-        mobileMenu.addEventListener("click", e => {
-            const options = document.getElementById("options");
-    
-            this.verifyClass(options);
+        this.options.style.visibility = "hidden";
+        mobileMenu.addEventListener("click", () => {
+            this.verifyClass();
         });
     };
 
-    this.verifyClass = function(options) {
+    this.verifyClass = function() {
         const button = mobileMenu.getElementsByTagName("button");
         const buttonCssActive = "background-color: var(--main-color);  border-radius: 50%;";
-        const buttonCssDisabled = "background-color: white;  border-radius: 0;";
+        const buttonCssDisabled = "background-color: none;  border-radius: 0;";
 
         const path = mobileMenu.getElementsByTagName("path");
         const pathCssActive = "fill: white;";
@@ -25,25 +26,24 @@ export default function MobileNavBar(mobileMenu, nav){
         const optionCssActive = "visible";
         const optionCssDisable = "hidden"; 
         
-        if(options.classList.contains("active")) {
-            options.classList.remove("active");
+        if(this.options.classList.contains("active")) {
+            this.options.classList.remove("active");
 
             this.changeCss(button, path, buttonCssDisabled, pathCssDisabled, optionCssDisable);
-            nav.style.backgroundColor = "#fbfbfbbf";
+            this.nav.style.backgroundColor = "#fbfbfbbf";
             return
         }
 
-        options.classList.add(active);
+        this.options.classList.add(active);
 
         this.changeCss(button, path, buttonCssActive, pathCssActive, optionCssActive);
-        nav.style.backgroundColor = "#ffffff";
-
+        this.nav.style.backgroundColor = "#ffffff";
     };
 
     this.changeCss = function(button, path, buttonCss, pathCss, optionsCss) {
         button[0].style.cssText = buttonCss;
         path[0].style.cssText = pathCss;
 
-        options.style.visibility = optionsCss;
+        this.options.style.visibility = optionsCss;
     }
 }

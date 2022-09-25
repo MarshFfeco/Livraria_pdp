@@ -1,10 +1,10 @@
 const express = require('express');
 const route = express.Router();
 
-const index = require("../src/controller/indecontroller");
+const home = require("../src/controller/homecontroller");
 const loginsignup = require("../src/controller/loginorsignup");
 
-route.get("/", index.index);
+route.get("/", home.index);
 
 //ROTAS DO LOGIN E CADASTRO
 route.get("/LoginOrSignUp", loginsignup.index);

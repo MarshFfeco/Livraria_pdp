@@ -33,47 +33,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ MobileNavBar)
 /* harmony export */ });
 //MENU ROLAGEM
-function MobileNavBar(mobileMenu, nav) {
+function MobileNavBar(mobileMenu, nav, options) {
   this.mobileMenu = mobileMenu;
   this.nav = nav;
+  this.options = options;
   var active = "active";
 
   this.init = function () {
     var _this = this;
 
-    mobileMenu.addEventListener("click", function (e) {
-      var options = document.getElementById("options");
-
-      _this.verifyClass(options);
+    this.options.style.visibility = "hidden";
+    mobileMenu.addEventListener("click", function () {
+      _this.verifyClass();
     });
   };
 
-  this.verifyClass = function (options) {
+  this.verifyClass = function () {
     var button = mobileMenu.getElementsByTagName("button");
     var buttonCssActive = "background-color: var(--main-color);  border-radius: 50%;";
-    var buttonCssDisabled = "background-color: white;  border-radius: 0;";
+    var buttonCssDisabled = "background-color: none;  border-radius: 0;";
     var path = mobileMenu.getElementsByTagName("path");
     var pathCssActive = "fill: white;";
     var pathCssDisabled = "fill: var(--main-color);";
     var optionCssActive = "visible";
     var optionCssDisable = "hidden";
 
-    if (options.classList.contains("active")) {
-      options.classList.remove("active");
+    if (this.options.classList.contains("active")) {
+      this.options.classList.remove("active");
       this.changeCss(button, path, buttonCssDisabled, pathCssDisabled, optionCssDisable);
-      nav.style.backgroundColor = "#fbfbfbbf";
+      this.nav.style.backgroundColor = "#fbfbfbbf";
       return;
     }
 
-    options.classList.add(active);
+    this.options.classList.add(active);
     this.changeCss(button, path, buttonCssActive, pathCssActive, optionCssActive);
-    nav.style.backgroundColor = "#ffffff";
+    this.nav.style.backgroundColor = "#ffffff";
   };
 
   this.changeCss = function (button, path, buttonCss, pathCss, optionsCss) {
     button[0].style.cssText = buttonCss;
     path[0].style.cssText = pathCss;
-    options.style.visibility = optionsCss;
+    this.options.style.visibility = optionsCss;
   };
 }
 
@@ -89,10 +89,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ ChangeColor)
 /* harmony export */ });
-function ChangeColor(nav) {
-  this.nav = nav; //CHAMA AS FUNÇÕES
+function ChangeColor(nav, mobileMenu, mobileNav, options) {
+  this.nav = nav; //MOBILE
+
+  this.mobileMenu = mobileMenu;
+  this.mobileNav = mobileNav;
+  this.options = options; //CHAMA AS FUNÇÕES
 
   this.init = function () {
+    this.validationWidth();
+    this.event();
+  };
+
+  this.event = function () {
     var _this = this;
 
     window.addEventListener("scroll", function (e) {
@@ -100,7 +109,19 @@ function ChangeColor(nav) {
     });
     window.addEventListener("resize", function (e) {
       _this.change();
+
+      _this.validationWidth();
     });
+  };
+
+  this.validationWidth = function () {
+    if (window.innerWidth <= 999) {
+      this.mobileNav.init();
+      return;
+    }
+
+    ;
+    this.options.style.visibility = "visible";
   }; //MUDA A COR DA NAV
 
 
@@ -140,6 +161,54 @@ function ChangeColor(nav) {
   };
 }
 ;
+
+/***/ }),
+
+/***/ "./frontend/assets/js/optimization/render.js":
+/*!***************************************************!*\
+  !*** ./frontend/assets/js/optimization/render.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Rederizar)
+/* harmony export */ });
+function Rederizar(img) {
+  this.init = function () {
+    this.event();
+  };
+
+  this.event = function () {
+    var _this = this;
+
+    window.addEventListener("scroll", function () {
+      _this.canSee();
+    });
+  };
+
+  this.canSee = function () {
+    var canVerifyImg = true;
+
+    for (var i = 0; i < img.length; i++) {
+      if (canVerifyImg) {
+        if (img[i].getBoundingClientRect().top < window.innerHeight
+        /*&& !(img[i].getBoundingClientRect().bottom < 0)*/
+        ) {
+          img[i].classList.replace("noRender", "render"); //console.log(i + " render verificado");
+
+          continue;
+        } else {
+          canVerifyImg = false; //console.log("sem verificação")
+        }
+      }
+
+      if (!canVerifyImg) {
+        img[i].classList.replace("render", "noRender"); //console.log(i + " render sem verificar");
+      }
+    }
+  };
+}
 
 /***/ }),
 
@@ -190,8 +259,6 @@ var ValidateFormLogin = /*#__PURE__*/function (_ValidateForm) {
 
     _this = _super.call(this, formulario);
     _this.form = formulario;
-    var validateFormLogin = new _ValidateForms__WEBPACK_IMPORTED_MODULE_0__["default"](_this.form);
-    validateFormLogin;
     return _this;
   }
 
@@ -249,20 +316,10 @@ var ValidateFormRegister = /*#__PURE__*/function (_ValidateForm) {
 
     _this = _super.call(this, formulario);
     _this.form = formulario;
-    var validateFormRegister = new _ValidateForms__WEBPACK_IMPORTED_MODULE_0__["default"](_this.form);
-    validateFormRegister;
     return _this;
   }
 
   _createClass(ValidateFormRegister, [{
-    key: "preventDefault",
-    value: function preventDefault(e) {
-      e.preventDefault();
-      var isValid = this.checkInputValue();
-      var isPassword = this.isPassword();
-      if (isValid && isPassword) this.form.submit();
-    }
-  }, {
     key: "isPassword",
     value: function isPassword() {
       var valid = true;
@@ -270,10 +327,10 @@ var ValidateFormRegister = /*#__PURE__*/function (_ValidateForm) {
       var rePass = this.form.getElementsByTagName("input")[3];
 
       if (pass.value.length < 9) {
-        valid = false;
+        valid = valid && false;
         this.makeErro(pass, "Campo senha precisa ter mais que 9 caractere");
       } else if (pass.value.length > 20) {
-        valid = false;
+        valid = valid && false;
         this.makeErro(pass, "Campo Senha precisa ter menos que 20 caractere");
       }
 
@@ -283,7 +340,7 @@ var ValidateFormRegister = /*#__PURE__*/function (_ValidateForm) {
 
       if (pass.value != rePass.value) {
         this.makeErro(rePass, "Valor diferente");
-        valid = false;
+        valid = valid && false;
       }
 
       if (valid) {
@@ -327,8 +384,7 @@ var ValidateForms = /*#__PURE__*/function () {
   function ValidateForms(formulario) {
     _classCallCheck(this, ValidateForms);
 
-    this.form = formulario;
-    this.event();
+    this.form = formulario; //this.event();
   }
 
   _createClass(ValidateForms, [{
@@ -391,10 +447,10 @@ var ValidateForms = /*#__PURE__*/function () {
       var value = input.value;
       var valid = true;
 
-      if (value.length < 2) {
-        this.makeErro(input, "Campo ".concat(label, " precisa ter mais que 2 caractere"));
+      if (value.length < 3) {
+        this.makeErro(input, "Campo ".concat(label, " precisa ter mais que 3 caractere"));
         valid = false;
-      } else if (value.length > 20) {
+      } else if (value.length > 50) {
         this.makeErro(input, "Campo ".concat(label, " precisa ter menos que 20 caractere"));
         valid = false;
       }
@@ -480,6 +536,20 @@ var ValidateForms = /*#__PURE__*/function () {
 
 /***/ }),
 
+/***/ "./frontend/assets/img/books/v_guliver.jpg":
+/*!*************************************************!*\
+  !*** ./frontend/assets/img/books/v_guliver.jpg ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "images/v_guliver.jpg");
+
+/***/ }),
+
 /***/ "./frontend/assets/img/green.png":
 /*!***************************************!*\
   !*** ./frontend/assets/img/green.png ***!
@@ -538,6 +608,18 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************!*\
   !*** ./frontend/assets/css/footer.css ***!
   \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./frontend/assets/css/home.css":
+/*!**************************************!*\
+  !*** ./frontend/assets/css/home.css ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -708,14 +790,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_erro_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../css/erro.css */ "./frontend/assets/css/erro.css");
 /* harmony import */ var _css_loginorsignup_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../css/loginorsignup.css */ "./frontend/assets/css/loginorsignup.css");
 /* harmony import */ var _css_navigation_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../css/navigation.css */ "./frontend/assets/css/navigation.css");
-/* harmony import */ var _img_image_erro_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../img/image_erro.png */ "./frontend/assets/img/image_erro.png");
-/* harmony import */ var _img_green_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../img/green.png */ "./frontend/assets/img/green.png");
-/* harmony import */ var _img_logo_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../img/logo.png */ "./frontend/assets/img/logo.png");
-/* harmony import */ var _load__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./load */ "./frontend/assets/js/load.js");
-/* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./nav */ "./frontend/assets/js/nav.js");
-/* harmony import */ var _mobileNav__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./mobileNav */ "./frontend/assets/js/mobileNav.js");
-/* harmony import */ var _validatedForm_ValidateFormRegister__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./validatedForm/ValidateFormRegister */ "./frontend/assets/js/validatedForm/ValidateFormRegister.js");
-/* harmony import */ var _validatedForm_ValidateFormLogin__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./validatedForm/ValidateFormLogin */ "./frontend/assets/js/validatedForm/ValidateFormLogin.js");
+/* harmony import */ var _css_home_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../css/home.css */ "./frontend/assets/css/home.css");
+/* harmony import */ var _img_image_erro_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../img/image_erro.png */ "./frontend/assets/img/image_erro.png");
+/* harmony import */ var _img_green_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../img/green.png */ "./frontend/assets/img/green.png");
+/* harmony import */ var _img_logo_png__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../img/logo.png */ "./frontend/assets/img/logo.png");
+/* harmony import */ var _img_books_v_guliver_jpg__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../img/books/v_guliver.jpg */ "./frontend/assets/img/books/v_guliver.jpg");
+/* harmony import */ var _optimization_render__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./optimization/render */ "./frontend/assets/js/optimization/render.js");
+/* harmony import */ var _load__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./load */ "./frontend/assets/js/load.js");
+/* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./nav */ "./frontend/assets/js/nav.js");
+/* harmony import */ var _mobileNav__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./mobileNav */ "./frontend/assets/js/mobileNav.js");
+/* harmony import */ var _validatedForm_ValidateFormRegister__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./validatedForm/ValidateFormRegister */ "./frontend/assets/js/validatedForm/ValidateFormRegister.js");
+/* harmony import */ var _validatedForm_ValidateFormLogin__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./validatedForm/ValidateFormLogin */ "./frontend/assets/js/validatedForm/ValidateFormLogin.js");
 
 
 
@@ -731,32 +816,75 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var nav = document.getElementById("navegacao");
-var mudaCor = new _nav__WEBPACK_IMPORTED_MODULE_11__["default"](nav);
-mudaCor.init();
-var mobileMenu = document.getElementById("mobile_menu");
-var mobileNav = new _mobileNav__WEBPACK_IMPORTED_MODULE_12__["default"](mobileMenu, nav);
-mobileNav.init(); //CHAMA A TELA DE LOAD
 
-document.body.addEventListener("load", exeCarregando());
 
-function exeCarregando() {
-  (0,_load__WEBPACK_IMPORTED_MODULE_10__["default"])();
+ //OTIMIZADOR DE TELA
+
+var far = document.querySelectorAll("#content-prin .render, #content-prin .noRender");
+var renderize = new _optimization_render__WEBPACK_IMPORTED_MODULE_12__["default"](far);
+
+function click() {
+  console.log("cliquei");
+}
+
+window.addEventListener("DOMContentLoaded", function (e) {
+  renderize.canSee();
+  /*
+  let canVerifyImg = true;
+  for(let i = 0; i < far.length; i++) {
+      if(canVerifyImg) {
+           if((far[i].getBoundingClientRect().top < window.innerHeight) && !(far[i].getBoundingClientRect().bottom < 0)) {
+               far[i].classList.replace("noRender", "render");
+               continue;
+           } else {
+               canVerifyImg = false;
+           }
+       }
+         if(!canVerifyImg) {
+           far[i].classList.replace("render", "noRender");
+       }
+   }
+   canVerifyImg = true;*/
+});
+renderize.init(); //CHAMA A TELA DE LOAD
+
+document.body.addEventListener("load", exeAtivar((0,_load__WEBPACK_IMPORTED_MODULE_13__["default"])()));
+
+function exeAtivar(obj) {
+  obj;
 } //CHAMA A VALIDAÇÃO DO FORMULÁRIO DE REGISTRO
 
 
+var formRegister = document.getElementById("form-register");
+
+if (document.location.href == "http://localhost:3000/LoginOrSignUp") {
+  formRegister.addEventListener("submit", exeFormRegister());
+}
+
 function exeFormRegister() {
-  var formRegister = document.getElementById("form-register");
-  var registerForm = new _validatedForm_ValidateFormRegister__WEBPACK_IMPORTED_MODULE_13__["default"](formRegister);
-  registerForm;
+  var registerForm = new _validatedForm_ValidateFormRegister__WEBPACK_IMPORTED_MODULE_16__["default"](formRegister);
+  registerForm.event();
 } //CHAMA A VALIDAÇÃO DO FORMULÁRIO DE LOGIN
 
 
-function exeFormLogin() {
-  var formLogin = document.getElementById("form-login");
-  var loginForm = new _validatedForm_ValidateFormLogin__WEBPACK_IMPORTED_MODULE_14__["default"](formLogin);
-  loginForm;
+var formLogin = document.getElementById("form-login");
+
+if (document.location.href == "http://localhost:3000/LoginOrSignUp") {
+  formLogin.addEventListener("submit", exeFormLogin());
 }
+
+function exeFormLogin() {
+  var loginForm = new _validatedForm_ValidateFormLogin__WEBPACK_IMPORTED_MODULE_17__["default"](formLogin);
+  loginForm.event();
+} //CHAMADA DE CLASSE E OBJETOS
+
+
+var options = document.getElementById("options");
+var nav = document.getElementById("navegacao");
+var mobileMenu = document.getElementById("mobile_menu");
+var mobileNav = new _mobileNav__WEBPACK_IMPORTED_MODULE_15__["default"](mobileMenu, nav, options);
+var mudaCor = new _nav__WEBPACK_IMPORTED_MODULE_14__["default"](nav, mobileMenu, mobileNav, options);
+mudaCor.init();
 })();
 
 /******/ })()
