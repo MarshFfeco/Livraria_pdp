@@ -9,7 +9,7 @@ Com o objetivo de desenvolver o mercado de trabalho da região, a L. SABER está
 
 ```bash
 # IMPORTANDO A PASTA NODE_MODULE
-$ npm init
+$ npm i
 ```
 
 ### Inicializando
@@ -141,5 +141,5 @@ $ git push
 </table>
 
 ## Versão
-- 1.2.0
+- 1.3.0
 

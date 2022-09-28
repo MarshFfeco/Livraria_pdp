@@ -8,7 +8,13 @@ route.get("/", home.index);
 
 //ROTAS DO LOGIN E CADASTRO
 route.get("/LoginOrSignUp", loginsignup.index);
-route.post("/registerComplete", function res(req, res){ res.send("comidinha") });
+route.post("/registerComplete", function res(req, res){ 
+    const nome = req.body.nome;
+    const email = req.body.email;
+    const senha = req.body.senha;
+
+    res.send(`Nome: ${nome}\n, Email: ${email}\n, Senha ${senha}`);
+ });
 route.post("/LoginComplete", function res(req, res){ res.send("comidinha") });
 
 module.exports = route;

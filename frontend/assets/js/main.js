@@ -21,17 +21,14 @@ import ValidatedFormRegister from "./validatedForm/ValidateFormRegister"
 import ValidatedFormLogin from "./validatedForm/ValidateFormLogin"
 
 
+/*
 //OTIMIZADOR DE TELA
 const far = document.querySelectorAll("#content-prin .render, #content-prin .noRender");
 const renderize = new Renderizar(far);
 
-function click() {
-    console.log("cliquei")
-}
-
 window.addEventListener("DOMContentLoaded", e => {
     renderize.canSee();
-    /*
+    
     let canVerifyImg = true;
     for(let i = 0; i < far.length; i++) {
         if(canVerifyImg) {
@@ -47,9 +44,10 @@ window.addEventListener("DOMContentLoaded", e => {
              far[i].classList.replace("render", "noRender");
          }
      }
-     canVerifyImg = true;*/
+     canVerifyImg = true;
 })
 renderize.init();
+*/
 
 //CHAMA A TELA DE LOAD
 document.body.addEventListener("load", exeAtivar(load()));
@@ -91,5 +89,46 @@ const mobileNav = new MobileNav(mobileMenu, nav, options)
 
 const mudaCor = new MudaCor(nav, mobileMenu, mobileNav, options);
 mudaCor.init();
+
+/* CARROSSEL */
+const controls = document.querySelectorAll(".main-carousel-control");
+
+
+let currentItem = 0;
+
+const itens = document.querySelectorAll(".slide");
+const maxItens = itens.length;
+
+console.log(maxItens);
+
+controls.forEach((control) => {
+    control.addEventListener("click", e => {
+        const isLeft = control.classList.contains("left");
+
+        if(isLeft) {
+            currentItem -= 1;
+        } else {
+            currentItem += 1;
+        }
+
+        if(currentItem >= maxItens) {
+            currentItem = 0;
+        }
+        if(currentItem < 0) {
+            currentItem = maxItens - 1;
+        }
+
+        itens.forEach(item => item.classList.remove("current-item"));
+
+        itens[currentItem].scrollIntoView({
+            inline: "center",
+            behavior: "smooth",
+        });
+
+        itens[currentItem].classList.add("current-item");
+
+    });
+})
+
 
 

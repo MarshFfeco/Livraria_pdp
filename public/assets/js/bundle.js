@@ -818,35 +818,35 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- //OTIMIZADOR DE TELA
 
-var far = document.querySelectorAll("#content-prin .render, #content-prin .noRender");
-var renderize = new _optimization_render__WEBPACK_IMPORTED_MODULE_12__["default"](far);
+/*
+//OTIMIZADOR DE TELA
+const far = document.querySelectorAll("#content-prin .render, #content-prin .noRender");
+const renderize = new Renderizar(far);
 
-function click() {
-  console.log("cliquei");
-}
+window.addEventListener("DOMContentLoaded", e => {
+    renderize.canSee();
+    
+    let canVerifyImg = true;
+    for(let i = 0; i < far.length; i++) {
+        if(canVerifyImg) {
+             if((far[i].getBoundingClientRect().top < window.innerHeight) && !(far[i].getBoundingClientRect().bottom < 0)) {
+                 far[i].classList.replace("noRender", "render");
+                 continue;
+             } else {
+                 canVerifyImg = false;
+             }
+         }
 
-window.addEventListener("DOMContentLoaded", function (e) {
-  renderize.canSee();
-  /*
-  let canVerifyImg = true;
-  for(let i = 0; i < far.length; i++) {
-      if(canVerifyImg) {
-           if((far[i].getBoundingClientRect().top < window.innerHeight) && !(far[i].getBoundingClientRect().bottom < 0)) {
-               far[i].classList.replace("noRender", "render");
-               continue;
-           } else {
-               canVerifyImg = false;
-           }
-       }
          if(!canVerifyImg) {
-           far[i].classList.replace("render", "noRender");
-       }
-   }
-   canVerifyImg = true;*/
-});
-renderize.init(); //CHAMA A TELA DE LOAD
+             far[i].classList.replace("render", "noRender");
+         }
+     }
+     canVerifyImg = true;
+})
+renderize.init();
+*/
+//CHAMA A TELA DE LOAD
 
 document.body.addEventListener("load", exeAtivar((0,_load__WEBPACK_IMPORTED_MODULE_13__["default"])()));
 
@@ -885,6 +885,41 @@ var mobileMenu = document.getElementById("mobile_menu");
 var mobileNav = new _mobileNav__WEBPACK_IMPORTED_MODULE_15__["default"](mobileMenu, nav, options);
 var mudaCor = new _nav__WEBPACK_IMPORTED_MODULE_14__["default"](nav, mobileMenu, mobileNav, options);
 mudaCor.init();
+/* CARROSSEL */
+
+var controls = document.querySelectorAll(".main-carousel-control");
+var currentItem = 0;
+var itens = document.querySelectorAll(".slide");
+var maxItens = itens.length;
+console.log(maxItens);
+controls.forEach(function (control) {
+  control.addEventListener("click", function (e) {
+    var isLeft = control.classList.contains("left");
+
+    if (isLeft) {
+      currentItem -= 1;
+    } else {
+      currentItem += 1;
+    }
+
+    if (currentItem >= maxItens) {
+      currentItem = 0;
+    }
+
+    if (currentItem < 0) {
+      currentItem = maxItens - 1;
+    }
+
+    itens.forEach(function (item) {
+      return item.classList.remove("current-item");
+    });
+    itens[currentItem].scrollIntoView({
+      inline: "center",
+      behavior: "smooth"
+    });
+    itens[currentItem].classList.add("current-item");
+  });
+});
 })();
 
 /******/ })()
