@@ -19,6 +19,7 @@ import MudaCor from "./nav"
 import MobileNav from "./mobileNav"
 import ValidatedFormRegister from "./validatedForm/ValidateFormRegister"
 import ValidatedFormLogin from "./validatedForm/ValidateFormLogin"
+import MainSlider from "./slider/MainSlider"
 
 
 /*
@@ -92,43 +93,11 @@ mudaCor.init();
 
 /* CARROSSEL */
 const controls = document.querySelectorAll(".main-carousel-control");
-
-
-let currentItem = 0;
-
 const itens = document.querySelectorAll(".slide");
 const maxItens = itens.length;
 
-console.log(maxItens);
+const mainSlider = new MainSlider(controls, itens, maxItens);
 
-controls.forEach((control) => {
-    control.addEventListener("click", e => {
-        const isLeft = control.classList.contains("left");
-
-        if(isLeft) {
-            currentItem -= 1;
-        } else {
-            currentItem += 1;
-        }
-
-        if(currentItem >= maxItens) {
-            currentItem = 0;
-        }
-        if(currentItem < 0) {
-            currentItem = maxItens - 1;
-        }
-
-        itens.forEach(item => item.classList.remove("current-item"));
-
-        itens[currentItem].scrollIntoView({
-            inline: "center",
-            behavior: "smooth",
-        });
-
-        itens[currentItem].classList.add("current-item");
-
-    });
-})
 
 
 

@@ -212,6 +212,90 @@ function Rederizar(img) {
 
 /***/ }),
 
+/***/ "./frontend/assets/js/slider/MainSlider.js":
+/*!*************************************************!*\
+  !*** ./frontend/assets/js/slider/MainSlider.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ MainSlider)
+/* harmony export */ });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+var MainSlider = /*#__PURE__*/function () {
+  function MainSlider(controls, itens, maxItem) {
+    _classCallCheck(this, MainSlider);
+
+    this.controls = controls;
+    this.itens = itens;
+    this.maxItem = maxItem;
+    this.currentItem = 0;
+    this.init();
+  }
+
+  _createClass(MainSlider, [{
+    key: "init",
+    value: function init() {
+      this.controlle();
+    }
+  }, {
+    key: "controlle",
+    value: function controlle() {
+      var _this = this;
+
+      this.controls.forEach(function (control) {
+        _this.event(control);
+      });
+    }
+  }, {
+    key: "event",
+    value: function event(control) {
+      var _this2 = this;
+
+      control.addEventListener("click", function () {
+        var isLeft = control.classList.contains("left");
+        console.clear();
+
+        if (isLeft) {
+          _this2.currentItem -= 1;
+        } else {
+          _this2.currentItem += 1;
+        }
+
+        if (_this2.currentItem > _this2.maxItem - 1) {
+          _this2.currentItem = 0;
+        }
+
+        if (_this2.currentItem < 0) {
+          _this2.currentItem = _this2.maxItem - 1;
+        }
+
+        _this2.addOrRemove();
+      });
+    }
+  }, {
+    key: "addOrRemove",
+    value: function addOrRemove() {
+      this.itens.forEach(function (item) {
+        return item.classList.remove("current-item");
+      });
+      this.itens[this.currentItem].classList.add("current-item");
+    }
+  }]);
+
+  return MainSlider;
+}();
+
+
+
+/***/ }),
+
 /***/ "./frontend/assets/js/validatedForm/ValidateFormLogin.js":
 /*!***************************************************************!*\
   !*** ./frontend/assets/js/validatedForm/ValidateFormLogin.js ***!
@@ -801,6 +885,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mobileNav__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./mobileNav */ "./frontend/assets/js/mobileNav.js");
 /* harmony import */ var _validatedForm_ValidateFormRegister__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./validatedForm/ValidateFormRegister */ "./frontend/assets/js/validatedForm/ValidateFormRegister.js");
 /* harmony import */ var _validatedForm_ValidateFormLogin__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./validatedForm/ValidateFormLogin */ "./frontend/assets/js/validatedForm/ValidateFormLogin.js");
+/* harmony import */ var _slider_MainSlider__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./slider/MainSlider */ "./frontend/assets/js/slider/MainSlider.js");
+
 
 
 
@@ -888,38 +974,9 @@ mudaCor.init();
 /* CARROSSEL */
 
 var controls = document.querySelectorAll(".main-carousel-control");
-var currentItem = 0;
 var itens = document.querySelectorAll(".slide");
 var maxItens = itens.length;
-console.log(maxItens);
-controls.forEach(function (control) {
-  control.addEventListener("click", function (e) {
-    var isLeft = control.classList.contains("left");
-
-    if (isLeft) {
-      currentItem -= 1;
-    } else {
-      currentItem += 1;
-    }
-
-    if (currentItem >= maxItens) {
-      currentItem = 0;
-    }
-
-    if (currentItem < 0) {
-      currentItem = maxItens - 1;
-    }
-
-    itens.forEach(function (item) {
-      return item.classList.remove("current-item");
-    });
-    itens[currentItem].scrollIntoView({
-      inline: "center",
-      behavior: "smooth"
-    });
-    itens[currentItem].classList.add("current-item");
-  });
-});
+var mainSlider = new _slider_MainSlider__WEBPACK_IMPORTED_MODULE_18__["default"](controls, itens, maxItens);
 })();
 
 /******/ })()
