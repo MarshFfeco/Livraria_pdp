@@ -13,42 +13,13 @@ import * as logo from "../img/logo.png";
 import * as gulliver from "../img/books/v_guliver.jpg"
 
 
-import Renderizar from "./optimization/render"
 import load from "./load"
 import MudaCor from "./nav"
 import MobileNav from "./mobileNav"
 import ValidatedFormRegister from "./validatedForm/ValidateFormRegister"
 import ValidatedFormLogin from "./validatedForm/ValidateFormLogin"
 import MainSlider from "./slider/MainSlider"
-
-
-/*
-//OTIMIZADOR DE TELA
-const far = document.querySelectorAll("#content-prin .render, #content-prin .noRender");
-const renderize = new Renderizar(far);
-
-window.addEventListener("DOMContentLoaded", e => {
-    renderize.canSee();
-    
-    let canVerifyImg = true;
-    for(let i = 0; i < far.length; i++) {
-        if(canVerifyImg) {
-             if((far[i].getBoundingClientRect().top < window.innerHeight) && !(far[i].getBoundingClientRect().bottom < 0)) {
-                 far[i].classList.replace("noRender", "render");
-                 continue;
-             } else {
-                 canVerifyImg = false;
-             }
-         }
-
-         if(!canVerifyImg) {
-             far[i].classList.replace("render", "noRender");
-         }
-     }
-     canVerifyImg = true;
-})
-renderize.init();
-*/
+import BestSlider from "./slider/BestSlider"
 
 //CHAMA A TELA DE LOAD
 document.body.addEventListener("load", exeAtivar(load()));
@@ -92,12 +63,23 @@ const mudaCor = new MudaCor(nav, mobileMenu, mobileNav, options);
 mudaCor.init();
 
 /* CARROSSEL */
+/* MAIN SLIDER */
 const controls = document.querySelectorAll(".main-carousel-control");
-const itens = document.querySelectorAll(".slide");
+const itens = document.querySelectorAll(".main-slide");
 const maxItens = itens.length;
 
 const mainSlider = new MainSlider(controls, itens, maxItens);
+/* FIM MAIN SLIDER */
 
+/* BEST SLIDER */
+const bestControls = document.querySelectorAll(".best-carousel-control");
+const bestScroll = document.querySelector("#best-slider-limit");
+const bestItens = document.querySelectorAll(".best-slider");
+const bestMaxItens = bestItens.length;
 
+const bestSlider = new BestSlider(bestControls, bestItens, bestScroll, bestMaxItens);
+/* FIM BEST SLIDER */
+
+/* FIM CARROSSEL */
 
 

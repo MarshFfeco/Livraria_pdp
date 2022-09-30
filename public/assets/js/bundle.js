@@ -164,51 +164,87 @@ function ChangeColor(nav, mobileMenu, mobileNav, options) {
 
 /***/ }),
 
-/***/ "./frontend/assets/js/optimization/render.js":
-/*!***************************************************!*\
-  !*** ./frontend/assets/js/optimization/render.js ***!
-  \***************************************************/
+/***/ "./frontend/assets/js/slider/BestSlider.js":
+/*!*************************************************!*\
+  !*** ./frontend/assets/js/slider/BestSlider.js ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Rederizar)
+/* harmony export */   "default": () => (/* binding */ BestSlide)
 /* harmony export */ });
-function Rederizar(img) {
-  this.init = function () {
-    this.event();
-  };
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-  this.event = function () {
-    var _this = this;
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-    window.addEventListener("scroll", function () {
-      _this.canSee();
-    });
-  };
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
-  this.canSee = function () {
-    var canVerifyImg = true;
+var BestSlide = /*#__PURE__*/function () {
+  function BestSlide(controls, itens, scroll, maxItem) {
+    _classCallCheck(this, BestSlide);
 
-    for (var i = 0; i < img.length; i++) {
-      if (canVerifyImg) {
-        if (img[i].getBoundingClientRect().top < window.innerHeight
-        /*&& !(img[i].getBoundingClientRect().bottom < 0)*/
-        ) {
-          img[i].classList.replace("noRender", "render"); //console.log(i + " render verificado");
+    this.controls = controls;
+    this.itens = itens;
+    this.scroll = scroll;
+    this.moveScroll = 0;
+    this.maxItem = maxItem;
+    this.init();
+  }
 
-          continue;
-        } else {
-          canVerifyImg = false; //console.log("sem verificação")
-        }
-      }
-
-      if (!canVerifyImg) {
-        img[i].classList.replace("render", "noRender"); //console.log(i + " render sem verificar");
-      }
+  _createClass(BestSlide, [{
+    key: "init",
+    value: function init() {
+      this.controlle();
     }
-  };
-}
+  }, {
+    key: "controlle",
+    value: function controlle() {
+      var _this = this;
+
+      this.controls.forEach(function (control) {
+        _this.event(control);
+      });
+    }
+  }, {
+    key: "event",
+    value: function event(control) {
+      var _this2 = this;
+
+      control.addEventListener("click", function () {
+        var isLeft = control.classList.contains("left");
+
+        if (isLeft) {
+          _this2.moveScroll -= _this2.scroll.offsetWidth;
+        } else {
+          _this2.moveScroll += _this2.scroll.offsetWidth;
+        }
+
+        if (isLeft && _this2.moveScroll < 0) {
+          _this2.moveScroll = 3416;
+        }
+
+        if (!isLeft && _this2.moveScroll > 3416) {
+          _this2.moveScroll = 0;
+        }
+
+        _this2.movementScroll();
+      });
+    }
+  }, {
+    key: "movementScroll",
+    value: function movementScroll() {
+      this.scroll.scrollTo({
+        left: this.moveScroll,
+        behavior: "smooth"
+      });
+    }
+  }]);
+
+  return BestSlide;
+}();
+
+
 
 /***/ }),
 
@@ -260,7 +296,6 @@ var MainSlider = /*#__PURE__*/function () {
 
       control.addEventListener("click", function () {
         var isLeft = control.classList.contains("left");
-        console.clear();
 
         if (isLeft) {
           _this2.currentItem -= 1;
@@ -879,13 +914,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _img_green_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../img/green.png */ "./frontend/assets/img/green.png");
 /* harmony import */ var _img_logo_png__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../img/logo.png */ "./frontend/assets/img/logo.png");
 /* harmony import */ var _img_books_v_guliver_jpg__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../img/books/v_guliver.jpg */ "./frontend/assets/img/books/v_guliver.jpg");
-/* harmony import */ var _optimization_render__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./optimization/render */ "./frontend/assets/js/optimization/render.js");
-/* harmony import */ var _load__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./load */ "./frontend/assets/js/load.js");
-/* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./nav */ "./frontend/assets/js/nav.js");
-/* harmony import */ var _mobileNav__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./mobileNav */ "./frontend/assets/js/mobileNav.js");
-/* harmony import */ var _validatedForm_ValidateFormRegister__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./validatedForm/ValidateFormRegister */ "./frontend/assets/js/validatedForm/ValidateFormRegister.js");
-/* harmony import */ var _validatedForm_ValidateFormLogin__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./validatedForm/ValidateFormLogin */ "./frontend/assets/js/validatedForm/ValidateFormLogin.js");
-/* harmony import */ var _slider_MainSlider__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./slider/MainSlider */ "./frontend/assets/js/slider/MainSlider.js");
+/* harmony import */ var _load__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./load */ "./frontend/assets/js/load.js");
+/* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./nav */ "./frontend/assets/js/nav.js");
+/* harmony import */ var _mobileNav__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./mobileNav */ "./frontend/assets/js/mobileNav.js");
+/* harmony import */ var _validatedForm_ValidateFormRegister__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./validatedForm/ValidateFormRegister */ "./frontend/assets/js/validatedForm/ValidateFormRegister.js");
+/* harmony import */ var _validatedForm_ValidateFormLogin__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./validatedForm/ValidateFormLogin */ "./frontend/assets/js/validatedForm/ValidateFormLogin.js");
+/* harmony import */ var _slider_MainSlider__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./slider/MainSlider */ "./frontend/assets/js/slider/MainSlider.js");
+/* harmony import */ var _slider_BestSlider__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./slider/BestSlider */ "./frontend/assets/js/slider/BestSlider.js");
 
 
 
@@ -904,37 +939,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+ //CHAMA A TELA DE LOAD
 
-/*
-//OTIMIZADOR DE TELA
-const far = document.querySelectorAll("#content-prin .render, #content-prin .noRender");
-const renderize = new Renderizar(far);
-
-window.addEventListener("DOMContentLoaded", e => {
-    renderize.canSee();
-    
-    let canVerifyImg = true;
-    for(let i = 0; i < far.length; i++) {
-        if(canVerifyImg) {
-             if((far[i].getBoundingClientRect().top < window.innerHeight) && !(far[i].getBoundingClientRect().bottom < 0)) {
-                 far[i].classList.replace("noRender", "render");
-                 continue;
-             } else {
-                 canVerifyImg = false;
-             }
-         }
-
-         if(!canVerifyImg) {
-             far[i].classList.replace("render", "noRender");
-         }
-     }
-     canVerifyImg = true;
-})
-renderize.init();
-*/
-//CHAMA A TELA DE LOAD
-
-document.body.addEventListener("load", exeAtivar((0,_load__WEBPACK_IMPORTED_MODULE_13__["default"])()));
+document.body.addEventListener("load", exeAtivar((0,_load__WEBPACK_IMPORTED_MODULE_12__["default"])()));
 
 function exeAtivar(obj) {
   obj;
@@ -948,7 +955,7 @@ if (document.location.href == "http://localhost:3000/LoginOrSignUp") {
 }
 
 function exeFormRegister() {
-  var registerForm = new _validatedForm_ValidateFormRegister__WEBPACK_IMPORTED_MODULE_16__["default"](formRegister);
+  var registerForm = new _validatedForm_ValidateFormRegister__WEBPACK_IMPORTED_MODULE_15__["default"](formRegister);
   registerForm.event();
 } //CHAMA A VALIDAÇÃO DO FORMULÁRIO DE LOGIN
 
@@ -960,7 +967,7 @@ if (document.location.href == "http://localhost:3000/LoginOrSignUp") {
 }
 
 function exeFormLogin() {
-  var loginForm = new _validatedForm_ValidateFormLogin__WEBPACK_IMPORTED_MODULE_17__["default"](formLogin);
+  var loginForm = new _validatedForm_ValidateFormLogin__WEBPACK_IMPORTED_MODULE_16__["default"](formLogin);
   loginForm.event();
 } //CHAMADA DE CLASSE E OBJETOS
 
@@ -968,15 +975,29 @@ function exeFormLogin() {
 var options = document.getElementById("options");
 var nav = document.getElementById("navegacao");
 var mobileMenu = document.getElementById("mobile_menu");
-var mobileNav = new _mobileNav__WEBPACK_IMPORTED_MODULE_15__["default"](mobileMenu, nav, options);
-var mudaCor = new _nav__WEBPACK_IMPORTED_MODULE_14__["default"](nav, mobileMenu, mobileNav, options);
+var mobileNav = new _mobileNav__WEBPACK_IMPORTED_MODULE_14__["default"](mobileMenu, nav, options);
+var mudaCor = new _nav__WEBPACK_IMPORTED_MODULE_13__["default"](nav, mobileMenu, mobileNav, options);
 mudaCor.init();
 /* CARROSSEL */
 
+/* MAIN SLIDER */
+
 var controls = document.querySelectorAll(".main-carousel-control");
-var itens = document.querySelectorAll(".slide");
+var itens = document.querySelectorAll(".main-slide");
 var maxItens = itens.length;
-var mainSlider = new _slider_MainSlider__WEBPACK_IMPORTED_MODULE_18__["default"](controls, itens, maxItens);
+var mainSlider = new _slider_MainSlider__WEBPACK_IMPORTED_MODULE_17__["default"](controls, itens, maxItens);
+/* FIM MAIN SLIDER */
+
+/* BEST SLIDER */
+
+var bestControls = document.querySelectorAll(".best-carousel-control");
+var bestScroll = document.querySelector("#best-slider-limit");
+var bestItens = document.querySelectorAll(".best-slider");
+var bestMaxItens = bestItens.length;
+var bestSlider = new _slider_BestSlider__WEBPACK_IMPORTED_MODULE_18__["default"](bestControls, bestItens, bestScroll, bestMaxItens);
+/* FIM BEST SLIDER */
+
+/* FIM CARROSSEL */
 })();
 
 /******/ })()

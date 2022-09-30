@@ -22,8 +22,6 @@ export default class MainSlider {
         control.addEventListener("click", () => {
             const isLeft = control.classList.contains("left");
 
-            console.clear();
-
             if(isLeft) {
                 this.currentItem -= 1;
             } else {
