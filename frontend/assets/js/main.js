@@ -6,6 +6,7 @@ import "../css/erro.css"
 import "../css/loginorsignup.css"
 import "../css/navigation.css"
 import "../css/home.css"
+import "../css/book.css"
 
 import * as img from "../img/image_erro.png";
 import * as green from "../img/green.png";
@@ -29,10 +30,21 @@ function exeAtivar(obj) {
 }
 /* FIM DA CHAMADA A TELA DE LOAD */
 
+/* VALIDAÇÃO DE URL */
+function isUrl(url) {
+    if(document.location.href == url) {
+     return true;
+    }
+
+    return false;
+}
+
+/* FIM DA VALIDAÇÃO DE URL */
+
 /* CHAMA A VALIDAÇÃO DO FORMULÁRIO DE REGISTRO */
 const formRegister = document.getElementById("form-register");
 
-if(document.location.href == "http://localhost:3000/LoginOrSignUp") {
+if(isUrl("http://localhost:3000/LoginOrSignUp")) {
     formRegister.addEventListener("submit", exeFormRegister());
 }
 
@@ -46,7 +58,7 @@ function exeFormRegister() {
 /* CHAMADA A VALIDAÇÃO DO FORMULÁRIO DE LOGIN */
 const formLogin = document.getElementById("form-login");
 
-if(document.location.href == "http://localhost:3000/LoginOrSignUp") {
+if(isUrl("http://localhost:3000/LoginOrSignUp")) {
     formLogin.addEventListener("submit", exeFormLogin());
 }
 
@@ -68,31 +80,38 @@ mudaCor.init();
 
 /* CARROSSEL */
 /* MAIN SLIDER */
-const controls = document.querySelectorAll(".main-carousel-control");
-const itens = document.querySelectorAll(".main-slide");
-const maxItens = itens.length;
+console.log(document.location.href)
+if(isUrl("http://localhost:3000/")) {
 
-const mainSlider = new MainSlider(controls, itens, maxItens);
+    const controls = document.querySelectorAll(".main-carousel-control");
+    const itens = document.querySelectorAll(".main-slide");
+    const maxItens = itens.length;
+
+    const mainSlider = new MainSlider(controls, itens, maxItens);
+}
 /* FIM MAIN SLIDER */
 
 
 /* BEST SLIDER */
-const bestControls = document.querySelectorAll(".best-carousel-control");
-const bestScroll = document.getElementById("best-slider-limit");
-const bestItens = document.getElementById("best-slider");
-const bestMaxItens = bestItens.length;
+if(isUrl("http://localhost:3000/")) {
+    const bestControls = document.querySelectorAll(".best-carousel-control");
+    const bestScroll = document.getElementById("best-slider-limit");
+    const bestItens = document.getElementById("best-slider");
+    const bestMaxItens = bestItens.length;
 
-const bestSlider = new BestSlider(bestControls, bestItens, bestScroll, bestMaxItens);
+    const bestSlider = new BestSlider(bestControls, bestItens, bestScroll, bestMaxItens);
+}
 /* FIM BEST SLIDER */
 
 /* BEST AVALIABLE SLIDER */
-const bestAvaliableControls = document.querySelectorAll(".bestAvaliable-carousel-control");
-const bestAvaliableScroll = document.getElementById("bestAvaliable-slider-limit");
-const bestAvaliableItens = document.getElementById("bestAvaliable-slider");
-const bestAvaliableMaxItens = bestItens.length;
-
-
-const bestAvaliableSlider = new BestSlider(bestAvaliableControls, bestAvaliableItens, bestAvaliableScroll, bestAvaliableMaxItens);
+if(isUrl("http://localhost:3000/")) {
+    const bestAvaliableControls = document.querySelectorAll(".bestAvaliable-carousel-control");
+    const bestAvaliableScroll = document.getElementById("bestAvaliable-slider-limit");
+    const bestAvaliableItens = document.getElementById("bestAvaliable-slider");
+    const bestAvaliableMaxItens = bestAvaliableItens.length;
+    
+    const bestAvaliableSlider = new BestSlider(bestAvaliableControls, bestAvaliableItens, bestAvaliableScroll, bestAvaliableMaxItens);
+}
 /* END BEST AVALIABLE SLIDER  */
 
 /* FIM CARROSSEL */
