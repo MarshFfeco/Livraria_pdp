@@ -1,0 +1,148 @@
+#book-style {
+    width: 90%;
+    height: auto;
+
+    margin: 50px auto;
+
+    display: grid;
+    /*
+    grid-template-areas: 
+    " figure container"
+    " figure descript ";*/
+
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto;
+
+    position: relative;
+    
+}
+
+/* DESIGN DO CONTAINER */
+.book-design-container {
+    width: 80%;
+    max-width: 600px;
+    min-height: 600px;
+
+    padding: 25px 50px;
+
+    justify-self: center;
+
+    border-radius: 10%;
+
+}
+/* FIM DO DESIGN DO CONTAINER*/
+
+/* IMAGEM DO LIVOR */
+.book-figure {
+    min-width: 250px;
+    
+    justify-self: center;
+
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+.book-figure img { 
+    width: 20%;    
+    position: fixed;
+
+    background-color: green;
+}
+/* FIM DA IMAGEM DO LIVRO */
+
+/* SEÇÃO DO LIVRO */
+.book-container {
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+    display: grid;
+    grid-template-rows: 10fr 3fr 1fr 15fr 5fr 5fr;
+    row-gap: 10px;
+
+    flex-direction: column;
+
+    background-color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.book-container hr{
+    width: 100%;
+
+    height: 2px;
+    border-width: 1;
+    background-color: black;
+}
+
+.book-container-title{ 
+    justify-self: center;
+    align-self: center;
+ }
+
+.book-container-betwen {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.book-container-author{ color: var(--cinza-color) }
+
+.book-container-hr { align-self: center; }
+
+.book-container-price{ font-size: 2em; }
+
+.book-container-buy{
+    width: 100%;
+
+    padding: 5px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    border: 2px solid var(--main-color);
+    border-radius: 30px;
+}
+
+.book-container-add{
+    width: 100%;
+
+    padding: 5px;
+
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+
+    background-color: var(--main-color);
+
+    border: none;
+    border-radius: 30px;
+}
+/* FIM DA SEÇÃO DO LIVRO */
+
+/* DESCRIÇÃO DO LIVRO */
+.book-description {
+    flex-direction: column;
+
+    justify-content: space-around;
+
+    margin: 50px 0;
+
+   grid-column-start: 2;
+   grid-column-end: 3;
+}
+
+.book-description div:nth-child(3) {
+    align-self: flex-start;
+}
+
+.book-description-product { justify-self: flex-start; }
+
+.book-description-title{
+    font-weight: bold;
+}
+
+.book-description-description{
+    line-height: 1.5;
+    font-size: 13px;
+}
+/* FIM DA DESCRIÇÃO DO LIVRO */

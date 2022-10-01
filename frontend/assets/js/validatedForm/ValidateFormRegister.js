@@ -4,18 +4,6 @@ export default class ValidateFormRegister extends ValidateForm {
     constructor(formulario){
         super(formulario);
         this.form = formulario;
-
-        const validateFormRegister = new ValidateForm(this.form);
-        validateFormRegister;
-    };
-
-    preventDefault(e) {
-        e.preventDefault();
-
-        const isValid = this.checkInputValue();
-        const isPassword = this.isPassword();
-
-        if(isValid && isPassword) this.form.submit();
     };
 
     isPassword() {
@@ -25,10 +13,10 @@ export default class ValidateFormRegister extends ValidateForm {
         const rePass = this.form.getElementsByTagName("input")[3];
 
         if(pass.value.length < 9) {
-            valid = false;
+            valid = valid && false;
             this.makeErro(pass, `Campo senha precisa ter mais que 9 caractere`);
         } else if(pass.value.length > 20) {
-            valid = false;
+            valid = valid && false;
             this.makeErro(pass, `Campo Senha precisa ter menos que 20 caractere`);
         }
 
@@ -38,7 +26,7 @@ export default class ValidateFormRegister extends ValidateForm {
 
         if(pass.value != rePass.value) {
             this.makeErro(rePass, `Valor diferente`);
-            valid = false;
+            valid =  valid && false;
         }
 
         if(valid) {

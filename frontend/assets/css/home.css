@@ -1,0 +1,225 @@
+
+
+/* UNIVERSAL */
+.universal-slider {
+    width: 100%;
+
+    justify-content: space-between;
+}
+
+    /*STYLE DAS SETAS DO SLIDER */
+    .arrow-right, 
+    .arrow-left {
+        width: 25px;
+        height: 90%;
+
+        justify-content: flex-start;
+
+        cursor: pointer;
+    }
+
+    .arrow-right:hover, 
+    .arrow-left:hover {
+        border-radius: 50px;
+
+        background-color: var(--shadow-color);
+    }
+
+    .arrow-right svg {
+        transform: rotate(180deg);
+    }
+    /* FIM DO STYLE DAS SETAS DO SLIDER */
+
+    /* STYLE DOS CONTEUDOS DO SLIDER */
+    .universal-slider-contents {
+        width: 90%;
+        height: 90%;
+    }
+
+    .universal-slider-contents .main-slider-img {
+        width: 90%;
+
+        grid-area: image;
+
+        justify-self: center;
+    }
+
+    .universal-slider-contents .main-slider-img img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .universal-slider-contents .main-slider-title { 
+        color: #fff; 
+
+        grid-area: title;
+
+        align-self: center;
+    }
+
+    .universal-slider-contents .main-slider-text {
+        width: 100%;
+        height: 100px;
+
+        overflow-y: scroll;
+
+        color: var(--cinza-color);
+
+        grid-area: text;
+    }
+
+    .universal-slider-contents .main-slider-text::-webkit-scrollbar {
+        width: 5px;               
+    }
+    
+    .universal-slider-contents .main-slider-text::-webkit-scrollbar-track {
+        background: transparent;        
+    }
+    
+    .universal-slider-contents .main-slider-text::-webkit-scrollbar-thumb {
+        background-color: var(--cinza-color);  
+
+        border-radius: 20px;      
+    }
+    /* FIM DO STYLE DOS CONTEUDOS DO SLIDER */
+
+/* STYLE DO BOTÃO PARA BAIXO */
+#arrow_bottom {
+    width: 50px;
+
+    margin: 0 auto;
+    margin-bottom: 70px;
+
+    vertical-align: middle;
+}
+
+#arrow_bottom a, 
+#arrow_bottom svg {
+    position: relative;
+
+    animation: sobeDesce 1s infinite alternate;
+}
+
+#arrow_bottom a:hover svg path {
+    fill: var(--active-color);
+}
+
+@keyframes sobeDesce {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(5px);
+    }
+}
+/*FIM DO STYLE DO BOTÃO PARA BAIXO*/
+
+/* EXCLUSIVE STYLE FOR MAIN SLIDER */
+#main-slider-limit {
+    height: 70vh;
+}
+
+.main_carousel_slides {
+    width: 900px;
+    height: 90%;
+
+    position: relative;
+}
+
+.main-slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    display: grid;
+
+    grid-template-areas: 
+    ' image title '
+    ' image text '
+    ' image text ';
+
+    column-gap: 20px;
+
+    visibility: hidden;
+    clip-path: inset(50% 0 50% 0);
+}
+
+.current-item {
+    visibility: visible;
+    clip-path: inset(0 0 0 0);
+
+    transition: clip-path 0.3s ease-in-out;
+}
+/* END EXCLUSIVE STYLE FOR MAIN SLIDER */
+
+/* STYLE DOS OTHERS SLIDERS */
+.other-slider-box {
+    height: 40%;
+
+    margin: 50px 0;
+
+    display: grid;
+    grid-template-areas: 
+    ' title  title  title '
+    ' left   slider right';
+}
+
+.other-slider-box .arrow-left { grid-area: left; justify-self: center;}
+.other-slider-box .arrow-right { grid-area: right; justify-self: center; }
+
+.other-slider-box h2 {
+    grid-area: title;
+
+    justify-self: flex-start;
+
+    margin-left: 50px;
+}
+
+.other-slider-limit {
+    height: 100%;
+
+    grid-area: slider;
+
+    overflow-x: hidden;
+}
+
+.other-slider-contents {
+    width: auto;
+}
+
+.other-slider {
+    min-width: 250px;
+    height: 100%;
+
+    flex-direction: column;
+    row-gap: 20px;
+
+    transition: all 0.3s ease-in-out;
+}
+
+.other-slider:hover {
+    cursor: pointer;
+    padding: 20px;
+
+    color: white;
+
+    border-radius: 10%;
+
+    background-color: var(--active-color);
+}
+
+.other-slider-img img {
+    width: 50%;
+}
+
+.other-slider-title{
+    grid-area: title;
+}
+/* FIM DO STYLE DOS OTHERS SLIDER*/
+
+/* START EXCLUSIVE STYLE FOR OTHER STYLE */
+#other-slider-limit {
+    height: auto;
+}
+/* END EXCLUSIVE STYLE FOR OTHER STYLE */

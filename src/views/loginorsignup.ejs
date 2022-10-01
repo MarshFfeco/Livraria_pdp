@@ -1,66 +1,68 @@
 <%- include("includes/head")%>
 
-<main>    
-    <div id="green"><img src="/assets/images/green.png"></div>
-    <%for(let i = 0; i < 100; i++){%>
-        <div id="green"><img src="/assets/images/green.png"></div>
-    <%}%>   
+<main id="main-form">    
+    <!-- FUNDO VERDE -->
+    <div class="limit-home">
+        <div class="quadrado"></div>
+    </div>
+    <!-- FIM DO FUNDO VERDE -->
+
     <div id="formularios">
-    <!--ESTE É PARA O CADASTRO-->
-    <div class="card">
-        <h2>Registrar</h2>
-        <form action="/registerComplete" method="POST" id="form-register" onsubmit="exeFormRegister()">
-            <!--CAMPO PARA USUARIO-->
-            <div class="textfield">
-                <label >Nome</label>
-                <input type="text" name="nome">
-            </div>
-            <!--CAMPO PARA EMAIL-->
-            <div class="textfield">
-                <label>E-mail</label>
-                <input type="email" name="email">
-            </div>
-            <!--CAMPO PARA SENHA-->
-            <div class="textfield">
-                <label>Senha</label>
-                <input type="password" name="senha">
-            </div>
-            <!--CAMPO PARA REPETIR SENHA-->
-            <div class="textfield">
-                <label>Repetir Senha</label>
-                <input type="password" name="repetirSenha">
-            </div>
+        <!--ESTE É PARA O CADASTRO-->
+        <div class="card">
+            <h2>Registrar</h2>
+            <form action="/registerComplete" method="POST" id="form-register">
+                <!--CAMPO PARA USUARIO-->
+                <div class="textfield">
+                    <label >Nome</label>
+                    <input type="text" name="nome">
+                </div>
+                <!--CAMPO PARA EMAIL-->
+                <div class="textfield">
+                    <label>E-mail</label>
+                    <input type="email" name="email">
+                </div>
+                <!--CAMPO PARA SENHA-->
+                <div class="textfield">
+                    <label>Senha</label>
+                    <input type="password" name="senha">
+                </div>
+                <!--CAMPO PARA REPETIR SENHA-->
+                <div class="textfield">
+                    <label>Repetir Senha</label>
+                    <input type="password" name="repetirSenha">
+                </div>
 
-            <div class="accept">
-                <h3>
-                    Ao clicar em Cadastre-se, você concorda com nossos Termos, Política de Privacidade e Política de Cookies. 
-                    Você poderá receber notificações por SMS e cancelar isso quando quiser.
-                </h3>
-            </div>
+                <div class="accept">
+                    <h4>
+                        Ao clicar em Cadastre-se, você concorda com nossos Termos, Política de Privacidade e Política de Cookies. 
+                        Você poderá receber notificações por SMS e cancelar isso quando quiser.
+                    </h4>
+                </div>
 
-            <!--BOTAO PARA FAZER O CADASTRO-->
-            <button type="submit" class="btn">Registrar</button>
-        </form>
+                <!--BOTAO PARA FAZER O CADASTRO-->
+                <button type="submit" class="btn">Registrar</button>
+            </form>
+        </div>
+
+        <!--ESTE É PARA O LOGIN-->
+        <div class="card">
+            <h2>Entrar</h2>
+            <form action="/loginComplete" method="post" id="form-login">
+                <!--CAMPO PARA EMAIL-->
+                <div class="textfield">
+                    <label>E-mail</label>
+                    <input type="email" name="email">
+                </div>
+                <!--CAMPO PARA SENHA-->
+                <div class="textfield">
+                    <label>Senha</label>
+                    <input type="password" name="senha">
+                </div>
+                <!--BOTAO PARA FAZER O LOGIN-->
+                <button type="submit" class="btn">Retornar</button>
+        </div>
     </div>
-
-    <!--ESTE É PARA O LOGIN-->
-    <div class="card">
-        <h2>login</h2>
-        <form action="/loginComplete" method="post" id="form-login" onsubmit="exeFormLogin()">
-            <!--CAMPO PARA EMAIL-->
-            <div class="textfield">
-                <label>E-mail</label>
-                <input type="email" name="email">
-            </div>
-            <!--CAMPO PARA SENHA-->
-            <div class="textfield">
-                <label>Senha</label>
-                <input type="password" name="senha">
-            </div>
-            <!--BOTAO PARA FAZER O LOGIN-->
-            <button type="submit" class="btn">Retornar</button>
-    </div>
-</div>
 </main>
 
 <%- include("includes/footer")%>
