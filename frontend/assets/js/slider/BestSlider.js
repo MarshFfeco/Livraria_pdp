@@ -1,23 +1,13 @@
-export default class BestSlide {
+import Slider from"./Slider";
+
+export default class BestSlide extends Slider {
     constructor(controls, itens, scroll, maxItem) {
-        this.controls = controls;
-        this.itens = itens;
+        super(controls, itens, maxItem)
+
         this.scroll = scroll;
         this.moveScroll = 0;
-        this.maxItem = maxItem;
 
-        this.init();
     }
-
-    init() {
-        this.controlle();
-    };
-
-    controlle() {
-        this.controls.forEach((control) => {
-            this.event(control);
-        });
-    };
 
     event(control) {
         control.addEventListener("click", () => {
@@ -26,7 +16,7 @@ export default class BestSlide {
             if(isLeft) { this.moveScroll -= this.scroll.offsetWidth; } 
                 else { this.moveScroll += this.scroll.offsetWidth; }
 
-            if(isLeft && this.moveScroll < 0){ this.moveScroll = 3416;  }
+            if(isLeft && this.moveScroll < 0) { this.moveScroll = 3416; }
             if(!isLeft && this.moveScroll > 3416) { this.moveScroll = 0; }
         
             this.movementScroll();

@@ -174,39 +174,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ BestSlide)
 /* harmony export */ });
+/* harmony import */ var _Slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Slider */ "./frontend/assets/js/slider/Slider.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
-var BestSlide = /*#__PURE__*/function () {
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var BestSlide = /*#__PURE__*/function (_Slider) {
+  _inherits(BestSlide, _Slider);
+
+  var _super = _createSuper(BestSlide);
+
   function BestSlide(controls, itens, scroll, maxItem) {
+    var _this;
+
     _classCallCheck(this, BestSlide);
 
-    this.controls = controls;
-    this.itens = itens;
-    this.scroll = scroll;
-    this.moveScroll = 0;
-    this.maxItem = maxItem;
-    this.init();
+    _this = _super.call(this, controls, itens, maxItem);
+    _this.scroll = scroll;
+    _this.moveScroll = 0;
+    return _this;
   }
 
   _createClass(BestSlide, [{
-    key: "init",
-    value: function init() {
-      this.controlle();
-    }
-  }, {
-    key: "controlle",
-    value: function controlle() {
-      var _this = this;
-
-      this.controls.forEach(function (control) {
-        _this.event(control);
-      });
-    }
-  }, {
     key: "event",
     value: function event(control) {
       var _this2 = this;
@@ -242,7 +251,7 @@ var BestSlide = /*#__PURE__*/function () {
   }]);
 
   return BestSlide;
-}();
+}(_Slider__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 
 
@@ -258,15 +267,103 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ MainSlider)
 /* harmony export */ });
+/* harmony import */ var _Slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Slider */ "./frontend/assets/js/slider/Slider.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
-var MainSlider = /*#__PURE__*/function () {
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var MainSlider = /*#__PURE__*/function (_Slider) {
+  _inherits(MainSlider, _Slider);
+
+  var _super = _createSuper(MainSlider);
+
   function MainSlider(controls, itens, maxItem) {
     _classCallCheck(this, MainSlider);
+
+    return _super.call(this, controls, itens, maxItem);
+  }
+
+  _createClass(MainSlider, [{
+    key: "event",
+    value: function event(control) {
+      var _this = this;
+
+      control.addEventListener("click", function () {
+        var isLeft = control.classList.contains("left");
+
+        if (isLeft) {
+          _this.currentItem -= 1;
+        } else {
+          _this.currentItem += 1;
+        }
+
+        if (_this.currentItem > _this.maxItem - 1) {
+          _this.currentItem = 0;
+        }
+
+        if (_this.currentItem < 0) {
+          _this.currentItem = _this.maxItem - 1;
+        }
+
+        _this.addOrRemove();
+      });
+    }
+  }, {
+    key: "addOrRemove",
+    value: function addOrRemove() {
+      this.itens.forEach(function (item) {
+        return item.classList.remove("current-item");
+      });
+      this.itens[this.currentItem].classList.add("current-item");
+    }
+  }]);
+
+  return MainSlider;
+}(_Slider__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+
+/***/ }),
+
+/***/ "./frontend/assets/js/slider/Slider.js":
+/*!*********************************************!*\
+  !*** ./frontend/assets/js/slider/Slider.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Slider)
+/* harmony export */ });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+var Slider = /*#__PURE__*/function () {
+  function Slider(controls, itens, maxItem) {
+    _classCallCheck(this, Slider);
 
     this.controls = controls;
     this.itens = itens;
@@ -275,7 +372,7 @@ var MainSlider = /*#__PURE__*/function () {
     this.init();
   }
 
-  _createClass(MainSlider, [{
+  _createClass(Slider, [{
     key: "init",
     value: function init() {
       this.controlle();
@@ -314,17 +411,9 @@ var MainSlider = /*#__PURE__*/function () {
         _this2.addOrRemove();
       });
     }
-  }, {
-    key: "addOrRemove",
-    value: function addOrRemove() {
-      this.itens.forEach(function (item) {
-        return item.classList.remove("current-item");
-      });
-      this.itens[this.currentItem].classList.add("current-item");
-    }
   }]);
 
-  return MainSlider;
+  return Slider;
 }();
 
 
@@ -939,13 +1028,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- //CHAMA A TELA DE LOAD
+
+/* CHAMADA A TELA DE LOAD */
 
 document.body.addEventListener("load", exeAtivar((0,_load__WEBPACK_IMPORTED_MODULE_12__["default"])()));
 
 function exeAtivar(obj) {
   obj;
-} //CHAMA A VALIDAÇÃO DO FORMULÁRIO DE REGISTRO
+}
+/* FIM DA CHAMADA A TELA DE LOAD */
+
+/* CHAMA A VALIDAÇÃO DO FORMULÁRIO DE REGISTRO */
 
 
 var formRegister = document.getElementById("form-register");
@@ -957,7 +1050,10 @@ if (document.location.href == "http://localhost:3000/LoginOrSignUp") {
 function exeFormRegister() {
   var registerForm = new _validatedForm_ValidateFormRegister__WEBPACK_IMPORTED_MODULE_15__["default"](formRegister);
   registerForm.event();
-} //CHAMA A VALIDAÇÃO DO FORMULÁRIO DE LOGIN
+}
+/* FIM DA CHAMA A VALIDAÇÃO DO FORMULÁRIO DE REGISTRO */
+
+/* CHAMADA A VALIDAÇÃO DO FORMULÁRIO DE LOGIN */
 
 
 var formLogin = document.getElementById("form-login");
@@ -969,7 +1065,10 @@ if (document.location.href == "http://localhost:3000/LoginOrSignUp") {
 function exeFormLogin() {
   var loginForm = new _validatedForm_ValidateFormLogin__WEBPACK_IMPORTED_MODULE_16__["default"](formLogin);
   loginForm.event();
-} //CHAMADA DE CLASSE E OBJETOS
+}
+/* FIM DA CHAMADA A VALIDAÇÃO DO FORMULÁRIO DE LOGIN */
+
+/* MENU DE NAVEGAÇÃO */
 
 
 var options = document.getElementById("options");
@@ -978,6 +1077,8 @@ var mobileMenu = document.getElementById("mobile_menu");
 var mobileNav = new _mobileNav__WEBPACK_IMPORTED_MODULE_14__["default"](mobileMenu, nav, options);
 var mudaCor = new _nav__WEBPACK_IMPORTED_MODULE_13__["default"](nav, mobileMenu, mobileNav, options);
 mudaCor.init();
+/* FIM DO MENU DE NAVEGAÇÃO */
+
 /* CARROSSEL */
 
 /* MAIN SLIDER */
@@ -991,11 +1092,20 @@ var mainSlider = new _slider_MainSlider__WEBPACK_IMPORTED_MODULE_17__["default"]
 /* BEST SLIDER */
 
 var bestControls = document.querySelectorAll(".best-carousel-control");
-var bestScroll = document.querySelector("#best-slider-limit");
-var bestItens = document.querySelectorAll(".best-slider");
+var bestScroll = document.getElementById("best-slider-limit");
+var bestItens = document.getElementById("best-slider");
 var bestMaxItens = bestItens.length;
 var bestSlider = new _slider_BestSlider__WEBPACK_IMPORTED_MODULE_18__["default"](bestControls, bestItens, bestScroll, bestMaxItens);
 /* FIM BEST SLIDER */
+
+/* BEST AVALIABLE SLIDER */
+
+var bestAvaliableControls = document.querySelectorAll(".bestAvaliable-carousel-control");
+var bestAvaliableScroll = document.getElementById("bestAvaliable-slider-limit");
+var bestAvaliableItens = document.getElementById("bestAvaliable-slider");
+var bestAvaliableMaxItens = bestItens.length;
+var bestAvaliableSlider = new _slider_BestSlider__WEBPACK_IMPORTED_MODULE_18__["default"](bestAvaliableControls, bestAvaliableItens, bestAvaliableScroll, bestAvaliableMaxItens);
+/* END BEST AVALIABLE SLIDER  */
 
 /* FIM CARROSSEL */
 })();

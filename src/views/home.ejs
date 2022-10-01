@@ -109,7 +109,7 @@
 <!-- OUTROS SLIDERS -->
 <main id="other-slider-limit">
     <!-- LIMITE DO BEST SLIDER -->
-    <section id="best-slider-box" class="">
+    <section id="" class="other-slider-box">
         <!-- SETA DA ESQUERDA DO SLIDER BEST -->
         <div class=" arrow-left flex-center best-carousel-control left">
             <button aria-label="Previous" class="glider-prev">
@@ -120,10 +120,10 @@
         </div>
         <!-- FIM DA SETA DA ESQUERDA DO SLIDER BEST -->
 
-        <h2>Melhores</h2>
+        <h2>Melhores Books</h2>
 
         <!-- SETA DA DIREITA DO SLIDER BEST -->
-        <div class="arrow-right flex-center best-carousel-control">
+        <div class="arrow-right best-carousel-control flex-center">
             <button aria-label="Next" class="glider-next">
                 <svg width="25" height="25" viewBox="0 0 188 188" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M106.163 141.022C102.46 141.027 98.8686 139.756 95.9927 137.424L56.0957 104.489C54.5312 103.244 53.2677 101.661 52.3993 99.8599C51.5308 98.0586 51.0798 96.0845 51.0798 94.0847C51.0798 92.0849 51.5308 90.1109 52.3993 88.3095C53.2677 86.5081 54.5312 84.9257 56.0957 83.6802L95.9927 50.7456C98.3946 48.8211 101.289 47.6101 104.346 47.2505C107.402 46.8909 110.498 47.3972 113.281 48.7117C115.7 49.7778 117.761 51.5175 119.217 53.7232C120.674 55.9288 121.465 58.5071 121.496 61.1501V127.019C121.465 129.662 120.674 132.241 119.217 134.446C117.761 136.652 115.7 138.392 113.281 139.458C111.045 140.475 108.619 141.008 106.163 141.022V141.022Z" fill="#231F20"/>
@@ -132,18 +132,21 @@
         </div>
         <!-- FIM DA SETA DA DIREITA DO SLIDER BEST -->
 
-        <div id="best-slider-limit" class="universal-slider flex-center">
+        <div id="best-slider-limit" class="universal-slider other-slider-limit flex-center">
             <!-- SLIDER BEST -->
-            <article id="best-slider-contents" class="universal-slider-contents flex-center">
+            <article id="" class="universal-slider-contents other-slider-contents flex-center">
 
                     <%for(let i = 0; i < 14; i++) {%>
-                        <div class="best-slider flex-center">
-                            <figure class="best-slider-img flex-center">
-                                <img src="/assets/images/v_guliver.jpg" width="250px" alt="Imagem da capa do livor">
-                            </figure>
-                            
-                            <h4 class="best-slider-title">Viagens de Gulliver <%=i%></h4>
-                        </div>
+                        <a href="/Carrinho">
+                            <div id="best-slider" class="other-slider flex-center">
+                                
+                                <figure class="other-slider-img flex-center">
+                                    <img src="/assets/images/v_guliver.jpg" width="250px" alt="Imagem da capa do livor">
+                                </figure>
+                                
+                                <h4 class="other-slider-title">Viagens de Gulliver <%=i%></h4>
+                            </div>
+                        </a>
                     <%}%>
 
             </article>
@@ -153,50 +156,52 @@
     </section>
     <!-- FIM DO LIMITE DO BEST SLIDER -->
 
-    <!-- LIMITE DO BEST SLIDER -->
-    <section id="best-slider-box" class="">
-        <!-- SETA DA ESQUERDA DO SLIDER BEST -->
-        <div class=" arrow-left flex-center best-carousel-control left">
+    <!-- LIMITE DO BEST AVALIABLE SLIDER -->
+    <section id="" class="other-slider-box">
+        <!-- SETA DA ESQUERDA DO SLIDER BEST AVALIABLE -->
+        <div class=" arrow-left flex-center bestAvaliable-carousel-control left">
             <button aria-label="Previous" class="glider-prev">
                 <svg width="25" height="25" viewBox="0 0 188 188" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M106.163 141.022C102.46 141.027 98.8686 139.756 95.9927 137.424L56.0957 104.489C54.5312 103.244 53.2677 101.661 52.3993 99.8599C51.5308 98.0586 51.0798 96.0845 51.0798 94.0847C51.0798 92.0849 51.5308 90.1109 52.3993 88.3095C53.2677 86.5081 54.5312 84.9257 56.0957 83.6802L95.9927 50.7456C98.3946 48.8211 101.289 47.6101 104.346 47.2505C107.402 46.8909 110.498 47.3972 113.281 48.7117C115.7 49.7778 117.761 51.5175 119.217 53.7232C120.674 55.9288 121.465 58.5071 121.496 61.1501V127.019C121.465 129.662 120.674 132.241 119.217 134.446C117.761 136.652 115.7 138.392 113.281 139.458C111.045 140.475 108.619 141.008 106.163 141.022V141.022Z" fill="#231F20"/>
                 </svg>
             </button>
         </div>
-        <!-- FIM DA SETA DA ESQUERDA DO SLIDER BEST -->
+        <!-- FIM DA SETA DA ESQUERDA DO SLIDER BEST AVALIABLE -->
 
-        <h2>Melhores</h2>
+        <h2>Bens Avaliados</h2>
 
-        <!-- SETA DA DIREITA DO SLIDER BEST -->
-        <div class="arrow-right flex-center best-carousel-control">
+        <!-- SETA DA DIREITA DO SLIDER BEST AVALIABLE -->
+        <div class="arrow-right bestAvaliable-carousel-control flex-center">
             <button aria-label="Next" class="glider-next">
                 <svg width="25" height="25" viewBox="0 0 188 188" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M106.163 141.022C102.46 141.027 98.8686 139.756 95.9927 137.424L56.0957 104.489C54.5312 103.244 53.2677 101.661 52.3993 99.8599C51.5308 98.0586 51.0798 96.0845 51.0798 94.0847C51.0798 92.0849 51.5308 90.1109 52.3993 88.3095C53.2677 86.5081 54.5312 84.9257 56.0957 83.6802L95.9927 50.7456C98.3946 48.8211 101.289 47.6101 104.346 47.2505C107.402 46.8909 110.498 47.3972 113.281 48.7117C115.7 49.7778 117.761 51.5175 119.217 53.7232C120.674 55.9288 121.465 58.5071 121.496 61.1501V127.019C121.465 129.662 120.674 132.241 119.217 134.446C117.761 136.652 115.7 138.392 113.281 139.458C111.045 140.475 108.619 141.008 106.163 141.022V141.022Z" fill="#231F20"/>
                 </svg>
             </button>
         </div>
-        <!-- FIM DA SETA DA DIREITA DO SLIDER BEST -->
+        <!-- FIM DA SETA DA DIREITA DO SLIDER BEST AVALIABLE -->
 
-        <div id="best-slider-limit" class="universal-slider flex-center">
-            <!-- SLIDER BEST -->
-            <article id="best-slider-contents" class="universal-slider-contents flex-center">
+        <div id="bestAvaliable-slider-limit" class="universal-slider other-slider-limit flex-center">
+            <!-- SLIDER BEST AVALIABLE -->
+            <article id="" class="universal-slider-contents other-slider-contents flex-center">
 
                     <%for(let i = 0; i < 14; i++) {%>
-                        <div class="best-slider flex-center">
-                            <figure class="best-slider-img flex-center">
-                                <img src="/assets/images/v_guliver.jpg" width="250px" alt="Imagem da capa do livor">
-                            </figure>
-                            
-                            <h4 class="best-slider-title">Viagens de Gulliver <%=i%></h4>
-                        </div>
+                        <a href="/Carrinho">
+                            <div id="bestAvaliable-slider" class="other-slider flex-center">
+                                <figure class="other-slider-img flex-center">
+                                    <img src="/assets/images/v_guliver.jpg" width="250px" alt="Imagem da capa do livor">
+                                </figure>
+                                
+                                <h4 class="other-slider-title">Viagens de Gulliver <%=i%></h4>
+                            </div>
+                        </a>
                     <%}%>
 
             </article>
-            <!-- FIM DO SLIDER BEST -->
+            <!-- FIM DO SLIDER BEST AVALIABLE -->
         </div>
 
     </section>
-    <!-- FIM DO LIMITE DO BEST SLIDER -->
+    <!-- FIM DO LIMITE DO BEST AVALIABLE SLIDER -->
 
 </main>
 <!-- FIM DOS OUTROS SLIDERS -->

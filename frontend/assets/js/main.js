@@ -21,14 +21,15 @@ import ValidatedFormLogin from "./validatedForm/ValidateFormLogin"
 import MainSlider from "./slider/MainSlider"
 import BestSlider from "./slider/BestSlider"
 
-//CHAMA A TELA DE LOAD
+/* CHAMADA A TELA DE LOAD */
 document.body.addEventListener("load", exeAtivar(load()));
 
 function exeAtivar(obj) {
     obj;
 }
+/* FIM DA CHAMADA A TELA DE LOAD */
 
-//CHAMA A VALIDAÇÃO DO FORMULÁRIO DE REGISTRO
+/* CHAMA A VALIDAÇÃO DO FORMULÁRIO DE REGISTRO */
 const formRegister = document.getElementById("form-register");
 
 if(document.location.href == "http://localhost:3000/LoginOrSignUp") {
@@ -40,8 +41,9 @@ function exeFormRegister() {
    const registerForm = new ValidatedFormRegister(formRegister);
    registerForm.event();
 }
+/* FIM DA CHAMA A VALIDAÇÃO DO FORMULÁRIO DE REGISTRO */
 
-//CHAMA A VALIDAÇÃO DO FORMULÁRIO DE LOGIN
+/* CHAMADA A VALIDAÇÃO DO FORMULÁRIO DE LOGIN */
 const formLogin = document.getElementById("form-login");
 
 if(document.location.href == "http://localhost:3000/LoginOrSignUp") {
@@ -52,8 +54,9 @@ function exeFormLogin() {
     const loginForm = new ValidatedFormLogin(formLogin);
     loginForm.event();
 }
+/* FIM DA CHAMADA A VALIDAÇÃO DO FORMULÁRIO DE LOGIN */
 
-//CHAMADA DE CLASSE E OBJETOS
+/* MENU DE NAVEGAÇÃO */
 const options = document.getElementById("options");
 const nav = document.getElementById("navegacao");
 const mobileMenu = document.getElementById("mobile_menu");
@@ -61,6 +64,7 @@ const mobileNav = new MobileNav(mobileMenu, nav, options)
 
 const mudaCor = new MudaCor(nav, mobileMenu, mobileNav, options);
 mudaCor.init();
+/* FIM DO MENU DE NAVEGAÇÃO */
 
 /* CARROSSEL */
 /* MAIN SLIDER */
@@ -71,14 +75,25 @@ const maxItens = itens.length;
 const mainSlider = new MainSlider(controls, itens, maxItens);
 /* FIM MAIN SLIDER */
 
+
 /* BEST SLIDER */
 const bestControls = document.querySelectorAll(".best-carousel-control");
-const bestScroll = document.querySelector("#best-slider-limit");
-const bestItens = document.querySelectorAll(".best-slider");
+const bestScroll = document.getElementById("best-slider-limit");
+const bestItens = document.getElementById("best-slider");
 const bestMaxItens = bestItens.length;
 
 const bestSlider = new BestSlider(bestControls, bestItens, bestScroll, bestMaxItens);
 /* FIM BEST SLIDER */
+
+/* BEST AVALIABLE SLIDER */
+const bestAvaliableControls = document.querySelectorAll(".bestAvaliable-carousel-control");
+const bestAvaliableScroll = document.getElementById("bestAvaliable-slider-limit");
+const bestAvaliableItens = document.getElementById("bestAvaliable-slider");
+const bestAvaliableMaxItens = bestItens.length;
+
+
+const bestAvaliableSlider = new BestSlider(bestAvaliableControls, bestAvaliableItens, bestAvaliableScroll, bestAvaliableMaxItens);
+/* END BEST AVALIABLE SLIDER  */
 
 /* FIM CARROSSEL */
 

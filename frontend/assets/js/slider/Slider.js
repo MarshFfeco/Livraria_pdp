@@ -1,9 +1,22 @@
-import Slider from "./Slider"
-
-export default class MainSlider extends Slider {
+export default class Slider {
     constructor(controls, itens, maxItem) {
-        super(controls, itens, maxItem);
+        this.controls = controls;
+        this.itens = itens;
+        this.maxItem = maxItem;
+        this.currentItem = 0;
+
+        this.init();
     }
+
+    init() {
+        this.controlle();
+    };
+
+    controlle() {
+        this.controls.forEach((control) => {
+            this.event(control);
+        });
+    };
 
     event(control) {
         control.addEventListener("click", () => {
@@ -25,10 +38,5 @@ export default class MainSlider extends Slider {
 
             this.addOrRemove();
         });
-    }
-
-    addOrRemove() {
-        this.itens.forEach(item => item.classList.remove("current-item"));
-        this.itens[this.currentItem].classList.add("current-item");
     }
 }
