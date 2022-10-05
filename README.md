@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Livraria Saber
 
 Com o objetivo de desenvolver o mercado de trabalho da região, a L. SABER está selecionando os graduandos da turma 2022.2 do Curso de Gestão da Tecnologia da Informação da Faculdade Adventista da Bahia para serem responsáveis pelo execução do novo projeto.
