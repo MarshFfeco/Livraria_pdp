@@ -79,66 +79,35 @@ $ git push
 - JAVASCRIPT
 
 ## Equipe
-<table>
-  <tr>
-    <td align="center">
-      <a href="#">
-        <img src="https://miro.medium.com/max/360/0*1SkS3mSorArvY9kS.jpg" width="100px;" alt="Foto do Iuri Silva no GitHub"/><br>
-        <sub>
-          <b>Adriel</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#">
-        <img src="https://miro.medium.com/max/360/0*1SkS3mSorArvY9kS.jpg" width="100px;" alt="Foto do Mark Zuckerberg"/><br>
-        <sub>
-          <b>Anderson</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#">
-        <img src="https://miro.medium.com/max/360/0*1SkS3mSorArvY9kS.jpg" width="100px;" alt="Foto do Steve Jobs"/><br>
-        <sub>
-          <b>João Barboza</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#">
-        <img src="https://miro.medium.com/max/360/0*1SkS3mSorArvY9kS.jpg" width="100px;" alt="Foto do Steve Jobs"/><br>
-        <sub>
-          <b>Lara</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#">
-        <img src="https://miro.medium.com/max/360/0*1SkS3mSorArvY9kS.jpg" width="100px;" alt="Foto do Steve Jobs"/><br>
-        <sub>
-          <b>Lucas</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#">
-        <img src="https://miro.medium.com/max/360/0*1SkS3mSorArvY9kS.jpg" width="100px;" alt="Foto do Steve Jobs"/><br>
-        <sub>
-          <b>Rômulo</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#">
-        <img src="https://miro.medium.com/max/360/0*1SkS3mSorArvY9kS.jpg" width="100px;" alt="Foto do Steve Jobs"/><br>
-        <sub>
-          <b>Saionara</b>
-        </sub>
-      </a>
-    </td>
-  </tr>
-</table>
+<pre>
+Adriel
+ଲ( ⓛ ω ⓛ *)ଲ
+</pre>
+<pre>
+    Anderson
+    ଲ( ⓛ ω ⓛ *)ଲ
+</pre>
+<pre>
+      João
+      ଲ( ⓛ ω ⓛ *)ଲ
+</pre>
+<pre>
+        Lara
+        ଲ( ⓛ ω ⓛ *)ଲ
+</pre>
+<pre>
+      Lucas
+      ଲ( ⓛ ω ⓛ *)ଲ
+</pre>
+<pre>
+    Rômulo
+    ଲ( ⓛ ω ⓛ *)ଲ
+</pre>
+<pre>
+Saionara
+ଲ( ⓛ ω ⓛ *)ଲ
+</pre>
 
 ## Versão
-1.7.0
+- 1.8.0
+

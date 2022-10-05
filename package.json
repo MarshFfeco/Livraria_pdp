@@ -1,6 +1,6 @@
 {
   "name": "livrariasaber",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "",
   "main": "serve.js",
   "scripts": {
@@ -26,6 +26,8 @@
   "dependencies": {
     "dotenv": "^16.0.2",
     "ejs": "^3.1.8",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "mongoose": "^6.6.5",
+    "validator": "^13.7.0"
   }
 }
