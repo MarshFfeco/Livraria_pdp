@@ -2,7 +2,7 @@ const express = require('express');
 const route = express.Router();
 
 const home = require("../src/controller/homecontroller");
-const loginorsignup = require("../src/controller/loginorsignup");
+const loginorsignup = require("../src/controller/loginorsignupcontroller");
 const book = require("../src/controller/bookcontroller")
 
 /* ROTA DO INDEX */
