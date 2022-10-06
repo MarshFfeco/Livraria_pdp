@@ -7,10 +7,18 @@ exports.index = function(req, res) {
 };
 
 exports.register = async function(req, res) {
-    const login = new Login(req.body);
-    await login.register();
+    try {
+        const login = new Login(req.body);
+        await login.register();
 
-    res.send(login.user);
+        if(login.message.length > 0) {
+            return res.redirect('/UsuárioExistente');
+        }
+        
+        res.send(login.user);
+    } catch (error) {
+        console.log("Erro no loginController");
+    }
 };
 
 exports.login = function(req, res) {
