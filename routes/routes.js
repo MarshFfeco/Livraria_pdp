@@ -13,6 +13,7 @@ route.get("/", home.index);
 route.get("/LoginOrSignUp", loginorsignup.index);
 route.post("/LoginOrSignUp/registerComplete", loginorsignup.register);
 route.post("/LoginOrSignUp/LoginComplete", loginorsignup.login);
+route.get("/Logout", loginorsignup.logout);
 /* FIM DAS ROTAS DE LOGIN E CADASTRO */
 
 /* ROTA DO LIVRO */

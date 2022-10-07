@@ -26,21 +26,37 @@ class LoginOrSignUp {
 
         if(this.message.length > 0) return;
 
-        try {
-            const salt = bcrypt.genSaltSync();
+        const salt = bcrypt.genSaltSync();
 
-            this.body.senha = bcrypt.hashSync(this.body.senha, salt);
+        this.body.senha = bcrypt.hashSync(this.body.senha, salt);
+        this.user = await RegisterModel.create(this.body);
+    }
 
-            this.user = await RegisterModel.create(this.body);
-        } catch (error) {
-            console.log("Erro ao jogar no Use") 
-        }  
+    async login() {
+        this.valida();
+
+        console.log("login valida")
+
+        if(this.message.length > 0) return;
+
+        this.user = await RegisterModel.findOne({ email: this.body.email });
+
+        if(!this.user) {
+            this.message.push("Usuário não Existe!");
+            return;
+        }
+
+        if(!bcrypt.compareSync(this.body.senha, this.user.senha)) {
+            this.message.push("Email ou senha inválidos!");
+            this.user = null;
+            return;
+        }
     }
 
     async userExists() {
-       const exists = await RegisterModel.findOne({ email: this.body.email });
+       this.user = await RegisterModel.findOne({ email: this.body.email });
 
-       if(exists) this.message.push("Usuário já existe");
+       if(this.user) this.message.push("Usuário já existe");
     }
 
     valida() {

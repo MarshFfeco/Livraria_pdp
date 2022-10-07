@@ -7,9 +7,24 @@ const mariaDB = require("./database/connection");
 
 const flash = require("connect-flash");
 
-const sessionOption = require("./sessions/session")
+/* CONFIG DA SESSÃO */
+const session = require("express-session");
+const mongoStore = require("connect-mongo");
 
-const { rotas } = require("./src/middlewares/middleware.js");
+const sessionOptions = session({
+    secret: 'LivrariaSaberCatSecret',
+    resave: false,
+    saveUninitialized: false,
+    cookie:{
+        maxAge: 1000 * 60 * 60 * 6, 
+        httpOnly: true
+    },
+    store: mongoStore.create({ mongoUrl: process.env.CONNECTIOMONGODB})
+});
+/* FIM DO CONFIG DA SESSÃO */
+
+
+const { global, rotas } = require("./src/middlewares/middleware.js");
 
 const routes = require('./routes/routes');
 
@@ -20,12 +35,14 @@ app.use(express.json());
 app.use(express.static(path.resolve(__dirname, 'public')));
 
 //UTILIZANDO AS SESSÕES
-app.use(sessionOption);
+app.use(sessionOptions);
 app.use(flash());
 
 //DEIXA USAR O EJS COMO RENDER
 app.set('views', path.resolve(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
+
+app.use(global);
 
 //PEGA AS ROTAS DA PASTA ROUTES
 app.use(routes);

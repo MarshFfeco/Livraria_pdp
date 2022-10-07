@@ -8,19 +8,42 @@ exports.index = function(req, res) {
 
 exports.register = async function(req, res) {
     try {
-        const login = new Login(req.body);
-        await login.register();
+        const register = new Login(req.body);
+        await register.register();
 
-        if(login.message.length > 0) {
-            return res.redirect('/UsuárioExistente');
+        if(register.message.length > 0) {
+            res.redirect('back');
         }
         
-        res.send(login.user);
+        res.send(register.user);
     } catch (error) {
-        console.log("Erro no loginController");
+        res.render("erro", {
+            title: "Erro de Cadastro"
+        });
     }
 };
 
-exports.login = function(req, res) {
-    res.send("login");
+exports.login = async function(req, res) {
+    try {
+        const login = new Login(req.body);
+        await login.login();
+
+        if(login.message.length > 0) {
+            res.redirect('back');
+        }
+
+        req.session.user = login.user;
+        res.redirect("/");
+        console.log("Logado com sucesso");
+    } catch (error) {
+        res.render("erro", {
+            title: "Erro de Login"
+        })
+    }
+}
+
+exports.logout = function(req, res) {
+    req.session.destroy();
+
+    res.redirect("/");
 }
