@@ -53,21 +53,19 @@ h4 {
     box-shadow: 0 4px 4px var(--shadow-color);
 }
 
-.textfield{
+.textfieldLoSig{
     width: 100%;
-    margin: 20px 0px;
 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
 }
-
+/*
 .textfield > input {
     width: 100%;
     padding: 10px;
     
-
     border: 1px solid var(--main-color);
     border-radius: 20px;
 
@@ -77,8 +75,8 @@ h4 {
     font-size: 12pt;
 
     outline: none;
-}
-
+}*/
+/*
 .textfield :focus {
     border: 2px solid var(--active-color);
 }
@@ -90,29 +88,7 @@ h4 {
 
     font-size: small;
 }
-
-.btn {
-    width: 100%;
-    padding: 15px;
-    margin-top: 20px;
-
-    border: none;
-    border-radius: 20px;
-    outline: none;
-
-    font-size: 12pt;
-    letter-spacing: 2px;
-
-    color: white;
-    background-color: var(--main-color);
-}
-
-.btn:hover { background-color: var(--hover-color); }
-
-.btn:active { background-color: var(--active-color); }
-
-.btn:focus { background-color: var(--active-color); }
-
+*/
 @media (max-width: 999px) {
     #main-form { height: auto; }
 

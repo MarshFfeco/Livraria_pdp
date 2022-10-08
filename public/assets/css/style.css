@@ -92,6 +92,18 @@ button:hover {
     cursor: pointer;
 }
 
+.btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.btn:hover { background-color: var(--hover-color); }
+
+.btn:active { background-color: var(--active-color); }
+
+.btn:focus { background-color: var(--active-color); }
+
 p {
     font-size: small;
 }
@@ -101,6 +113,56 @@ p {
     padding-top: 5vh;
 
     overflow-x: hidden;
+}
+
+.outline {
+    font-size: 16px;
+    font-weight: bold;
+
+    color: white;
+    background-color: var(--main-color);
+
+    border: none;
+    border-radius: 30px;
+}
+
+.inline {
+    font-size: 16px;
+    font-weight: bold;
+
+    border: 2px solid var(--main-color);
+    border-radius: 30px;
+}
+
+.textfield{
+    margin: 20px auto;
+}
+
+.textfield > input {
+    width: 100%;
+    padding: 10px;
+    
+    border: 1px solid var(--main-color);
+    border-radius: 20px;
+
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+
+    font-size: 12pt;
+
+    outline: none;
+}
+
+.textfield :focus {
+    border: 2px solid var(--active-color);
+}
+
+.textfield > label {
+    margin-bottom: 5px;
+
+    color: rgb(0, 0, 0);
+
+    font-size: small;
 }
 
 
@@ -251,6 +313,22 @@ body::-webkit-scrollbar-thumb {
     border-radius: 20px;      
     border: 3px solid var(--back-load);  
 }
+
+textarea::-webkit-scrollbar {
+    width: 5px;               
+}
+  
+textarea::-webkit-scrollbar-track {
+    background: transparent;          
+}
+  
+textarea::-webkit-scrollbar-thumb {
+    background-color: var(--cinza-color);  
+
+    border-radius: 20px;   
+}
+
+
 /*!********************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./frontend/assets/css/erro.css ***!
   \********************************************************************************/
@@ -327,21 +405,19 @@ h4 {
     box-shadow: 0 4px 4px var(--shadow-color);
 }
 
-.textfield{
+.textfieldLoSig{
     width: 100%;
-    margin: 20px 0px;
 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
 }
-
+/*
 .textfield > input {
     width: 100%;
     padding: 10px;
     
-
     border: 1px solid var(--main-color);
     border-radius: 20px;
 
@@ -351,8 +427,8 @@ h4 {
     font-size: 12pt;
 
     outline: none;
-}
-
+}*/
+/*
 .textfield :focus {
     border: 2px solid var(--active-color);
 }
@@ -364,29 +440,7 @@ h4 {
 
     font-size: small;
 }
-
-.btn {
-    width: 100%;
-    padding: 15px;
-    margin-top: 20px;
-
-    border: none;
-    border-radius: 20px;
-    outline: none;
-
-    font-size: 12pt;
-    letter-spacing: 2px;
-
-    color: white;
-    background-color: var(--main-color);
-}
-
-.btn:hover { background-color: var(--hover-color); }
-
-.btn:active { background-color: var(--active-color); }
-
-.btn:focus { background-color: var(--active-color); }
-
+*/
 @media (max-width: 999px) {
     #main-form { height: auto; }
 
@@ -572,8 +626,6 @@ header {
 /*!********************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./frontend/assets/css/home.css ***!
   \********************************************************************************/
-
-
 /* UNIVERSAL */
 .universal-slider {
     width: 100%;
@@ -897,12 +949,6 @@ header {
     width: 100%;
 
     padding: 5px;
-
-    font-size: 16px;
-    font-weight: bold;
-
-    border: 2px solid var(--main-color);
-    border-radius: 30px;
 }
 
 .book-container-add{
@@ -910,14 +956,7 @@ header {
 
     padding: 5px;
 
-    font-size: 16px;
-    font-weight: bold;
     color: white;
-
-    background-color: var(--main-color);
-
-    border: none;
-    border-radius: 30px;
 }
 /* FIM DA SEÇÃO DO LIVRO */
 
@@ -948,5 +987,65 @@ header {
     font-size: 13px;
 }
 /* FIM DA DESCRIÇÃO DO LIVRO */
+/*!*******************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./frontend/assets/css/adm.css ***!
+  \*******************************************************************************/
+#admScreen {
+    height: 100%;
+    min-height: 84vh;
+}
+
+.cardadm {
+    width: 80%;
+    height: auto;
+
+    padding: 30px 50px;
+    margin: 50px auto;
+
+    border:2px solid var(--main-color) ;
+    border-radius: 20px;
+    box-shadow: 0 4px 4px var(--shadow-color);
+}
+.gridColumn {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    justify-items: center;
+}
+
+.textfieldAdm {
+    width: 80%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.textfieldAdm textarea {
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid var(--main-color);
+}
+
+summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+@media (max-width: 1060px) {
+    .gridColumn {
+        width: 100%;
+    
+        display: grid;
+        grid-template-columns: 1fr;
+    
+        justify-items: center;
+    }
+}
 
 /*# sourceMappingURL=style.css.map*/

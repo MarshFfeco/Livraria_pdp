@@ -1,0 +1,57 @@
+#admScreen {
+    height: 100%;
+    min-height: 84vh;
+}
+
+.cardadm {
+    width: 80%;
+    height: auto;
+
+    padding: 30px 50px;
+    margin: 50px auto;
+
+    border:2px solid var(--main-color) ;
+    border-radius: 20px;
+    box-shadow: 0 4px 4px var(--shadow-color);
+}
+.gridColumn {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    justify-items: center;
+}
+
+.textfieldAdm {
+    width: 80%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.textfieldAdm textarea {
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid var(--main-color);
+}
+
+summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+@media (max-width: 1060px) {
+    .gridColumn {
+        width: 100%;
+    
+        display: grid;
+        grid-template-columns: 1fr;
+    
+        justify-items: center;
+    }
+}

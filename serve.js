@@ -24,10 +24,8 @@ const sessionOptions = session({
 /* FIM DO CONFIG DA SESSÃO */
 
 
-const { global, rotas } = require("./src/middlewares/middleware.js");
-
+const { sessionUser, rotas } = require("./src/middlewares/middleware.js");
 const routes = require('./routes/routes');
-
 const path = require('path');
 
 app.use(express.urlencoded({ extended: true }));
@@ -42,7 +40,7 @@ app.use(flash());
 app.set('views', path.resolve(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 
-app.use(global);
+app.use(sessionUser);
 
 //PEGA AS ROTAS DA PASTA ROUTES
 app.use(routes);

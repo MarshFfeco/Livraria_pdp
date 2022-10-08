@@ -95,12 +95,6 @@
     width: 100%;
 
     padding: 5px;
-
-    font-size: 16px;
-    font-weight: bold;
-
-    border: 2px solid var(--main-color);
-    border-radius: 30px;
 }
 
 .book-container-add{
@@ -108,14 +102,7 @@
 
     padding: 5px;
 
-    font-size: 16px;
-    font-weight: bold;
     color: white;
-
-    background-color: var(--main-color);
-
-    border: none;
-    border-radius: 30px;
 }
 /* FIM DA SEÇÃO DO LIVRO */
 

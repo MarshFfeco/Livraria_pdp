@@ -7,6 +7,7 @@ import "../css/loginorsignup.css"
 import "../css/navigation.css"
 import "../css/home.css"
 import "../css/book.css"
+import "../css/adm.css"
 
 import * as img from "../img/image_erro.png";
 import * as green from "../img/green.png";

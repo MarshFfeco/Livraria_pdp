@@ -4,6 +4,7 @@ const route = express.Router();
 const home = require("../src/controller/homecontroller");
 const loginorsignup = require("../src/controller/loginorsignupcontroller");
 const book = require("../src/controller/bookcontroller")
+const adm = require("../src/controller/admcontroller");
 
 /* ROTA DO INDEX */
 route.get("/", home.index);
@@ -19,5 +20,9 @@ route.get("/Logout", loginorsignup.logout);
 /* ROTA DO LIVRO */
 route.get("/book/:id", book.index);
 /* FIM DA ROTA DO LIVRO  */
+
+/* ROTAS DO ADM */
+route.get("/adm/:id", adm.index);
+/* FIM DAS ROTAS DO ADM */
 
 module.exports = route;

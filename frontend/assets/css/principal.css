@@ -89,6 +89,18 @@ button:hover {
     cursor: pointer;
 }
 
+.btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.btn:hover { background-color: var(--hover-color); }
+
+.btn:active { background-color: var(--active-color); }
+
+.btn:focus { background-color: var(--active-color); }
+
 p {
     font-size: small;
 }
@@ -98,6 +110,56 @@ p {
     padding-top: 5vh;
 
     overflow-x: hidden;
+}
+
+.outline {
+    font-size: 16px;
+    font-weight: bold;
+
+    color: white;
+    background-color: var(--main-color);
+
+    border: none;
+    border-radius: 30px;
+}
+
+.inline {
+    font-size: 16px;
+    font-weight: bold;
+
+    border: 2px solid var(--main-color);
+    border-radius: 30px;
+}
+
+.textfield{
+    margin: 20px auto;
+}
+
+.textfield > input {
+    width: 100%;
+    padding: 10px;
+    
+    border: 1px solid var(--main-color);
+    border-radius: 20px;
+
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+
+    font-size: 12pt;
+
+    outline: none;
+}
+
+.textfield :focus {
+    border: 2px solid var(--active-color);
+}
+
+.textfield > label {
+    margin-bottom: 5px;
+
+    color: rgb(0, 0, 0);
+
+    font-size: small;
 }
 
 
