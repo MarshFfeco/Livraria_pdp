@@ -35,8 +35,6 @@ class LoginOrSignUp {
     async login() {
         this.valida();
 
-        console.log("login valida")
-
         if(this.message.length > 0) return;
 
         this.user = await RegisterModel.findOne({ email: this.body.email });

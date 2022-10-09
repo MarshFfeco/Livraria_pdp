@@ -24,7 +24,6 @@ route.get("/book/:id", book.index);
 /* FIM DA ROTA DO LIVRO  */
 
 /* ROTAS DO ADM */
-
 route.get("/adm/:id", loginRequired, adm.index);
 route.post("/adm/:id/RegisterBookComplete", loginRequired, adm.register);
 route.post("/adm/:id/EditBookComplete", loginRequired, adm.edit);

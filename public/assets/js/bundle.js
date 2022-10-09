@@ -1066,18 +1066,6 @@ function exeAtivar(obj) {
 }
 /* FIM DA CHAMADA A TELA DE LOAD */
 
-/* VALIDAÇÃO DE URL */
-
-
-function isUrl(url) {
-  if (document.location.href == url) {
-    return true;
-  }
-
-  return false;
-}
-/* FIM DA VALIDAÇÃO DE URL */
-
 /* CHAMA A VALIDAÇÃO DO FORMULÁRIO DE REGISTRO */
 
 
@@ -1123,8 +1111,6 @@ mudaCor.init();
 
 /* MAIN SLIDER */
 
-console.log(document.location.href);
-
 if (isUrl("http://localhost:3000/")) {
   var controls = document.querySelectorAll(".main-carousel-control");
   var itens = document.querySelectorAll(".main-slide");
@@ -1158,6 +1144,18 @@ if (isUrl("http://localhost:3000/")) {
 /* END BEST AVALIABLE SLIDER  */
 
 /* FIM CARROSSEL */
+
+/* VALIDAÇÃO DE URL */
+
+
+function isUrl(url) {
+  if (document.location.href == url) {
+    return true;
+  }
+
+  return false;
+}
+/* FIM DA VALIDAÇÃO DE URL */
 })();
 
 /******/ })()

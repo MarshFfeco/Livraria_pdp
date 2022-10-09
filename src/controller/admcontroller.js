@@ -8,17 +8,15 @@ exports.index = function(req, res) {
 
 exports.register = async function(req, res){
     try {
-        const bookRegister = new Book(req.body);
+        const bookRegister = new Book(req.body, "ala");
         await bookRegister.register();
 
         if(bookRegister.message.length > 0) {
             res.redirect('back');
         }
         
-        res.send(bookRegister.user);
         res.redirect("back");
     } catch (error) {
-        console.log("Deu merda");
         return res.render("erro", {
             title: "Erro de Cadastro de Livro",
             url: "Erro na hora de registrar um livro!"

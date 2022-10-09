@@ -9,6 +9,7 @@ const BookSchema = new mongoose.Schema({
     dataLancamento: { type: Date, required: true },
     descricaoProduto: { type: String, require: true },
     detalheProduto: { type: String, required: true },
+    postedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'Register' },
 });
   
 const BookModel = mongoose.model('Book_Register', BookSchema);
@@ -25,7 +26,7 @@ class Adm {
 
         if(this.message.length > 0) return;
 
-        this.contato = await BookModel.create(this.body);
+        this.book = await BookModel.create(this.body);
     }
 
     valida() {

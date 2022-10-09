@@ -6,7 +6,7 @@
         <details>
         <summary><h2>Cadastro de livro</h2></summary>
 
-            <form action="/adm/:id/RegisterBookComplete" method="post">
+            <form action="/adm/<%= user._id%>/RegisterBookComplete" method="post">
                 <div class="gridColumn margin-center">
                     <!-- CAMPO PARA TITULO -->
                     <div class="textfield textfieldAdm">
@@ -90,7 +90,7 @@
         <details>
         <summary><h2>Edição de livro</h2></summary>
 
-            <form action="/adm/:idEditBookComplete" method="post">
+            <form action="/adm/<%= user._id%>/EditBookComplete" method="post">
                 <!-- CAMPO PARA TITULO -->
                 <div class="textfield textfieldAdm">
                     <label>Id do livro</label>

@@ -15,7 +15,6 @@ exports.register = async function(req, res) {
             res.redirect('back');
         }
         
-        res.send(register.user);
     } catch (error) {
         return res.render("erro", {
             title: "Erro de Cadastro"
@@ -33,8 +32,7 @@ exports.login = async function(req, res) {
         }
 
         req.session.user = login.user;
-        res.redirect("/");
-        console.log("Logado com sucesso");
+        res.redirect(`/`);
     } catch (error) {
         res.render("erro", {
             title: "Erro de Login"

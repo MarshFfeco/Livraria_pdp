@@ -31,17 +31,6 @@ function exeAtivar(obj) {
 }
 /* FIM DA CHAMADA A TELA DE LOAD */
 
-/* VALIDAÇÃO DE URL */
-function isUrl(url) {
-    if(document.location.href == url) {
-     return true;
-    }
-
-    return false;
-}
-
-/* FIM DA VALIDAÇÃO DE URL */
-
 /* CHAMA A VALIDAÇÃO DO FORMULÁRIO DE REGISTRO */
 const formRegister = document.getElementById("form-register");
 
@@ -50,7 +39,6 @@ if(isUrl("http://localhost:3000/LoginOrSignUp")) {
 }
 
 function exeFormRegister() {
-
    const registerForm = new ValidatedFormRegister(formRegister);
    registerForm.event();
 }
@@ -81,9 +69,7 @@ mudaCor.init();
 
 /* CARROSSEL */
 /* MAIN SLIDER */
-console.log(document.location.href)
 if(isUrl("http://localhost:3000/")) {
-
     const controls = document.querySelectorAll(".main-carousel-control");
     const itens = document.querySelectorAll(".main-slide");
     const maxItens = itens.length;
@@ -91,7 +77,6 @@ if(isUrl("http://localhost:3000/")) {
     const mainSlider = new MainSlider(controls, itens, maxItens);
 }
 /* FIM MAIN SLIDER */
-
 
 /* BEST SLIDER */
 if(isUrl("http://localhost:3000/")) {
@@ -117,4 +102,12 @@ if(isUrl("http://localhost:3000/")) {
 
 /* FIM CARROSSEL */
 
+/* VALIDAÇÃO DE URL */
+function isUrl(url) {
+    if(document.location.href == url) {
+     return true;
+    }
 
+    return false;
+}
+/* FIM DA VALIDAÇÃO DE URL */
