@@ -3,14 +3,18 @@ exports.sessionUser = function(req, res, next) {
     next();
 }
 
-exports.rul = function(req, res, next) {
- 
-}
-
 exports.rotas = function(req, res, next) {
     res.locals.url = req.url;
     res.render("erro", {
         title: "ERRO"
     });
+    next();
+};
+
+exports.loginRequired = function(req, res, next) {
+    if(!req.session.user) {
+        res.redirect("/");
+        return;
+    }
     next();
 };

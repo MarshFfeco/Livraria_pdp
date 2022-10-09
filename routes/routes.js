@@ -6,6 +6,8 @@ const loginorsignup = require("../src/controller/loginorsignupcontroller");
 const book = require("../src/controller/bookcontroller")
 const adm = require("../src/controller/admcontroller");
 
+const { loginRequired } = require("../src/middlewares/middleware")
+
 /* ROTA DO INDEX */
 route.get("/", home.index);
 /* FIM DA ROTA DO INDEX */
@@ -22,7 +24,10 @@ route.get("/book/:id", book.index);
 /* FIM DA ROTA DO LIVRO  */
 
 /* ROTAS DO ADM */
-route.get("/adm/:id", adm.index);
+
+route.get("/adm/:id", loginRequired, adm.index);
+route.post("/adm/:id/RegisterBookComplete", loginRequired, adm.register);
+route.post("/adm/:id/EditBookComplete", loginRequired, adm.edit);
 /* FIM DAS ROTAS DO ADM */
 
 module.exports = route;

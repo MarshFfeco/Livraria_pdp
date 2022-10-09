@@ -46,7 +46,7 @@ app.use(sessionUser);
 app.use(routes);
 
 //VERIFICA SE A ROTA EXISTE
-app.use(rotas);
+//app.use(rotas);
 
 mariaDB.then(result => {
     app.listen(3000, () => {

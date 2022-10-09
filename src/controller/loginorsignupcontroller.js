@@ -17,7 +17,7 @@ exports.register = async function(req, res) {
         
         res.send(register.user);
     } catch (error) {
-        res.render("erro", {
+        return res.render("erro", {
             title: "Erro de Cadastro"
         });
     }
