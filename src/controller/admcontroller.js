@@ -1,14 +1,18 @@
 const Book = require("../models/Adm");
 
-exports.index = function(req, res) {
+
+exports.index = async function(req, res) {
     res.render("adm", {
         title: "ADM"
     });
+
+    const bookRegister = new Book(req.body, req.session.user);
+    await bookRegister.teste();
 };
 
 exports.register = async function(req, res){
     try {
-        const bookRegister = new Book(req.body, "ala");
+        const bookRegister = new Book(req.body, req.session.user);
         await bookRegister.register();
 
         if(bookRegister.message.length > 0) {

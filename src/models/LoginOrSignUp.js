@@ -10,6 +10,8 @@ const RegisterSchema = new mongoose.Schema({
   
 const RegisterModel = mongoose.model('Register', RegisterSchema);
 
+module.exports = RegisterModel;
+
 class LoginOrSignUp {
     constructor(body) {
         this.body = body,

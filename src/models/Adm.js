@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose');   
+const RegisterModel = require("./LoginOrSignUp");
 
 const BookSchema = new mongoose.Schema({
     titulo: { type: String, require: true },
@@ -9,16 +10,25 @@ const BookSchema = new mongoose.Schema({
     dataLancamento: { type: Date, required: true },
     descricaoProduto: { type: String, require: true },
     detalheProduto: { type: String, required: true },
-    postedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'Register' },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'Register' },
 });
   
 const BookModel = mongoose.model('Book_Register', BookSchema);
 
 class Adm {
-    constructor(body){
+    constructor(body, user){
         this.body = body;
         this.message = [];
         this.book = null;
+        this.user = user;
+    }
+
+    async teste() {
+        await BookModel.findOne({_id: '634350fea64f92298406e9d1' }).populate('user')
+        .exec(function(err, post) {
+            if(err) return console.log("deu ruim");
+            console.log(post.user)
+        });
     }
 
     async register() {
@@ -52,7 +62,8 @@ class Adm {
             urlImage: this.body.urlImage,
             dataLancamento: this.body. dataLancamento,
             descricaoProduto: this.body.descricaoProduto,
-            detalheProduto: this.body. detalheProduto,
+            detalheProduto: this.body.detalheProduto,
+            user: this.user,
         }
     }
 }

@@ -1,5 +1,4 @@
 exports.sessionUser = function(req, res, next) {
-    //res.locals.book = req.session.book;
     res.locals.user = req.session.user;
     next();
 }
