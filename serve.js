@@ -24,7 +24,7 @@ const sessionOptions = session({
 /* FIM DO CONFIG DA SESSÃO */
 
 
-const { sessionUser, rotas } = require("./src/middlewares/middleware.js");
+const { sessionUser, rotasExist } = require("./src/middlewares/middleware.js");
 const routes = require('./routes/routes');
 const path = require('path');
 
@@ -46,7 +46,7 @@ app.use(sessionUser);
 app.use(routes);
 
 //VERIFICA SE A ROTA EXISTE
-//app.use(rotas);
+app.use(rotasExist);
 
 mariaDB.then(result => {
     app.listen(3000, () => {

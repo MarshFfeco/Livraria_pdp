@@ -1,0 +1,48 @@
+
+<% if(errors.length > 0) { %>
+    <div class="position-message">
+        <div class="error-box">
+            <div class="face">
+                <div class="eye"></div>
+                <div class="eye right"></div>
+                <div class="mouth sad"></div>
+            </div>
+            <div class="shadow scale"></div>
+                <div class="message">
+                <h4 class="alert">Error!</h4>
+                <p>
+                    <% errors.forEach(errors => { %>
+                    <%= errors %>
+                    <% }); %>
+                </p>
+            </div>
+            <button class="button-box" id="close">
+                <h4 class="red">close</h4>
+            </button>
+        </div>
+    </div>
+<% } %>
+
+<% if(success.length > 0) { %>
+    <div class="position-message">
+        <div class="success-box">
+            <div class="face">
+                <div class="eye"></div>
+                <div class="eye right"></div>
+                <div class="mouth happy"></div>
+            </div>
+            <div class="shadow scale"></div>
+            <div class="message">
+                <h4 class="alert">Success!</h4>
+                <p>
+                    <% success.forEach(success => { %>
+                    <%= success %>
+                    <% }); %>
+                </p>
+            </div>
+            <button class="button-box" id="close">
+                <h4 class="green">close</h4>
+            </button>
+        </div>
+    </div>
+<% } %>

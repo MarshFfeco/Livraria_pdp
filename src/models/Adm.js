@@ -23,14 +23,6 @@ class Adm {
         this.user = user;
     }
 
-    async teste() {
-        await BookModel.findOne({_id: '634350fea64f92298406e9d1' }).populate('user')
-        .exec(function(err, post) {
-            if(err) return console.log("deu ruim");
-            console.log(post.user)
-        });
-    }
-
     async register() {
         this.valida();
 

@@ -8,6 +8,7 @@ import "../css/navigation.css"
 import "../css/home.css"
 import "../css/book.css"
 import "../css/adm.css"
+import "../css/message.css"
 
 import * as img from "../img/image_erro.png";
 import * as green from "../img/green.png";
@@ -22,6 +23,20 @@ import ValidatedFormRegister from "./validatedForm/ValidateFormRegister"
 import ValidatedFormLogin from "./validatedForm/ValidateFormLogin"
 import MainSlider from "./slider/MainSlider"
 import BestSlider from "./slider/BestSlider"
+
+/* SUMIR COM FLASH-MESSAGE  */
+const message = document.querySelectorAll(".position-message");
+if(message.length > 0) {
+    let button = document.getElementById("close");
+    
+    button.onclick = function() {fechar()};
+}
+
+function fechar() {
+    message[0].style.display = "none";
+}
+
+/* FIM DO SUMIR COM FLASH-MESSAGE  */
 
 /* CHAMADA A TELA DE LOAD */
 document.body.addEventListener("load", exeAtivar(load()));

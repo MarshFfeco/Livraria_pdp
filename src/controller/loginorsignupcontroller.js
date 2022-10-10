@@ -12,8 +12,12 @@ exports.register = async function(req, res) {
         await register.register();
 
         if(register.message.length > 0) {
+            req.flash('errors', register.message);
             res.redirect('back');
         }
+
+        req.flash('success', 'Seu usuário foi criado com sucesso.');
+        return res.redirect('back');
         
     } catch (error) {
         return res.render("erro", {
@@ -28,11 +32,14 @@ exports.login = async function(req, res) {
         await login.login();
 
         if(login.message.length > 0) {
+            req.flash('errors', login.message);
             res.redirect('back');
         }
 
+        req.flash('success', 'Login realizado com sucesso.');
         req.session.user = login.user;
-        res.redirect(`/`);
+        return res.redirect(`/`);
+        
     } catch (error) {
         res.render("erro", {
             title: "Erro de Login"

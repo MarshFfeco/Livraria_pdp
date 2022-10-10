@@ -1,9 +1,11 @@
 exports.sessionUser = function(req, res, next) {
+    res.locals.errors = req.flash('errors');
+    res.locals.success = req.flash('success');
     res.locals.user = req.session.user;
     next();
 }
 
-exports.rotas = function(req, res, next) {
+exports.rotasExist = function(req, res, next) {
     res.locals.url = req.url;
     res.render("erro", {
         title: "ERRO"

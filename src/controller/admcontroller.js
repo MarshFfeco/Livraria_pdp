@@ -5,9 +5,6 @@ exports.index = async function(req, res) {
     res.render("adm", {
         title: "ADM"
     });
-
-    const bookRegister = new Book(req.body, req.session.user);
-    await bookRegister.teste();
 };
 
 exports.register = async function(req, res){
@@ -16,10 +13,12 @@ exports.register = async function(req, res){
         await bookRegister.register();
 
         if(bookRegister.message.length > 0) {
+            req.flash('errors', bookRegister.message);
             res.redirect('back');
         }
-        
-        res.redirect("back");
+
+        req.flash('success', 'Seu livro foi cadastrado.');
+        return res.redirect("back");
     } catch (error) {
         return res.render("erro", {
             title: "Erro de Cadastro de Livro",
