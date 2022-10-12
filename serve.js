@@ -23,10 +23,9 @@ const sessionOptions = session({
 });
 /* FIM DO CONFIG DA SESSÃO */
 
-
-const { sessionUser, rotasExist } = require("./src/middlewares/middleware.js");
 const routes = require('./routes/routes');
 const path = require('path');
+const { sessionUser, rotasExist } = require("./src/middlewares/middleware.js");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

@@ -1,6 +1,6 @@
 #admScreen {
     height: 100%;
-    min-height: 84vh;
+    min-height: 90vh;
 }
 
 .cardadm {
@@ -31,6 +31,7 @@
     align-items: flex-start;
     justify-content: center;
 }
+
 
 .textfieldAdm textarea {
     padding: 10px;

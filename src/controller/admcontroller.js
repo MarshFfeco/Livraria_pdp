@@ -2,8 +2,12 @@ const Book = require("../models/Adm");
 
 
 exports.index = async function(req, res) {
+    const books = new Book(req.body);
+    const book =  await books.buscarLivros(req.session.user._id);
+
     res.render("adm", {
-        title: "ADM"
+        title: "ADM",
+        book: book,
     });
 };
 

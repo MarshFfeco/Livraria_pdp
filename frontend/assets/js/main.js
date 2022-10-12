@@ -90,6 +90,7 @@ if(isUrl("http://localhost:3000/")) {
     const maxItens = itens.length;
 
     const mainSlider = new MainSlider(controls, itens, maxItens);
+    setInterval(function() {mainSlider.movement()}, 5000);
 }
 /* FIM MAIN SLIDER */
 

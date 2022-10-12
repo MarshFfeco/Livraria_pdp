@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');   
-const RegisterModel = require("./LoginOrSignUp");
 
 const BookSchema = new mongoose.Schema({
     titulo: { type: String, require: true },
     autor: { type: String, required: true },
     editora: { type: String, required: true },
     preco: { type: String, require: true },
-    urlImage: { type: String, required: true },
+    capa: { type: String,  required: true },
     dataLancamento: { type: Date, required: true },
     descricaoProduto: { type: String, require: true },
     detalheProduto: { type: String, required: true },
@@ -31,6 +30,15 @@ class Adm {
         this.book = await BookModel.create(this.body);
     }
 
+    async buscarLivros(id) {
+        const books = await (await BookModel.find().sort({ dataLancamento: -1 }).populate("user"));
+        const result = books.filter(book => {
+            return book.user._id == id; 
+        });
+
+        return result;
+    }
+
     valida() {
         this.cleanUp();
 
@@ -51,7 +59,7 @@ class Adm {
             autor: this.body.autor,
             editora: this.body.editora,
             preco: this.body.preco,
-            urlImage: this.body.urlImage,
+            capa: this.body.capa,
             dataLancamento: this.body. dataLancamento,
             descricaoProduto: this.body.descricaoProduto,
             detalheProduto: this.body.detalheProduto,

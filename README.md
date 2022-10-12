@@ -17,13 +17,13 @@ $ npm i
 1. Digite git clone e cole a URL já copiada.
 
 ```bash
-$ git clone https://github.com/MarshFfeco/Livraria_pdp.git
+git clone https://github.com/MarshFfeco/Livraria_pdp.git
 ```
 
 2. Pressione **ENTER** para criar seu clone local.
 
 ```bash
-$ git clone https://github.com/MarshFfeco/Livraria_pdp.git
+git clone https://github.com/MarshFfeco/Livraria_pdp.git
 > Cloning into `Livraria_pdp`...
 > remote: Counting objects: 10, done.
 > remote: Compressing objects: 100% (8/8), done.
@@ -35,10 +35,10 @@ $ git clone https://github.com/MarshFfeco/Livraria_pdp.git
 
 ```bash
 # ATIVAÇÃO DO NODEMON
-$ npm start
+npm start
 
 # ATIVAÇÃO DO WEBPACK
-$ npm run dev
+npm run dev
 ```
 
 ## CONTRIBUINDO PARA O PROJETO
@@ -46,30 +46,30 @@ $ npm run dev
 1. Crie uma Branch
 
 ```bash
-$ git checkout -b <nome_branch>
+git checkout -b <nome_branch>
 ```
 
 2. Adicione arquivos novos ou alterados em seu diretório de trabalho à área de teste do Git.
 
 ```bash
-$ git add .
+git add .
 ```
 
 3. Commit o projeto.
 
 ```bash
-$ git commit -m '<mensagem_commit>'
+git commit -m '<mensagem_commit>'
 ```
 
 4. Selecione a branch que acabou de criar.
 
 ```bash
-$ git branch -M <nome_branch>
+git branch -M <nome_branch>
 ```
 
 4. Agora é so enviar.
 ```bash
-$ git push 
+git push 
 ```
 
 ## Tecnologias
@@ -80,34 +80,34 @@ $ git push
 
 ## Equipe
 <pre>
-Adriel
+Adriel - Supervisor
 ଲ( ⓛ ω ⓛ *)ଲ
 </pre>
 <pre>
-    Anderson
+    Anderson - Desenvolvedor
     ଲ( ⓛ ω ⓛ *)ଲ
 </pre>
 <pre>
-      João
+      João - Redes e Infraestrutura
       ଲ( ⓛ ω ⓛ *)ଲ
 </pre>
 <pre>
-        Lara
+        Lara - Marketing
         ଲ( ⓛ ω ⓛ *)ଲ
 </pre>
 <pre>
-      Lucas
+      Lucas - Segurança
       ଲ( ⓛ ω ⓛ *)ଲ
 </pre>
 <pre>
-    Rômulo
+    Rômulo - Gerente de Projeto
     ଲ( ⓛ ω ⓛ *)ଲ
 </pre>
 <pre>
-Saionara
+Saionara - Finança
 ଲ( ⓛ ω ⓛ *)ଲ
 </pre>
 
 ## Versão
-- 1.14.0
+- 1.15.0
 
