@@ -20,10 +20,10 @@
     text-transform: uppercase;
 }
 .green {
-    color: #4ec07d;
+    color: var(--positive-color);
 }
 .red {
-    color: #e96075;
+    color: var(--negative-color);
 }
 .alert {
 font-weight: 700;
@@ -41,7 +41,7 @@ letter-spacing: 5px;
     width: 35%;
     height: 100%;
     left: 12%;
-    background: #4ec07d;
+    background: var(--positive-color);
     border-radius: 20px;
     perspective: 40px;
 }
@@ -49,7 +49,7 @@ letter-spacing: 5px;
     width: 35%;
     height: 100%;
     right: 12%;
-    background: #e96075;
+    background: var(--negative-color);
     border-radius: 20px;
     perspective: 40px;
 }

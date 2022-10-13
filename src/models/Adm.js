@@ -7,7 +7,7 @@ const BookSchema = new mongoose.Schema({
     preco: { type: String, require: true },
     capa: { type: String,  required: true },
     dataLancamento: { type: Date, required: true },
-    descricaoProduto: { type: String, require: true },
+    resumo: { type: String, require: true },
     detalheProduto: { type: String, required: true },
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'Register' },
 });
@@ -61,7 +61,7 @@ class Adm {
             preco: this.body.preco,
             capa: this.body.capa,
             dataLancamento: this.body. dataLancamento,
-            descricaoProduto: this.body.descricaoProduto,
+            resumo: this.body.resumo,
             detalheProduto: this.body.detalheProduto,
             user: this.user,
         }

@@ -2,6 +2,16 @@
 
 Com o objetivo de desenvolver o mercado de trabalho da região, a L. SABER está selecionando os graduandos da turma 2022.2 do Curso de Gestão da Tecnologia da Informação da Faculdade Adventista da Bahia para serem responsáveis pelo execução do novo projeto.
 
+
+## Preview
+
+![alt text](./gitImages/3_tela.png)
+![alt text](./gitImages/2_tela.png)
+![alt text](./gitImages/2.5_tela.png)
+![alt text](./gitImages/1_tela.png)
+![alt text](./gitImages/erro_tela.png)
+
+
 ## Pré-requisitos
 
 - Use o [NODE](https://nodejs.org/en/download/) para executar código JavaScript fora do navegador web.  
@@ -109,5 +119,5 @@ Saionara - Finança
 </pre>
 
 ## Versão
-- 1.15.0
+- 1.15.1
 

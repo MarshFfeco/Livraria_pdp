@@ -1,0 +1,36 @@
+<div class="table-wrapper margin-center">
+    <table class="fl-table">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Editora</th>
+                <th>Preço</th>
+                <th>Capa</th>
+                <th>Lançamento</th>
+                <th>Resumo</th>
+                <th>Detalhes</th>
+                <th>Postado por</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% book.forEach(book => { %>
+                <tr>
+                    <td><%= book.titulo %><br>ID: <%= book._id %></td>
+                    <td><%= book.autor %></td>
+                    <td><%= book.editora %></td>
+                    <td>R$<%= book.preco %></td>
+                    <td>
+                        <figure>
+                            <img src="<%= book.capa %>" alt="Foto da capa do livor" width="100px">
+                        </figure>
+                    </td>
+                    <td><%= book.dataLancamento.toLocaleDateString('pt-br') %></td>
+                    <td><%= book.resumo %></td>
+                    <td><%= book.detalheProduto %></td>
+                    <td><%= book.user.nome %></td>
+                </tr>
+            <% }); %>
+        <tbody>
+    </table>
+</div>

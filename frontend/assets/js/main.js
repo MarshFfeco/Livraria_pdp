@@ -9,6 +9,7 @@ import "../css/home.css"
 import "../css/book.css"
 import "../css/adm.css"
 import "../css/message.css"
+import "../css/table.css"
 
 import * as img from "../img/image_erro.png";
 import * as green from "../img/green.png";

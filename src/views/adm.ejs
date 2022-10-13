@@ -1,15 +1,27 @@
 <%- include("includes/head")%>
 
 <main id="admScreen">
-
-    <% book.forEach(book => { %>
-        <tr>
-            <td><%= book.titulo %></td>
-            <td><%= book.autor %></td>
-            <td><%= book.editora %></td>
-            <td><%= book.user._id %></td>
-        </tr>
-    <% }); %>
+    <!-- TEM LIVROS CADASTRADOS? -->
+    <% if(book.length > 0) {%>
+        <%- include("includes/table") %>
+    <% } else { %>
+        <div class="message-book flex-center">
+            <h4>Nenhum Livro cadastrado</h4>
+            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	        viewBox="0 0 121.669 121.669" style="enable-background:new 0 0 121.669 121.669;" xml:space="preserve">
+                <path d="M60.834,121.669C27.291,121.669,0,94.379,0,60.834C0,27.29,27.291,0,60.834,0s60.834,27.29,60.834,60.834
+                C121.669,94.379,94.378,121.669,60.834,121.669z M60.834,6C30.599,6,6,30.599,6,60.834c0,30.236,24.599,54.835,54.834,54.835
+                s54.834-24.599,54.834-54.835C115.669,30.599,91.07,6,60.834,6z"/>
+                <path d="M78.843,97.437h-6c0-5.642-5.477-10.231-12.208-10.231s-12.208,4.59-12.208,10.231h-6c0-8.95,8.168-16.231,18.208-16.231
+                S78.843,88.486,78.843,97.437z"/>
+                <path d="M32.14,69.218c-7.853,0-14.242-7.115-14.242-15.86h6c0,5.437,3.697,9.86,8.242,9.86s8.242-4.423,8.242-9.86h6
+                C46.382,62.103,39.993,69.218,32.14,69.218z"/>
+                <path d="M89.529,69.218c-7.854,0-14.242-7.115-14.242-15.86h6c0,5.437,3.697,9.86,8.242,9.86s8.242-4.423,8.242-9.86h6
+                C103.771,62.103,97.382,69.218,89.529,69.218z"/>
+            </svg>
+        </div>
+    <% } %>
+    <!-- FIM DO TEM LIVROS CADASTRADOS? -->
 
     <article id="signBook" class="cardadm">
         <details>
@@ -61,9 +73,8 @@
 
                     <!-- CAMPO PARA DESCRIÇÃO PRODUTO -->
                     <div class="textfield textfieldAdm">
-                        <label>Descrição do produto</label>
-                        <textarea name="descricaoProduto" rows="10" cols="50">
-                            Resumo
+                        <label>Resumo</label>
+                        <textarea name="resumo" rows="10" cols="50">
                             Para um médico, o capitão Lemuel Gulliver é um grande aventureiro. Neste clássico da literatura, sabemos de quatro de 
                             suas prin-cipais viagens: a Lilipute, cujos habitantes não chegam a seis polegadas de altura; a Brobdingnag, cujo menor 
                             anão do reino tem nove metros de altura; a duas ilhas, uma voadora e outra de feiticeiros, além de uma academia com 
