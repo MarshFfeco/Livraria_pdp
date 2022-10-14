@@ -1,13 +1,17 @@
 const Book = require("../models/Adm");
 
-
 exports.index = async function(req, res) {
-    const books = new Book(req.body);
-    const book =  await books.buscarLivros(req.session.user._id);
+    const callBook = new Book(req.body);
+    const books =  await callBook.buscarLivros(req.session.user._id);
 
-    res.render("adm", {
+    let idBook = req.params.id.replace(/}/, '');
+
+    if(idBook == req.session.user._id) idBook = null;
+
+    return res.render("adm", {
         title: "ADM",
-        book: book,
+        books: books,
+        editbook: idBook
     });
 };
 
@@ -18,21 +22,62 @@ exports.register = async function(req, res){
 
         if(bookRegister.message.length > 0) {
             req.flash('errors', bookRegister.message);
-            res.redirect('back');
+            return req.session.save(() => res.redirect('back'));
         }
 
         req.flash('success', 'Seu livro foi cadastrado.');
-        return res.redirect("back");
+        return req.session.save(() => res.redirect(`/adm/${bookRegister.user._id}`));
     } catch (error) {
-        return res.render("erro", {
-            title: "Erro de Cadastro de Livro",
-            url: "Erro na hora de registrar um livro!"
-        });
+        req.flash('errors', 'Seu livro não foi cadastrado.');
+        req.session.save(() => res.redirect(`back`));
     }
 };
 
-exports.edit = function(req, res) {
+exports.edit = async function(req, res) {
+    let idBook = req.params.id.replace(/}/, '');
 
+    const callBook = new Book(req.body);
+    const books =  await callBook.buscarLivros(req.session.user._id);
+    const editbook = await callBook.buscarLivro(idBook, req.session.user._id);
+
+    if(idBook == req.session.user._id) idBook = null;
+
+    return res.render("adm", {
+        title: "ADM",
+        books: books,
+        editbook: editbook
+    });
 };
 
-exports.delete = function(req, res){}
+exports.editBook = async function(req, res) {
+    try {
+        const bookEdit = new Book(req.body, req.session.user);
+        await bookEdit.edit(req.body.Idlivro);
+
+        if(bookEdit.message.length > 0) {
+            req.flash('errors', bookEdit.message);
+            return req.session.save(() => res.redirect("back"));
+        }
+
+        req.flash('success', 'Seu livro foi editado.');
+        return req.session.save(() => res.redirect(`/adm/${bookEdit.user._id}`));
+    } catch (error) {
+        req.flash('errors', 'Seu livro não foi editado.');
+        req.session.save(() => res.redirect('back'));
+    }
+}
+
+exports.delete = async function(req, res) {
+    let idBook = req.params.id.replace(/}/, '');
+
+    if(!idBook) return res.render('erro');
+
+    const deleteBook = new Book(req.body, req.session.user);
+    const bookDelete = await deleteBook.delete(idBook);
+
+    if(!bookDelete) return res.render('erro');
+
+    req.flash('success', 'Livro apagado com sucesso.');
+    req.session.save(() => res.redirect(`/adm/${deleteBook.user._id}`));
+    return;
+}

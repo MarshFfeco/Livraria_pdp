@@ -26,7 +26,9 @@ route.get("/book/:id", book.index);
 /* ROTAS DO ADM */
 route.get("/adm/:id", loginRequired, adm.index);
 route.post("/adm/:id/RegisterBookComplete", loginRequired, adm.register);
-route.post("/adm/:id/EditBookComplete", loginRequired, adm.edit);
+route.post("/adm/:id/EditBookComplete", loginRequired, adm.editBook);
+route.get("/adm/:id/Edit", loginRequired, adm.edit);
+route.get("/adm/:id/Delete", loginRequired, adm.delete);
 /* FIM DAS ROTAS DO ADM */
 
 module.exports = route;

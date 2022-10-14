@@ -15,8 +15,8 @@ exports.rotasExist = function(req, res, next) {
 
 exports.loginRequired = function(req, res, next) {
     if(!req.session.user) {
-        res.redirect("/");
-        return;
+        req.flash('errors', "Login Requerido");
+        return res.redirect("back");
     }
     next();
 };

@@ -1255,6 +1255,14 @@ letter-spacing: 5px;
     box-shadow: 0px 4px 4px var(--shadow-color);
 }
 
+.edit-book {
+    color: var(--positive-color);
+}
+
+.delete-book {
+    color: var(--negative-color);
+}
+
 .fl-table {
     width: 100%;
     max-width: 100%;
@@ -1274,7 +1282,7 @@ letter-spacing: 5px;
 }
 
 .fl-table td {
-    border-right: 1px solid var(--main-color);
+   border-right: 1px solid var(--main-color);
 }
 
 .fl-table thead th {
@@ -1284,7 +1292,8 @@ letter-spacing: 5px;
 
 .fl-table thead th:nth-child(odd) {
     color: #ffffff;
-    background: #324960;
+    /*background: #324960;*/
+    background: var(--back-load);
 }
 
 .fl-table tr:nth-child(even) {
@@ -1292,7 +1301,7 @@ letter-spacing: 5px;
 }
 
 .fl-table tbody td {
-    max-width: 300px;
+    max-width: 100px;
 }
 
 /* Responsive */

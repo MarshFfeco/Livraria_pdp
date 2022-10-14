@@ -1,8 +1,13 @@
 <%- include("includes/head")%>
 
 <main id="admScreen">
+    <!-- MESSAGES -->
+    <%- include("includes/message")%>
+    <!-- FIM MESSAGES -->
+
     <!-- TEM LIVROS CADASTRADOS? -->
-    <% if(book.length > 0) {%>
+    <% if(books.length > 0) { %>
+        <h2 style="margin-top: 50px;">Meus Livros</h2>
         <%- include("includes/table") %>
     <% } else { %>
         <div class="message-book flex-center">
@@ -26,7 +31,6 @@
     <article id="signBook" class="cardadm">
         <details>
         <summary><h2>Cadastro de livro</h2></summary>
-            <!-- URL: /adm/<%= user._id%>/RegisterBookComplete -->
             <form action="/adm/<%= user._id%>/RegisterBookComplete" method="post">
                 <div class="gridColumn margin-center">
                     <!-- CAMPO PARA TITULO -->
@@ -75,11 +79,7 @@
                     <div class="textfield textfieldAdm">
                         <label>Resumo</label>
                         <textarea name="resumo" rows="10" cols="50">
-                            Para um médico, o capitão Lemuel Gulliver é um grande aventureiro. Neste clássico da literatura, sabemos de quatro de 
-                            suas prin-cipais viagens: a Lilipute, cujos habitantes não chegam a seis polegadas de altura; a Brobdingnag, cujo menor 
-                            anão do reino tem nove metros de altura; a duas ilhas, uma voadora e outra de feiticeiros, além de uma academia com 
-                            pesquisadores esqui-sitos; e, por fim, conhece os houyhnhnms, cavalos civilizados, e os yahoos, espécie de hominídeos 
-                            selvagens.
+                            Resumo Aqui
                         </textarea required>
                     </div>
                     <!-- FIM DO CAMPO PARA DESCRIÇÃO PRODUTO -->
@@ -106,96 +106,88 @@
         </details>
     </article>
 
-    <article id="editBook" class="cardadm">
-        <details>
-        <summary><h2>Edição de livro</h2></summary>
+    <% if(editbook) { %>
+        <article id="editBook" class="cardadm">
+            <details>
+            <summary><h2>Edição de livro</h2></summary>
 
-            <form action="/adm/<%= user._id%>/EditBookComplete" method="post">
-                <!-- CAMPO PARA TITULO -->
-                <div class="textfield textfieldAdm">
-                    <label>Id do livro</label>
-                    <input type="text" name="Idlivro" required>
-                </div>
-                <!-- FIM DOCAMPO PARA TITULO -->
-
-                <div class="gridColumn">
+                <form action="/adm/<%= user._id %>/EditBookComplete" method="post">
                     <!-- CAMPO PARA TITULO -->
                     <div class="textfield textfieldAdm">
-                        <label>Título</label>
-                        <input type="text" name="titulo" required>
+                        <label>Id do livro</label>
+                        <input type="text" name="Idlivro" value="<%= editbook._id %>"  required>
                     </div>
                     <!-- FIM DOCAMPO PARA TITULO -->
 
-                    <!-- CAMPO PARA AUTOR -->
-                    <div class="textfield textfieldAdm">
-                        <label>Autor</label>
-                        <input type="text" name="autor" required>
-                    </div>
-                    <!-- FIM DO CAMPO PARA AUTOR -->
+                    <div class="gridColumn">
+                        <!-- CAMPO PARA TITULO -->
+                        <div class="textfield textfieldAdm">
+                            <label>Título</label>
+                            <input type="text" name="titulo" value="<%= editbook.titulo %>" required>
+                        </div>
+                        <!-- FIM DOCAMPO PARA TITULO -->
 
-                    <!-- CAMPO PARA EDITORA -->
-                    <div class="textfield textfieldAdm">
-                        <label>Editora</label>
-                        <input type="text" name="editora" required>
-                    </div>
-                    <!-- FIM DO CAMPO PARA EDITORA -->
+                        <!-- CAMPO PARA AUTOR -->
+                        <div class="textfield textfieldAdm">
+                            <label>Autor</label>
+                            <input type="text" name="autor" value="<%= editbook.autor %>" required>
+                        </div>
+                        <!-- FIM DO CAMPO PARA AUTOR -->
 
-                    <!-- CAMPO PARA PREÇO -->
-                    <div class="textfield textfieldAdm">
-                        <label>Preço</label>
-                        <input type="number" name="preco" required>
-                    </div>
-                    <!-- FIM CAMPO PARA PREÇO -->
+                        <!-- CAMPO PARA EDITORA -->
+                        <div class="textfield textfieldAdm">
+                            <label>Editora</label>
+                            <input type="text" name="editora" value="<%= editbook.editora %>" required>
+                        </div>
+                        <!-- FIM DO CAMPO PARA EDITORA -->
 
-                    <!--  DO CAMPO PARA URL IMG -->
-                    <div class="textfield textfieldAdm">
-                        <label>URL da imagem</label>
-                        <input type="url" name="urlImage" required>
-                    </div>
-                    <!-- FIM DO CAMPO PARA URL IMG -->
+                        <!-- CAMPO PARA PREÇO -->
+                        <div class="textfield textfieldAdm">
+                            <label>Preço</label>
+                            <input type="number" name="preco" value="<%= editbook.preco %>" required>
+                        </div>
+                        <!-- FIM CAMPO PARA PREÇO -->
 
-                    <!-- FIM DO CAMPO PARA URL IMG -->
-                    <div class="textfield textfieldAdm">
-                        <label>Data de lançamento</label>
-                        <input type="date" name="dataLancamento" required>
-                    </div>
-                    <!-- FIM DO CAMPO PARA URL IMG -->
+                        <!--  DO CAMPO PARA URL IMG -->
+                        <div class="textfield textfieldAdm">
+                            <label>Capa</label>
+                            <input type="url" name="urlImage" value="<%= editbook.capa %>" required>
+                        </div>
+                        <!-- FIM DO CAMPO PARA URL IMG -->
 
-                    <!-- CAMPO PARA DESCRIÇÃO PRODUTO -->
-                    <div class="textfield textfieldAdm">
-                        <label>Descrição do produto</label>
-                        <textarea name="descricaoProduto" rows="10" cols="50">
-                            Resumo
-                            Para um médico, o capitão Lemuel Gulliver é um grande aventureiro. Neste clássico da literatura, sabemos de quatro de 
-                            suas prin-cipais viagens: a Lilipute, cujos habitantes não chegam a seis polegadas de altura; a Brobdingnag, cujo menor 
-                            anão do reino tem nove metros de altura; a duas ilhas, uma voadora e outra de feiticeiros, além de uma academia com 
-                            pesquisadores esqui-sitos; e, por fim, conhece os houyhnhnms, cavalos civilizados, e os yahoos, espécie de hominídeos 
-                            selvagens.
-                        </textarea required>
-                    </div>
-                    <!-- FIM DO CAMPO PARA DESCRIÇÃO PRODUTO -->
+                        <!-- FIM DO CAMPO PARA URL IMG -->
+                        <div class="textfield textfieldAdm">
+                            <label>Data de lançamento</label>
+                            <input type="date" name="dataLancamento" required>
+                        </div>
+                        <!-- FIM DO CAMPO PARA URL IMG -->
 
-                    <!-- CAMPO PARA DETALHES DO PRODUTO -->
-                    <div class="textfield textfieldAdm">
-                        <label>Detalhes do produto</label>
-                        <textarea name="detalheProduto" rows="10" cols="50">
-                            Editora ‏ : ‎ FTD Educação; 1ª edição (31 outubro 2016)
-                            Idioma ‏ : ‎ Português
-                            Capa comum ‏ : ‎ 96 páginas
-                            ISBN-10 ‏ : ‎ 8596004211
-                            ISBN-13 ‏ : ‎ 978-8596004213
-                            Dimensões ‏ : ‎ 26.2 x 19.2 x 1.2 cm
-                        </textarea required> 
-                    </div>
-                    <!-- FIM DO CAMPO PARA DETALHES DO PRODUTO -->
-                </div>
+                        <!-- CAMPO PARA DESCRIÇÃO PRODUTO -->
+                        <div class="textfield textfieldAdm">
+                            <label>Resumo</label>
+                            <textarea name="descricaoProduto" rows="10" cols="50">
+                                <%= editbook.resumo %>
+                            </textarea required>
+                        </div>
+                        <!-- FIM DO CAMPO PARA DESCRIÇÃO PRODUTO -->
 
-                <!-- ADICIONAR -->
-                <button aria-label="adicionar livro" class="outline btn">Editar Livro</button>
-                <!-- FIM DO ADICIONAR -->
-            </form>
-        </details>
-    </article>
+                        <!-- CAMPO PARA DETALHES DO PRODUTO -->
+                        <div class="textfield textfieldAdm">
+                            <label>Detalhes do produto</label>
+                            <textarea name="detalheProduto" rows="10" cols="50">
+                                <%= editbook.detalheProduto %>
+                            </textarea required> 
+                        </div>
+                        <!-- FIM DO CAMPO PARA DETALHES DO PRODUTO -->
+                    </div>
+
+                    <!-- ADICIONAR -->
+                    <button aria-label="adicionar livro" class="outline btn">Editar Livro</button>
+                    <!-- FIM DO ADICIONAR -->
+                </form>
+            </details>
+        </article>
+    <% } %>
 
 </main>
 

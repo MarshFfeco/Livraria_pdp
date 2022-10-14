@@ -39,6 +39,39 @@ class Adm {
         return result;
     }
 
+    async buscarLivro(book_id, id) {
+        try {
+            const book = await (await BookModel.findById(book_id).sort({ dataLancamento: -1 }).populate("user"));
+
+            if(book.user._id == id) {
+                return book;
+            }
+    
+            this.message.push("Livro não encontrado");
+    
+            return;
+        } catch (error) {
+            this.message.push("Livro não encontrado");
+            return;
+        }
+    }
+
+    async edit(id) {
+        if(typeof id !== 'string') return;
+
+        if(this.message.length > 0) return;
+
+        this.book = await BookModel.findByIdAndUpdate(id, this.body, { new: true });
+    }
+
+    delete = async function(id) {
+        if(typeof id !== 'string') return;
+
+        const contato = await BookModel.findOneAndDelete({_id: id});
+
+        return contato;
+      };
+
     valida() {
         this.cleanUp();
 

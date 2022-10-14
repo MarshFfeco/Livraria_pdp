@@ -13,12 +13,12 @@ exports.register = async function(req, res) {
 
         if(register.message.length > 0) {
             req.flash('errors', register.message);
-            return res.redirect('back');
+            returnreq.session.save(() => res.redirect(`back`));
         }
 
         req.session.user = register.user;
         req.flash('success', 'Seu usuário foi criado com sucesso.');
-        return res.redirect('/');
+        return req.session.save(() => res.redirect(`/`));
         
     } catch (error) {
         return res.render("erro", {
@@ -34,12 +34,12 @@ exports.login = async function(req, res) {
 
         if(login.message.length > 0) {
             req.flash('errors', login.message);
-            return res.redirect('back');
+            return req.session.save(() => res.redirect(`back`));
         }
 
         req.session.user = login.user;
         req.flash('success', 'Login realizado com sucesso.');
-        return res.redirect('/');
+        return req.session.save(() => res.redirect(`/`));
        
     } catch (error) {
         res.render("erro", {
@@ -50,6 +50,5 @@ exports.login = async function(req, res) {
 
 exports.logout = function(req, res) {
     req.session.destroy();
-    res.redirect("/");
-    console.log(req.session);
+    res.redirect(`/`);
 }
