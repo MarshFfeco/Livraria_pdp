@@ -114,6 +114,7 @@
 <main id="other-slider-limit">
     <!-- LIMITE DO BEST SLIDER -->
     <section id="" class="other-slider-box">
+
         <!-- SETA DA ESQUERDA DO SLIDER BEST -->
         <div class=" arrow-left flex-center best-carousel-control left">
             <button aria-label="Previous" class="glider-prev">
@@ -140,18 +141,18 @@
             <!-- SLIDER BEST -->
             <article id="" class="universal-slider-contents other-slider-contents flex-center">
 
-                    <%for(let i = 0; i < 14; i++) {%>
-                        <a href="/book/:id">
-                            <div id="best-slider" class="other-slider flex-center">
+                    <% books.forEach((book, index) => {%>
+                        <a href="/book/<%= books[index]._id %>">
+                            <div class="best-slider other-slider flex-center">
                                 
                                 <figure class="other-slider-img flex-center">
-                                    <img src="/assets/images/v_guliver.jpg" width="250px" alt="Imagem da capa do livor">
+                                    <img src="<%= books[index].capa %>" alt="Imagem da capa do livor">
                                 </figure>
                                 
-                                <h4 class="other-slider-title">Viagens de Gulliver <%=i%></h4>
+                                <h4 class="other-slider-title"><%= books[index].titulo %></h4>
                             </div>
                         </a>
-                    <%}%>
+                    <% }) %>
 
             </article>
             <!-- FIM DO SLIDER BEST -->

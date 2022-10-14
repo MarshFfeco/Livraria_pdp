@@ -5,6 +5,7 @@ const home = require("../src/controller/homecontroller");
 const loginorsignup = require("../src/controller/loginorsignupcontroller");
 const book = require("../src/controller/bookcontroller")
 const adm = require("../src/controller/admcontroller");
+const carrinho = require("../src/controller/carrinhocontroller");
 
 const { loginRequired } = require("../src/middlewares/middleware")
 
@@ -30,5 +31,10 @@ route.post("/adm/:id/EditBookComplete", loginRequired, adm.editBook);
 route.get("/adm/:id/Edit", loginRequired, adm.edit);
 route.get("/adm/:id/Delete", loginRequired, adm.delete);
 /* FIM DAS ROTAS DO ADM */
+
+/* ROTAS DO CARRINHO */
+route.get("/carrinho", loginRequired, carrinho.index);
+route.get("/carrinho/:id", loginRequired, carrinho.addBook);
+/* FIM DAS ROTAS DO CARRINHO */
 
 module.exports = route;

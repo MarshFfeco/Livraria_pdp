@@ -6,7 +6,6 @@ export default class BestSlide extends Slider {
 
         this.scroll = scroll;
         this.moveScroll = 0;
-
     }
 
     event(control) {

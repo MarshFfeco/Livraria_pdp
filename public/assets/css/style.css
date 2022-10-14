@@ -667,7 +667,7 @@ header {
     /* STYLE DOS CONTEUDOS DO SLIDER */
     .universal-slider-contents {
         width: 90%;
-        height: 90%;
+        height: 100%;
     }
 
     .universal-slider-contents .main-slider-img {
@@ -797,6 +797,8 @@ header {
     grid-template-areas: 
     ' title  title  title '
     ' left   slider right';
+
+    grid-column-gap: 10px;
 }
 
 .other-slider-box .arrow-left { grid-area: left; justify-self: center;}
@@ -820,6 +822,7 @@ header {
 
 .other-slider-contents {
     width: auto;
+    height: auto;
 }
 
 .other-slider {
@@ -834,7 +837,7 @@ header {
 
 .other-slider:hover {
     cursor: pointer;
-    padding: 20px;
+    padding: 5px;
 
     color: white;
 
@@ -843,11 +846,20 @@ header {
     background-color: var(--active-color);
 }
 
+.other-slider-img {
+    width: 100px;
+    height: 145px;
+}
+
 .other-slider-img img {
-    width: 50%;
+    width: 100%;
+    height: 100%;
 }
 
 .other-slider-title{
+    min-height: 50px;
+
+    text-align: center;
     grid-area: title;
 }
 /* FIM DO STYLE DOS OTHERS SLIDER*/
@@ -1358,6 +1370,12 @@ letter-spacing: 5px;
         display: block;
         text-align: center;
     }
+}
+/*!************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./frontend/assets/css/carrinho.css ***!
+  \************************************************************************************/
+#carrinho-main {
+    min-height: 90vh;
 }
 
 /*# sourceMappingURL=style.css.map*/

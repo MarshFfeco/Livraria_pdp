@@ -830,6 +830,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./frontend/assets/css/carrinho.css":
+/*!******************************************!*\
+  !*** ./frontend/assets/css/carrinho.css ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./frontend/assets/css/erro.css":
 /*!**************************************!*\
   !*** ./frontend/assets/css/erro.css ***!
@@ -1057,17 +1069,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_adm_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../css/adm.css */ "./frontend/assets/css/adm.css");
 /* harmony import */ var _css_message_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../css/message.css */ "./frontend/assets/css/message.css");
 /* harmony import */ var _css_table_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../css/table.css */ "./frontend/assets/css/table.css");
-/* harmony import */ var _img_image_erro_png__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../img/image_erro.png */ "./frontend/assets/img/image_erro.png");
-/* harmony import */ var _img_green_png__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../img/green.png */ "./frontend/assets/img/green.png");
-/* harmony import */ var _img_logo_png__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../img/logo.png */ "./frontend/assets/img/logo.png");
-/* harmony import */ var _img_books_v_guliver_jpg__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../img/books/v_guliver.jpg */ "./frontend/assets/img/books/v_guliver.jpg");
-/* harmony import */ var _load__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./load */ "./frontend/assets/js/load.js");
-/* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./nav */ "./frontend/assets/js/nav.js");
-/* harmony import */ var _mobileNav__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./mobileNav */ "./frontend/assets/js/mobileNav.js");
-/* harmony import */ var _validatedForm_ValidateFormRegister__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./validatedForm/ValidateFormRegister */ "./frontend/assets/js/validatedForm/ValidateFormRegister.js");
-/* harmony import */ var _validatedForm_ValidateFormLogin__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./validatedForm/ValidateFormLogin */ "./frontend/assets/js/validatedForm/ValidateFormLogin.js");
-/* harmony import */ var _slider_MainSlider__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./slider/MainSlider */ "./frontend/assets/js/slider/MainSlider.js");
-/* harmony import */ var _slider_BestSlider__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./slider/BestSlider */ "./frontend/assets/js/slider/BestSlider.js");
+/* harmony import */ var _css_carrinho_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../css/carrinho.css */ "./frontend/assets/css/carrinho.css");
+/* harmony import */ var _img_image_erro_png__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../img/image_erro.png */ "./frontend/assets/img/image_erro.png");
+/* harmony import */ var _img_green_png__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../img/green.png */ "./frontend/assets/img/green.png");
+/* harmony import */ var _img_logo_png__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../img/logo.png */ "./frontend/assets/img/logo.png");
+/* harmony import */ var _img_books_v_guliver_jpg__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../img/books/v_guliver.jpg */ "./frontend/assets/img/books/v_guliver.jpg");
+/* harmony import */ var _load__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./load */ "./frontend/assets/js/load.js");
+/* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./nav */ "./frontend/assets/js/nav.js");
+/* harmony import */ var _mobileNav__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./mobileNav */ "./frontend/assets/js/mobileNav.js");
+/* harmony import */ var _validatedForm_ValidateFormRegister__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./validatedForm/ValidateFormRegister */ "./frontend/assets/js/validatedForm/ValidateFormRegister.js");
+/* harmony import */ var _validatedForm_ValidateFormLogin__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./validatedForm/ValidateFormLogin */ "./frontend/assets/js/validatedForm/ValidateFormLogin.js");
+/* harmony import */ var _slider_MainSlider__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./slider/MainSlider */ "./frontend/assets/js/slider/MainSlider.js");
+/* harmony import */ var _slider_BestSlider__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./slider/BestSlider */ "./frontend/assets/js/slider/BestSlider.js");
+
 
 
 
@@ -1111,7 +1125,7 @@ function fechar() {
 /* CHAMADA A TELA DE LOAD */
 
 
-document.body.addEventListener("load", exeAtivar((0,_load__WEBPACK_IMPORTED_MODULE_16__["default"])()));
+document.body.addEventListener("load", exeAtivar((0,_load__WEBPACK_IMPORTED_MODULE_17__["default"])()));
 
 function exeAtivar(obj) {
   obj;
@@ -1128,7 +1142,7 @@ if (isUrl("http://localhost:3000/LoginOrSignUp")) {
 }
 
 function exeFormRegister() {
-  var registerForm = new _validatedForm_ValidateFormRegister__WEBPACK_IMPORTED_MODULE_19__["default"](formRegister);
+  var registerForm = new _validatedForm_ValidateFormRegister__WEBPACK_IMPORTED_MODULE_20__["default"](formRegister);
   registerForm.event();
 }
 /* FIM DA CHAMA A VALIDAÇÃO DO FORMULÁRIO DE REGISTRO */
@@ -1143,7 +1157,7 @@ if (isUrl("http://localhost:3000/LoginOrSignUp")) {
 }
 
 function exeFormLogin() {
-  var loginForm = new _validatedForm_ValidateFormLogin__WEBPACK_IMPORTED_MODULE_20__["default"](formLogin);
+  var loginForm = new _validatedForm_ValidateFormLogin__WEBPACK_IMPORTED_MODULE_21__["default"](formLogin);
   loginForm.event();
 }
 /* FIM DA CHAMADA A VALIDAÇÃO DO FORMULÁRIO DE LOGIN */
@@ -1154,8 +1168,8 @@ function exeFormLogin() {
 var options = document.getElementById("options");
 var nav = document.getElementById("navegacao");
 var mobileMenu = document.getElementById("mobile_menu");
-var mobileNav = new _mobileNav__WEBPACK_IMPORTED_MODULE_18__["default"](mobileMenu, nav, options);
-var mudaCor = new _nav__WEBPACK_IMPORTED_MODULE_17__["default"](nav, mobileMenu, mobileNav, options);
+var mobileNav = new _mobileNav__WEBPACK_IMPORTED_MODULE_19__["default"](mobileMenu, nav, options);
+var mudaCor = new _nav__WEBPACK_IMPORTED_MODULE_18__["default"](nav, mobileMenu, mobileNav, options);
 mudaCor.init();
 /* FIM DO MENU DE NAVEGAÇÃO */
 
@@ -1167,7 +1181,7 @@ if (isUrl("http://localhost:3000/")) {
   var controls = document.querySelectorAll(".main-carousel-control");
   var itens = document.querySelectorAll(".main-slide");
   var maxItens = itens.length;
-  var mainSlider = new _slider_MainSlider__WEBPACK_IMPORTED_MODULE_21__["default"](controls, itens, maxItens);
+  var mainSlider = new _slider_MainSlider__WEBPACK_IMPORTED_MODULE_22__["default"](controls, itens, maxItens);
   setInterval(function () {
     mainSlider.movement();
   }, 5000);
@@ -1180,9 +1194,9 @@ if (isUrl("http://localhost:3000/")) {
 if (isUrl("http://localhost:3000/")) {
   var bestControls = document.querySelectorAll(".best-carousel-control");
   var bestScroll = document.getElementById("best-slider-limit");
-  var bestItens = document.getElementById("best-slider");
+  var bestItens = document.querySelectorAll(".best-slider");
   var bestMaxItens = bestItens.length;
-  var bestSlider = new _slider_BestSlider__WEBPACK_IMPORTED_MODULE_22__["default"](bestControls, bestItens, bestScroll, bestMaxItens);
+  var bestSlider = new _slider_BestSlider__WEBPACK_IMPORTED_MODULE_23__["default"](bestControls, bestItens, bestScroll, bestMaxItens);
 }
 /* FIM BEST SLIDER */
 
@@ -1192,9 +1206,9 @@ if (isUrl("http://localhost:3000/")) {
 if (isUrl("http://localhost:3000/")) {
   var bestAvaliableControls = document.querySelectorAll(".bestAvaliable-carousel-control");
   var bestAvaliableScroll = document.getElementById("bestAvaliable-slider-limit");
-  var bestAvaliableItens = document.getElementById("bestAvaliable-slider");
+  var bestAvaliableItens = document.querySelectorAll(".bestAvaliable-slider");
   var bestAvaliableMaxItens = bestAvaliableItens.length;
-  var bestAvaliableSlider = new _slider_BestSlider__WEBPACK_IMPORTED_MODULE_22__["default"](bestAvaliableControls, bestAvaliableItens, bestAvaliableScroll, bestAvaliableMaxItens);
+  var bestAvaliableSlider = new _slider_BestSlider__WEBPACK_IMPORTED_MODULE_23__["default"](bestAvaliableControls, bestAvaliableItens, bestAvaliableScroll, bestAvaliableMaxItens);
 }
 /* END BEST AVALIABLE SLIDER  */
 

@@ -10,6 +10,7 @@ import "../css/book.css"
 import "../css/adm.css"
 import "../css/message.css"
 import "../css/table.css"
+import "../css/carrinho.css"
 
 import * as img from "../img/image_erro.png";
 import * as green from "../img/green.png";
@@ -99,7 +100,7 @@ if(isUrl("http://localhost:3000/")) {
 if(isUrl("http://localhost:3000/")) {
     const bestControls = document.querySelectorAll(".best-carousel-control");
     const bestScroll = document.getElementById("best-slider-limit");
-    const bestItens = document.getElementById("best-slider");
+    const bestItens = document.querySelectorAll(".best-slider");
     const bestMaxItens = bestItens.length;
 
     const bestSlider = new BestSlider(bestControls, bestItens, bestScroll, bestMaxItens);
@@ -110,7 +111,7 @@ if(isUrl("http://localhost:3000/")) {
 if(isUrl("http://localhost:3000/")) {
     const bestAvaliableControls = document.querySelectorAll(".bestAvaliable-carousel-control");
     const bestAvaliableScroll = document.getElementById("bestAvaliable-slider-limit");
-    const bestAvaliableItens = document.getElementById("bestAvaliable-slider");
+    const bestAvaliableItens = document.querySelectorAll(".bestAvaliable-slider");
     const bestAvaliableMaxItens = bestAvaliableItens.length;
     
     const bestAvaliableSlider = new BestSlider(bestAvaliableControls, bestAvaliableItens, bestAvaliableScroll, bestAvaliableMaxItens);

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');   
 
-const BookSchema = new mongoose.Schema({
+exports.BookSchema = BookSchema = new mongoose.Schema({
     titulo: { type: String, require: true },
     autor: { type: String, required: true },
     editora: { type: String, required: true },
@@ -20,6 +20,10 @@ class Adm {
         this.message = [];
         this.book = null;
         this.user = user;
+    }
+
+    teste(){
+        console.log("Teste");
     }
 
     async register() {
@@ -101,4 +105,4 @@ class Adm {
     }
 }
 
-module.exports = Adm;
+module.exports = Adm

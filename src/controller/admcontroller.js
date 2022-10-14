@@ -1,19 +1,25 @@
 const Book = require("../models/Adm");
 
 exports.index = async function(req, res) {
-    const callBook = new Book(req.body);
-    const books =  await callBook.buscarLivros(req.session.user._id);
-
-    let idBook = req.params.id.replace(/}/, '');
-
-    if(idBook == req.session.user._id) idBook = null;
-
-    return res.render("adm", {
-        title: "ADM",
-        books: books,
-        editbook: idBook
-    });
-};
+    try {
+        const callBook = new Book(req.body);
+        const books =  await callBook.buscarLivros(req.session.user._id);
+    
+        let idBook = req.params.id.replace(/}/, '');
+    
+        if(idBook == req.session.user._id) idBook = null;
+    
+        return res.render("adm", {
+            title: "ADM",
+            books: books,
+            editbook: idBook
+        });
+    } catch (error) {
+        console.log(error)
+        req.flash('errors', error.message);
+        req.session.save(() => res.redirect(`back`));
+    }
+}
 
 exports.register = async function(req, res){
     try {
@@ -31,7 +37,7 @@ exports.register = async function(req, res){
         req.flash('errors', 'Seu livro não foi cadastrado.');
         req.session.save(() => res.redirect(`back`));
     }
-};
+}
 
 exports.edit = async function(req, res) {
     let idBook = req.params.id.replace(/}/, '');
@@ -47,7 +53,7 @@ exports.edit = async function(req, res) {
         books: books,
         editbook: editbook
     });
-};
+}
 
 exports.editBook = async function(req, res) {
     try {
