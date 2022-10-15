@@ -34,3 +34,26 @@ exports.addBook = async function(req, res) {
     }
 
 };
+
+exports.delete = async function(req, res) {
+    try {
+        let idBook = req.params.id/*.replace(/}/, '');*/
+
+        /*(!idBook) return res.render('erro');*/
+    
+        const deleteBook = new Carrinho();
+        const bookDelete = await deleteBook.deleteBook(idBook);
+    
+        if(!bookDelete) return res.render('erro');
+    
+        req.flash('success', 'Livro Removido da lista.');
+        req.session.save(() => res.redirect(`/carrinho/`));
+        return;
+    } catch (error) {
+        res.render("erro", {
+            title: "Erro de Login",
+            url: error.message
+        })
+    }
+
+};

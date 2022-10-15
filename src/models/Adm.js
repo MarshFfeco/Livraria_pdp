@@ -22,16 +22,22 @@ class Adm {
         this.user = user;
     }
 
-    teste(){
-        console.log("Teste");
-    }
-
     async register() {
         this.valida();
 
         if(this.message.length > 0) return;
 
+        await this.bookExist();
+
+        if(this.message.length > 0) return;
+
         this.book = await BookModel.create(this.body);
+    }
+
+    async bookExist() {
+        this.book = await BookModel.findOne({ titulo: this.body.titulo });
+
+        if(this.book) this.message.push(`Esse livro já Existe.`);
     }
 
     async buscarLivros(id) {
@@ -66,6 +72,8 @@ class Adm {
         if(this.message.length > 0) return;
 
         this.book = await BookModel.findByIdAndUpdate(id, this.body, { new: true });
+
+        if(!this.book)  this.message.push("Erro ao tentar editar Livro");
     }
 
     delete = async function(id) {
@@ -87,6 +95,7 @@ class Adm {
     cleanUp() {
         for(const key in this.body) {
             if(typeof this.body[key] !== "string") {
+                if(this.body[key] == this.body[dataLancamento]) continue;
                 this.body[key] = "";
             }
         }
@@ -97,7 +106,7 @@ class Adm {
             editora: this.body.editora,
             preco: this.body.preco,
             capa: this.body.capa,
-            dataLancamento: this.body. dataLancamento,
+            dataLancamento: this.body.dataLancamento,
             resumo: this.body.resumo,
             detalheProduto: this.body.detalheProduto,
             user: this.user,

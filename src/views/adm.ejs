@@ -144,7 +144,7 @@
                         <!-- CAMPO PARA PREÇO -->
                         <div class="textfield textfieldAdm">
                             <label>Preço</label>
-                            <input type="number" name="preco" value="<%= editbook.preco %>" required>
+                            <input type="number" name="preco" step="0.01" value="<%= editbook.preco %>" required>
                         </div>
                         <!-- FIM CAMPO PARA PREÇO -->
 
@@ -165,7 +165,7 @@
                         <!-- CAMPO PARA DESCRIÇÃO PRODUTO -->
                         <div class="textfield textfieldAdm">
                             <label>Resumo</label>
-                            <textarea name="descricaoProduto" rows="10" cols="50">
+                            <textarea name="resumo" rows="10" cols="50">
                                 <%= editbook.resumo %>
                             </textarea required>
                         </div>

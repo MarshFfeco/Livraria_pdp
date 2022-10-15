@@ -35,6 +35,7 @@ route.get("/adm/:id/Delete", loginRequired, adm.delete);
 /* ROTAS DO CARRINHO */
 route.get("/carrinho", loginRequired, carrinho.index);
 route.get("/carrinho/:id", loginRequired, carrinho.addBook);
+route.get("/carrinho/:id/delete", loginRequired, carrinho.delete);
 /* FIM DAS ROTAS DO CARRINHO */
 
 module.exports = route;

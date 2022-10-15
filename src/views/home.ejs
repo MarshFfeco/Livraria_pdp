@@ -25,66 +25,23 @@
     <article class="universal-slider-contents flex-center">
 
         <div class="main_carousel_slides flex-center">
-            <div class="main-slide current-item">
-                <figure class="main-slider-img">
-                    <img src="/assets/images/v_guliver.jpg" width="250px" alt="Imagem da capa do livor">
-                </figure>
-
-                    <h1 class="main-slider-title">Viagens de Gulliver 1</h1>
-
-                    <p class="main-slider-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis corporis tenetur qui voluptatum 
-                        voluptatibus architecto reprehenderit iure eaque, repellat assumenda suscipit, quibusdam repudiandae
-                        consequuntur accusantium ducimus, amet optio fugiat quaerat?
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel doloribus laborum reprehenderit. Eum, 
-                        possimus obcaecati nisi placeat, aperiam expedita modi, molestiae quo enim quae deserunt consequatur 
-                        voluptatum necessitatibus consectetur a?
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ab, molestiae illum libero provident
-                        mollitia omnis blanditiis delectus consequatur obcaecati magnam assumenda, quia soluta perspiciatis, 
-                        pariatur eum iste ex vel.
-                    </p>
-            </div>
-
-            <div class="main-slide">
-                <figure class="main-slider-img">
-                    <img src="/assets/images/v_guliver.jpg" width="250px" alt="Imagem da capa do livor">
-                </figure>
-
-                    <h1 class="main-slider-title">Viagens de Gulliver 2</h1>
-
-                    <p class="main-slider-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis corporis tenetur qui voluptatum 
-                        voluptatibus architecto reprehenderit iure eaque, repellat assumenda suscipit, quibusdam repudiandae
-                        consequuntur accusantium ducimus, amet optio fugiat quaerat?
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel doloribus laborum reprehenderit. Eum, 
-                        possimus obcaecati nisi placeat, aperiam expedita modi, molestiae quo enim quae deserunt consequatur 
-                        voluptatum necessitatibus consectetur a?
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ab, molestiae illum libero provident
-                        mollitia omnis blanditiis delectus consequatur obcaecati magnam assumenda, quia soluta perspiciatis, 
-                        pariatur eum iste ex vel.
-                    </p>
-            </div>
-
-            <div class="main-slide">
-                <figure class="main-slider-img">
-                    <img src="/assets/images/v_guliver.jpg" width="250px" alt="Imagem da capa do livor">
-                </figure>
-
-                    <h1 class="main-slider-title">Viagens de Gulliver 3</h1>
-
-                    <p class="main-slider-text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis corporis tenetur qui voluptatum 
-                        voluptatibus architecto reprehenderit iure eaque, repellat assumenda suscipit, quibusdam repudiandae
-                        consequuntur accusantium ducimus, amet optio fugiat quaerat?
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel doloribus laborum reprehenderit. Eum, 
-                        possimus obcaecati nisi placeat, aperiam expedita modi, molestiae quo enim quae deserunt consequatur 
-                        voluptatum necessitatibus consectetur a?
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ab, molestiae illum libero provident
-                        mollitia omnis blanditiis delectus consequatur obcaecati magnam assumenda, quia soluta perspiciatis, 
-                        pariatur eum iste ex vel.
-                    </p>
-            </div>
-        
+            <% mainSlider.forEach((slide, index) => { %>
+                <% if(!index > 0) { %>
+                <div class="main-slide current-item">
+                <% } else { %>
+                    <div class="main-slide">
+                <% } %>
+                    <figure class="main-slider-img">
+                        <img src="<%= slide.capa %>" width="250px" alt="Imagem da capa do livor">
+                    </figure>
+    
+                        <h1 class="main-slider-title"><%= slide.titulo %></h1>
+    
+                        <p class="main-slider-text">
+                            <%= slide.resumo %>
+                        </p>
+                </div>
+            <% }); %>
     </article>
     <!-- FIM DO CONTEUDO DO SLIDER PRINCIPAL -->
 
@@ -113,7 +70,7 @@
 <!-- OUTROS SLIDERS -->
 <main id="other-slider-limit">
     <!-- LIMITE DO BEST SLIDER -->
-    <section id="" class="other-slider-box">
+    <section class="other-slider-box">
 
         <!-- SETA DA ESQUERDA DO SLIDER BEST -->
         <div class=" arrow-left flex-center best-carousel-control left">
@@ -142,6 +99,7 @@
             <article id="" class="universal-slider-contents other-slider-contents flex-center">
 
                     <% books.forEach((book, index) => {%>
+                        <% if(index == 13) return; %>
                         <a href="/book/<%= books[index]._id %>">
                             <div class="best-slider other-slider flex-center">
                                 
@@ -162,7 +120,7 @@
     <!-- FIM DO LIMITE DO BEST SLIDER -->
 
     <!-- LIMITE DO BEST AVALIABLE SLIDER -->
-    <section id="" class="other-slider-box">
+    <section class="other-slider-box">
         <!-- SETA DA ESQUERDA DO SLIDER BEST AVALIABLE -->
         <div class=" arrow-left flex-center bestAvaliable-carousel-control left">
             <button aria-label="Previous" class="glider-prev">
@@ -191,7 +149,7 @@
 
                     <%for(let i = 0; i < 14; i++) {%>
                         <a href="/book/:id">
-                            <div id="bestAvaliable-slider" class="other-slider flex-center">
+                            <div class="bestAvaliable-slider other-slider flex-center">
                                 <figure class="other-slider-img flex-center">
                                     <img src="/assets/images/v_guliver.jpg" width="250px" alt="Imagem da capa do livor">
                                 </figure>
@@ -207,7 +165,6 @@
 
     </section>
     <!-- FIM DO LIMITE DO BEST AVALIABLE SLIDER -->
-
 </main>
 <!-- FIM DOS OUTROS SLIDERS -->
 

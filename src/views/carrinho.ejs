@@ -21,11 +21,11 @@
                         <th>Preço</th>
                         <th>Quantidade</th>
                         <th>Total</th>
+                        <th colspan="2">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% books.forEach((book, index) => {%>
-                        <% if(index == books.length - 1) return;%>
                         <tr>
                             <td><%= book.books.titulo %></td>
                             <td>
@@ -33,9 +33,15 @@
                                     <img src="<%= book.books.capa %>" alt="Foto da capa do livor" width="100px">
                                 </figure>
                             </td>
-                            <td>R$<%= parseFloat(book.books.preco) %></td>
+                            <td>R$<%= parseFloat(book.books.preco).toFixed(2) %></td>
                             <td><%= book.quantidade %></td>
-                            <td id="total">R$<%=  parseFloat(book.books.preco * book.quantidade) %></td>
+                            <td id="total">R$<%=  parseFloat(book.books.preco * book.quantidade).toFixed(2) %></td>
+                            <td>
+                                <a href="/carrinho/<%= book.books._id %>" class="edit-book">Adicionar</a>
+                            </td>
+                            <td>
+                                <a href="/carrinho/<%= book.books._id %>/delete" class="delete-book">Excluir</a>
+                            </td>
                         </tr>
                     <% }); %>
                 <tbody>
@@ -45,12 +51,12 @@
                                 Finalizar
                             </th>
                             <% var max = 0 %>
-                            <% for(let i = 0; i < books.length - 1; i++) { %>
-                                <% max += parseFloat(books[i].books.preco); %>
+                            <% for(let i = 0; i < books.length; i++) { %>
+                                <% max += parseFloat(books[i].books.preco * books[i].quantidade); %>
                            <% } %>
-                            <td>
+                            <td colspan="3">
                                 R$
-                               <%= parseFloat(max) %>
+                               <%= parseFloat(max).toFixed(2) %>
                             </td>
                         </tr>
                     </tfoot>

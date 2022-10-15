@@ -4,6 +4,11 @@ exports.index = async function(req, res) {
     try {
         const callBook = new Book(req.body);
         const books =  await callBook.buscarLivros(req.session.user._id);
+
+        if(callBook.message.length > 0) {
+            req.flash('errors', callBook.message);
+            return req.session.save(() => res.redirect('/'));
+        }
     
         let idBook = req.params.id.replace(/}/, '');
     
@@ -24,7 +29,7 @@ exports.index = async function(req, res) {
 exports.register = async function(req, res){
     try {
         const bookRegister = new Book(req.body, req.session.user);
-        await bookRegister.register();
+        const bookRegistred = await bookRegister.register();
 
         if(bookRegister.message.length > 0) {
             req.flash('errors', bookRegister.message);

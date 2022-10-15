@@ -29,6 +29,14 @@ class Carrinho {
         }
     }
 
+    async deleteBook(id) {
+        if(typeof id !== 'string') return;
+
+        const cart = await CartModel.findOneAndDelete({ books: id });
+
+        return cart;
+      };
+
     async addMore(quantidade) {
         try {
             quantidade += 1;

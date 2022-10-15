@@ -68,10 +68,3 @@ export default function ChangeColor(nav, mobileMenu, mobileNav, options) {
     };
 };
 
-//const total = document.getElementById("total");
-console.log(window.addEventListener("click", e => console.log(e)));
-/*
-setInterval(function () {
-    element.innerHTML += "Hello"
-}, 1000);
-*/

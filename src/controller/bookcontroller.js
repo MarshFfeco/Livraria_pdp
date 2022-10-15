@@ -11,7 +11,7 @@ exports.index = async function(req, res) {
         }
     
         res.render("book", {
-            title: `book/${book.autor}`,
+            title: `${book.titulo} - ${book.autor}`,
             book: book
         })
     } catch (error) {

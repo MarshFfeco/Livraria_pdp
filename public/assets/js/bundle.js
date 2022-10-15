@@ -160,16 +160,7 @@ function ChangeColor(nav, mobileMenu, mobileNav, options) {
     return true;
   };
 }
-; //const total = document.getElementById("total");
-
-console.log(window.addEventListener("click", function (e) {
-  return console.log(e);
-}));
-/*
-setInterval(function () {
-    element.innerHTML += "Hello"
-}, 1000);
-*/
+;
 
 /***/ }),
 
@@ -219,6 +210,7 @@ var BestSlide = /*#__PURE__*/function (_Slider) {
     _classCallCheck(this, BestSlide);
 
     _this = _super.call(this, controls, itens, maxItem);
+    _this.itens = itens;
     _this.scroll = scroll;
     _this.moveScroll = 0;
     return _this;
@@ -238,7 +230,7 @@ var BestSlide = /*#__PURE__*/function (_Slider) {
           _this2.moveScroll += _this2.scroll.offsetWidth;
         }
 
-        if (isLeft && _this2.moveScroll < 0) {
+        if (isLeft && _this2.moveScroll < -870) {
           _this2.moveScroll = 3416;
         }
 
