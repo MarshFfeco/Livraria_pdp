@@ -16,13 +16,20 @@ exports.addBook = async function(req, res) {
 
         const cartAdd = new Carrinho(idBook, req.session.user);
         /*const books = await cartAdd.buscarLivros(req.session.user._id);*/
-        cartAdd.addBook();
+        //const bookAdd = await cartAdd.addBook();
+        await cartAdd.addBook()
+
+        if(cartAdd.message.length > 0) {
+            req.flash('errors', cartAdd.message);
+            return req.session.save(() => res.redirect(`back`));
+        }
         
         req.flash('success', 'Livro adicionado ao carrinho.');
         return req.session.save(() => res.redirect(`/carrinho`));
     } catch (error) {
         res.render("erro", {
-            title: "Erro de Login"
+            title: "Erro de Login",
+            url: "Erro"
         })
     }
 

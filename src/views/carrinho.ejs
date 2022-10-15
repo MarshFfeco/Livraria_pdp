@@ -12,10 +12,50 @@
 <main id="carrinho-main">
      <!-- TEM LIVROS CADASTRADOS? -->
      <% if(books.length > 0) { %>
-        <h2 style="margin-top: 50px;">Meus Livros</h2>
-       <% books.forEach((book, index) => {%>
-            <p><%= book.books.titulo %></p>
-        <% }); %>
+        <div class="table-wrapper margin-center margin-top">
+            <table class="fl-table">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Capa</th>
+                        <th>Preço</th>
+                        <th>Quantidade</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% books.forEach((book, index) => {%>
+                        <% if(index == books.length - 1) return;%>
+                        <tr>
+                            <td><%= book.books.titulo %></td>
+                            <td>
+                                <figure>
+                                    <img src="<%= book.books.capa %>" alt="Foto da capa do livor" width="100px">
+                                </figure>
+                            </td>
+                            <td>R$<%= parseFloat(book.books.preco) %></td>
+                            <td><%= book.quantidade %></td>
+                            <td id="total">R$<%=  parseFloat(book.books.preco * book.quantidade) %></td>
+                        </tr>
+                    <% }); %>
+                <tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="4">
+                                Finalizar
+                            </th>
+                            <% var max = 0 %>
+                            <% for(let i = 0; i < books.length - 1; i++) { %>
+                                <% max += parseFloat(books[i].books.preco); %>
+                           <% } %>
+                            <td>
+                                R$
+                               <%= parseFloat(max) %>
+                            </td>
+                        </tr>
+                    </tfoot>
+            </table>
+        </div>
 
     <% } else { %>
         <div class="message-book flex-center">

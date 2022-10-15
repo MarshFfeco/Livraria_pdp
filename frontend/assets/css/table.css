@@ -33,14 +33,8 @@
    border-right: 1px solid var(--main-color);
 }
 
-.fl-table thead th {
+.fl-table thead th, tfoot th {
     color: #ffffff;
-    background: var(--main-color);
-}
-
-.fl-table thead th:nth-child(odd) {
-    color: #ffffff;
-    /*background: #324960;*/
     background: var(--back-load);
 }
 
@@ -52,7 +46,7 @@
     max-width: 100px;
 }
 
-/* Responsive */
+/*
 @media (max-width: 999px) {
     .fl-table {
         width: 100%;
@@ -106,4 +100,4 @@
         display: block;
         text-align: center;
     }
-}
+}*/
