@@ -10,6 +10,12 @@
     --back-load: #0e1538;
     --erro-color: #ff6347;
     --cinza-color: #B2B8C3;
+    --positive-color: #4ec07d;
+    --negative-color: #e96075;
+}
+
+.margin-top {
+    margin-top: 50px;
 }
 
 * {
@@ -92,6 +98,12 @@ button:hover {
     cursor: pointer;
 }
 
+.btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+}
+
 p {
     font-size: small;
 }
@@ -103,6 +115,93 @@ p {
     overflow-x: hidden;
 }
 
+.outline {
+    font-size: 16px;
+    font-weight: bold;
+
+    color: white;
+    background-color: var(--main-color);
+
+    border: none;
+    border-radius: 30px;
+}
+
+.outline:hover { background-color: var(--hover-color); }
+
+.outline:active { background-color: var(--active-color); }
+
+.outline:focus { background-color: var(--active-color); }
+
+.inline {
+    font-size: 16px;
+    font-weight: bold;
+
+    border: 2px solid var(--cinza-color);
+    border-radius: 30px;
+
+    color: var(--cinza-color);
+}
+
+.inline:hover { border: 2px solid var(--main-color); color: var(--main-color); }
+.inline:active { border: 2px solid var(--active-color); color: var(--active-color); }
+.inline:focus { border: 2px solid var(--active-color); color: var(--active-color); }
+
+.textfield{
+    margin: 20px auto;
+}
+
+.textfield > input {
+    width: 100%;
+    padding: 10px;
+    
+    border: 1px solid var(--main-color);
+    border-radius: 20px;
+
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+
+    font-size: 12pt;
+
+    outline: none;
+}
+
+.textfield :focus {
+    border: 2px solid var(--active-color);
+}
+
+.textfield > label {
+    margin-bottom: 5px;
+
+    color: rgb(0, 0, 0);
+
+    font-size: small;
+}
+
+/* SEM LIVROS CADASTRADOS */
+.message-book {
+    width: 40%;
+    height: 50px;
+
+    background-color: white;
+
+    margin: 50px auto;
+
+    border-radius: 50px;
+    border: 2px solid var(--negative-color);
+
+    box-shadow: 0px 4px 4px var(--shadow-color);
+
+    color: var(--negative-color);
+}
+
+.message-book svg  {
+    width: 25px;
+
+    margin-left: 25px;
+
+    fill: var(--negative-color);
+}
+/* FIM DOS SEM LIVROS CADASTRADOS */
 
 
 /*!**********************************************************************************!*\
@@ -251,6 +350,22 @@ body::-webkit-scrollbar-thumb {
     border-radius: 20px;      
     border: 3px solid var(--back-load);  
 }
+
+textarea::-webkit-scrollbar {
+    width: 5px;               
+}
+  
+textarea::-webkit-scrollbar-track {
+    background: transparent;          
+}
+  
+textarea::-webkit-scrollbar-thumb {
+    background-color: var(--cinza-color);  
+
+    border-radius: 20px;   
+}
+
+
 /*!********************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./frontend/assets/css/erro.css ***!
   \********************************************************************************/
@@ -327,21 +442,19 @@ h4 {
     box-shadow: 0 4px 4px var(--shadow-color);
 }
 
-.textfield{
+.textfieldLoSig{
     width: 100%;
-    margin: 20px 0px;
 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
 }
-
+/*
 .textfield > input {
     width: 100%;
     padding: 10px;
     
-
     border: 1px solid var(--main-color);
     border-radius: 20px;
 
@@ -351,8 +464,8 @@ h4 {
     font-size: 12pt;
 
     outline: none;
-}
-
+}*/
+/*
 .textfield :focus {
     border: 2px solid var(--active-color);
 }
@@ -364,29 +477,7 @@ h4 {
 
     font-size: small;
 }
-
-.btn {
-    width: 100%;
-    padding: 15px;
-    margin-top: 20px;
-
-    border: none;
-    border-radius: 20px;
-    outline: none;
-
-    font-size: 12pt;
-    letter-spacing: 2px;
-
-    color: white;
-    background-color: var(--main-color);
-}
-
-.btn:hover { background-color: var(--hover-color); }
-
-.btn:active { background-color: var(--active-color); }
-
-.btn:focus { background-color: var(--active-color); }
-
+*/
 @media (max-width: 999px) {
     #main-form { height: auto; }
 
@@ -448,7 +539,7 @@ header {
 }
 
 #options {
-    width: 150px;
+    width: 180px;
 
     display: flex;
     flex-direction: row;
@@ -484,7 +575,7 @@ header {
     fill: var(--main-color);
 
     transition: fill 0.5s ease-in-out;
-}
+}   
 
 #options button:hover svg path {
     fill: white;
@@ -540,7 +631,7 @@ header {
         transition: visibility 0.2s ease-in-out;
     }
 
-    #options #search, #car, #person {
+    #options #search, #car, #person, #add_book {
         width: 100%;
     }
 
@@ -572,8 +663,6 @@ header {
 /*!********************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./frontend/assets/css/home.css ***!
   \********************************************************************************/
-
-
 /* UNIVERSAL */
 .universal-slider {
     width: 100%;
@@ -607,7 +696,7 @@ header {
     /* STYLE DOS CONTEUDOS DO SLIDER */
     .universal-slider-contents {
         width: 90%;
-        height: 90%;
+        height: 100%;
     }
 
     .universal-slider-contents .main-slider-img {
@@ -629,6 +718,8 @@ header {
         grid-area: title;
 
         align-self: center;
+
+        cursor: pointer;
     }
 
     .universal-slider-contents .main-slider-text {
@@ -737,6 +828,8 @@ header {
     grid-template-areas: 
     ' title  title  title '
     ' left   slider right';
+
+    grid-column-gap: 10px;
 }
 
 .other-slider-box .arrow-left { grid-area: left; justify-self: center;}
@@ -760,6 +853,7 @@ header {
 
 .other-slider-contents {
     width: auto;
+    height: auto;
 }
 
 .other-slider {
@@ -774,7 +868,7 @@ header {
 
 .other-slider:hover {
     cursor: pointer;
-    padding: 20px;
+    padding: 5px;
 
     color: white;
 
@@ -783,11 +877,20 @@ header {
     background-color: var(--active-color);
 }
 
+.other-slider-img {
+    width: 100px;
+    height: 145px;
+}
+
 .other-slider-img img {
-    width: 50%;
+    width: 100%;
+    height: 100%;
 }
 
 .other-slider-title{
+    min-height: 50px;
+
+    text-align: center;
     grid-area: title;
 }
 /* FIM DO STYLE DOS OTHERS SLIDER*/
@@ -897,27 +1000,16 @@ header {
     width: 100%;
 
     padding: 5px;
-
-    font-size: 16px;
-    font-weight: bold;
-
-    border: 2px solid var(--main-color);
-    border-radius: 30px;
+    margin: 0;
 }
 
 .book-container-add{
     width: 100%;
 
     padding: 5px;
+    margin: 0;
 
-    font-size: 16px;
-    font-weight: bold;
     color: white;
-
-    background-color: var(--main-color);
-
-    border: none;
-    border-radius: 30px;
 }
 /* FIM DA SEÇÃO DO LIVRO */
 
@@ -948,5 +1040,342 @@ header {
     font-size: 13px;
 }
 /* FIM DA DESCRIÇÃO DO LIVRO */
+/*!*******************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./frontend/assets/css/adm.css ***!
+  \*******************************************************************************/
+#admScreen {
+    height: 100%;
+    min-height: 90vh;
+}
+
+.cardadm {
+    width: 80%;
+    height: auto;
+
+    padding: 30px 50px;
+    margin: 50px auto;
+
+    border:2px solid var(--main-color) ;
+    border-radius: 20px;
+    box-shadow: 0 4px 4px var(--shadow-color);
+}
+.gridColumn {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    justify-items: center;
+}
+
+.textfieldAdm {
+    width: 80%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+
+.textfieldAdm textarea {
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid var(--main-color);
+}
+
+summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+@media (max-width: 1060px) {
+    .gridColumn {
+        width: 100%;
+    
+        display: grid;
+        grid-template-columns: 1fr;
+    
+        justify-items: center;
+    }
+}
+/*!***********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./frontend/assets/css/message.css ***!
+  \***********************************************************************************/
+.position-message {
+    position: fixed;
+
+    left: 5%;
+    top: 10%;
+
+    width: 700px;
+    height: 260px;
+
+    z-index: 100;
+    overflow: hidden;
+}
+.message h4 {
+    font-size: 0.9em;
+    font-weight: 100;
+    letter-spacing: 3px;
+    padding-top: 5px;
+    color: #fcfcfc;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+.green {
+    color: var(--positive-color);
+}
+.red {
+    color: var(--negative-color);
+}
+.alert {
+font-weight: 700;
+letter-spacing: 5px;
+}
+.message p {
+    margin-top: -5px;
+    font-size: 0.5em;
+    font-weight: 100;
+    color: white;
+    letter-spacing: 1px;
+}
+.success-box {
+    width: 35%;
+    height: 100%;
+    left: 12%;
+    background: var(--positive-color);
+    border-radius: 20px;
+    perspective: 40px;
+}
+.error-box {
+    width: 35%;
+    height: 100%;
+    right: 12%;
+    background: var(--negative-color);
+    border-radius: 20px;
+    perspective: 40px;
+}
+
+.face {
+    position: absolute;
+    width: 22%;
+    height: 22%;
+    background: #fcfcfc;
+    border-radius: 50%;
+    border: 1px solid #777;
+    top: 21%;
+    left: 37.5%;
+    z-index: 2;
+    animation: bounce 1s ease-in infinite;
+}
+
+.eye {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #777;
+    border-radius: 50%;
+    top: 40%;
+    left: 20%;
+}
+.right {
+    left: 68%;
+}
+.mouth {
+    position: absolute;
+    top: 43%;
+    left: 41%;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+}
+.happy {
+    border: 2px solid;
+    border-color: transparent #777 #777 transparent;
+    transform: rotate(45deg);
+}
+.sad {
+    top: 49%;
+    border: 2px solid;
+    border-color: #777 transparent transparent #777;
+    transform: rotate(45deg);
+}
+.shadow {
+    position: absolute;
+    width: 21%;
+    height: 3%;
+    opacity: 0.5;
+    background: #777;
+    left: 40%;
+    top: 43%;
+    border-radius: 50%;
+    z-index: 1;
+}
+.scale {
+    animation: scale 1s ease-in infinite;
+}
+.message {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    height: 40%;
+    top: 47%;
+}
+.button-box {
+    position: absolute;
+    background: #fcfcfc;
+    width: 50%;
+    height: 15%;
+    border-radius: 20px;
+    top: 73%;
+    left: 25%;
+    outline: 0;
+    border: none;
+    box-shadow: 2px 2px 10px rgba(119, 119, 119, .5);
+    transition: all 0.5s ease-in-out;
+}
+.button-box:hover {
+    background: #efefef;
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+
+@keyframes bounce {
+    50% {
+        transform: translatey(-10px);
+    }
+    }
+    @keyframes scale {
+    50% {
+        transform: scale(0.9);
+    }
+}
+
+@keyframes move {
+    0% {
+        left: 25%;
+    }
+    50% {
+        left: 60%;
+    }
+    100% {
+        left: 25%;
+    }
+}
+/*!*********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./frontend/assets/css/table.css ***!
+  \*********************************************************************************/
+.table-wrapper{
+    width: 95%;
+    box-shadow: 0px 4px 4px var(--shadow-color);
+}
+
+.edit-book {
+    color: var(--positive-color);
+}
+
+.delete-book {
+    color: var(--negative-color);
+}
+
+.fl-table {
+    width: 100%;
+    max-width: 100%;
+
+    font-size: 12px;
+    font-weight: normal;
+
+    border: none;
+    border-collapse: collapse;
+
+    background-color: white;
+}
+
+.fl-table td, .fl-table th {
+    text-align: center;
+    padding: 8px;
+}
+
+.fl-table td {
+   border-right: 1px solid var(--main-color);
+}
+
+.fl-table thead th, tfoot th {
+    color: #ffffff;
+    background: var(--back-load);
+}
+
+.fl-table tr:nth-child(even) {
+    background: #F8F8F8;
+}
+
+.fl-table tbody td {
+    max-width: 100px;
+}
+
+/*
+@media (max-width: 999px) {
+    .fl-table {
+        width: 100%;
+    }
+    .fl-table thead, .fl-table tbody, .fl-table thead th {
+        display: block;
+    }
+    .fl-table thead th:last-child{
+        border-bottom: none;
+    }
+    .fl-table thead {
+        float: left;
+    }
+    .fl-table tbody {
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+    }
+    .fl-table td, .fl-table th {
+        padding: 20px .625em .625em .625em;
+        height: 60px;
+        vertical-align: middle;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 120px;
+        font-size: 13px;
+        text-overflow: ellipsis;
+    }
+    .fl-table thead th {
+        text-align: left;
+        border-bottom: 1px solid #f7f7f9;
+    }
+    .fl-table tbody tr {
+        display: table-cell;
+    }
+    .fl-table tbody tr:nth-child(odd) {
+        background: none;
+    }
+    .fl-table tr:nth-child(even) {
+        background: transparent;
+    }
+    .fl-table tr td:nth-child(odd) {
+        background: #F8F8F8;
+        border-right: 1px solid #E6E4E4;
+    }
+    .fl-table tr td:nth-child(even) {
+        border-right: 1px solid #E6E4E4;
+    }
+    .fl-table tbody td {
+        width: 190px;
+        display: block;
+        text-align: center;
+    }
+}*/
+/*!************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./frontend/assets/css/carrinho.css ***!
+  \************************************************************************************/
+#carrinho-main {
+    min-height: 90vh;
+}
 
 /*# sourceMappingURL=style.css.map*/

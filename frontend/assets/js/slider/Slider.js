@@ -28,15 +28,19 @@ export default class Slider {
                 this.currentItem += 1;
             }
 
-            if(this.currentItem > this.maxItem - 1) {
-                this.currentItem = 0;
-            }
-
-            if(this.currentItem < 0) {
-                this.currentItem = this.maxItem - 1;
-            }
+            this.verifyCurrentItem()
 
             this.addOrRemove();
         });
+    }
+
+    verifyCurrentItem() {
+        if(this.currentItem > this.maxItem - 1) {
+            this.currentItem = 0;
+        }
+
+        if(this.currentItem < 0) {
+            this.currentItem = this.maxItem - 1;
+        }
     }
 }

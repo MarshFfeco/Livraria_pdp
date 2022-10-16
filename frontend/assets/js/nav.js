@@ -67,3 +67,4 @@ export default function ChangeColor(nav, mobileMenu, mobileNav, options) {
         return true;
     };
 };
+

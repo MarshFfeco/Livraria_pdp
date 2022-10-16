@@ -1,27 +1,31 @@
 <%- include("includes/head")%>
-    <!-- FUNDO VERDE -->
-    <div class="limit-home">
-        <div class="quadrado"></div>
-    </div>
-    <!-- FIM DO FUNDO VERDE -->
+<!-- FUNDO VERDE -->
+<div class="limit-home">
+    <div class="quadrado"></div>
+</div>
+<!-- FIM DO FUNDO VERDE -->
+
+<!-- MESSAGES -->
+<%- include("includes/message")%>
+<!-- FIM MESSAGES -->
 
 <main id="book-style">
     <!-- IMAGEM LIVRO -->
     <figure class="book-figure">
-        <img src="/assets/images/v_guliver.jpg" width="250px" alt="Imagem da capa do livor">
+        <img src="<%= book.capa %>" width="250px" alt="Imagem da capa do livor">
     </figure>
     <!-- FIM DA IMAGEM DO LIVRO -->
 
     <!-- SEÇÃO DO LIVRO -->
     <section class="book-design-container book-container">
         <!-- TITULO -->
-        <h1 class="book-container-title">Viagens de Gulliver</h1>
+        <h1 class="book-container-title"><%= book.titulo %></h1>
         <!-- FIM DO TITULO -->
          
         <!-- AUTOR + AVALIAÇÃO -->
         <div class="book-container-betwen flex-center">
             <!-- AUTOR -->
-            <p class="book-container-author">por Jonathan Swift</p>
+            <p class="book-container-author">por <%= book.autor %></p>
             <!-- FIM DO AUTOR -->
 
             <!-- AVALIACAO -->
@@ -38,15 +42,15 @@
         <hr class="book-container-hr">
 
         <!-- PRECO -->
-        <h3 class="book-container-price">R$40,00</h3>
+        <h3 class="book-container-price">R$<%= book.preco %></h3>
         <!-- FIM DO PRECO -->
 
         <!-- COMPRAR -->
-        <button aria-label="buy" class="book-container-buy"> Comprar</button>
+        <button aria-label="buy" class="btn book-container-buy inline">Comprar</button>
         <!-- FIM DO COMPRAR -->
         
         <!-- ADICIONAR -->
-        <button aria-label="wish cart" class="book-container-add">Adicionar à lista</button>
+        <button aria-label="wish cart" class="btn book-container-add outline" onclick="location.href = '/carrinho/<%= book._id %>';">Adicionar à lista</button>
         <!-- FIM DO ADICIONAR -->
     </section>
     <!-- FIM DA SEÇÃO DO LIVRO -->
@@ -62,11 +66,7 @@
             <h4 class="book-description-title">Resumo</h4>
 
             <p class="book-description-description">
-                Para um médico, o capitão Lemuel Gulliver é um grande aventureiro. Neste clássico da literatura, sabemos de quatro de 
-                suas prin-cipais viagens: a Lilipute, cujos habitantes não chegam a seis polegadas de altura; a Brobdingnag, cujo menor 
-                anão do reino tem nove metros de altura; a duas ilhas, uma voadora e outra de feiticeiros, além de uma academia com 
-                pesquisadores esqui-sitos; e, por fim, conhece os houyhnhnms, cavalos civilizados, e os yahoos, espécie de hominídeos 
-                selvagens.
+                <%= book.resumo %>
             </p>
         </div>
         <!-- FIM DO RESUMO -->
@@ -75,14 +75,9 @@
         <div>
             <h4 class="book-description-title">Detalhes do produto</h4>
 
-            <p class="book-description-description">
-                Editora ‏ : ‎ FTD Educação; 1ª edição (31 outubro 2016)<br>
-                Idioma ‏ : ‎ Português<br>
-                Capa comum ‏ : ‎ 96 páginas<br>
-                ISBN-10 ‏ : ‎ 8596004211<br>
-                ISBN-13 ‏ : ‎ 978-8596004213<br>
-                Dimensões ‏ : ‎ 26.2 x 19.2 x 1.2 cm<br>
-            </p>
+            <pre class="book-description-description">
+                <%= book.detalheProduto %>
+            </pre>
         </div>
         <!-- FIM DOS DETALHES -->
 

@@ -42,7 +42,7 @@ header {
 }
 
 #options {
-    width: 150px;
+    width: 180px;
 
     display: flex;
     flex-direction: row;
@@ -78,7 +78,7 @@ header {
     fill: var(--main-color);
 
     transition: fill 0.5s ease-in-out;
-}
+}   
 
 #options button:hover svg path {
     fill: white;
@@ -134,7 +134,7 @@ header {
         transition: visibility 0.2s ease-in-out;
     }
 
-    #options #search, #car, #person {
+    #options #search, #car, #person, #add_book {
         width: 100%;
     }
 

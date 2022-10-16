@@ -1,36 +1,40 @@
 <%- include("includes/head")%>
 
-<main id="main-form">    
-    <!-- FUNDO VERDE -->
-    <div class="limit-home">
-        <div class="quadrado"></div>
-    </div>
-    <!-- FIM DO FUNDO VERDE -->
+<!-- FUNDO VERDE -->
+<div class="limit-home">
+    <div class="quadrado"></div>
+</div>
+<!-- FIM DO FUNDO VERDE -->
 
+<!-- MESSAGES -->
+<%- include("includes/message")%>
+<!-- FIM MESSAGES -->
+
+<main id="main-form">    
     <div id="formularios">
         <!--ESTE É PARA O CADASTRO-->
         <div class="card">
             <h2>Registrar</h2>
-            <form action="/registerComplete" method="POST" id="form-register">
+            <form action="/LoginOrSignUp/registerComplete" method="POST" id="form-register">
                 <!--CAMPO PARA USUARIO-->
-                <div class="textfield">
+                <div class="textfield textfieldLogSig">
                     <label >Nome</label>
-                    <input type="text" name="nome">
+                    <input type="text" name="nome" required>
                 </div>
                 <!--CAMPO PARA EMAIL-->
-                <div class="textfield">
+                <div class="textfield textfieldLogSig">
                     <label>E-mail</label>
-                    <input type="email" name="email">
+                    <input type="email" name="email" required>
                 </div>
                 <!--CAMPO PARA SENHA-->
-                <div class="textfield">
+                <div class="textfield textfieldLogSig">
                     <label>Senha</label>
-                    <input type="password" name="senha">
+                    <input type="password" name="senha" required>
                 </div>
                 <!--CAMPO PARA REPETIR SENHA-->
-                <div class="textfield">
+                <div class="textfield textfieldLogSig">
                     <label>Repetir Senha</label>
-                    <input type="password" name="repetirSenha">
+                    <input type="password" name="repetirSenha" required>
                 </div>
 
                 <div class="accept">
@@ -41,26 +45,26 @@
                 </div>
 
                 <!--BOTAO PARA FAZER O CADASTRO-->
-                <button type="submit" class="btn">Registrar</button>
+                <button type="submit" class="btn outline">Registrar</button>
             </form>
         </div>
 
         <!--ESTE É PARA O LOGIN-->
         <div class="card">
             <h2>Entrar</h2>
-            <form action="/loginComplete" method="post" id="form-login">
+            <form action="/LoginOrSignUp/loginComplete" method="POST" id="form-login">
                 <!--CAMPO PARA EMAIL-->
-                <div class="textfield">
+                <div class="textfield textfieldLogSig">
                     <label>E-mail</label>
-                    <input type="email" name="email">
+                    <input type="email" name="email" required>
                 </div>
                 <!--CAMPO PARA SENHA-->
-                <div class="textfield">
+                <div class="textfield textfieldLogSig">
                     <label>Senha</label>
-                    <input type="password" name="senha">
+                    <input type="password" name="senha" required>
                 </div>
                 <!--BOTAO PARA FAZER O LOGIN-->
-                <button type="submit" class="btn">Retornar</button>
+                <button type="submit" class="btn outline">Entrar</button>
         </div>
     </div>
 </main>

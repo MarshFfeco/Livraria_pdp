@@ -1,5 +1,3 @@
-
-
 /* UNIVERSAL */
 .universal-slider {
     width: 100%;
@@ -33,7 +31,7 @@
     /* STYLE DOS CONTEUDOS DO SLIDER */
     .universal-slider-contents {
         width: 90%;
-        height: 90%;
+        height: 100%;
     }
 
     .universal-slider-contents .main-slider-img {
@@ -55,6 +53,8 @@
         grid-area: title;
 
         align-self: center;
+
+        cursor: pointer;
     }
 
     .universal-slider-contents .main-slider-text {
@@ -163,6 +163,8 @@
     grid-template-areas: 
     ' title  title  title '
     ' left   slider right';
+
+    grid-column-gap: 10px;
 }
 
 .other-slider-box .arrow-left { grid-area: left; justify-self: center;}
@@ -186,6 +188,7 @@
 
 .other-slider-contents {
     width: auto;
+    height: auto;
 }
 
 .other-slider {
@@ -200,7 +203,7 @@
 
 .other-slider:hover {
     cursor: pointer;
-    padding: 20px;
+    padding: 5px;
 
     color: white;
 
@@ -209,11 +212,20 @@
     background-color: var(--active-color);
 }
 
+.other-slider-img {
+    width: 100px;
+    height: 145px;
+}
+
 .other-slider-img img {
-    width: 50%;
+    width: 100%;
+    height: 100%;
 }
 
 .other-slider-title{
+    min-height: 50px;
+
+    text-align: center;
     grid-area: title;
 }
 /* FIM DO STYLE DOS OTHERS SLIDER*/
