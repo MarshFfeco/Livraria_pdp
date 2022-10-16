@@ -19,7 +19,7 @@ Com o objetivo de desenvolver o mercado de trabalho da região, a L. SABER está
 
 ```bash
 # IMPORTANDO A PASTA NODE_MODULE
-$ npm i
+npm i
 ```
 
 ### Inicializando
@@ -119,5 +119,5 @@ Saionara - Finança
 </pre>
 
 ## Versão
-- 1.18.2
+- 2.18.2
 
