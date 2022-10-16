@@ -226,6 +226,7 @@ var BestSlide = /*#__PURE__*/function (_Slider) {
 
         if (isLeft) {
           _this2.moveScroll -= _this2.scroll.offsetWidth;
+          console.log(_this2.moveScroll);
         } else {
           _this2.moveScroll += _this2.scroll.offsetWidth;
         }

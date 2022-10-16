@@ -23,25 +23,23 @@
 
     <!-- CONTEUDO DO SLIDER PRINCIPAL -->
     <article class="universal-slider-contents flex-center">
-
         <div class="main_carousel_slides flex-center">
             <% mainSlider.forEach((slide, index) => { %>
                 <% if(!index > 0) { %>
                 <div class="main-slide current-item">
                 <% } else { %>
-                    <div class="main-slide">
+                <div class="main-slide">
                 <% } %>
-                    <figure class="main-slider-img">
-                        <img src="<%= slide.capa %>" width="250px" alt="Imagem da capa do livor">
-                    </figure>
-    
-                        <h1 class="main-slider-title"><%= slide.titulo %></h1>
-    
+                        <figure class="main-slider-img">
+                            <img src="<%= slide.capa %>" width="250px" alt="Imagem da capa do livor">
+                        </figure>
+                        <h1 class="main-slider-title" onclick="location.href = '/book/<%= slide._id %>';"><%= slide.titulo %></h1>
                         <p class="main-slider-text">
                             <%= slide.resumo %>
                         </p>
-                </div>
+                    </div>
             <% }); %>
+        </div>
     </article>
     <!-- FIM DO CONTEUDO DO SLIDER PRINCIPAL -->
 

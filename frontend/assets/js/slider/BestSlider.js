@@ -13,7 +13,7 @@ export default class BestSlide extends Slider {
         control.addEventListener("click", () => {
             const isLeft = control.classList.contains("left");
 
-            if(isLeft) { this.moveScroll -= this.scroll.offsetWidth; } 
+            if(isLeft) { this.moveScroll -= this.scroll.offsetWidth; console.log(this.moveScroll ); } 
                 else { this.moveScroll += this.scroll.offsetWidth; }
 
             if(isLeft && this.moveScroll < -870) { this.moveScroll = 3416; }

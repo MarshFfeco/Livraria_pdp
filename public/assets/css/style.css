@@ -718,6 +718,8 @@ header {
         grid-area: title;
 
         align-self: center;
+
+        cursor: pointer;
     }
 
     .universal-slider-contents .main-slider-text {
