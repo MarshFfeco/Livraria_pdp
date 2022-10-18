@@ -4,7 +4,7 @@ exports.BookSchema = BookSchema = new mongoose.Schema({
     titulo: { type: String, require: true },
     autor: { type: String, required: true },
     editora: { type: String, required: true },
-    preco: { type: String, require: true },
+    preco: { type: Number, require: true },
     capa: { type: String,  required: true },
     dataLancamento: { type: Date, required: true },
     resumo: { type: String, require: true },
@@ -93,12 +93,12 @@ class Adm {
     }
 
     cleanUp() {
-        for(const key in this.body) {
+        /*for(const key in this.body) {
             if(typeof this.body[key] !== "string") {
                 if(this.body[key] == this.body[dataLancamento]) continue;
                 this.body[key] = "";
             }
-        }
+        }*/
 
         this.body = {
             titulo: this.body.titulo,
