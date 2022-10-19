@@ -16,7 +16,7 @@
 }
 
 * {
-   /* max-width: 100vw;*/
+    /*max-width: 100vw;*/
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -103,6 +103,10 @@ button:hover {
 
 p {
     font-size: small;
+}
+
+ul, li {
+    list-style:none;
 }
 
 #content-prin {
@@ -200,3 +204,8 @@ p {
 }
 /* FIM DOS SEM LIVROS CADASTRADOS */
 
+@media (max-width: 999px) {
+    .margin-center {
+        margin: 0;
+    }
+}

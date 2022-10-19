@@ -30,7 +30,8 @@
 }
 
 .fl-table td {
-   border-right: 1px solid var(--main-color);
+    min-width: 120px;
+    border-right: 1px solid var(--main-color);
 }
 
 .fl-table thead th, tfoot th {

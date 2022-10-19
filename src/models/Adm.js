@@ -7,6 +7,7 @@ exports.BookSchema = BookSchema = new mongoose.Schema({
     preco: { type: Number, require: true },
     capa: { type: String,  required: true },
     dataLancamento: { type: Date, required: true },
+    generos: [{ type: String, required: true }],
     resumo: { type: String, require: true },
     detalheProduto: { type: String, required: true },
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'Register' },
@@ -93,13 +94,6 @@ class Adm {
     }
 
     cleanUp() {
-        /*for(const key in this.body) {
-            if(typeof this.body[key] !== "string") {
-                if(this.body[key] == this.body[dataLancamento]) continue;
-                this.body[key] = "";
-            }
-        }*/
-
         this.body = {
             titulo: this.body.titulo,
             autor: this.body.autor,
@@ -107,6 +101,7 @@ class Adm {
             preco: this.body.preco,
             capa: this.body.capa,
             dataLancamento: this.body.dataLancamento,
+            generos: this.body.genero,
             resumo: this.body.resumo,
             detalheProduto: this.body.detalheProduto,
             user: this.user,

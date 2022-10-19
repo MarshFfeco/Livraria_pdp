@@ -52,10 +52,14 @@ class Carrinho {
         return this.cart = await CartModel.findOne({ books: this.idBook.books });
     }
 
-    async buscarLivros(id) {
-        const books = await (await CartModel.find().sort({ dataLancamento: -1 }).populate("books"));
+    async buscarLivros() {
+
+        const books = await CartModel.find().populate("books");
+
+        if(!books) return this.message.push("Nenhum livro encontrado");
+
         const result = books.filter(book => {
-            return book.carrinhoDe == id; 
+            return book.carrinhoDe == this.user._id; 
         });
 
         return result;

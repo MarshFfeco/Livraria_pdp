@@ -1,7 +1,10 @@
 #admScreen {
+    min-width: 350px;
+    width: 100%;
     height: 100%;
     min-height: 90vh;
 }
+
 
 .cardadm {
     width: 80%;
@@ -14,17 +17,20 @@
     border-radius: 20px;
     box-shadow: 0 4px 4px var(--shadow-color);
 }
+
 .gridColumn {
     width: 100%;
 
     display: grid;
     grid-template-columns: 1fr 1fr;
 
+    column-gap: 50px;
+
     justify-items: center;
 }
 
 .textfieldAdm {
-    width: 80%;
+    min-width: 100%;
 
     display: flex;
     flex-direction: column;
@@ -32,10 +38,70 @@
     justify-content: center;
 }
 
+.checkbox {
+    width: 100%;
+    height: 100%;
+
+    margin: 20px auto;
+}
+
+.checkbox h5 {
+    font-size: 1em;
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+
+.generos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    row-gap: 5px;
+}
+
+.generos li {
+    display: grid;
+    grid-template-columns: 1em auto;
+    gap: 0.5em;
+}
+
+.generos li label {
+    font-size: 1rem;
+}
+
+.generos li input {
+    display: grid;
+    place-content: center;
+
+    appearance: none;
+    background-color: #fff;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.generos li input::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    transform: scale(0);
+    transition: 100ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--active-color);
+  }
+  
+.generos li input:checked::before {
+    transform: scale(1);
+}
+
+/*.generos li input:checked { background-color: var(--active-color); }*/
+
 
 .textfieldAdm textarea {
     padding: 10px;
-    max-width: 100%;
+    width: 100%;
     line-height: 1.5;
     border-radius: 5px;
     border: 1px solid var(--main-color);
@@ -44,6 +110,10 @@
 summary {
     list-style: none;
     cursor: pointer;
+}
+
+details[open] summary h2 {
+    text-align: left;
 }
 
 @media (max-width: 1060px) {

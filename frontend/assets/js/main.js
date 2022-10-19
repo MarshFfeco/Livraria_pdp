@@ -92,7 +92,17 @@ if(isUrl("http://localhost:3000/")) {
     const maxItens = itens.length;
 
     const mainSlider = new MainSlider(controls, itens, maxItens);
-    setInterval(function() {mainSlider.movement()}, 5000);
+
+    var auto = setInterval(function() {mainSlider.movement()}, 5000);
+
+    controls[0].addEventListener("click", e => { 
+        clearInterval(auto);
+        auto = setInterval(function() {mainSlider.movement()}, 5000);
+     });
+     controls[1].addEventListener("click", e => { 
+        clearInterval(auto);
+        auto = setInterval(function() {mainSlider.movement()}, 5000);
+     });
 }
 /* FIM MAIN SLIDER */
 

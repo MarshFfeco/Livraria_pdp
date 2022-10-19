@@ -29,14 +29,14 @@ exports.index = async function(req, res) {
 exports.register = async function(req, res){
     try {
         const bookRegister = new Book(req.body, req.session.user);
-        const bookRegistred = await bookRegister.register();
+        await bookRegister.register();
 
         if(bookRegister.message.length > 0) {
             req.flash('errors', bookRegister.message);
             return req.session.save(() => res.redirect('back'));
         }
 
-        req.flash('success', 'Seu livro foi cadastrado.');
+        req.flash('success', `Livro ${bookRegister.body.titulo} cadastrado.`);
         return req.session.save(() => res.redirect(`/adm/${bookRegister.user._id}`));
     } catch (error) {
         req.flash('errors', 'Seu livro não foi cadastrado.');
@@ -45,7 +45,7 @@ exports.register = async function(req, res){
 }
 
 exports.edit = async function(req, res) {
-    let idBook = req.params.id.replace(/}/, '');
+    let idBook = req.params.id;
 
     const callBook = new Book(req.body);
     const books =  await callBook.buscarLivros(req.session.user._id);
@@ -70,7 +70,7 @@ exports.editBook = async function(req, res) {
             return req.session.save(() => res.redirect("back"));
         }
 
-        req.flash('success', 'Seu livro foi editado.');
+        req.flash('success', `Livro ${bookEdit.body.titulo} editado.`);
         return req.session.save(() => res.redirect(`/adm/${bookEdit.user._id}`));
     } catch (error) {
         req.flash('errors', 'Seu livro não foi editado.');
@@ -79,7 +79,7 @@ exports.editBook = async function(req, res) {
 }
 
 exports.delete = async function(req, res) {
-    let idBook = req.params.id.replace(/}/, '');
+    let idBook = req.params.id;
 
     if(!idBook) return res.render('erro');
 
@@ -88,7 +88,7 @@ exports.delete = async function(req, res) {
 
     if(!bookDelete) return res.render('erro');
 
-    req.flash('success', 'Livro apagado com sucesso.');
+    req.flash('success', `Livro ${req.params.id} apagado com sucesso.`);
     req.session.save(() => res.redirect(`/adm/${deleteBook.user._id}`));
     return;
 }

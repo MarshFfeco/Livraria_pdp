@@ -221,22 +221,23 @@ var BestSlide = /*#__PURE__*/function (_Slider) {
     value: function event(control) {
       var _this2 = this;
 
+      var firstItem = this.itens[0].getBoundingClientRect().left + this.itens[0].offsetWidth;
+      var lastItem = this.itens[this.itens.length - 1].getBoundingClientRect().left + this.itens[this.itens.length - 1].offsetWidth;
       control.addEventListener("click", function () {
         var isLeft = control.classList.contains("left");
 
         if (isLeft) {
           _this2.moveScroll -= _this2.scroll.offsetWidth;
-          console.log(_this2.moveScroll);
         } else {
           _this2.moveScroll += _this2.scroll.offsetWidth;
         }
 
-        if (isLeft && _this2.moveScroll < -870) {
-          _this2.moveScroll = 3416;
+        if (!isLeft && _this2.moveScroll > lastItem) {
+          _this2.moveScroll = firstItem;
         }
 
-        if (!isLeft && _this2.moveScroll > 3416) {
-          _this2.moveScroll = 0;
+        if (isLeft && _this2.moveScroll < firstItem) {
+          _this2.moveScroll = lastItem;
         }
 
         _this2.movementScroll();
@@ -1184,9 +1185,21 @@ if (isUrl("http://localhost:3000/")) {
   var itens = document.querySelectorAll(".main-slide");
   var maxItens = itens.length;
   var mainSlider = new _slider_MainSlider__WEBPACK_IMPORTED_MODULE_22__["default"](controls, itens, maxItens);
-  setInterval(function () {
+  var auto = setInterval(function () {
     mainSlider.movement();
   }, 5000);
+  controls[0].addEventListener("click", function (e) {
+    clearInterval(auto);
+    auto = setInterval(function () {
+      mainSlider.movement();
+    }, 5000);
+  });
+  controls[1].addEventListener("click", function (e) {
+    clearInterval(auto);
+    auto = setInterval(function () {
+      mainSlider.movement();
+    }, 5000);
+  });
 }
 /* FIM MAIN SLIDER */
 

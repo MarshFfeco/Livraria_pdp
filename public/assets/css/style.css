@@ -19,7 +19,7 @@
 }
 
 * {
-   /* max-width: 100vw;*/
+    /*max-width: 100vw;*/
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -106,6 +106,10 @@ button:hover {
 
 p {
     font-size: small;
+}
+
+ul, li {
+    list-style:none;
 }
 
 #content-prin {
@@ -203,6 +207,11 @@ p {
 }
 /* FIM DOS SEM LIVROS CADASTRADOS */
 
+@media (max-width: 999px) {
+    .margin-center {
+        margin: 0;
+    }
+}
 
 /*!**********************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./frontend/assets/css/footer.css ***!
@@ -442,7 +451,7 @@ h4 {
     box-shadow: 0 4px 4px var(--shadow-color);
 }
 
-.textfieldLoSig{
+.textfieldLoSig {
     width: 100%;
 
     display: flex;
@@ -450,34 +459,7 @@ h4 {
     align-items: flex-start;
     justify-content: center;
 }
-/*
-.textfield > input {
-    width: 100%;
-    padding: 10px;
-    
-    border: 1px solid var(--main-color);
-    border-radius: 20px;
 
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-
-    font-size: 12pt;
-
-    outline: none;
-}*/
-/*
-.textfield :focus {
-    border: 2px solid var(--active-color);
-}
-
-.textfield > label {
-    margin-bottom: 5px;
-
-    color: rgb(0, 0, 0);
-
-    font-size: small;
-}
-*/
 @media (max-width: 999px) {
     #main-form { height: auto; }
 
@@ -820,8 +802,8 @@ header {
 
 /* STYLE DOS OTHERS SLIDERS */
 .other-slider-box {
-    height: 40%;
 
+    height: 40%;
     margin: 50px 0;
 
     display: grid;
@@ -1044,9 +1026,12 @@ header {
   !*** css ./node_modules/css-loader/dist/cjs.js!./frontend/assets/css/adm.css ***!
   \*******************************************************************************/
 #admScreen {
+    min-width: 350px;
+    width: 100%;
     height: 100%;
     min-height: 90vh;
 }
+
 
 .cardadm {
     width: 80%;
@@ -1059,17 +1044,20 @@ header {
     border-radius: 20px;
     box-shadow: 0 4px 4px var(--shadow-color);
 }
+
 .gridColumn {
     width: 100%;
 
     display: grid;
     grid-template-columns: 1fr 1fr;
 
+    column-gap: 50px;
+
     justify-items: center;
 }
 
 .textfieldAdm {
-    width: 80%;
+    min-width: 100%;
 
     display: flex;
     flex-direction: column;
@@ -1077,10 +1065,70 @@ header {
     justify-content: center;
 }
 
+.checkbox {
+    width: 100%;
+    height: 100%;
+
+    margin: 20px auto;
+}
+
+.checkbox h5 {
+    font-size: 1em;
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+
+.generos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    row-gap: 5px;
+}
+
+.generos li {
+    display: grid;
+    grid-template-columns: 1em auto;
+    gap: 0.5em;
+}
+
+.generos li label {
+    font-size: 1rem;
+}
+
+.generos li input {
+    display: grid;
+    place-content: center;
+
+    appearance: none;
+    background-color: #fff;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.generos li input::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    transform: scale(0);
+    transition: 100ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--active-color);
+  }
+  
+.generos li input:checked::before {
+    transform: scale(1);
+}
+
+/*.generos li input:checked { background-color: var(--active-color); }*/
+
 
 .textfieldAdm textarea {
     padding: 10px;
-    max-width: 100%;
+    width: 100%;
     line-height: 1.5;
     border-radius: 5px;
     border: 1px solid var(--main-color);
@@ -1089,6 +1137,10 @@ header {
 summary {
     list-style: none;
     cursor: pointer;
+}
+
+details[open] summary h2 {
+    text-align: left;
 }
 
 @media (max-width: 1060px) {
@@ -1132,16 +1184,24 @@ summary {
     color: var(--negative-color);
 }
 .alert {
-font-weight: 700;
-letter-spacing: 5px;
+    font-weight: 700;
+    letter-spacing: 5px;
 }
+
 .message p {
-    margin-top: -5px;
+    max-width: 80%;
+    height: 50px;
+    margin: 0 auto;
+    word-break: break-all;
+    overflow-x: auto;
+
+    margin-top: 5px;
     font-size: 0.5em;
     font-weight: 100;
     color: white;
     letter-spacing: 1px;
 }
+
 .success-box {
     width: 35%;
     height: 100%;
@@ -1166,7 +1226,7 @@ letter-spacing: 5px;
     background: #fcfcfc;
     border-radius: 50%;
     border: 1px solid #777;
-    top: 21%;
+    top: 15%;
     left: 37.5%;
     z-index: 2;
     animation: bounce 1s ease-in infinite;
@@ -1210,7 +1270,7 @@ letter-spacing: 5px;
     opacity: 0.5;
     background: #777;
     left: 40%;
-    top: 43%;
+    top: 36%;
     border-radius: 50%;
     z-index: 1;
 }
@@ -1218,11 +1278,12 @@ letter-spacing: 5px;
     animation: scale 1s ease-in infinite;
 }
 .message {
-    position: absolute;
     width: 100%;
+    position: relative;
+
     text-align: center;
     height: 40%;
-    top: 47%;
+    top: 40%;
 }
 .button-box {
     position: absolute;
@@ -1230,7 +1291,7 @@ letter-spacing: 5px;
     width: 50%;
     height: 15%;
     border-radius: 20px;
-    top: 73%;
+    top: 80%;
     left: 25%;
     outline: 0;
     border: none;
@@ -1300,7 +1361,8 @@ letter-spacing: 5px;
 }
 
 .fl-table td {
-   border-right: 1px solid var(--main-color);
+    min-width: 120px;
+    border-right: 1px solid var(--main-color);
 }
 
 .fl-table thead th, tfoot th {
