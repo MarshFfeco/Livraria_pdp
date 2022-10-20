@@ -1,4 +1,5 @@
 header {
+    min-width: 350px;
     width: 100vw;
     height: 5vh;
 
@@ -42,7 +43,7 @@ header {
 }
 
 #options {
-    width: 180px;
+    min-width: 180px;
 
     display: flex;
     flex-direction: row;
@@ -82,6 +83,44 @@ header {
 
 #options button:hover svg path {
     fill: white;
+}
+
+#search{ 
+    transition: all 200ms ease-in-out;
+}
+
+.active-search {
+    width: 300px;
+
+    border: solid 1px var(--main-color);
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: space-around;
+}
+
+.input-search {
+    width: 80%;
+}
+
+.input-search form {
+    height: 100%;
+}
+
+.active-search-invisible {
+    display: none;
+}
+
+.input-search input{
+    width: 100%;
+    height: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: var(--main-color);
 }
 
 /*MOBILE*/

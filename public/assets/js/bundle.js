@@ -89,77 +89,117 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ ChangeColor)
 /* harmony export */ });
-function ChangeColor(nav, mobileMenu, mobileNav, options) {
-  this.nav = nav; //MOBILE
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-  this.mobileMenu = mobileMenu;
-  this.mobileNav = mobileNav;
-  this.options = options; //CHAMA AS FUNÇÕES
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-  this.init = function () {
-    this.validationWidth();
-    this.event();
-  };
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
-  this.event = function () {
-    var _this = this;
+var ChangeColor = /*#__PURE__*/function () {
+  function ChangeColor(nav, mobileMenu, mobileNav, options) {
+    _classCallCheck(this, ChangeColor);
 
-    window.addEventListener("scroll", function (e) {
-      _this.change();
-    });
-    window.addEventListener("resize", function (e) {
-      _this.change();
+    this.nav = nav; //MOBILE
 
-      _this.validationWidth();
-    });
-  };
+    this.mobileMenu = mobileMenu;
+    this.mobileNav = mobileNav;
+    this.options = options;
+    this.searchButton = document.getElementById("buttonSearchOpen");
+    this.init();
+  } //CHAMA AS FUNÇÕES
 
-  this.validationWidth = function () {
-    if (window.innerWidth <= 999) {
-      this.mobileNav.init();
-      return;
+
+  _createClass(ChangeColor, [{
+    key: "init",
+    value: function init() {
+      this.validationWidth();
+      this.event();
     }
-
-    ;
-    this.options.style.visibility = "visible";
-  }; //MUDA A COR DA NAV
-
-
-  this.change = function () {
-    var result = this.verifiYPosition();
-
-    if (!result != 0) {
-      nav.style.backgroundColor = "#ffffff";
-      return;
+  }, {
+    key: "search",
+    value:
+    /* PESQUISAR */
+    function search() {
+      var activeSearch = options.querySelector("#search");
+      var activeSearchVisible = options.querySelector(".input-search");
+      activeSearch.classList.toggle("active-search");
+      activeSearchVisible.classList.toggle("active-search-invisible");
     }
+    /* FIM DO PESQUISAR */
 
-    nav.style.backgroundColor = "#fbfbfbbf";
-  }; //VERIFICA SE DESCEU A TELA
+  }, {
+    key: "event",
+    value: function event() {
+      var _this = this;
 
+      window.addEventListener("scroll", function (e) {
+        _this.change();
+      });
+      window.addEventListener("resize", function (e) {
+        _this.change();
 
-  this.verifiYPosition = function () {
-    var canChange = this.canChange();
-
-    if (!canChange) {
-      return 0;
+        _this.validationWidth();
+      });
+      this.searchButton.addEventListener("click", function (e) {
+        _this.search();
+      });
     }
+  }, {
+    key: "validationWidth",
+    value: function validationWidth() {
+      if (window.innerWidth <= 999) {
+        this.mobileNav.init();
+        return;
+      }
 
-    var top = window.scrollY;
-    return top;
-  }; //VERIFICA SE O MOBILE MENU ESTÁ ATIVADO
-
-
-  this.canChange = function () {
-    var options = document.getElementById("options");
-
-    if (options.classList.contains("active")) {
-      nav.style.backgroundColor = "#fbfbfbbf";
-      return false;
+      ;
+      this.options.style.visibility = "visible";
     }
+  }, {
+    key: "change",
+    value: //MUDA A COR DA NAV
+    function change() {
+      var result = this.verifiYPosition();
 
-    return true;
-  };
-}
+      if (!result != 0) {
+        this.nav.style.backgroundColor = "#ffffff";
+        return;
+      }
+
+      this.nav.style.backgroundColor = "#fbfbfbbf";
+    }
+  }, {
+    key: "verifiYPosition",
+    value: //VERIFICA SE DESCEU A TELA
+    function verifiYPosition() {
+      var canChange = this.canChange();
+
+      if (!canChange) {
+        return 0;
+      }
+
+      var top = window.scrollY;
+      return top;
+    }
+  }, {
+    key: "canChange",
+    value: //VERIFICA SE O MOBILE MENU ESTÁ ATIVADO
+    function canChange() {
+      var options = document.getElementById("options");
+
+      if (options.classList.contains("active")) {
+        this.nav.style.backgroundColor = "#fbfbfbbf";
+        return false;
+      }
+
+      return true;
+    }
+  }]);
+
+  return ChangeColor;
+}();
+
+
 ;
 
 /***/ }),
@@ -753,20 +793,6 @@ var ValidateForms = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./frontend/assets/img/books/v_guliver.jpg":
-/*!*************************************************!*\
-  !*** ./frontend/assets/img/books/v_guliver.jpg ***!
-  \*************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "images/v_guliver.jpg");
-
-/***/ }),
-
 /***/ "./frontend/assets/img/green.png":
 /*!***************************************!*\
   !*** ./frontend/assets/img/green.png ***!
@@ -1076,15 +1102,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _img_image_erro_png__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../img/image_erro.png */ "./frontend/assets/img/image_erro.png");
 /* harmony import */ var _img_green_png__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../img/green.png */ "./frontend/assets/img/green.png");
 /* harmony import */ var _img_logo_png__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../img/logo.png */ "./frontend/assets/img/logo.png");
-/* harmony import */ var _img_books_v_guliver_jpg__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../img/books/v_guliver.jpg */ "./frontend/assets/img/books/v_guliver.jpg");
-/* harmony import */ var _load__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./load */ "./frontend/assets/js/load.js");
-/* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./nav */ "./frontend/assets/js/nav.js");
-/* harmony import */ var _mobileNav__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./mobileNav */ "./frontend/assets/js/mobileNav.js");
-/* harmony import */ var _validatedForm_ValidateFormRegister__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./validatedForm/ValidateFormRegister */ "./frontend/assets/js/validatedForm/ValidateFormRegister.js");
-/* harmony import */ var _validatedForm_ValidateFormLogin__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./validatedForm/ValidateFormLogin */ "./frontend/assets/js/validatedForm/ValidateFormLogin.js");
-/* harmony import */ var _slider_MainSlider__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./slider/MainSlider */ "./frontend/assets/js/slider/MainSlider.js");
-/* harmony import */ var _slider_BestSlider__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./slider/BestSlider */ "./frontend/assets/js/slider/BestSlider.js");
-
+/* harmony import */ var _load__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./load */ "./frontend/assets/js/load.js");
+/* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./nav */ "./frontend/assets/js/nav.js");
+/* harmony import */ var _mobileNav__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./mobileNav */ "./frontend/assets/js/mobileNav.js");
+/* harmony import */ var _validatedForm_ValidateFormRegister__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./validatedForm/ValidateFormRegister */ "./frontend/assets/js/validatedForm/ValidateFormRegister.js");
+/* harmony import */ var _validatedForm_ValidateFormLogin__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./validatedForm/ValidateFormLogin */ "./frontend/assets/js/validatedForm/ValidateFormLogin.js");
+/* harmony import */ var _slider_MainSlider__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./slider/MainSlider */ "./frontend/assets/js/slider/MainSlider.js");
+/* harmony import */ var _slider_BestSlider__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./slider/BestSlider */ "./frontend/assets/js/slider/BestSlider.js");
 
 
 
@@ -1128,7 +1152,7 @@ function fechar() {
 /* CHAMADA A TELA DE LOAD */
 
 
-document.body.addEventListener("load", exeAtivar((0,_load__WEBPACK_IMPORTED_MODULE_17__["default"])()));
+document.body.addEventListener("load", exeAtivar((0,_load__WEBPACK_IMPORTED_MODULE_16__["default"])()));
 
 function exeAtivar(obj) {
   obj;
@@ -1145,7 +1169,7 @@ if (isUrl("http://localhost:3000/LoginOrSignUp")) {
 }
 
 function exeFormRegister() {
-  var registerForm = new _validatedForm_ValidateFormRegister__WEBPACK_IMPORTED_MODULE_20__["default"](formRegister);
+  var registerForm = new _validatedForm_ValidateFormRegister__WEBPACK_IMPORTED_MODULE_19__["default"](formRegister);
   registerForm.event();
 }
 /* FIM DA CHAMA A VALIDAÇÃO DO FORMULÁRIO DE REGISTRO */
@@ -1160,7 +1184,7 @@ if (isUrl("http://localhost:3000/LoginOrSignUp")) {
 }
 
 function exeFormLogin() {
-  var loginForm = new _validatedForm_ValidateFormLogin__WEBPACK_IMPORTED_MODULE_21__["default"](formLogin);
+  var loginForm = new _validatedForm_ValidateFormLogin__WEBPACK_IMPORTED_MODULE_20__["default"](formLogin);
   loginForm.event();
 }
 /* FIM DA CHAMADA A VALIDAÇÃO DO FORMULÁRIO DE LOGIN */
@@ -1171,9 +1195,8 @@ function exeFormLogin() {
 var options = document.getElementById("options");
 var nav = document.getElementById("navegacao");
 var mobileMenu = document.getElementById("mobile_menu");
-var mobileNav = new _mobileNav__WEBPACK_IMPORTED_MODULE_19__["default"](mobileMenu, nav, options);
-var mudaCor = new _nav__WEBPACK_IMPORTED_MODULE_18__["default"](nav, mobileMenu, mobileNav, options);
-mudaCor.init();
+var mobileNav = new _mobileNav__WEBPACK_IMPORTED_MODULE_18__["default"](mobileMenu, nav, options);
+var mudaCor = new _nav__WEBPACK_IMPORTED_MODULE_17__["default"](nav, mobileMenu, mobileNav, options);
 /* FIM DO MENU DE NAVEGAÇÃO */
 
 /* CARROSSEL */
@@ -1184,7 +1207,7 @@ if (isUrl("http://localhost:3000/")) {
   var controls = document.querySelectorAll(".main-carousel-control");
   var itens = document.querySelectorAll(".main-slide");
   var maxItens = itens.length;
-  var mainSlider = new _slider_MainSlider__WEBPACK_IMPORTED_MODULE_22__["default"](controls, itens, maxItens);
+  var mainSlider = new _slider_MainSlider__WEBPACK_IMPORTED_MODULE_21__["default"](controls, itens, maxItens);
   var auto = setInterval(function () {
     mainSlider.movement();
   }, 5000);
@@ -1211,7 +1234,7 @@ if (isUrl("http://localhost:3000/")) {
   var bestScroll = document.getElementById("best-slider-limit");
   var bestItens = document.querySelectorAll(".best-slider");
   var bestMaxItens = bestItens.length;
-  var bestSlider = new _slider_BestSlider__WEBPACK_IMPORTED_MODULE_23__["default"](bestControls, bestItens, bestScroll, bestMaxItens);
+  var bestSlider = new _slider_BestSlider__WEBPACK_IMPORTED_MODULE_22__["default"](bestControls, bestItens, bestScroll, bestMaxItens);
 }
 /* FIM BEST SLIDER */
 
@@ -1223,7 +1246,7 @@ if (isUrl("http://localhost:3000/")) {
   var bestAvaliableScroll = document.getElementById("bestAvaliable-slider-limit");
   var bestAvaliableItens = document.querySelectorAll(".bestAvaliable-slider");
   var bestAvaliableMaxItens = bestAvaliableItens.length;
-  var bestAvaliableSlider = new _slider_BestSlider__WEBPACK_IMPORTED_MODULE_23__["default"](bestAvaliableControls, bestAvaliableItens, bestAvaliableScroll, bestAvaliableMaxItens);
+  var bestAvaliableSlider = new _slider_BestSlider__WEBPACK_IMPORTED_MODULE_22__["default"](bestAvaliableControls, bestAvaliableItens, bestAvaliableScroll, bestAvaliableMaxItens);
 }
 /* END BEST AVALIABLE SLIDER  */
 

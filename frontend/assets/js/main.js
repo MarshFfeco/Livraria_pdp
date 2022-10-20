@@ -15,7 +15,6 @@ import "../css/carrinho.css"
 import * as img from "../img/image_erro.png";
 import * as green from "../img/green.png";
 import * as logo from "../img/logo.png";
-import * as gulliver from "../img/books/v_guliver.jpg"
 
 
 import load from "./load"
@@ -81,7 +80,7 @@ const mobileMenu = document.getElementById("mobile_menu");
 const mobileNav = new MobileNav(mobileMenu, nav, options)
 
 const mudaCor = new MudaCor(nav, mobileMenu, mobileNav, options);
-mudaCor.init();
+
 /* FIM DO MENU DE NAVEGAÇÃO */
 
 /* CARROSSEL */
