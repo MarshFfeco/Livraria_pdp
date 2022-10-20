@@ -11,17 +11,21 @@ export default class BestSlide extends Slider {
 
 
     event(control) {
-        var firstItem = this.itens[0].getBoundingClientRect().left + this.itens[0].offsetWidth;
-        var lastItem = this.itens[this.itens.length - 1].getBoundingClientRect().left + this.itens[this.itens.length - 1].offsetWidth;
-        
+        let widthItem = this.itens[0].offsetWidth;
+        let firstItem = this.itens[0].getBoundingClientRect().left;
+        let lastItem = this.itens[this.itens.length - 1].getBoundingClientRect().left + widthItem;
+
         control.addEventListener("click", () => {
             const isLeft = control.classList.contains("left");
 
             if(isLeft) { this.moveScroll -= this.scroll.offsetWidth; } 
             else { this.moveScroll += this.scroll.offsetWidth; }
 
-            if(!isLeft && this.moveScroll > lastItem) { this.moveScroll = firstItem; }
+            if(!isLeft && this.moveScroll > lastItem) { this.moveScroll = firstItem }
             if(isLeft && this.moveScroll < firstItem) { this.moveScroll = lastItem; }
+
+            console.log(this.moveScroll);
+            console.log(firstItem);
         
             this.movementScroll();
         });

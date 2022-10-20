@@ -6,7 +6,7 @@ exports.index = async function(req, res){
 
     const mainSlider = [];
     let mainSliderContent = homeCall.randomNB(3, books.length);
-    mainSliderContent.forEach(values => mainSlider.push(books[values]))
+    mainSliderContent.forEach(values => mainSlider.push(books[values]));
 
     res.render("home", {
         title: "home",

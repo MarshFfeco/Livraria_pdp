@@ -53,7 +53,7 @@ class Home {
             return arr.indexOf(elem) == pos;
         });
     
-        return filtrado.length === 1 || filtrado.length === array.length; 
+        return /*filtrado.length === 1 ||*/ filtrado.length === array.length; 
     }
 }
 

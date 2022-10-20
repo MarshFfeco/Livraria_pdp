@@ -25,6 +25,7 @@
     padding: 0;
 
     font-family: 'Nunito', sans-serif;
+    scroll-behavior: smooth;
 }
 
 a {
@@ -47,6 +48,15 @@ a {
     left: 0;
 
     z-index: -1;
+}
+
+.quadrado{
+    width: 100%;
+    height: 140%;
+
+    background-color: var(--main-color);
+
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 70%);
 }
 
 .margin-center {
@@ -74,15 +84,6 @@ a {
     opacity: 0;
 
     transition: all 0.2s;
-}
-
-.quadrado{
-    width: 100%;
-    height: 100%;
-
-    background-color: var(--main-color);
-
-    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 80%);
 }
 
 body {
@@ -721,7 +722,13 @@ header {
     }
 
     .universal-slider-contents .main-slider-img {
-        width: 90%;
+        height: 346px;
+        max-height: 500px;
+
+        display: flex;
+        justify-content: center;
+        
+        background-color: blue;
 
         grid-area: image;
 
@@ -815,7 +822,7 @@ header {
 
 .main-slide {
     width: 100%;
-    height: 100%;
+    height: auto;
     position: absolute;
 
     display: grid;
@@ -826,6 +833,7 @@ header {
     ' image text ';
 
     column-gap: 20px;
+    row-gap: 50px;
 
     visibility: hidden;
     clip-path: inset(50% 0 50% 0);
@@ -841,7 +849,6 @@ header {
 
 /* STYLE DOS OTHERS SLIDERS */
 .other-slider-box {
-
     height: 40%;
     margin: 50px 0;
 
@@ -881,21 +888,23 @@ header {
     min-width: 250px;
     height: 100%;
 
+    margin: 0 20px;
+    padding: 20px;
+
     flex-direction: column;
     row-gap: 20px;
 
-    transition: all 0.3s ease-in-out;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
 }
 
 .other-slider:hover {
     cursor: pointer;
-    padding: 5px;
 
-    color: white;
+    border-top: 2px solid var(--active-color);
+    border-bottom: 2px solid  var(--active-color);
 
     border-radius: 10%;
-
-    background-color: var(--active-color);
 }
 
 .other-slider-img {
@@ -921,6 +930,17 @@ header {
     height: auto;
 }
 /* END EXCLUSIVE STYLE FOR OTHER STYLE */
+
+@media (max-width: 999px) {
+
+
+    .universal-slider-contents .main-slider-img img {
+        width: 100%;
+        height: auto;
+    }
+   
+}
+
 /*!********************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./frontend/assets/css/book.css ***!
   \********************************************************************************/

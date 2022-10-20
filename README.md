@@ -119,5 +119,5 @@ Saionara - Finança
 </pre>
 
 ## Versão
-- 2.21.1
+- 2.21.3
 

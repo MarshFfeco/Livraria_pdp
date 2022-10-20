@@ -261,8 +261,9 @@ var BestSlide = /*#__PURE__*/function (_Slider) {
     value: function event(control) {
       var _this2 = this;
 
-      var firstItem = this.itens[0].getBoundingClientRect().left + this.itens[0].offsetWidth;
-      var lastItem = this.itens[this.itens.length - 1].getBoundingClientRect().left + this.itens[this.itens.length - 1].offsetWidth;
+      var widthItem = this.itens[0].offsetWidth;
+      var firstItem = this.itens[0].getBoundingClientRect().left;
+      var lastItem = this.itens[this.itens.length - 1].getBoundingClientRect().left + widthItem;
       control.addEventListener("click", function () {
         var isLeft = control.classList.contains("left");
 
@@ -279,6 +280,9 @@ var BestSlide = /*#__PURE__*/function (_Slider) {
         if (isLeft && _this2.moveScroll < firstItem) {
           _this2.moveScroll = lastItem;
         }
+
+        console.log(_this2.moveScroll);
+        console.log(firstItem);
 
         _this2.movementScroll();
       });
