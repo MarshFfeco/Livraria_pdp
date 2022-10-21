@@ -189,26 +189,31 @@
 
     grid-area: slider;
 
-    overflow-x: hidden;
+    overflow-x: scroll;
+
+
 }
 
 .other-slider-contents {
     width: auto;
     height: auto;
+
 }
 
 .other-slider {
     min-width: 250px;
     height: 100%;
 
-    margin: 0 20px;
-    padding: 20px;
+    margin: 0 10px;
+    padding: 10px;
 
     flex-direction: column;
     row-gap: 20px;
 
     border-top: 2px solid transparent;
     border-bottom: 2px solid transparent;
+
+    transition: all 100ms ease-in-out;
 }
 
 .other-slider:hover {
@@ -216,8 +221,9 @@
 
     border-top: 2px solid var(--active-color);
     border-bottom: 2px solid  var(--active-color);
-
     border-radius: 10%;
+
+    background-color: aliceblue;
 }
 
 .other-slider-img {

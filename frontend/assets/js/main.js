@@ -11,9 +11,9 @@ import "../css/adm.css"
 import "../css/message.css"
 import "../css/table.css"
 import "../css/carrinho.css"
+import "../css/post.css"
 
 import * as img from "../img/image_erro.png";
-import * as green from "../img/green.png";
 import * as logo from "../img/logo.png";
 
 
@@ -40,11 +40,10 @@ function fechar() {
 /* FIM DO SUMIR COM FLASH-MESSAGE  */
 
 /* CHAMADA A TELA DE LOAD */
-document.body.addEventListener("load", exeAtivar(load()));
+const conteudo = document.getElementById('content-prin');
+const loadind = document.getElementById("load");
 
-function exeAtivar(obj) {
-    obj;
-}
+document.body.addEventListener("load", load(conteudo, loadind));
 /* FIM DA CHAMADA A TELA DE LOAD */
 
 /* CHAMA A VALIDAÇÃO DO FORMULÁRIO DE REGISTRO */

@@ -1,0 +1,86 @@
+.tela {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    column-gap: 12px;
+    row-gap: 50px;
+}
+
+.post-limit {
+    display: grid;
+    width: 40%;
+    height: 200px;
+
+    padding: 20px 20px;
+
+    grid-template-areas: 
+    "title    image"
+    "autor image"
+    "resume image"
+    "buttons image";
+
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto 1fr auto;
+    column-gap: 50px;
+
+    box-shadow: 0px 2px 2px var(--shadow-color);
+
+    border-radius: 10px;
+}
+
+.post-title {
+    grid-area: title;
+}
+
+.post-autor {
+    grid-area: autor;
+}
+
+.post-resume  {
+    grid-area: resume;
+
+    height: 80%;
+
+    margin-top: 10px;
+    
+    overflow-y: auto;
+}
+
+.post-buttons {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-evenly;
+
+    grid-area: buttons;
+}
+
+.post-buttons .button-buy {
+    width: 40%;
+}
+
+.post-buttons .button-add {
+    width: 40%;
+}
+
+.post-image  {
+    grid-area: image;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-image img {
+    height: 100%;
+}
+
+@media (max-width: 999px) {
+    .post-limit {
+        width: 80%;
+    }
+}

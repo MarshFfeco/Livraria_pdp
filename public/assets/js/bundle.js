@@ -12,10 +12,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ load)
 /* harmony export */ });
-function load() {
-  var conteudo = document.getElementById('content-prin');
-  var load = document.getElementById("load"); //MUDANDO OS DISPLAY QUANDO CARREGADO
-
+function load(conteudo, load) {
+  //MUDANDO OS DISPLAY QUANDO CARREGADO
   conteudo.style.display = 'block';
   load.style.display = "none";
 }
@@ -263,14 +261,14 @@ var BestSlide = /*#__PURE__*/function (_Slider) {
 
       var widthItem = this.itens[0].offsetWidth;
       var firstItem = this.itens[0].getBoundingClientRect().left;
-      var lastItem = this.itens[this.itens.length - 1].getBoundingClientRect().left + widthItem;
+      var lastItem = this.itens[this.itens.length - 1].getBoundingClientRect().left;
       control.addEventListener("click", function () {
         var isLeft = control.classList.contains("left");
 
         if (isLeft) {
-          _this2.moveScroll -= _this2.scroll.offsetWidth;
+          _this2.moveScroll -= widthItem;
         } else {
-          _this2.moveScroll += _this2.scroll.offsetWidth;
+          _this2.moveScroll += widthItem;
         }
 
         if (!isLeft && _this2.moveScroll > lastItem) {
@@ -280,9 +278,6 @@ var BestSlide = /*#__PURE__*/function (_Slider) {
         if (isLeft && _this2.moveScroll < firstItem) {
           _this2.moveScroll = lastItem;
         }
-
-        console.log(_this2.moveScroll);
-        console.log(firstItem);
 
         _this2.movementScroll();
       });
@@ -797,20 +792,6 @@ var ValidateForms = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./frontend/assets/img/green.png":
-/*!***************************************!*\
-  !*** ./frontend/assets/img/green.png ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "images/green.png");
-
-/***/ }),
-
 /***/ "./frontend/assets/img/image_erro.png":
 /*!********************************************!*\
   !*** ./frontend/assets/img/image_erro.png ***!
@@ -951,6 +932,18 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************************************!*\
   !*** ./frontend/assets/css/navigation.css ***!
   \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./frontend/assets/css/post.css":
+/*!**************************************!*\
+  !*** ./frontend/assets/css/post.css ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1103,8 +1096,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_message_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../css/message.css */ "./frontend/assets/css/message.css");
 /* harmony import */ var _css_table_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../css/table.css */ "./frontend/assets/css/table.css");
 /* harmony import */ var _css_carrinho_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../css/carrinho.css */ "./frontend/assets/css/carrinho.css");
-/* harmony import */ var _img_image_erro_png__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../img/image_erro.png */ "./frontend/assets/img/image_erro.png");
-/* harmony import */ var _img_green_png__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../img/green.png */ "./frontend/assets/img/green.png");
+/* harmony import */ var _css_post_css__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../css/post.css */ "./frontend/assets/css/post.css");
+/* harmony import */ var _img_image_erro_png__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../img/image_erro.png */ "./frontend/assets/img/image_erro.png");
 /* harmony import */ var _img_logo_png__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../img/logo.png */ "./frontend/assets/img/logo.png");
 /* harmony import */ var _load__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./load */ "./frontend/assets/js/load.js");
 /* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./nav */ "./frontend/assets/js/nav.js");
@@ -1156,15 +1149,12 @@ function fechar() {
 /* CHAMADA A TELA DE LOAD */
 
 
-document.body.addEventListener("load", exeAtivar((0,_load__WEBPACK_IMPORTED_MODULE_16__["default"])()));
-
-function exeAtivar(obj) {
-  obj;
-}
+var conteudo = document.getElementById('content-prin');
+var loadind = document.getElementById("load");
+document.body.addEventListener("load", (0,_load__WEBPACK_IMPORTED_MODULE_16__["default"])(conteudo, loadind));
 /* FIM DA CHAMADA A TELA DE LOAD */
 
 /* CHAMA A VALIDAÇÃO DO FORMULÁRIO DE REGISTRO */
-
 
 var formRegister = document.getElementById("form-register");
 

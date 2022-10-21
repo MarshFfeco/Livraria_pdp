@@ -127,7 +127,7 @@ ul, li {
     color: white;
     background-color: var(--main-color);
 
-    border: none;
+    border:2px solid transparent;
     border-radius: 30px;
 }
 
@@ -361,6 +361,20 @@ body::-webkit-scrollbar-thumb {
     border: 3px solid var(--back-load);  
 }
 
+.post-resume::-webkit-scrollbar {
+    width: 5px;              
+}
+  
+.post-resume::-webkit-scrollbar-track {
+    background: transparent;         
+}
+  
+.post-resume::-webkit-scrollbar-thumb {
+    background-color: var(--cinza-color);  
+
+    border-radius: 20px;   
+}
+
 textarea::-webkit-scrollbar {
     width: 5px;               
 }
@@ -375,7 +389,21 @@ textarea::-webkit-scrollbar-thumb {
     border-radius: 20px;   
 }
 
+.other-slider-limit::-webkit-scrollbar {  
+    height: 7px;             
+}
+  
+.other-slider-limit::-webkit-scrollbar-track {
+    background: var(--back-load);   
+    border-radius: 5px;     
+}
+  
+.other-slider-limit::-webkit-scrollbar-thumb {
+    background-color: var(--main-color);  
 
+    border-radius: 5px;      
+    border: 1px solid var(--back-load);  
+}
 /*!********************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./frontend/assets/css/erro.css ***!
   \********************************************************************************/
@@ -876,26 +904,31 @@ header {
 
     grid-area: slider;
 
-    overflow-x: hidden;
+    overflow-x: scroll;
+
+
 }
 
 .other-slider-contents {
     width: auto;
     height: auto;
+
 }
 
 .other-slider {
     min-width: 250px;
     height: 100%;
 
-    margin: 0 20px;
-    padding: 20px;
+    margin: 0 10px;
+    padding: 10px;
 
     flex-direction: column;
     row-gap: 20px;
 
     border-top: 2px solid transparent;
     border-bottom: 2px solid transparent;
+
+    transition: all 100ms ease-in-out;
 }
 
 .other-slider:hover {
@@ -903,8 +936,9 @@ header {
 
     border-top: 2px solid var(--active-color);
     border-bottom: 2px solid  var(--active-color);
-
     border-radius: 10%;
+
+    background-color: aliceblue;
 }
 
 .other-slider-img {
@@ -1497,6 +1531,95 @@ details[open] summary h2 {
   \************************************************************************************/
 #carrinho-main {
     min-height: 90vh;
+}
+/*!********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./frontend/assets/css/post.css ***!
+  \********************************************************************************/
+.tela {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    column-gap: 12px;
+    row-gap: 50px;
+}
+
+.post-limit {
+    display: grid;
+    width: 40%;
+    height: 200px;
+
+    padding: 20px 20px;
+
+    grid-template-areas: 
+    "title    image"
+    "autor image"
+    "resume image"
+    "buttons image";
+
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto 1fr auto;
+    column-gap: 50px;
+
+    box-shadow: 0px 2px 2px var(--shadow-color);
+
+    border-radius: 10px;
+}
+
+.post-title {
+    grid-area: title;
+}
+
+.post-autor {
+    grid-area: autor;
+}
+
+.post-resume  {
+    grid-area: resume;
+
+    height: 80%;
+
+    margin-top: 10px;
+    
+    overflow-y: auto;
+}
+
+.post-buttons {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-evenly;
+
+    grid-area: buttons;
+}
+
+.post-buttons .button-buy {
+    width: 40%;
+}
+
+.post-buttons .button-add {
+    width: 40%;
+}
+
+.post-image  {
+    grid-area: image;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-image img {
+    height: 100%;
+}
+
+@media (max-width: 999px) {
+    .post-limit {
+        width: 80%;
+    }
 }
 
 /*# sourceMappingURL=style.css.map*/

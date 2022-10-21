@@ -13,6 +13,20 @@ body::-webkit-scrollbar-thumb {
     border: 3px solid var(--back-load);  
 }
 
+.post-resume::-webkit-scrollbar {
+    width: 5px;              
+}
+  
+.post-resume::-webkit-scrollbar-track {
+    background: transparent;         
+}
+  
+.post-resume::-webkit-scrollbar-thumb {
+    background-color: var(--cinza-color);  
+
+    border-radius: 20px;   
+}
+
 textarea::-webkit-scrollbar {
     width: 5px;               
 }
@@ -27,3 +41,18 @@ textarea::-webkit-scrollbar-thumb {
     border-radius: 20px;   
 }
 
+.other-slider-limit::-webkit-scrollbar {  
+    height: 7px;             
+}
+  
+.other-slider-limit::-webkit-scrollbar-track {
+    background: var(--back-load);   
+    border-radius: 5px;     
+}
+  
+.other-slider-limit::-webkit-scrollbar-thumb {
+    background-color: var(--main-color);  
+
+    border-radius: 5px;      
+    border: 1px solid var(--back-load);  
+}

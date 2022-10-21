@@ -4,6 +4,8 @@ exports.index = async function(req, res) {
     const callBooks = new Carrinho(null, req.session.user);
     const books = await callBooks.buscarLivros();
 
+    console.log(books)
+
     res.render("carrinho", {
         title: "carrinho",
         books: books,
@@ -37,7 +39,7 @@ exports.delete = async function(req, res) {
     try {
         let idBook = req.params.id;
 
-        /*(!idBook) return res.render('erro');*/
+        if(!idBook) return res.render('erro');
     
         const deleteBook = new Carrinho();
         const bookDelete = await deleteBook.deleteBook(idBook);

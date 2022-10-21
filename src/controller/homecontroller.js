@@ -13,4 +13,8 @@ exports.index = async function(req, res){
         books: books,
         mainSlider: mainSlider,
     });
+   /* res.render("post", {
+        title: "post",
+        books: books
+    })*/
 }
