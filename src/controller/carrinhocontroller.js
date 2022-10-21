@@ -4,8 +4,6 @@ exports.index = async function(req, res) {
     const callBooks = new Carrinho(null, req.session.user);
     const books = await callBooks.buscarLivros();
 
-    console.log(books)
-
     res.render("carrinho", {
         title: "carrinho",
         books: books,
@@ -25,7 +23,7 @@ exports.addBook = async function(req, res) {
         }
         
         req.flash('success', `Livro adicionado ao carrinho.`);
-        return req.session.save(() => res.redirect(`/carrinho`));
+        return req.session.save(() => res.redirect(`back`));
     } catch (error) {
         res.render("erro", {
             title: "Erro de Login",

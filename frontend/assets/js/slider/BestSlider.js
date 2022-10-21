@@ -9,8 +9,6 @@ export default class BestSlide extends Slider {
         this.moveScroll = 0;
 
     }
-
-
     event(control) {
         let widthItem = this.itens[0].offsetWidth;
         let firstItem = this.itens[0].getBoundingClientRect().left;

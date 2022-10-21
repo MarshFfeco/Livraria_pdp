@@ -19,7 +19,23 @@
             <div id="search">
                 <div class="input-search active-search-invisible">
                     <form action="/search" method="get">
-                        <input type="text" name="search" aria-label="Search" placeholder="Search" maxlength="20" required>
+                        <input type="search" name="search" aria-label="Search" placeholder="Search" maxlength="50" required>
+                        <select name="genero">
+                            <option value="null" selected></option>
+                            <option value="acao">Ação</option>
+                            <option value="aventura">Aventura</option>
+                            <option value="biografia">Biografia</option>
+                            <option value="comedia">Comedia</option>
+                            <option value="drama">Drama</option>
+                            <option value="distopia">Distopia</option>
+                            <option value="ficcao">Ficção</option>
+                            <option value="historia">História</option>
+                            <option value="infantil">Infantil</option>
+                            <option value="misterio">Misterio</option>
+                            <option value="romance">Romance</option>
+                            <option value="terror">Terror</option>
+
+                        </select>
                         <input type="submit" hidden/>
                     </form>
                 </div>

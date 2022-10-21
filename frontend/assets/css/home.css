@@ -190,14 +190,11 @@
     grid-area: slider;
 
     overflow-x: scroll;
-
-
 }
 
 .other-slider-contents {
     width: auto;
     height: auto;
-
 }
 
 .other-slider {
@@ -251,8 +248,6 @@
 /* END EXCLUSIVE STYLE FOR OTHER STYLE */
 
 @media (max-width: 999px) {
-
-
     .universal-slider-contents .main-slider-img img {
         width: 100%;
         height: auto;

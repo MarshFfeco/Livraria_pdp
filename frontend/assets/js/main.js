@@ -12,6 +12,7 @@ import "../css/message.css"
 import "../css/table.css"
 import "../css/carrinho.css"
 import "../css/post.css"
+import "../css/search.css"
 
 import * as img from "../img/image_erro.png";
 import * as logo from "../img/logo.png";

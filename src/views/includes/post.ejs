@@ -1,8 +1,4 @@
-<%- include("includes/head")%>
 <div class="tela">
-
-
-
     <% books.forEach((book) => {  %>
         <div class="post-limit">
             <div class="post-title">
@@ -27,7 +23,6 @@
                 <!-- ADICIONAR -->
                 <div class="button-add">
                     <button aria-label="wish cart" class="btn book-container-add outline" onclick="location.href = '/carrinho/<%= book._id %>';">Adicionar à lista</button>
-
                 </div>
                 <!-- FIM DO ADICIONAR -->
             </div>
@@ -38,5 +33,3 @@
         </div>
     <% }); %>
 </div>
-
-<%- include("includes/footer")%>

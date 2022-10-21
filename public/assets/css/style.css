@@ -613,6 +613,32 @@ header {
 
 .input-search form {
     height: 100%;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.input-search select {
+    outline: none;
+    align-self: center;
+
+    width: 50%;
+    height: 80%;
+
+    padding: 5px 3px;
+
+    border: none;
+    border-bottom: 1px solid var(--main-color);
+    border-radius: 10px;
+
+    cursor: pointer;
+    
+    color: var(--main-color);
+    text-align: left;
+}
+
+.input-search select:focus {
+    border: 1px solid var(--active-color);
 }
 
 .active-search-invisible {
@@ -681,7 +707,11 @@ header {
         transition: visibility 0.2s ease-in-out;
     }
 
-    #options #search, #car, #person, #add_book {
+    .input-search {
+        width: 80%;
+    }
+
+    #options #car, #search, #person, #add_book {
         width: 100%;
     }
 
@@ -692,7 +722,7 @@ header {
     }
 
     #options button:hover {
-        border-radius: 0;
+        border-radius: inherit;
 
         cursor: pointer;
     
@@ -905,14 +935,11 @@ header {
     grid-area: slider;
 
     overflow-x: scroll;
-
-
 }
 
 .other-slider-contents {
     width: auto;
     height: auto;
-
 }
 
 .other-slider {
@@ -966,8 +993,6 @@ header {
 /* END EXCLUSIVE STYLE FOR OTHER STYLE */
 
 @media (max-width: 999px) {
-
-
     .universal-slider-contents .main-slider-img img {
         width: 100%;
         height: auto;
@@ -1552,6 +1577,8 @@ details[open] summary h2 {
     width: 40%;
     height: 200px;
 
+    background-color: white;
+
     padding: 20px 20px;
 
     grid-template-areas: 
@@ -1620,6 +1647,14 @@ details[open] summary h2 {
     .post-limit {
         width: 80%;
     }
+}
+/*!**********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./frontend/assets/css/search.css ***!
+  \**********************************************************************************/
+#search-tal {
+    min-height: 90vh;
+
+    margin: 50px 0;
 }
 
 /*# sourceMappingURL=style.css.map*/
