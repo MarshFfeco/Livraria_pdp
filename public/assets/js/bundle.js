@@ -259,23 +259,22 @@ var BestSlide = /*#__PURE__*/function (_Slider) {
     value: function event(control) {
       var _this2 = this;
 
-      var widthItem = this.itens[0].offsetWidth;
       var firstItem = this.itens[0].getBoundingClientRect().left;
       var lastItem = this.itens[this.itens.length - 1].getBoundingClientRect().left;
       control.addEventListener("click", function () {
         var isLeft = control.classList.contains("left");
 
         if (isLeft) {
-          _this2.moveScroll -= widthItem;
+          _this2.moveScroll -= _this2.scroll.offsetWidth;
         } else {
-          _this2.moveScroll += widthItem;
+          _this2.moveScroll += _this2.scroll.offsetWidth;
         }
 
         if (!isLeft && _this2.moveScroll > lastItem) {
           _this2.moveScroll = firstItem;
         }
 
-        if (isLeft && _this2.moveScroll < firstItem) {
+        if (isLeft && _this2.scroll.scrollLeft == 0) {
           _this2.moveScroll = lastItem;
         }
 

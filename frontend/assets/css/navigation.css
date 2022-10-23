@@ -149,6 +149,10 @@ header {
     color: var(--main-color);
 }
 
+.input-search input[type="search"]::-webkit-search-cancel-button {
+    background: var(--main-color);
+}
+
 /*MOBILE*/
 #mobile_menu {
     display: none;
