@@ -18,6 +18,4 @@ exports.index = async function(req, res) {
     } catch (error) {
         
     }
-
-
 }

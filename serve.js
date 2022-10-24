@@ -3,6 +3,15 @@ require("dotenv").config;
 const express = require("express");
 const app = express();
 
+const helmet = require("helmet");
+
+/*app.use(helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      "img-src": ["'self'", "https: data:"]
+    }
+}));  */
+
 const mariaDB = require("./database/connection");
 
 const flash = require("connect-flash");
@@ -25,7 +34,8 @@ const sessionOptions = session({
 
 const routes = require('./routes/routes');
 const path = require('path');
-const { sessionUser, rotasExist } = require("./src/middlewares/middleware.js");
+const csrf = require('csurf');
+const { sessionUser, rotasExist, nnn, checkCsrfError, csrfMiddleware } = require("./src/middlewares/middleware.js");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -39,7 +49,12 @@ app.use(flash());
 app.set('views', path.resolve(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 
+app.use(csrf());
+
 app.use(sessionUser);
+
+app.use(csrfMiddleware);
+app.use(checkCsrfError);
 
 //PEGA AS ROTAS DA PASTA ROUTES
 app.use(routes);

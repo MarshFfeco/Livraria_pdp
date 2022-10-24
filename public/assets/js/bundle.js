@@ -639,7 +639,7 @@ var ValidateForms = /*#__PURE__*/function () {
   function ValidateForms(formulario) {
     _classCallCheck(this, ValidateForms);
 
-    this.form = formulario; //this.event();
+    this.form = formulario;
   }
 
   _createClass(ValidateForms, [{
@@ -671,12 +671,8 @@ var ValidateForms = /*#__PURE__*/function () {
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var input = _step.value;
+          if (input.type == "hidden" || input.name == "_csrf") continue;
           var label = input.previousElementSibling.innerHTML;
-
-          if (!input.value) {
-            this.makeErro(input, "Campo ".concat(label, " vazio!"));
-            valid = false;
-          }
 
           switch (input.type) {
             case "text":
@@ -737,7 +733,7 @@ var ValidateForms = /*#__PURE__*/function () {
     key: "isPassword",
     value: function isPassword() {
       var valid = true;
-      var pass = this.form.getElementsByTagName("input")[1];
+      var pass = this.form.getElementsByTagName("input")[2];
 
       if (pass.value.length < 9) {
         valid = false;

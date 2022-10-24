@@ -20,3 +20,17 @@ exports.loginRequired = function(req, res, next) {
     }
     next();
 };
+
+exports.checkCsrfError = (err, req, res, next) => {
+    if(err) {
+        req.flash('errors', "Erro no formulário");
+        return req.session.save(() => res.redirect(`/`));
+    }
+  
+    next();
+  };
+  
+  exports.csrfMiddleware = (req, res, next) => {
+    res.locals.csrfToken = req.csrfToken();
+    next();
+  };
