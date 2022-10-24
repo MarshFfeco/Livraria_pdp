@@ -26,16 +26,24 @@
     color: var(--negative-color);
 }
 .alert {
-font-weight: 700;
-letter-spacing: 5px;
+    font-weight: 700;
+    letter-spacing: 5px;
 }
+
 .message p {
-    margin-top: -5px;
+    max-width: 80%;
+    height: 50px;
+    margin: 0 auto;
+    word-break: break-all;
+    overflow-x: auto;
+
+    margin-top: 5px;
     font-size: 0.5em;
     font-weight: 100;
     color: white;
     letter-spacing: 1px;
 }
+
 .success-box {
     width: 35%;
     height: 100%;
@@ -60,7 +68,7 @@ letter-spacing: 5px;
     background: #fcfcfc;
     border-radius: 50%;
     border: 1px solid #777;
-    top: 21%;
+    top: 15%;
     left: 37.5%;
     z-index: 2;
     animation: bounce 1s ease-in infinite;
@@ -104,7 +112,7 @@ letter-spacing: 5px;
     opacity: 0.5;
     background: #777;
     left: 40%;
-    top: 43%;
+    top: 36%;
     border-radius: 50%;
     z-index: 1;
 }
@@ -112,11 +120,12 @@ letter-spacing: 5px;
     animation: scale 1s ease-in infinite;
 }
 .message {
-    position: absolute;
     width: 100%;
+    position: relative;
+
     text-align: center;
     height: 40%;
-    top: 47%;
+    top: 40%;
 }
 .button-box {
     position: absolute;
@@ -124,7 +133,7 @@ letter-spacing: 5px;
     width: 50%;
     height: 15%;
     border-radius: 20px;
-    top: 73%;
+    top: 80%;
     left: 25%;
     outline: 0;
     border: none;

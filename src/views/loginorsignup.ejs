@@ -16,6 +16,7 @@
         <div class="card">
             <h2>Registrar</h2>
             <form action="/LoginOrSignUp/registerComplete" method="POST" id="form-register">
+                <input type="hidden" name="_csrf" value=<%= csrfToken %>>
                 <!--CAMPO PARA USUARIO-->
                 <div class="textfield textfieldLogSig">
                     <label >Nome</label>
@@ -53,6 +54,7 @@
         <div class="card">
             <h2>Entrar</h2>
             <form action="/LoginOrSignUp/loginComplete" method="POST" id="form-login">
+                <input type="hidden" name="_csrf" value=<%= csrfToken %>>
                 <!--CAMPO PARA EMAIL-->
                 <div class="textfield textfieldLogSig">
                     <label>E-mail</label>

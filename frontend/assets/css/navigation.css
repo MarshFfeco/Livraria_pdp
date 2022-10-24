@@ -1,4 +1,5 @@
 header {
+    min-width: 350px;
     width: 100vw;
     height: 5vh;
 
@@ -42,7 +43,7 @@ header {
 }
 
 #options {
-    width: 180px;
+    min-width: 180px;
 
     display: flex;
     flex-direction: row;
@@ -82,6 +83,90 @@ header {
 
 #options button:hover svg path {
     fill: white;
+}
+
+#search{ 
+    transition: all 200ms ease-in-out;
+}
+
+.active-search {
+    width: 300px;
+
+    display: flex;   
+    justify-content: space-evenly;
+
+    transition: all 200ms ease-in-out;
+}
+
+.input-search {
+    width: 80%;
+}
+
+.input-search form {
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.input-search select {
+    outline: none;
+    align-self: center;
+
+    width: 50%;
+    height: 100%;
+
+    border: 1px solid var(--main-color);
+
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    cursor: pointer;
+    
+    color: var(--main-color);
+    text-align: left;
+
+    transition: all 200ms ease-in-out;
+}
+
+.input-search select:focus {
+    border-bottom-right-radius: 0px;
+
+    border-color: var(--active-color);
+}
+
+.input-search select option {
+    margin-top: 5px;
+}
+
+.active-search-invisible {
+    display: none;
+}
+
+.input-search input{
+    width: 100%;
+    height: 100%;
+
+    padding-left: 5px;
+
+    border: 1px solid var(--main-color);
+
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    
+    outline: none;
+
+    background: transparent;
+
+    color: var(--main-color);
+}
+
+.input-search input:focus {
+    border-color: var(--active-color);
+}
+
+.input-search input[type="search"]::-webkit-search-cancel-button {
+    background: var(--main-color);
 }
 
 /*MOBILE*/
@@ -134,7 +219,11 @@ header {
         transition: visibility 0.2s ease-in-out;
     }
 
-    #options #search, #car, #person, #add_book {
+    .input-search {
+        width: 80%;
+    }
+
+    #options #car, #search, #person, #add_book {
         width: 100%;
     }
 
@@ -145,7 +234,7 @@ header {
     }
 
     #options button:hover {
-        border-radius: 0;
+        border-radius: inherit;
 
         cursor: pointer;
     

@@ -2,8 +2,6 @@ export default class ValidateForms {
 
     constructor(formulario){
         this.form = formulario;
-        
-        //this.event();
     };
 
     event() {
@@ -27,15 +25,12 @@ export default class ValidateForms {
         this.cleaned();
 
         for(let input of this.form.getElementsByTagName("input")) {
+
+            if(input.type == "hidden" || input.name == "_csrf") continue;
+
             let label = input.previousElementSibling.innerHTML;
 
-            if(!input.value){
-                this.makeErro(input, `Campo ${label} vazio!`);
-                
-                valid = false;
-            }
-
-            switch(input.type){
+            switch(input.type) {
                 case "text":
                     if(!this.validText(input, label)) valid = false;
                 break;
@@ -87,7 +82,7 @@ export default class ValidateForms {
     isPassword() {
         let valid = true;
 
-        const pass = this.form.getElementsByTagName("input")[1];
+        const pass = this.form.getElementsByTagName("input")[2];
 
         if(pass.value.length < 9) {
             valid = false;

@@ -26,16 +26,16 @@
                 </thead>
                 <tbody>
                     <% books.forEach((book, index) => {%>
-                        <tr>
+                       <tr>
                             <td><%= book.books.titulo %></td>
                             <td>
                                 <figure>
                                     <img src="<%= book.books.capa %>" alt="Foto da capa do livor" width="100px">
                                 </figure>
                             </td>
-                            <td>R$<%= parseFloat(book.books.preco).toFixed(2) %></td>
+                            <td>R$<%= book.books.preco.toFixed(2) %></td>
                             <td><%= book.quantidade %></td>
-                            <td id="total">R$<%=  parseFloat(book.books.preco * book.quantidade).toFixed(2) %></td>
+                            <td id="total">R$<%= (book.books.preco * book.quantidade).toFixed(2) %></td>
                             <td>
                                 <a href="/carrinho/<%= book.books._id %>" class="edit-book">Adicionar</a>
                             </td>
@@ -47,17 +47,19 @@
                 <tbody>
                     <tfoot>
                         <tr>
-                            <th colspan="4">
+                            <th colspan="3">
                                 Finalizar
                             </th>
                             <% var max = 0 %>
                             <% for(let i = 0; i < books.length; i++) { %>
-                                <% max += parseFloat(books[i].books.preco * books[i].quantidade); %>
+                                <% max += books[i].books.preco * books[i].quantidade; %>
+                                <% var maxQtd = books[i].quantidade %>
                            <% } %>
-                            <td colspan="3">
+                            <td colspan="2">
                                 R$
-                               <%= parseFloat(max).toFixed(2) %>
+                               <%= max.toFixed(2) %>
                             </td>
+                            <td colspan="2">Quantidade: <%= maxQtd %></td>
                         </tr>
                     </tfoot>
             </table>

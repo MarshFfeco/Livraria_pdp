@@ -13,7 +13,7 @@ exports.register = async function(req, res) {
 
         if(register.message.length > 0) {
             req.flash('errors', register.message);
-            returnreq.session.save(() => res.redirect(`back`));
+            return req.session.save(() => res.redirect(`back`));
         }
 
         req.session.user = register.user;

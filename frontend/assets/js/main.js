@@ -11,11 +11,11 @@ import "../css/adm.css"
 import "../css/message.css"
 import "../css/table.css"
 import "../css/carrinho.css"
+import "../css/post.css"
+import "../css/search.css"
 
 import * as img from "../img/image_erro.png";
-import * as green from "../img/green.png";
 import * as logo from "../img/logo.png";
-import * as gulliver from "../img/books/v_guliver.jpg"
 
 
 import load from "./load"
@@ -41,11 +41,10 @@ function fechar() {
 /* FIM DO SUMIR COM FLASH-MESSAGE  */
 
 /* CHAMADA A TELA DE LOAD */
-document.body.addEventListener("load", exeAtivar(load()));
+const conteudo = document.getElementById('content-prin');
+const loadind = document.getElementById("load");
 
-function exeAtivar(obj) {
-    obj;
-}
+document.body.addEventListener("load", load(conteudo, loadind));
 /* FIM DA CHAMADA A TELA DE LOAD */
 
 /* CHAMA A VALIDAÇÃO DO FORMULÁRIO DE REGISTRO */
@@ -81,7 +80,7 @@ const mobileMenu = document.getElementById("mobile_menu");
 const mobileNav = new MobileNav(mobileMenu, nav, options)
 
 const mudaCor = new MudaCor(nav, mobileMenu, mobileNav, options);
-mudaCor.init();
+
 /* FIM DO MENU DE NAVEGAÇÃO */
 
 /* CARROSSEL */
@@ -92,7 +91,17 @@ if(isUrl("http://localhost:3000/")) {
     const maxItens = itens.length;
 
     const mainSlider = new MainSlider(controls, itens, maxItens);
-    setInterval(function() {mainSlider.movement()}, 5000);
+
+    var auto = setInterval(function() {mainSlider.movement()}, 5000);
+
+    controls[0].addEventListener("click", e => { 
+        clearInterval(auto);
+        auto = setInterval(function() {mainSlider.movement()}, 5000);
+     });
+     controls[1].addEventListener("click", e => { 
+        clearInterval(auto);
+        auto = setInterval(function() {mainSlider.movement()}, 5000);
+     });
 }
 /* FIM MAIN SLIDER */
 

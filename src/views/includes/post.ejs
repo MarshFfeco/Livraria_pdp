@@ -1,0 +1,35 @@
+<div class="tela">
+    <% books.forEach((book) => {  %>
+        <div class="post-limit">
+            <div class="post-title">
+                <a href="/book/<%= book._id %>"><h3><%= book.titulo %></h3></a>
+            </div>
+
+            <div class="post-autor">
+                <p>Por <%= book.autor %></p>
+            </div>
+
+            <div class="post-resume">
+                <p><%= book.resumo %></p>
+            </div>
+
+            <div class="post-buttons">
+                <!-- COMPRAR -->
+                <div class="button-buy">
+                    <button aria-label="buy" class="btn book-container-buy inline">Comprar</button>
+                </div>
+                <!-- FIM DO COMPRAR -->
+                
+                <!-- ADICIONAR -->
+                <div class="button-add">
+                    <button aria-label="wish cart" class="btn book-container-add outline" onclick="location.href = '/carrinho/<%= book._id %>';">Adicionar à lista</button>
+                </div>
+                <!-- FIM DO ADICIONAR -->
+            </div>
+
+            <div class="post-image">
+                <img src="<%= book.capa %>" alt="">
+            </div>
+        </div>
+    <% }); %>
+</div>

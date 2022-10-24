@@ -1,18 +1,32 @@
-export default function ChangeColor(nav, mobileMenu, mobileNav, options) {
-    this.nav = nav;
+export default class ChangeColor {
+    constructor(nav, mobileMenu, mobileNav, options) {
+        this.nav = nav;
+        //MOBILE
+        this.mobileMenu = mobileMenu;
+        this.mobileNav = mobileNav;
+        this.options = options;
+        this.searchButton = document.getElementById("buttonSearchOpen");
 
-    //MOBILE
-    this.mobileMenu = mobileMenu;
-    this.mobileNav = mobileNav;
-    this.options = options;
+        this.init();
+    }
 
     //CHAMA AS FUNÇÕES
-    this.init = function(){
+    init(){
         this.validationWidth();
         this.event();
     };
 
-    this.event = function() {
+    /* PESQUISAR */
+    search() {
+        const activeSearch = options.querySelector("#search");
+        const activeSearchVisible = options.querySelector(".input-search");
+
+        activeSearch.classList.toggle("active-search");
+        activeSearchVisible.classList.toggle("active-search-invisible");
+    }
+    /* FIM DO PESQUISAR */
+
+    event() {
         window.addEventListener("scroll", e => {
             this.change();
         });
@@ -20,9 +34,12 @@ export default function ChangeColor(nav, mobileMenu, mobileNav, options) {
             this.change();
             this.validationWidth();
         })
+        this.searchButton.addEventListener("click", e => {
+            this.search();
+        })
     };
 
-    this.validationWidth = function() {
+    validationWidth() {
         if(window.innerWidth <= 999) {
             this.mobileNav.init();
             return;
@@ -32,19 +49,19 @@ export default function ChangeColor(nav, mobileMenu, mobileNav, options) {
     };
     
     //MUDA A COR DA NAV
-    this.change = function(){
+    change(){
         const result = this.verifiYPosition();
 
         if(!result != 0) {
-            nav.style.backgroundColor = "#ffffff";
+            this.nav.style.backgroundColor = "#ffffff";
             return;
         } 
 
-        nav.style.backgroundColor = "#fbfbfbbf";
+        this.nav.style.backgroundColor = "#fbfbfbbf";
     };
 
     //VERIFICA SE DESCEU A TELA
-    this.verifiYPosition = function(){
+    verifiYPosition(){
         const canChange = this.canChange();
 
         if(!canChange) {
@@ -56,11 +73,11 @@ export default function ChangeColor(nav, mobileMenu, mobileNav, options) {
     };
 
     //VERIFICA SE O MOBILE MENU ESTÁ ATIVADO
-    this.canChange = function() {
+    canChange() {
         const options = document.getElementById("options");
 
         if(options.classList.contains("active")) {
-            nav.style.backgroundColor = "#fbfbfbbf";
+            this.nav.style.backgroundColor = "#fbfbfbbf";
             return false;
         } 
 
