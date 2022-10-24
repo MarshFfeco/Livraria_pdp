@@ -40,8 +40,6 @@
 
         display: flex;
         justify-content: center;
-        
-        background-color: blue;
 
         grid-area: image;
 
@@ -51,6 +49,8 @@
     .universal-slider-contents .main-slider-img img {
         width: 100%;
         height: 100%;
+
+        object-fit: contain;
     }
 
     .universal-slider-contents .main-slider-title { 
@@ -231,6 +231,8 @@
 .other-slider-img img {
     width: 100%;
     height: 100%;
+
+    object-fit: cover;
 }
 
 .other-slider-title{

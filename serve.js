@@ -3,15 +3,6 @@ require("dotenv").config;
 const express = require("express");
 const app = express();
 
-const helmet = require("helmet");
-
-/*app.use(helmet.contentSecurityPolicy({
-    useDefaults: true,
-    directives: {
-      "img-src": ["'self'", "https: data:"]
-    }
-}));  */
-
 const mariaDB = require("./database/connection");
 
 const flash = require("connect-flash");

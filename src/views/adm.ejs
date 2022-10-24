@@ -5,6 +5,14 @@
     <%- include("includes/message")%>
     <!-- FIM MESSAGES -->
 
+    <div class="card margin-center">
+        <p><%= user.nome %></p>
+        <p><%= user.email %></p>
+
+        <button class="btn inline">Editar</button>
+        <button class="btn outline">Excluir</button>
+    </div>
+
     <!-- TEM LIVROS CADASTRADOS? -->
     <% if(books.length > 0) { %>
         <h2 style="margin-top: 50px;">Meus Livros</h2>
@@ -173,7 +181,7 @@
                     <!-- CAMPO PARA TITULO -->
                     <div class="textfield textfieldAdm">
                         <label>Id do livro</label>
-                        <input type="text" name="Idlivro" value="<%= editbook._id %>" disabled required>
+                        <input type="text" name="Idlivro" value="<%= editbook._id %>" required>
                     </div>
                     <!-- FIM DOCAMPO PARA TITULO -->
 
