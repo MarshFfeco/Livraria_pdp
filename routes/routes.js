@@ -31,6 +31,8 @@ route.post("/adm/:id/RegisterBookComplete", loginRequired, adm.register);
 route.post("/adm/:id/EditBookComplete", loginRequired, adm.editBook);
 route.get("/adm/:id/Edit", loginRequired, adm.edit);
 route.get("/adm/:id/Delete", loginRequired, adm.delete);
+route.get("/adm/:id/editUser", loginRequired, loginorsignup.editUser);
+route.get("/adm/:id/deleteUser", loginRequired, loginorsignup.deleteUser);
 /* FIM DAS ROTAS DO ADM */
 
 /* ROTAS DO CARRINHO */

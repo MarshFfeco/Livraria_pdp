@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
 
+const BookSchema = require("./Adm");
+const BookModel = mongoose.model('Book_Register', BookSchema.BookSchema);
+
 const RegisterSchema = new mongoose.Schema({
     nome: { type: String, require: true },
     email: { type: String, required: true },
@@ -57,6 +60,26 @@ class LoginOrSignUp {
        this.user = await RegisterModel.findOne({ email: this.body.email });
 
        if(this.user) this.message.push("Usuário já existe");
+    }
+
+    async userEdit() {
+        console.log(this.body);
+    }
+
+    async userDelete() {
+        var books = await BookModel.find().populate("user");
+
+        if(!books) return this.message.push("Erro ao tentar Deletar usuário");
+
+        books = books.filter(books => { return books.user._id == this.body ? books._id : null });
+
+        for(let i = 0; i < books.length; i++) {
+            await BookModel.findOneAndDelete(books[i]._id);
+        }
+
+        await RegisterModel.findOneAndDelete({ _id: this.body });
+    
+        return;
     }
 
     valida() {

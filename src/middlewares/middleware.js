@@ -8,7 +8,8 @@ exports.sessionUser = function(req, res, next) {
 exports.rotasExist = function(req, res, next) {
     res.locals.url = req.url;
     res.render("erro", {
-        title: "ERRO"
+        title: "ERRO",
+        msg: `Essa rota ${req.url} não existe`
     });
     next();
 };

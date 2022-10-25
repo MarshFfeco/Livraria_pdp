@@ -21,9 +21,8 @@ exports.register = async function(req, res) {
         return req.session.save(() => res.redirect(`/`));
         
     } catch (error) {
-        return res.render("erro", {
-            title: "Erro de Cadastro"
-        });
+        req.flash('errors', 'Erro ao tentar se registrar');
+        return req.session.save(() => res.redirect(`back`));
     }
 };
 
@@ -42,13 +41,52 @@ exports.login = async function(req, res) {
         return req.session.save(() => res.redirect(`/`));
        
     } catch (error) {
-        res.render("erro", {
-            title: "Erro de Login"
-        })
+        req.flash('errors', 'Login não efetuado');
+        return req.session.save(() => res.redirect(`back`));
     }
 }
 
 exports.logout = function(req, res) {
     req.session.destroy();
     res.redirect(`/`);
+}
+
+exports.editUser = async function(req, res) {
+    let idUser = req.session.user._id;
+
+    if(!idUser) return res.redirect(`back`)
+
+    const userEdit = new Login(iduser);
+    await userEdit.userEdit();
+
+    if(userEdit.message.length > 0) {
+        req.flash('errors', userEdit.message);
+        return req.session.save(() => res.redirect("back"));
+    }
+
+    req.flash('success', `Usuário editado com sucesso.`);
+    req.session.save(() => res.redirect(`/adm/${req.session._id}`));
+    return;
+}
+
+exports.deleteUser = async function(req, res) {
+    try {
+        let idUser = req.session.user._id;
+
+        if(!idUser) return res.redirect(`back`)
+
+        const userDelete = new Login(idUser);
+        await userDelete.userDelete();
+
+        if(userDelete.message.length > 0) {
+            req.flash('errors', userDelete.message);
+            return req.session.save(() => res.redirect("back"));
+        }
+
+        req.session.destroy();
+        res.redirect(`/`);
+    } catch (error) {
+        req.flash('errors', 'Seu usuário não foi deletado');
+        return req.session.save(() => res.redirect(`back`));
+    }
 }

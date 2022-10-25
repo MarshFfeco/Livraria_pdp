@@ -67,22 +67,6 @@ a {
     align-items: center;
 }
 
-.render {
-    visibility: visible;
-
-    opacity: 1;
-
-    transition: all 0.2s;
-}
-
-.noRender {
-    visibility: hidden;
-
-    opacity: 0;
-
-    transition: all 0.2s;
-}
-
 body {
     min-width: 350px;
 }

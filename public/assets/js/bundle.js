@@ -578,8 +578,8 @@ var ValidateFormRegister = /*#__PURE__*/function (_ValidateForm) {
     key: "isPassword",
     value: function isPassword() {
       var valid = true;
-      var pass = this.form.getElementsByTagName("input")[2];
-      var rePass = this.form.getElementsByTagName("input")[3];
+      var pass = this.form.getElementsByTagName("input")[3];
+      var rePass = this.form.getElementsByTagName("input")[4];
 
       if (pass.value.length < 9) {
         valid = valid && false;

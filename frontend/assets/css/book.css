@@ -5,10 +5,6 @@
     margin: 50px auto;
 
     display: grid;
-    /*
-    grid-template-areas: 
-    " figure container"
-    " figure descript ";*/
 
     grid-template-columns: 1fr 2fr;
     grid-template-rows: auto;

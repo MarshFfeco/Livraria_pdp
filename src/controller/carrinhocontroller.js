@@ -27,7 +27,7 @@ exports.addBook = async function(req, res) {
     } catch (error) {
         res.render("erro", {
             title: "Erro de Login",
-            url: "Erro"
+            msg: "Erro na hora do Login"
         });
     }
 

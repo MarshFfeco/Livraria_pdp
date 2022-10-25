@@ -9,8 +9,8 @@ export default class ValidateFormRegister extends ValidateForm {
     isPassword() {
         let valid = true;
 
-        const pass = this.form.getElementsByTagName("input")[2];
-        const rePass = this.form.getElementsByTagName("input")[3];
+        const pass = this.form.getElementsByTagName("input")[3];
+        const rePass = this.form.getElementsByTagName("input")[4];
 
         if(pass.value.length < 9) {
             valid = valid && false;

@@ -80,9 +80,9 @@ class Adm {
     delete = async function(id) {
         if(typeof id !== 'string') return;
 
-        const contato = await BookModel.findOneAndDelete({_id: id});
+        const book = await BookModel.findOneAndDelete({_id: id});
 
-        return contato;
+        return book;
       };
 
     valida() {

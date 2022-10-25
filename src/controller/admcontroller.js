@@ -20,7 +20,6 @@ exports.index = async function(req, res) {
             editbook: idBook
         });
     } catch (error) {
-        console.log(error)
         req.flash('errors', error.message);
         req.session.save(() => res.redirect(`back`));
     }
@@ -92,3 +91,6 @@ exports.delete = async function(req, res) {
     req.session.save(() => res.redirect(`/adm/${deleteBook.user._id}`));
     return;
 }
+
+
+
