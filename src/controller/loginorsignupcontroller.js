@@ -51,22 +51,34 @@ exports.logout = function(req, res) {
     res.redirect(`/`);
 }
 
-exports.editUser = async function(req, res) {
-    let idUser = req.session.user._id;
+exports.editUser = function(req, res) {
+    res.render("editUser", {
+        title: "Edita Usuário"
+    })
+}
 
-    if(!idUser) return res.redirect(`back`)
+exports.editUserComplete = async function(req, res) {
+    try {
+        let idUser = req.session.user._id;
 
-    const userEdit = new Login(iduser);
-    await userEdit.userEdit();
+        if(!idUser) return res.redirect(`back`)
 
-    if(userEdit.message.length > 0) {
-        req.flash('errors', userEdit.message);
-        return req.session.save(() => res.redirect("back"));
+        const userEdit = new Login(req.body);
+        await userEdit.userEdit(idUser);
+
+        if(userEdit.message.length > 0) {
+            req.flash('errors', userEdit.message);
+            return req.session.save(() => res.redirect("back"));
+        }
+
+        req.flash('success', `Usuário editado com sucesso.`);
+        req.session.save(() => res.redirect(`/adm/${req.session._id}`));
+        return;
+    } catch (error) {
+        req.flash('errors', 'Erro ao tentar editar o usuário');
+        return req.session.save(() => res.redirect(`back`));
     }
-
-    req.flash('success', `Usuário editado com sucesso.`);
-    req.session.save(() => res.redirect(`/adm/${req.session._id}`));
-    return;
+    
 }
 
 exports.deleteUser = async function(req, res) {
@@ -87,6 +99,6 @@ exports.deleteUser = async function(req, res) {
         res.redirect(`/`);
     } catch (error) {
         req.flash('errors', 'Seu usuário não foi deletado');
-        return req.session.save(() => res.redirect(`back`));
+        return req.session.save(() => res.redirect(`/`));
     }
 }

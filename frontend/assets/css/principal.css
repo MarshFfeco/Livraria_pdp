@@ -47,6 +47,10 @@ a {
     z-index: -1;
 }
 
+.editUser {
+    min-height: 90vh;
+}
+
 .quadrado{
     width: 100%;
     height: 140%;

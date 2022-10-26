@@ -39,13 +39,33 @@ class Carrinho {
 
     async addMore(quantidade) {
         try {
+            const book = await this.buscarLivro(this.idBook.books);
+            if(this.message.length > 0) return;
+            const maxQuantidade = book.books.quantidade;
+
             quantidade += 1;
-            this.cart = await CartModel.findOneAndUpdate({ books: this.idBook.books } , { quantidade: quantidade }, { new: true });
-            return;
+
+            if(quantidade == maxQuantidade || quantidade > maxQuantidade) { 
+                this.message.push("Quantidade maior que a de estoque");
+            }
+
+            if(this.message.length > 0) return;
+
+            return this.cart = await CartModel.findOneAndUpdate({ books: this.idBook.books } , { quantidade: quantidade }, { new: true });
+
         } catch (error) {
             this.message.push("Erro ao tentar adicionar mais uma unidade no Carrinho");
             return;
         }
+    }
+
+    async buscarLivro(id) {
+        const book = await CartModel.findOne({ books: id }).populate("books")
+
+        if(!book) this.message.push("Nenhum livro encontrado");
+        if(books.book.quantidade) this.message.push("somente uma únidade de Ebook");
+
+        return book;
     }
 
     async isEqual() {
@@ -53,7 +73,6 @@ class Carrinho {
     }
 
     async buscarLivros() {
-
         const books = await CartModel.find().populate("books");
 
         if(!books) return this.message.push("Nenhum livro encontrado");

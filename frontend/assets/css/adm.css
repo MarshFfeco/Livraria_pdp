@@ -6,8 +6,8 @@
 }
 
 .user {
-    width: 80%;
-    height: 70px;
+    width: auto;
+    height: auto;
 
     margin: 50px auto;
 
@@ -17,27 +17,36 @@
 
 }
 
-.user ul {
-    width: 100%;
-    height: 100%;
+.userBook {
+    height: auto;
 
-    justify-content: space-evenly;
-    align-items: center;
+}
+
+.user ul {
+    width: auto;
+    height: auto;
+
+    flex-wrap: wrap;
 }
 
 .user li {
-    width: 100%;
-    height: 100%;
+    width: 150px;
 
     border-right: 1px solid var(--shadow-color);
 }
 
-.user li  h4, a  {
-    height: 100%;
+.user li  h4, a, p, figure, svg {
     display: flex;
-    
+
     align-items: center;
     justify-content: center;
+
+    text-align: center;
+}
+
+.user li svg {
+    margin-left: auto;
+    margin-right: auto;
 
     vertical-align: middle;
 }
@@ -176,7 +185,7 @@ details[open] summary h2 {
 }
 
 @media (max-width: 600px) {
-    .user li:first-child {
-        display: none;
+    .user li {
+        border: none;
     }
 }

@@ -10,7 +10,7 @@
     <div class="user flex-center">
         <ul class="flex-center">
             <li>
-                <svg width="100%" height="100%" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="50px" height="50px" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M25 22.9167C26.6481 22.9167 28.2593 22.4279 29.6297 21.5123C31.0001 20.5966 32.0682 19.2951 32.699 17.7724C33.3297 16.2497 33.4947 14.5741 33.1732 12.9576C32.8516 11.3411 32.058 9.85622 30.8925 8.69078C29.7271 7.52534 28.2422 6.73167 26.6257 6.41013C25.0092 6.08858 23.3336 6.25361 21.8109 6.88434C20.2882 7.51507 18.9867 8.58318 18.071 9.95359C17.1554 11.324 16.6666 12.9352 16.6666 14.5833C16.6666 16.7935 17.5446 18.9131 19.1074 20.4759C20.6702 22.0387 22.7898 22.9167 25 22.9167Z" fill="#239273"/>
                     <path d="M37.5001 43.75C38.0526 43.75 38.5825 43.5305 38.9732 43.1398C39.3639 42.7491 39.5834 42.2192 39.5834 41.6667C39.5834 37.7989 38.047 34.0896 35.3121 31.3547C32.5771 28.6198 28.8678 27.0833 25.0001 27.0833C21.1323 27.0833 17.423 28.6198 14.6881 31.3547C11.9532 34.0896 10.4167 37.7989 10.4167 41.6667C10.4167 42.2192 10.6362 42.7491 11.0269 43.1398C11.4176 43.5305 11.9475 43.75 12.5001 43.75H37.5001Z" fill="#239273"/>
                 </svg>
@@ -24,8 +24,27 @@
 
     <!-- TEM LIVROS CADASTRADOS? -->
     <% if(books.length > 0) { %>
-        <h2 style="margin-top: 50px;">Meus Livros</h2>
-        <%- include("includes/table") %>
+        <h2 style="margin-top: 50px;">Livros</h2>
+        <% books.forEach((book) => { %>
+        <div class="user">
+            <ul class="flex-center">
+                <li>
+                    <figure>
+                        <img src="<%= book.capa %>" alt="Foto da capa do livor" width="100px">
+                    </figure>
+                </li>  
+                <li><p><%= book.titulo %></p></li>
+                <li><p><%= book.autor %></p></li>
+                <li><p><%= book.editora %></p></li>
+                <li><p>R$<%= book.preco %></p></li>
+                <li><p><%= book.dataLancamento.toLocaleDateString('pt-br') %></p></li>
+                <li><p><%= book.user.nome %></p></li>
+                <li><a href="/adm/<%= book._id %>/Edit" style="color: #239273;">Editar</a></li>
+                <li><a href="/adm/<%= book._id %>/Delete" style="color: #ff6347;">Excluir</a></li>
+            </ul>
+        </div>
+    <% }) %>
+            
     <% } else { %>
         <div class="message-book flex-center">
             <h4>Nenhum Livro cadastrado</h4>
@@ -51,6 +70,12 @@
             <form action="/adm/<%= user._id%>/RegisterBookComplete" method="post">
                 <input type="hidden" name="_csrf" value=<%= csrfToken %>>
                 <div class="gridColumn margin-center">
+                    <!-- CAMPO PARA QUANTIDADE -->
+                    <div class="textfield textfieldAdm">
+                        <label>Quantidade</label>
+                        <input type="number" name="quantidade" placeholder="Deixe vazio caso seja Ebook">
+                    </div>
+            
                     <!-- CAMPO PARA TITULO -->
                     <div class="textfield textfieldAdm">
                         <label>Título</label>
@@ -190,6 +215,12 @@
                     <input type="hidden" name="Idlivro" value="<%= editbook._id %>" required>
 
                     <div class="gridColumn">
+                        <!-- CAMPO PARA QUANTIDADE -->
+                        <div class="textfield textfieldAdm">
+                            <label>Quantidade</label>
+                            <input type="number" name="quantidade" value="<%= editbook.quantidade %>" required>
+                        </div>
+
                         <!-- CAMPO PARA TITULO -->
                         <div class="textfield textfieldAdm">
                             <label>Título</label>
@@ -228,7 +259,7 @@
                         <!-- FIM DO CAMPO PARA URL IMG -->
                         <div class="textfield textfieldAdm">
                             <label>Data de lançamento</label>
-                            <input type="date" name="dataLancamento" required>
+                            <input type="date" name="dataLancamento"  required>
                         </div>
                         <!-- FIM DO CAMPO PARA URL IMG -->
 

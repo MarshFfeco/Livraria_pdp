@@ -9,6 +9,9 @@ const RegisterSchema = new mongoose.Schema({
     nome: { type: String, require: true },
     email: { type: String, required: true },
     senha: { type: String, required: true },
+    endereco: { type: String },
+    telefone: { type: Number },
+    nascimento: { type: Date },
 });
   
 const RegisterModel = mongoose.model('Register', RegisterSchema);
@@ -62,8 +65,16 @@ class LoginOrSignUp {
        if(this.user) this.message.push("Usuário já existe");
     }
 
-    async userEdit() {
+    async userEdit(id) {
+        this.cleanUp();
+
+        const salt = bcrypt.genSaltSync();
+
+        this.body.senha = bcrypt.hashSync(this.body.senha, salt);
+
+        console.log(id);
         console.log(this.body);
+        this.user = await RegisterModel.findByIdAndUpdate(id, this.body, { new: true });
     }
 
     async userDelete() {
@@ -91,16 +102,13 @@ class LoginOrSignUp {
     }
 
     cleanUp() {
-        for(const key in this.body) {
-            if(typeof this.body[key] !== "string") {
-                this.body[key] = "";
-            }
-        }
-
         this.body = {
             nome: this.body.nome,
             email: this.body.email,
-            senha: this.body.senha
+            senha: this.body.senha,
+            endereco: this.body.endereco,
+            telefone: this.body.telefone,
+            nascimento: this.body.nascimento,
         }
     }
 }

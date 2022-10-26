@@ -15,13 +15,13 @@ exports.addBook = async function(req, res) {
         let idBook = req.params.id;
 
         const cartAdd = new Carrinho(idBook, req.session.user);
-        await cartAdd.addBook()
+        await cartAdd.addBook();
 
         if(cartAdd.message.length > 0) {
             req.flash('errors', cartAdd.message);
             return req.session.save(() => res.redirect(`back`));
         }
-        
+
         req.flash('success', `Livro adicionado ao carrinho.`);
         return req.session.save(() => res.redirect(`back`));
     } catch (error) {

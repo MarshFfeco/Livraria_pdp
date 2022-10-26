@@ -28,20 +28,31 @@
                     <% books.forEach((book, index) => {%>
                        <tr>
                             <td><%= book.books.titulo %></td>
+
                             <td>
                                 <figure>
                                     <img src="<%= book.books.capa %>" alt="Foto da capa do livor" width="100px">
                                 </figure>
                             </td>
+
                             <td>R$<%= book.books.preco.toFixed(2) %></td>
-                            <td><%= book.quantidade %></td>
+
+                            <% if(book.books.quantidade) { %> 
+                                <td><%= book.quantidade %></td> 
+                            <% } else { %>
+                                <td>Ebook</td>
+                            <% }  %>
+
                             <td id="total">R$<%= (book.books.preco * book.quantidade).toFixed(2) %></td>
+
                             <td>
                                 <a href="/carrinho/<%= book.books._id %>" class="edit-book">Adicionar</a>
                             </td>
+
                             <td>
                                 <a href="/carrinho/<%= book.books._id %>/delete" class="delete-book">Excluir</a>
                             </td>
+
                         </tr>
                     <% }); %>
                 <tbody>

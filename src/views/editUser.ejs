@@ -1,0 +1,62 @@
+<%- include("includes/head")%>
+
+<!-- FUNDO VERDE -->
+<div class="limit-home">
+    <div class="quadrado"></div>
+</div>
+<!-- FIM DO FUNDO VERDE -->
+
+<!-- MESSAGES -->
+<%- include("includes/message")%>
+<!-- FIM MESSAGES -->
+
+<main class="editUser flex-center">    
+        <!--ESTE É PARA O CADASTRO-->
+        <div class="card" style="margin: 50px 0px;">
+            <h2>Editar Usuário</h2>
+            <form action="/adm/<%= user._id %>/editUserComplete" method="POST">
+                <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+
+                <!--CAMPO PARA USUARIO-->
+                <div class="textfield textfieldLogSig">
+                    <label >Nome</label>
+                    <input type="text" name="nome" value="<%= user.nome %>" required>
+                </div>
+
+                <!--CAMPO PARA EMAIL-->
+                <div class="textfield textfieldLogSig">
+                    <label>E-mail</label>
+                    <input type="email" name="email" value="<%= user.email %>" required>
+                </div>
+
+                <!--CAMPO PARA ENDERECO-->
+                <div class="textfield textfieldLogSig">
+                    <label>Endereço</label>
+                    <input type="text" name="endereco" value="<%= user.endereco %>">
+                </div>
+
+                <!--CAMPO PARA TELEFONE-->
+                <div class="textfield textfieldLogSig">
+                    <label>Telefone</label>
+                    <input type="tel" pattern="[0-9]{2}[0-9]{5}[0-9]{4}" name="telefone" value="<%= user.telefone %>">
+                </div>
+
+                <!--CAMPO PARA DATA NASCIMENTO-->
+                <div class="textfield textfieldLogSig">
+                    <label>Data de Nascimento</label>
+                    <input type="date" name="nascimento" >
+                </div>
+
+                <!--CAMPO PARA SENHA-->
+                <div class="textfield textfieldLogSig">
+                    <label>Nova Senha</label>
+                    <input type="password" name="senha">
+                </div>
+
+                <!--BOTAO PARA FAZER O CADASTRO-->
+                <button type="submit" class="btn outline">Editar</button>
+            </form>
+        </div>
+</main>
+
+<%- include("includes/footer")%>
