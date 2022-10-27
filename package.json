@@ -1,6 +1,6 @@
 {
   "name": "livrariasaber",
-  "version": "3.1.2",
+  "version": "3.2.0",
   "description": "",
   "main": "serve.js",
   "scripts": {
@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "boleto-pdf": "^0.4.0",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^4.6.0",
     "csurf": "^1.11.0",
@@ -32,6 +33,7 @@
     "ejs": "^3.1.8",
     "express": "^4.18.1",
     "express-session": "^1.17.3",
+    "fs": "^0.0.1-security",
     "helmet": "^6.0.0",
     "mongoose": "^6.6.5",
     "validator": "^13.7.0"

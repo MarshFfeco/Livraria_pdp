@@ -9,33 +9,37 @@
     width: auto;
     height: auto;
 
-    margin: 50px auto;
+    margin-left: auto;
+    margin-right: auto;
 
-    padding: 10px 5px;
-
-    border-radius: 20px;
-
+    margin-top: 10px;
 }
 
 .userBook {
     height: auto;
-
 }
 
 .user ul {
     width: auto;
     height: auto;
 
-    flex-wrap: wrap;
+    padding: 5px 0;
+
+    align-items: center;
+
+    border: 1px solid black;
+    border-radius: 10px;
 }
 
 .user li {
-    width: 150px;
+    width: auto;
+
+    padding: 0 10px;
 
     border-right: 1px solid var(--shadow-color);
 }
 
-.user li  h4, a, p, figure, svg {
+.user li .user h4, .user a, .user p, .user figure, .user svg {
     display: flex;
 
     align-items: center;
@@ -184,7 +188,10 @@ details[open] summary h2 {
 
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
+    .user ul {
+        flex-wrap: wrap;
+    }
     .user li {
         border: none;
     }

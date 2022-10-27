@@ -7,6 +7,7 @@ const book = require("../src/controller/bookcontroller")
 const adm = require("../src/controller/admcontroller");
 const carrinho = require("../src/controller/carrinhocontroller");
 const search = require("../src/controller/searchcontroller");
+const boleto = require("../src/controller/controllerBoleto");
 
 const { loginRequired } = require("../src/middlewares/middleware")
 
@@ -46,5 +47,9 @@ route.get("/carrinho/:id/delete", loginRequired, carrinho.delete);
 /* ROTAS DE PESQUISA  */
 route.get("/search", search.index);
 /*  FIMDAS ROTAS DE PESQUISA */
+
+/* ROTA DO BOLETO */
+route.get("/comprar/:id", loginRequired, boleto.boleto);
+/* FIM DA ROTA DO BOLETO */
 
 module.exports = route;

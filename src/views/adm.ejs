@@ -26,7 +26,7 @@
     <% if(books.length > 0) { %>
         <h2 style="margin-top: 50px;">Livros</h2>
         <% books.forEach((book) => { %>
-        <div class="user">
+        <div class="user flex-center">
             <ul class="flex-center">
                 <li>
                     <figure>
@@ -38,7 +38,6 @@
                 <li><p><%= book.editora %></p></li>
                 <li><p>R$<%= book.preco %></p></li>
                 <li><p><%= book.dataLancamento.toLocaleDateString('pt-br') %></p></li>
-                <li><p><%= book.user.nome %></p></li>
                 <li><a href="/adm/<%= book._id %>/Edit" style="color: #239273;">Editar</a></li>
                 <li><a href="/adm/<%= book._id %>/Delete" style="color: #ff6347;">Excluir</a></li>
             </ul>
