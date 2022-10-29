@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');   
+const mongoose = require('mongoose');  
 
-exports.BookSchema = BookSchema = new mongoose.Schema({
+exports.BookSchema = BookSchema = new mongoose.Schema ({
     titulo: { type: String, require: true },
     autor: { type: String, required: true },
     editora: { type: String, required: true },

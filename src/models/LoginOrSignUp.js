@@ -9,6 +9,7 @@ const RegisterSchema = new mongoose.Schema({
     nome: { type: String, require: true },
     email: { type: String, required: true },
     senha: { type: String, required: true },
+    adm: { type: Boolean, default: false },
     endereco: { type: String },
     telefone: { type: Number },
     nascimento: { type: Date },
@@ -16,14 +17,18 @@ const RegisterSchema = new mongoose.Schema({
   
 const RegisterModel = mongoose.model('Register', RegisterSchema);
 
-module.exports = RegisterModel;
-
 class LoginOrSignUp {
     constructor(body) {
         this.body = body,
         this.message = []
         this.user = null;
     }
+
+    async users() {
+        var users = await RegisterModel.find();
+ 
+        return users;
+     }
 
     async register() {
         this.valida();
@@ -72,8 +77,6 @@ class LoginOrSignUp {
 
         this.body.senha = bcrypt.hashSync(this.body.senha, salt);
 
-        console.log(id);
-        console.log(this.body);
         this.user = await RegisterModel.findByIdAndUpdate(id, this.body, { new: true });
     }
 

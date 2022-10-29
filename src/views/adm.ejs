@@ -6,7 +6,6 @@
     <!-- FIM MESSAGES -->
 
     <h2>Perfil</h2>
-
     <div class="user flex-center">
         <ul class="flex-center">
             <li>
@@ -23,242 +22,98 @@
     </div>
 
     <!-- TEM LIVROS CADASTRADOS? -->
-    <% if(books.length > 0) { %>
-        <h2 style="margin-top: 50px;">Livros</h2>
-        <% books.forEach((book) => { %>
-        <div class="user flex-center">
-            <ul class="flex-center">
-                <li>
-                    <figure>
-                        <img src="<%= book.capa %>" alt="Foto da capa do livor" width="100px">
-                    </figure>
-                </li>  
-                <li><p><%= book.titulo %></p></li>
-                <li><p><%= book.autor %></p></li>
-                <li><p><%= book.editora %></p></li>
-                <li><p>R$<%= book.preco %></p></li>
-                <li><p><%= book.dataLancamento.toLocaleDateString('pt-br') %></p></li>
-                <li><a href="/adm/<%= book._id %>/Edit" style="color: #239273;">Editar</a></li>
-                <li><a href="/adm/<%= book._id %>/Delete" style="color: #ff6347;">Excluir</a></li>
-            </ul>
-        </div>
-    <% }) %>
-            
-    <% } else { %>
-        <div class="message-book flex-center">
-            <h4>Nenhum Livro cadastrado</h4>
-            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	        viewBox="0 0 121.669 121.669" style="enable-background:new 0 0 121.669 121.669;" xml:space="preserve">
-                <path d="M60.834,121.669C27.291,121.669,0,94.379,0,60.834C0,27.29,27.291,0,60.834,0s60.834,27.29,60.834,60.834
-                C121.669,94.379,94.378,121.669,60.834,121.669z M60.834,6C30.599,6,6,30.599,6,60.834c0,30.236,24.599,54.835,54.834,54.835
-                s54.834-24.599,54.834-54.835C115.669,30.599,91.07,6,60.834,6z"/>
-                <path d="M78.843,97.437h-6c0-5.642-5.477-10.231-12.208-10.231s-12.208,4.59-12.208,10.231h-6c0-8.95,8.168-16.231,18.208-16.231
-                S78.843,88.486,78.843,97.437z"/>
-                <path d="M32.14,69.218c-7.853,0-14.242-7.115-14.242-15.86h6c0,5.437,3.697,9.86,8.242,9.86s8.242-4.423,8.242-9.86h6
-                C46.382,62.103,39.993,69.218,32.14,69.218z"/>
-                <path d="M89.529,69.218c-7.854,0-14.242-7.115-14.242-15.86h6c0,5.437,3.697,9.86,8.242,9.86s8.242-4.423,8.242-9.86h6
-                C103.771,62.103,97.382,69.218,89.529,69.218z"/>
-            </svg>
-        </div>
-    <% } %>
-    <!-- FIM DO TEM LIVROS CADASTRADOS? -->
+    <% if(user.adm) { %>
+        <% if(books.length > 0) { %>
+            <h2 style="margin-top: 50px;">Livros</h2>
+            <% books.forEach((book) => { %>
+            <div class="user flex-center">
+                <ul class="flex-center">
+                    <li>
+                        <figure>
+                            <img src="<%= book.capa %>" alt="Foto da capa do livor" width="100px">
+                        </figure>
+                    </li>  
+                    <li><p><%= book.titulo %></p></li>
+                    <li><p><%= book.autor %></p></li>
+                    <li><p><%= book.editora %></p></li>
+                    <li><p>R$<%= book.preco %></p></li>
+                    <li><p><%= book.dataLancamento.toLocaleDateString('pt-br') %></p></li>
+                    <li><a href="/adm/<%= book._id %>/Edit" style="color: #239273;">Editar</a></li>
+                    <li><a href="/adm/<%= book._id %>/Delete" style="color: #ff6347;">Excluir</a></li>
+                </ul>
+            </div>
+        <% }) %>
+                
+        <% } else { %>
+            <div class="message-book flex-center">
+                <h4>Nenhum Livro cadastrado</h4>
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 121.669 121.669" style="enable-background:new 0 0 121.669 121.669;" xml:space="preserve">
+                    <path d="M60.834,121.669C27.291,121.669,0,94.379,0,60.834C0,27.29,27.291,0,60.834,0s60.834,27.29,60.834,60.834
+                    C121.669,94.379,94.378,121.669,60.834,121.669z M60.834,6C30.599,6,6,30.599,6,60.834c0,30.236,24.599,54.835,54.834,54.835
+                    s54.834-24.599,54.834-54.835C115.669,30.599,91.07,6,60.834,6z"/>
+                    <path d="M78.843,97.437h-6c0-5.642-5.477-10.231-12.208-10.231s-12.208,4.59-12.208,10.231h-6c0-8.95,8.168-16.231,18.208-16.231
+                    S78.843,88.486,78.843,97.437z"/>
+                    <path d="M32.14,69.218c-7.853,0-14.242-7.115-14.242-15.86h6c0,5.437,3.697,9.86,8.242,9.86s8.242-4.423,8.242-9.86h6
+                    C46.382,62.103,39.993,69.218,32.14,69.218z"/>
+                    <path d="M89.529,69.218c-7.854,0-14.242-7.115-14.242-15.86h6c0,5.437,3.697,9.86,8.242,9.86s8.242-4.423,8.242-9.86h6
+                    C103.771,62.103,97.382,69.218,89.529,69.218z"/>
+                </svg>
+            </div>
+        <% } %>
+        <!-- FIM DO TEM LIVROS CADASTRADOS? -->
 
-    <details class="cardadm">
-        <summary><h2>Cadastro de livro</h2></summary>
-            <article id="signBook">
-            <form action="/adm/<%= user._id%>/RegisterBookComplete" method="post">
-                <input type="hidden" name="_csrf" value=<%= csrfToken %>>
-                <div class="gridColumn margin-center">
-                    <!-- CAMPO PARA QUANTIDADE -->
-                    <div class="textfield textfieldAdm">
-                        <label>Quantidade</label>
-                        <input type="number" name="quantidade" placeholder="Deixe vazio caso seja Ebook">
-                    </div>
-            
-                    <!-- CAMPO PARA TITULO -->
-                    <div class="textfield textfieldAdm">
-                        <label>Título</label>
-                        <input type="text" name="titulo" required>
-                    </div>
-                    <!-- FIM DOCAMPO PARA TITULO -->
-
-                    <!-- CAMPO PARA AUTOR -->
-                    <div class="textfield textfieldAdm">
-                        <label>Autor</label>
-                        <input type="text" name="autor" required>
-                    </div>
-                    <!-- FIM DO CAMPO PARA AUTOR -->
-
-                    <!-- CAMPO PARA EDITORA -->
-                    <div class="textfield textfieldAdm">
-                        <label>Editora</label>
-                        <input type="text" name="editora" required>
-                    </div>
-                    <!-- FIM DO CAMPO PARA EDITORA -->
-
-                    <!-- CAMPO PARA PREÇO -->
-                    <div class="textfield textfieldAdm">
-                        <label>Preço</label>
-                        <input type="number" step="0.01" name="preco" required>
-                    </div>
-                    <!-- FIM CAMPO PARA PREÇO -->
-
-                    <!--  DO CAMPO PARA URL IMG -->
-                    <div class="textfield textfieldAdm">
-                        <label>Capa</label>
-                        <input type="url" name="capa" required>
-                    </div>
-                    <!-- FIM DO CAMPO PARA URL IMG -->
-
-                    <!-- FIM DO CAMPO PARA URL IMG -->
-                    <div class="textfield textfieldAdm">
-                        <label>Data de lançamento</label>
-                        <input type="date" name="dataLancamento" required>
-                    </div>
-                    <!-- FIM DO CAMPO PARA URL IMG -->
-
-                    <!-- CAMPO DE GENEROS -->
-                    <div class="checkbox">
-                        <h5>Gêneros</h5>
-
-                        <ul class="generos">
-                            <li>
-                                <input type="checkbox" name="genero" value="acao">
-                                <label>Ação</label>  
-                            </li>
-                            <li>
-                                <input type="checkbox" name="genero" value="aventura">
-                                <label>Aventura</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" name="genero" value="terror">
-                                <label>Terror</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" name="genero" value="drama">
-                                <label>Drama</label> 
-                            </li>
-                            <li>
-                                <input type="checkbox" name="genero" value="romance">
-                                <label>Romance</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" name="genero" value="ficcao">
-                                <label>Ficção</label>  
-                            </li>
-                            <li>
-                                <input type="checkbox" name="genero" value="distopia">
-                                <label>Distopia</label> 
-                            </li>
-                            <li>
-                                <input type="checkbox" name="genero" value="biografia">
-                                <label>Biografia</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" name="genero" value="historia">
-                                <label>História</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" name="genero" value="comedia">
-                                <label>Comédia</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" name="genero" value="infantil">
-                                <label>Infantil</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" name="genero" value="misterio">
-                                <label>Misterio</label>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- FIM DOS CAMPOS DE GENERO -->
-
-                    <!-- CAMPO PARA DESCRIÇÃO PRODUTO -->
-                    <div class="textfield textfieldAdm">
-                        <label>Resumo</label>
-                        <textarea name="resumo" rows="10" cols="50">
-                            Resumo Aqui
-                        </textarea required>
-                    </div>
-                    <!-- FIM DO CAMPO PARA DESCRIÇÃO PRODUTO -->
-
-                    <!-- CAMPO PARA DETALHES DO PRODUTO -->
-                    <div class="textfield textfieldAdm">
-                        <label>Detalhes do produto</label>
-                        <textarea name="detalheProduto" rows="10" cols="50">
-                            Editora ‏ : ‎ FTD Educação; 1ª edição (31 outubro 2016)
-                            Idioma ‏ : ‎ Português
-                            Capa comum ‏ : ‎ 96 páginas
-                            ISBN-10 ‏ : ‎ 8596004211
-                            ISBN-13 ‏ : ‎ 978-8596004213
-                            Dimensões ‏ : ‎ 26.2 x 19.2 x 1.2 cm
-                        </textarea required> 
-                    </div>
-                    <!-- FIM DO CAMPO PARA DETALHES DO PRODUTO -->
-                </div>
-
-                <!-- ADICIONAR -->
-                <button aria-label="adicionar livro" class="outline btn">Adicionar Livro</button>
-                <!-- FIM DO ADICIONAR -->
-            </form>
-        </article>
-    </details>
-
-    <% if(editbook) { %>
         <details class="cardadm">
-        <summary><h2>Edição de livro</h2></summary>
-            <article id="editBook" >
-                <form action="/adm/<%= user._id %>/EditBookComplete" method="post">
+            <summary><h2>Cadastro de livro</h2></summary>
+                <article id="signBook">
+                <form action="/adm/<%= user._id%>/RegisterBookComplete" method="post">
                     <input type="hidden" name="_csrf" value=<%= csrfToken %>>
-                    <input type="hidden" name="Idlivro" value="<%= editbook._id %>" required>
-
-                    <div class="gridColumn">
+                    <div class="gridColumn margin-center">
                         <!-- CAMPO PARA QUANTIDADE -->
                         <div class="textfield textfieldAdm">
                             <label>Quantidade</label>
-                            <input type="number" name="quantidade" value="<%= editbook.quantidade %>" required>
+                            <input type="number" name="quantidade" placeholder="Deixe vazio caso seja Ebook">
                         </div>
-
+                
                         <!-- CAMPO PARA TITULO -->
                         <div class="textfield textfieldAdm">
                             <label>Título</label>
-                            <input type="text" name="titulo" value="<%= editbook.titulo %>" required>
+                            <input type="text" name="titulo" required>
                         </div>
                         <!-- FIM DOCAMPO PARA TITULO -->
 
                         <!-- CAMPO PARA AUTOR -->
                         <div class="textfield textfieldAdm">
                             <label>Autor</label>
-                            <input type="text" name="autor" value="<%= editbook.autor %>" required>
+                            <input type="text" name="autor" required>
                         </div>
                         <!-- FIM DO CAMPO PARA AUTOR -->
 
                         <!-- CAMPO PARA EDITORA -->
                         <div class="textfield textfieldAdm">
                             <label>Editora</label>
-                            <input type="text" name="editora" value="<%= editbook.editora %>" required>
+                            <input type="text" name="editora" required>
                         </div>
                         <!-- FIM DO CAMPO PARA EDITORA -->
 
                         <!-- CAMPO PARA PREÇO -->
                         <div class="textfield textfieldAdm">
                             <label>Preço</label>
-                            <input type="number" name="preco" step="0.01" value="<%= editbook.preco %>" required>
+                            <input type="number" step="0.01" name="preco" required>
                         </div>
                         <!-- FIM CAMPO PARA PREÇO -->
 
                         <!--  DO CAMPO PARA URL IMG -->
                         <div class="textfield textfieldAdm">
                             <label>Capa</label>
-                            <input type="url" name="urlImage" value="<%= editbook.capa %>" required>
+                            <input type="url" name="capa" required>
                         </div>
                         <!-- FIM DO CAMPO PARA URL IMG -->
 
                         <!-- FIM DO CAMPO PARA URL IMG -->
                         <div class="textfield textfieldAdm">
                             <label>Data de lançamento</label>
-                            <input type="date" name="dataLancamento"  required>
+                            <input type="date" name="dataLancamento" required>
                         </div>
                         <!-- FIM DO CAMPO PARA URL IMG -->
 
@@ -315,10 +170,6 @@
                                     <input type="checkbox" name="genero" value="misterio">
                                     <label>Misterio</label>
                                 </li>
-                                <li>
-                                    <input type="checkbox" name="genero" value="investigacao">
-                                    <label>investigação</label>
-                                </li>
                             </ul>
                         </div>
                         <!-- FIM DOS CAMPOS DE GENERO -->
@@ -327,7 +178,7 @@
                         <div class="textfield textfieldAdm">
                             <label>Resumo</label>
                             <textarea name="resumo" rows="10" cols="50">
-                                <%= editbook.resumo %>
+                                Resumo Aqui
                             </textarea required>
                         </div>
                         <!-- FIM DO CAMPO PARA DESCRIÇÃO PRODUTO -->
@@ -336,19 +187,190 @@
                         <div class="textfield textfieldAdm">
                             <label>Detalhes do produto</label>
                             <textarea name="detalheProduto" rows="10" cols="50">
-                                <%= editbook.detalheProduto %>
+                                Editora ‏ : ‎ FTD Educação; 1ª edição (31 outubro 2016)
+                                Idioma ‏ : ‎ Português
+                                Capa comum ‏ : ‎ 96 páginas
+                                ISBN-10 ‏ : ‎ 8596004211
+                                ISBN-13 ‏ : ‎ 978-8596004213
+                                Dimensões ‏ : ‎ 26.2 x 19.2 x 1.2 cm
                             </textarea required> 
                         </div>
                         <!-- FIM DO CAMPO PARA DETALHES DO PRODUTO -->
                     </div>
 
                     <!-- ADICIONAR -->
-                    <button aria-label="adicionar livro" class="outline btn">Editar Livro</button>
+                    <button aria-label="adicionar livro" class="outline btn">Adicionar Livro</button>
                     <!-- FIM DO ADICIONAR -->
                 </form>
             </article>
         </details>
+
+        <% if(editbook) { %>
+            <details class="cardadm">
+            <summary><h2>Edição de livro</h2></summary>
+                <article id="editBook" >
+                    <form action="/adm/<%= user._id %>/EditBookComplete" method="post">
+                        <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+                        <input type="hidden" name="Idlivro" value="<%= editbook._id %>" required>
+
+                        <div class="gridColumn">
+                            <!-- CAMPO PARA QUANTIDADE -->
+                            <div class="textfield textfieldAdm">
+                                <label>Quantidade</label>
+                                <input type="number" name="quantidade" value="<%= editbook.quantidade %>" required>
+                            </div>
+
+                            <!-- CAMPO PARA TITULO -->
+                            <div class="textfield textfieldAdm">
+                                <label>Título</label>
+                                <input type="text" name="titulo" value="<%= editbook.titulo %>" required>
+                            </div>
+                            <!-- FIM DOCAMPO PARA TITULO -->
+
+                            <!-- CAMPO PARA AUTOR -->
+                            <div class="textfield textfieldAdm">
+                                <label>Autor</label>
+                                <input type="text" name="autor" value="<%= editbook.autor %>" required>
+                            </div>
+                            <!-- FIM DO CAMPO PARA AUTOR -->
+
+                            <!-- CAMPO PARA EDITORA -->
+                            <div class="textfield textfieldAdm">
+                                <label>Editora</label>
+                                <input type="text" name="editora" value="<%= editbook.editora %>" required>
+                            </div>
+                            <!-- FIM DO CAMPO PARA EDITORA -->
+
+                            <!-- CAMPO PARA PREÇO -->
+                            <div class="textfield textfieldAdm">
+                                <label>Preço</label>
+                                <input type="number" name="preco" step="0.01" value="<%= editbook.preco %>" required>
+                            </div>
+                            <!-- FIM CAMPO PARA PREÇO -->
+
+                            <!--  DO CAMPO PARA URL IMG -->
+                            <div class="textfield textfieldAdm">
+                                <label>Capa</label>
+                                <input type="url" name="urlImage" value="<%= editbook.capa %>" required>
+                            </div>
+                            <!-- FIM DO CAMPO PARA URL IMG -->
+
+                            <!-- FIM DO CAMPO PARA URL IMG -->
+                            <div class="textfield textfieldAdm">
+                                <label>Data de lançamento</label>
+                                <input type="date" name="dataLancamento"  required>
+                            </div>
+                            <!-- FIM DO CAMPO PARA URL IMG -->
+
+                            <!-- CAMPO DE GENEROS -->
+                            <div class="checkbox">
+                                <h5>Gêneros</h5>
+
+                                <ul class="generos">
+                                    <li>
+                                        <input type="checkbox" name="genero" value="acao">
+                                        <label>Ação</label>  
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="genero" value="aventura">
+                                        <label>Aventura</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="genero" value="terror">
+                                        <label>Terror</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="genero" value="drama">
+                                        <label>Drama</label> 
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="genero" value="romance">
+                                        <label>Romance</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="genero" value="ficcao">
+                                        <label>Ficção</label>  
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="genero" value="distopia">
+                                        <label>Distopia</label> 
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="genero" value="biografia">
+                                        <label>Biografia</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="genero" value="historia">
+                                        <label>História</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="genero" value="comedia">
+                                        <label>Comédia</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="genero" value="infantil">
+                                        <label>Infantil</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="genero" value="misterio">
+                                        <label>Misterio</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="genero" value="investigacao">
+                                        <label>investigação</label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- FIM DOS CAMPOS DE GENERO -->
+
+                            <!-- CAMPO PARA DESCRIÇÃO PRODUTO -->
+                            <div class="textfield textfieldAdm">
+                                <label>Resumo</label>
+                                <textarea name="resumo" rows="10" cols="50">
+                                    <%= editbook.resumo %>
+                                </textarea required>
+                            </div>
+                            <!-- FIM DO CAMPO PARA DESCRIÇÃO PRODUTO -->
+
+                            <!-- CAMPO PARA DETALHES DO PRODUTO -->
+                            <div class="textfield textfieldAdm">
+                                <label>Detalhes do produto</label>
+                                <textarea name="detalheProduto" rows="10" cols="50">
+                                    <%= editbook.detalheProduto %>
+                                </textarea required> 
+                            </div>
+                            <!-- FIM DO CAMPO PARA DETALHES DO PRODUTO -->
+                        </div>
+
+                        <!-- ADICIONAR -->
+                        <button aria-label="adicionar livro" class="outline btn">Editar Livro</button>
+                        <!-- FIM DO ADICIONAR -->
+                    </form>
+                </article>
+            </details>
+        <% } %>
     <% } %>
+
+    <h2 style="margin-top: 50px;">Usuários</h2>
+    <% if(users.length > 0 ) { %>
+        <% users.forEach(user => { %>
+            <div class="user flex-center">
+                <ul class="flex-center">
+                    <li>
+                        <svg width="50px" height="50px" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25 22.9167C26.6481 22.9167 28.2593 22.4279 29.6297 21.5123C31.0001 20.5966 32.0682 19.2951 32.699 17.7724C33.3297 16.2497 33.4947 14.5741 33.1732 12.9576C32.8516 11.3411 32.058 9.85622 30.8925 8.69078C29.7271 7.52534 28.2422 6.73167 26.6257 6.41013C25.0092 6.08858 23.3336 6.25361 21.8109 6.88434C20.2882 7.51507 18.9867 8.58318 18.071 9.95359C17.1554 11.324 16.6666 12.9352 16.6666 14.5833C16.6666 16.7935 17.5446 18.9131 19.1074 20.4759C20.6702 22.0387 22.7898 22.9167 25 22.9167Z" fill="#239273"/>
+                            <path d="M37.5001 43.75C38.0526 43.75 38.5825 43.5305 38.9732 43.1398C39.3639 42.7491 39.5834 42.2192 39.5834 41.6667C39.5834 37.7989 38.047 34.0896 35.3121 31.3547C32.5771 28.6198 28.8678 27.0833 25.0001 27.0833C21.1323 27.0833 17.423 28.6198 14.6881 31.3547C11.9532 34.0896 10.4167 37.7989 10.4167 41.6667C10.4167 42.2192 10.6362 42.7491 11.0269 43.1398C11.4176 43.5305 11.9475 43.75 12.5001 43.75H37.5001Z" fill="#239273"/>
+                        </svg>
+                    </li>  
+                    <li><h4><%= user.nome %></h4></li>
+                    <li><h4><%= user.email %></h4></li>
+                    <li><a href="/adm/<%= user._id %>/editUser " style="color: #239273;">Editar</a></li>
+                </ul>
+            </div>
+        <% }) %>
+    <% } %>
+
+    <span style="margin: 50px;"></span>
 </main>
 
 <%- include("includes/footer")%>

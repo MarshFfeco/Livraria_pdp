@@ -1,9 +1,14 @@
 const Book = require("../models/Adm");
 
+const User = require("../models/LoginOrSignUp");
+
 exports.index = async function(req, res) {
     try {
         const callBook = new Book(req.body);
         const books =  await callBook.buscarLivros(req.session.user._id);
+
+        const user = new User();
+        const users = await user.users();
 
         if(callBook.message.length > 0) {
             req.flash('errors', callBook.message);
@@ -17,7 +22,8 @@ exports.index = async function(req, res) {
         return res.render("adm", {
             title: "ADM",
             books: books,
-            editbook: idBook
+            editbook: idBook,
+            users: users,
         });
     } catch (error) {
         req.flash('errors', error.message);

@@ -71,6 +71,8 @@ exports.editUserComplete = async function(req, res) {
             return req.session.save(() => res.redirect("back"));
         }
 
+        req.session.user = userEdit.user;
+
         req.flash('success', `Usuário editado com sucesso.`);
         req.session.save(() => res.redirect(`/adm/${req.session._id}`));
         return;

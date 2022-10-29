@@ -49,7 +49,7 @@ route.get("/search", search.index);
 /*  FIMDAS ROTAS DE PESQUISA */
 
 /* ROTA DO BOLETO */
-route.get("/comprar/:id", loginRequired, boleto.boleto);
+route.get("/comprar/:name/:id", loginRequired, boleto.boleto);
 /* FIM DA ROTA DO BOLETO */
 
 module.exports = route;
