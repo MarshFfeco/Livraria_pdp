@@ -88,16 +88,16 @@
 .book-container-price{ font-size: 2em; }
 
 .book-container-buy{
-    width: 100%;
+    /*width: 100%;
 
-    padding: 5px;
+    padding: 5px;*/
     margin: 0;
 }
 
 .book-container-add{
-    width: 100%;
+    /*width: 100%;
 
-    padding: 5px;
+    padding: 5px;*/
     margin: 0;
 
     color: white;

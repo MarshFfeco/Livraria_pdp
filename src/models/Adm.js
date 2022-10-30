@@ -73,6 +73,8 @@ class Adm {
 
         if(this.message.length > 0) return;
 
+        this.cleanUp();
+
         this.book = await BookModel.findByIdAndUpdate(id, this.body, { new: true });
 
         if(!this.book)  this.message.push("Erro ao tentar editar Livro");

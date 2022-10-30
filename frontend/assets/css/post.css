@@ -89,3 +89,9 @@
         width: 80%;
     }
 }
+
+@media (max-width: 500px) {
+    .post-limit {
+        width: 100%;
+    }
+}

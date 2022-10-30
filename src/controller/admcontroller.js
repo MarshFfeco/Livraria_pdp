@@ -22,7 +22,7 @@ exports.index = async function(req, res) {
         return res.render("adm", {
             title: "ADM",
             books: books,
-            editbook: idBook,
+            editbook: null,
             users: users,
         });
     } catch (error) {
@@ -56,12 +56,16 @@ exports.edit = async function(req, res) {
     const books =  await callBook.buscarLivros(req.session.user._id);
     const editbook = await callBook.buscarLivro(idBook, req.session.user._id);
 
+    const user = new User();
+    const users = await user.users();
+
     if(idBook == req.session.user._id) idBook = null;
 
     return res.render("adm", {
         title: "ADM",
         books: books,
-        editbook: editbook
+        editbook: editbook,
+        users: users,
     });
 }
 

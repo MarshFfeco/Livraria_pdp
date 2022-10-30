@@ -18,10 +18,11 @@ const RegisterSchema = new mongoose.Schema({
 const RegisterModel = mongoose.model('Register', RegisterSchema);
 
 class LoginOrSignUp {
-    constructor(body) {
-        this.body = body,
-        this.message = []
+    constructor(body, adm) {
+        this.body = body;
+        this.message = [];
         this.user = null;
+        this.adm = adm;
     }
 
     async users() {
@@ -109,6 +110,7 @@ class LoginOrSignUp {
             nome: this.body.nome,
             email: this.body.email,
             senha: this.body.senha,
+            adm: this.adm,
             endereco: this.body.endereco,
             telefone: this.body.telefone,
             nascimento: this.body.nascimento,

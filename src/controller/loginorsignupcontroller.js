@@ -8,7 +8,7 @@ exports.index = function(req, res) {
 
 exports.register = async function(req, res) {
     try {
-        const register = new Login(req.body);
+        const register = new Login(req.body, null);
         await register.register();
 
         if(register.message.length > 0) {
@@ -63,7 +63,7 @@ exports.editUserComplete = async function(req, res) {
 
         if(!idUser) return res.redirect(`back`)
 
-        const userEdit = new Login(req.body);
+        const userEdit = new Login(req.body, req.session.user.adm);
         await userEdit.userEdit(idUser);
 
         if(userEdit.message.length > 0) {

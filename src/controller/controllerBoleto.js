@@ -6,8 +6,8 @@ exports.boleto = async function(req, res) {
     const path = require('path');
 
     try {
-        const boletoCall = new Boleto(req.params.id);
-        const book = await boletoCall.buscarLivro();
+        const boletoCall = new Boleto(req.params.id, req.session.user);
+        const book = await boletoCall.buyOne();
 
         if(boletoCall.message.length > 0) {
             req.flash('errors', boletoCall.message);
