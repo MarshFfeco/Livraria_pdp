@@ -17,7 +17,7 @@ const sessionOptions = session({
     saveUninitialized: false,
     cookie:{
         maxAge: 1000 * 60 * 60 * 6, 
-        httpOnly: true
+        httpOnly: false
     },
     store: mongoStore.create({ mongoUrl: process.env.CONNECTIOMONGODB})
 });

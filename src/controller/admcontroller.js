@@ -102,5 +102,45 @@ exports.delete = async function(req, res) {
     return;
 }
 
+exports.removeADM = async function(req, res) {
+    try {
+        const idUser = req.params.id;
+
+        const user = new User();
+        await user.removeADM(idUser);
+
+        if(user.message.length > 0) {
+            req.flash('errors', user.message);
+            return req.session.save(() => res.redirect("back"));
+        }
+
+        req.flash('success', `Acesso removido do usuário ${idUser}`);
+        return req.session.save(() => res.redirect(`back`));
+    } catch (error) {
+        req.flash('errors', 'Erro ao tentar remover acesso');
+        req.session.save(() => res.redirect('back'));
+    }
+}
+
+exports.becomeADM = async function(req, res) {
+    try {
+        const idUser = req.params.id;
+
+        const user = new User();
+        await user.becomeADM(idUser);
+
+        if(user.message.length > 0) {
+            req.flash('errors', user.message);
+            return req.session.save(() => res.redirect("back"));
+        }
+
+        req.flash('success', `Acesso entregue ao usuário ${idUser}`);
+        return req.session.save(() => res.redirect(`back`));
+    } catch (error) {
+        req.flash('errors', 'Erro ao tentar entregar acesso');
+        req.session.save(() => res.redirect('back'));
+    }
+}
+
 
 

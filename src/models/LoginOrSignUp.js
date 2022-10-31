@@ -25,11 +25,27 @@ class LoginOrSignUp {
         this.adm = adm;
     }
 
-    async users() {
-        var users = await RegisterModel.find();
+    async users(id) {
+        var users = await RegisterModel.find().sort({ adm: -1 });
  
         return users;
      }
+
+    async removeADM(id){
+        var remove = await RegisterModel.findByIdAndUpdate(id, { adm: false });
+
+        if(!remove) this.message.push("Erro ao remove acesso");
+
+        return;
+    }
+
+    async becomeADM(id){
+        var remove = await RegisterModel.findByIdAndUpdate(id, { adm: true });
+
+        if(!remove) this.message.push("Erro ao entregar acesso");
+
+        return;
+    }
 
     async register() {
         this.valida();

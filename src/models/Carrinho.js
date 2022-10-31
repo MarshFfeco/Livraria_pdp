@@ -32,38 +32,42 @@ class Carrinho {
     async deleteBook(id) {
         if(typeof id !== 'string') return;
 
-        const cart = await CartModel.findOneAndDelete({ books: id });
+        this.cart = await CartModel.findOneAndDelete({ books: id });
 
         return cart;
       };
 
     async addMore(quantidade) {
-        try {
             const book = await this.buscarLivro(this.idBook.books);
+
             if(this.message.length > 0) return;
+
             const maxQuantidade = book.books.quantidade;
 
             quantidade += 1;
 
-            if(quantidade == maxQuantidade || quantidade > maxQuantidade) { 
+            if(quantidade > maxQuantidade) { 
                 this.message.push("Quantidade maior que a de estoque");
+                return;
             }
 
             if(this.message.length > 0) return;
 
             return this.cart = await CartModel.findOneAndUpdate({ books: this.idBook.books } , { quantidade: quantidade }, { new: true });
-
-        } catch (error) {
-            this.message.push("Erro ao tentar adicionar mais uma unidade no Carrinho");
-            return;
-        }
     }
 
     async buscarLivro(id) {
-        const book = await CartModel.findOne({ books: id }).populate("books")
+        let book = await CartModel.findOne({ books: id }).populate("books")
 
-        if(!book) this.message.push("Nenhum livro encontrado");
-        if(books.book.quantidade) this.message.push("somente uma únidade de Ebook");
+        if(!book) { 
+            this.message.push("Nenhum livro encontrado");
+            return
+        }
+
+        if(!book.books.quantidade) {
+            this.message.push("Não é possível comprar mais que um Ebook");
+            return
+        }
 
         return book;
     }
@@ -77,11 +81,11 @@ class Carrinho {
 
         if(!books) return this.message.push("Nenhum livro encontrado");
 
-        const result = books.filter(book => {
+        this.cart = books.filter(book => {
             return book.carrinhoDe == this.user._id; 
         });
 
-        return result;
+        return;
     }
 
     cleanUp() {

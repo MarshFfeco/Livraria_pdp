@@ -2,11 +2,12 @@ const Carrinho = require("../models/Carrinho");
 
 exports.index = async function(req, res) {
     const callBooks = new Carrinho(null, req.session.user);
-    const books = await callBooks.buscarLivros();
+    await callBooks.buscarLivros();
 
+    req.session.carrinho = callBooks.cart;
     res.render("carrinho", {
         title: "carrinho",
-        books: books,
+        books: callBooks.cart,
     })
 };
 
@@ -22,15 +23,13 @@ exports.addBook = async function(req, res) {
             return req.session.save(() => res.redirect(`back`));
         }
 
+        req.session.carrinho = cartAdd.cart;
         req.flash('success', `Livro adicionado ao carrinho.`);
         return req.session.save(() => res.redirect(`back`));
     } catch (error) {
-        res.render("erro", {
-            title: "Erro de Login",
-            msg: "Erro na hora do Login"
-        });
+        req.flash('errors', 'Erro ao tentar adicionar mais livros');
+        return req.session.save(() => res.redirect(`back`));
     }
-
 };
 
 exports.delete = async function(req, res) {
@@ -44,14 +43,13 @@ exports.delete = async function(req, res) {
     
         if(!bookDelete) return res.render('erro');
     
+        req.session.carrinho = deleteBook.cart;
         req.flash('success', 'Livro Removido da lista.');
         req.session.save(() => res.redirect(`/carrinho/`));
         return;
     } catch (error) {
-        res.render("erro", {
-            title: "Erro de Login",
-            url: error.message
-        })
+        req.flash('errors', 'Erro ao tentar remover os livros do carrinho');
+        return req.session.save(() => res.redirect(`back`));
     }
 
 };

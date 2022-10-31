@@ -28,7 +28,7 @@ exports.boleto = async function(req, res) {
             beneficiaryAddress:
             'Rodovia BR 101, km 197 - Capoeiruçu, Cachoeira - BA, 44300-000',
             instructions:
-            `Livro: ${book.titulo}`,
+            `${book.titulo}`,
             agency: '1234',
             agencyDigit: '0',
             account: '56789',
@@ -72,7 +72,7 @@ exports.boleto = async function(req, res) {
             state: 'BA',
             postalCode: 'Caixa Postal 18'
             }
-      }
+        }
       
       bradesco(boleto).then( data => {
         fs.writeFile(path.resolve(__dirname, "boletos/boleto.pdf"), data, err => {

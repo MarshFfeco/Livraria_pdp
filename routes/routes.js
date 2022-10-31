@@ -36,6 +36,9 @@ route.get("/adm/:id/Delete", loginRequired, adm.delete);
 route.get("/adm/:id/editUser", loginRequired, loginorsignup.editUser);
 route.post("/adm/:id/editUserComplete", loginRequired, loginorsignup.editUserComplete);
 route.get("/adm/:id/deleteUser", loginRequired, loginorsignup.deleteUser);
+
+route.get("/adm/:id/removeADM", loginRequired, adm.removeADM);
+route.get("/adm/:id/becomeADM", loginRequired, adm.becomeADM);
 /* FIM DAS ROTAS DO ADM */
 
 /* ROTAS DO CARRINHO */

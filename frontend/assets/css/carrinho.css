@@ -1,3 +1,31 @@
 #carrinho-main {
     min-height: 90vh;
 }
+
+.button-finalizar {
+    width: 95%;
+
+    margin: 0 auto;
+}
+
+.button-finalizar button {
+    padding: 15px;
+}
+
+
+.button-finalizar button {
+    font-size: 16px;
+    font-weight: bold;
+
+    color: white;
+    background-color: var(--positive-color);
+
+    border:2px solid transparent;
+    border-radius: 30px;
+}
+
+.button-finalizar button:hover { background-color: var(--hover-color); }
+
+.button-finalizar button:active { background-color: var(--active-color); }
+
+.button-finalizar button:focus { background-color: var(--active-color); }
