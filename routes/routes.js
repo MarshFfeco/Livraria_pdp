@@ -53,6 +53,7 @@ route.get("/search", search.index);
 
 /* ROTA DO BOLETO */
 route.get("/comprar/:name/:id", loginRequired, boleto.boleto);
+route.get("/comprar/carrinho/", loginRequired, boleto.boletoAll);
 /* FIM DA ROTA DO BOLETO */
 
 module.exports = route;

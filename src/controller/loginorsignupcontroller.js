@@ -41,6 +41,7 @@ exports.login = async function(req, res) {
         return req.session.save(() => res.redirect(`/`));
        
     } catch (error) {
+        console.log(error)
         req.flash('errors', 'Login não efetuado');
         return req.session.save(() => res.redirect(`back`));
     }
@@ -77,6 +78,7 @@ exports.editUserComplete = async function(req, res) {
         req.session.save(() => res.redirect(`/adm/${req.session._id}`));
         return;
     } catch (error) {
+        console.log(error)
         req.flash('errors', 'Erro ao tentar editar o usuário');
         return req.session.save(() => res.redirect(`back`));
     }

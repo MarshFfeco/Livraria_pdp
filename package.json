@@ -1,6 +1,6 @@
 {
   "name": "livrariasaber",
-  "version": "3.5.1",
+  "version": "3.6.1",
   "description": "",
   "main": "serve.js",
   "scripts": {
@@ -28,6 +28,7 @@
     "boleto-pdf": "^0.4.0",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^4.6.0",
+    "cpf": "^2.0.1",
     "csurf": "^1.11.0",
     "dotenv": "^16.0.2",
     "ejs": "^3.1.8",

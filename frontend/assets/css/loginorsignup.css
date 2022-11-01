@@ -28,6 +28,10 @@
     align-items: center;
 }
 
+#formularios button {
+    padding: 10px;
+}
+
 h2{
     margin-bottom: 20px;
 

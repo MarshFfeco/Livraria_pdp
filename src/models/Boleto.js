@@ -20,7 +20,11 @@ class Boleto {
     buyOne() {
         let book = this.buscarLivro();
 
-        this.verifyUser();
+        if(book.quantidade) {
+            this.verifyUser();
+        }
+
+        this.verifyUserGeneral();
 
         if(this.message.length > 0) return;
 
@@ -29,8 +33,12 @@ class Boleto {
 
     verifyUser() {
         if(!('endereco' in this.user) || !this.user.endereco) this.message.push("Complete o perfil para continuar sua compra"); 
-
         return;
+    }
+
+    verifyUserGeneral(){
+        if(!('cpf' in this.user) || !this.user.cpf) this.message.push("Complete o perfil para continuar sua compra"); 
+        return
     }
 }
 

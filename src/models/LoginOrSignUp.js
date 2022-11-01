@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
+const CPF = require('cpf');
 
 const BookSchema = require("./Adm");
 const BookModel = mongoose.model('Book_Register', BookSchema.BookSchema);
@@ -9,6 +10,7 @@ const RegisterSchema = new mongoose.Schema({
     nome: { type: String, require: true },
     email: { type: String, required: true },
     senha: { type: String, required: true },
+    cpf: { type: String },
     adm: { type: Boolean, default: false },
     endereco: { type: String },
     telefone: { type: Number },
@@ -89,12 +91,23 @@ class LoginOrSignUp {
 
     async userEdit(id) {
         this.cleanUp();
+        let validaCPF = this.validaCPF();
+
+        if(!validaCPF) {
+            this.message.push("CPF inválido ou Inexistente!")
+            return;
+        }
 
         const salt = bcrypt.genSaltSync();
 
         this.body.senha = bcrypt.hashSync(this.body.senha, salt);
 
         this.user = await RegisterModel.findByIdAndUpdate(id, this.body, { new: true });
+    }
+
+    validaCPF() {
+        this.body.cpf = CPF.format(this.body.cpf);
+        return CPF.isValid(this.body.cpf)
     }
 
     async userDelete() {
@@ -119,6 +132,8 @@ class LoginOrSignUp {
         if(!validator.isEmail(this.body.email)){
             this.message.push("Email inválido");
         }
+
+
     }
 
     cleanUp() {
@@ -126,6 +141,7 @@ class LoginOrSignUp {
             nome: this.body.nome,
             email: this.body.email,
             senha: this.body.senha,
+            cpf: this.body.cpf,
             adm: this.adm,
             endereco: this.body.endereco,
             telefone: this.body.telefone,
