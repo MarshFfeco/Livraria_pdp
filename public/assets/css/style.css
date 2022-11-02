@@ -943,6 +943,7 @@ header {
 
 .other-slider-limit {
     height: 100%;
+    padding: 10px;
 
     grid-area: slider;
 
@@ -973,11 +974,13 @@ header {
 .other-slider:hover {
     cursor: pointer;
 
-    border-top: 2px solid var(--active-color);
-    border-bottom: 2px solid  var(--active-color);
+
+    box-shadow: 0px 0px 4px var(--shadow-color);
+    /*border-top: 2px solid var(--active-color);*/
+    /*border-bottom: 2px solid  var(--active-color);*/
     border-radius: 10%;
 
-    background-color: aliceblue;
+    /*background-color: blue;*/
 }
 
 .other-slider-img {

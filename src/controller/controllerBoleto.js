@@ -1,9 +1,11 @@
+const path = require("path");
 const Boleto = require("../models/Boleto");
+const fs = require('fs')
+
+const Book = require("../models/Adm");
 
 exports.boleto = async function(req, res) {
-    const fs = require('fs')
     const { bradesco } = require('boleto-pdf')
-    const path = require('path');
 
     try {
         const boletoCall = new Boleto(req.params.id, req.session.user);
@@ -75,14 +77,15 @@ exports.boleto = async function(req, res) {
         }
       
       bradesco(boleto).then( data => {
-        fs.writeFile(path.resolve(__dirname, "boletos/boleto.pdf"), data, err => {
+        fs.writeFile(path.resolve(__dirname, "../../upload/boletos", "boleto.pdf"), data, err => {
           if(err) {
+            console.log(err)
             req.flash('errors', `Erro ao tentar gerar Boleto`);
             return req.session.save(() => res.redirect(`back`));
           } 
 
           var options = {
-            root: path.join(__dirname, "boletos")
+            root: path.join(__dirname, "../../upload/boletos")
         };
 
           res.download("boleto.pdf", options);
@@ -92,13 +95,11 @@ exports.boleto = async function(req, res) {
     } catch (error) {
         req.flash('errors', `Erro ao tentar gerar Boleto`);
         return req.session.save(() => res.redirect(`back`));
-    }
+      }
 }
 
 exports.boletoAll = async function(req, res) {
-  const fs = require('fs')
   const { bradesco } = require('boleto-pdf')
-  const path = require('path');
 
   try {
     const boletoCall = new Boleto(null, req.session.user);
@@ -179,14 +180,14 @@ exports.boletoAll = async function(req, res) {
   }
 
   bradesco(boleto).then( data => {
-    fs.writeFile(path.resolve(__dirname, "boletos/boleto.pdf"), data, err => {
+    fs.writeFile(path.resolve(__dirname, "../../upload/boletos", "boleto.pdf"), data, err => {
       if(err) {
         req.flash('errors', `Erro ao tentar gerar Boleto`);
         return req.session.save(() => res.redirect(`back`));
       } 
 
       var options = {
-        root: path.join(__dirname, "boletos")
+        root: path.join(__dirname, "../../upload/boletos")
     };
 
       res.download("boleto.pdf", options);
@@ -198,4 +199,44 @@ exports.boletoAll = async function(req, res) {
     req.flash('errors', `Erro ao tentar gerar Boleto`);
     return req.session.save(() => res.redirect(`back`));
   }
+}
+
+exports.relatorioSimpleRe = async function(req, res, next) {
+  var pdf = require('html-pdf');
+  var optionsPDF = { 
+    format: 'A3',
+  };
+
+  const callBook = new Book(req.body);
+  const books =  await callBook.buscarLivros(req.session.user._id);
+
+  if(callBook.message.length > 0) {
+    req.flash('errors', callBook.message);
+    return req.session.save(() => res.redirect('/'));
+}
+
+let idBook = req.params.id.replace(/}/, '');
+
+if(idBook == req.session.user._id) idBook = null;
+
+ res.render("relatorioSimple.ejs", { books: books }, function(err, html) {
+    if (err) return res.send(err);
+    res.send(html)
+    pdf.create(html, optionsPDF).toFile(path.resolve(__dirname, "../../upload/relatorios", "relatorioSimple.pdf"), function(err, res) {
+      if (err) {
+        req.flash('errors', `Erro ao tentar gerar Relatório`);
+        return req.session.save(() => res.redirect(`back`));
+      };
+  });
+  });
+
+}
+
+exports.relatorioSimpleReDo = function(req, res) {
+  var options = {
+    root: path.join(__dirname, "../../upload/relatorios")
+  };
+
+  res.sendFile("relatorioSimple.pdf", options);
+  return req.flash('success', `Boleto baixado.`);
 }

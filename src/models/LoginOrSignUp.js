@@ -76,7 +76,7 @@ class LoginOrSignUp {
             return;
         }
 
-        if(!bcrypt.compareSync(this.body.senha, this.user.senha)) {
+        if(/*this.body.senha != this.user.senha*/!bcrypt.compareSync(this.body.senha, this.user.senha)) {
             this.message.push("Email ou senha inválidos!");
             this.user = null;
             return;

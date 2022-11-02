@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            word-break: break-all;
+        }
+        body {
+            width: 95%;
+
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1 {
+            margin-top: 25px;
+
+            text-align: left;
+        }
+
+        .tables {
+            width: auto;
+
+            margin-top: 25px;
+        }
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        a:link, a:visited {
+            width: 100%;
+
+            display: block;
+
+            margin-top: 20px;
+            padding: 10px 0;
+
+            text-align: center;
+            text-decoration: none;
+
+            border-radius: 20px;
+
+            color: white;
+            background-color: #239273;
+        }
+
+        a:hover, a:active {
+            background-color: #4ec07d;
+        }
+
+        .cabeca {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .styled-table {
+            background-color: #239273;
+            font-size: 0.9em;
+            font-family: 'Nunito', sans-serif;
+
+            border: 1px solid #239273;
+        }
+
+        .styled-table thead tr {
+            background-color: #239273;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .styled-table th,
+        .styled-table td {
+            max-width: 200px;
+            padding: 10px 10px;
+        }
+
+        .styled-table tbody td {
+            text-align: center;
+            background-color: #ffffff;
+        }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr.active-row {
+            font-weight: bold;
+            color: #239273;
+        }
+
+        @media print {
+            body .print {
+                display: none;
+            }
+        }
+
+    </style>
+</head>
+    <body>
+        <a class="print" href="/adm/:id/relatorioSimpleRe/dowload">baixar</a>
+        <h1>Relatório Simples</h1>
+        <hr>
+
+        <div class="cabeca">
+            <h2>Usuário Logado</h2>
+
+            <small>Gerado:</small>
+            <small><%= new Date().toLocaleDateString() %> as</small>
+            <small><%= new Date().toLocaleTimeString() %></small>
+        </div>
+
+        <div class="tables">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><%= user._id %></td>
+                        <td><%= user.nome %></td>
+                        <td><%= user.email %></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table>
+
+            </table>
+        </div>
+
+        <div class="cabeca" style="margin-top: 50px;">
+            <h2>Livros que o(a) <%= user.nome %> inseriu na base de dados</h2>
+        </div>
+
+        <div class="tables">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Capa</th>
+                        <th>ID</th>
+                        <th>Titulo</th>
+                        <th>Preço</th>
+                        <th>Gêneros</th>
+                        <th>editora</th>
+                        <th>lançamento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% books.forEach(book => { %>
+                    <tr>
+                        <td><img src="<%= book.capa %>" alt="Foto da capa do livor" width="100px"> </td>
+                        <td><p><%= String(book._id) %></p></td>
+                        <td><%= book.titulo %></td>
+                        <td>R$<%= book.preco.toFixed(2) %></td>
+                        <% if(book.generos && book.generos.length > 0) { %>
+                            <td>
+                                <% for(genero of book.generos) { %>
+                                    <%= genero %>
+                                    <br>
+                                <% } %>
+                            </td>
+                        <% } else { %>
+                            <td>Sem gênero</td>
+                        <% } %>
+                        <td><%= book.editora %></td>
+                        <td><%= book.dataLancamento.toLocaleDateString('pt-br') %></td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+
+            <table>
+
+            </table>
+        </div>
+    </body>
+</html>

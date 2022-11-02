@@ -54,6 +54,8 @@ route.get("/search", search.index);
 /* ROTA DO BOLETO */
 route.get("/comprar/:name/:id", loginRequired, boleto.boleto);
 route.get("/comprar/carrinho/", loginRequired, boleto.boletoAll);
+route.get("/adm/:id/relatorioSimpleRe", loginRequired, boleto.relatorioSimpleRe);
+route.get("/adm/:id/relatorioSimpleRe/dowload", loginRequired, boleto.relatorioSimpleReDo);
 /* FIM DA ROTA DO BOLETO */
 
 module.exports = route;
