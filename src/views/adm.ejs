@@ -29,12 +29,20 @@
         </ul>
     </div>
 
-    <a href="/adm/:id/relatorioSimpleRe">aaaaaa</a>
+    <hr class="custom-hr">
 
     <!-- TEM LIVROS CADASTRADOS? -->
     <% if(user.adm) { %>
+        <h2>Gerar Relatório</h2>
+
+        <div class="report-style">
+            <a href="/adm/:id/relatorioSimpleRe" target="_blank">Relatório Simples</a>
+            <a href="/adm/:id/relatorioSimpleRe" target="_blank">Relatório Completo</a>
+        </div>
+
+        <hr class="custom-hr">
         <% if(books.length > 0) { %>
-            <h2 style="margin-top: 50px;">Livros</h2>
+            <h2 style="margin-top: 50px;">Livros Inclusos</h2>
             <div class="tela">
                 <% books.forEach((book) => { %>
                     <div class="post-limit">
@@ -70,7 +78,7 @@
                     </div>
                 <% }) %>
             </div>
-        <% } else { %>
+    <% } else { %>
             <div class="message-book flex-center">
                 <h4>Nenhum Livro cadastrado</h4>
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -86,8 +94,10 @@
                     C103.771,62.103,97.382,69.218,89.529,69.218z"/>
                 </svg>
             </div>
-        <% } %>
+    <% } %>
         <!-- FIM DO TEM LIVROS CADASTRADOS? -->
+
+        <hr class="custom-hr">
 
         <details class="cardadm">
             <summary><h2>Cadastro de livro</h2></summary>
@@ -428,6 +438,7 @@
             </details>
         <% } %>
 
+        <hr class="custom-hr">
 
         <h2 style="margin-top: 50px;">Usuários</h2>
         <% if(users.length > 0 ) { %>

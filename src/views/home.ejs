@@ -26,18 +26,40 @@
         <div class="main_carousel_slides flex-center">
             <% mainSlider.forEach((slide, index) => { %>
                 <% if(!index > 0) { %>
-                <div class="main-slide current-item">
+                    <div class="main-slide current-item">
                 <% } else { %>
-                <div class="main-slide">
+                    <div class="main-slide">
                 <% } %>
-                        <figure class="main-slider-img">
-                            <img src="<%= slide.capa %>" alt="Imagem da capa do livor" >
-                        </figure>
-                        <h1 class="main-slider-title" onclick="location.href = '/book/<%= slide._id %>';"><%= slide.titulo %></h1>
-                        <p class="main-slider-text">
-                            <%= slide.resumo %>
-                        </p>
+                    <figure class="main-slider-img">
+                        <img src="<%= slide.capa %>" alt="Imagem da capa do livor" >
+                    </figure>
+                    <h1 class="main-slider-title" onclick="location.href = '/book/<%= slide._id %>';"><%= slide.titulo %></h1>
+                    
+                    <div class="genders">
+                        <% for(gender of slide.generos) { %>
+                            <p><%= gender %></p>
+                        <% } %>
+                        
                     </div>
+
+
+                    <p class="main-slider-text">
+                        <%= slide.resumo %>
+                    </p>
+                    <div id="main_carousel_button" class="post-buttons">
+                        <!-- COMPRAR -->
+                        <div class="button-buy">
+                            <button aria-label="buy" class="btn inline2" action="boleto.pdf" onclick="location.href = '/comprar/<%= slide.titulo %>/<%= slide._id %>';">Comprar</button>
+                        </div>
+                        <!-- FIM DO COMPRAR -->
+                        
+                        <!-- ADICIONAR -->
+                        <div class="button-add">
+                            <button aria-label="wish cart" class="btn outline2" onclick="location.href = '/carrinho/<%= slide._id %>';">Adicionar à lista</button>
+                        </div>
+                        <!-- FIM DO ADICIONAR -->
+                    </div>
+                </div>
             <% }); %>
         </div>
     </article>
@@ -95,21 +117,19 @@
         <div id="best-slider-limit" class="universal-slider other-slider-limit flex-center">
             <!-- SLIDER BEST -->
             <article id="" class="universal-slider-contents other-slider-contents flex-center">
-
-                    <% books.forEach((book, index) => {%>
+                    <% acaoAventura.forEach((book, index) => {%>
                         <% if(index == 13) return; %>
-                        <a href="/book/<%= books[index]._id %>">
+                        <a href="/book/<%= book._id %>">
                             <div class="best-slider other-slider flex-center">
                                 
                                 <figure class="other-slider-img flex-center">
-                                    <img src="<%= books[index].capa %>" alt="Imagem da capa do livor">
+                                    <img src="<%= book.capa %>" alt="Imagem da capa do livor">
                                 </figure>
                                 
-                                <h4 class="other-slider-title"><%= books[index].titulo %></h4>
+                                <h4 class="other-slider-title"><%= book.titulo %></h4>
                             </div>
                         </a>
                     <% }) %>
-
             </article>
             <!-- FIM DO SLIDER BEST -->
         </div>
@@ -144,18 +164,19 @@
         <div id="bestAvaliable-slider-limit" class="universal-slider other-slider-limit flex-center">
             <!-- SLIDER BEST AVALIABLE -->
             <article id="" class="universal-slider-contents other-slider-contents flex-center">
-
-                    <%for(let i = 0; i < 14; i++) {%>
-                        <a href="/book/:id">
-                            <div class="bestAvaliable-slider other-slider flex-center">
-                                <figure class="other-slider-img flex-center">
-                                    <img src="/assets/images/v_guliver.jpg" width="250px" alt="Imagem da capa do livor">
-                                </figure>
-                                
-                                <h4 class="other-slider-title">Viagens de Gulliver <%= i %></h4>
-                            </div>
-                        </a>
-                    <%}%>
+                <% terrorDrama.forEach((book, index) => {%>
+                    <% if(index == 13) return; %>
+                    <a href="/book/<%= book._id %>">
+                        <div class="best-slider other-slider flex-center">
+                            
+                            <figure class="other-slider-img flex-center">
+                                <img src="<%= book.capa %>" alt="Imagem da capa do livor">
+                            </figure>
+                            
+                            <h4 class="other-slider-title"><%= book.titulo %></h4>
+                        </div>
+                    </a>
+                <% }) %>
             </article>
             <!-- FIM DO SLIDER BEST AVALIABLE -->
         </div>

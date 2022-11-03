@@ -48,6 +48,16 @@ class Home {
         return values;
     }
 
+    filter(array, genders) {
+        let bookFilter = array.filter((book) => {
+            for(var gender of genders) {
+                if(book.generos.includes(gender)) return book;
+            }
+        });
+
+        return bookFilter;
+    }
+
     isDiferrent(array) {
         var filtrado = array.filter(function(elem, pos, arr) {
             return arr.indexOf(elem) == pos;

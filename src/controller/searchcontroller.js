@@ -16,6 +16,7 @@ exports.index = async function(req, res) {
             books: books,
         })
     } catch (error) {
+        console.log(error)
         req.flash('errors', 'Seu livro não foi encontrado.');
         req.session.save(() => res.redirect(`back`));
     }

@@ -67,6 +67,8 @@
         width: 100%;
         height: 100px;
 
+        align-self: center;
+
         overflow-y: scroll;
 
         color: var(--cinza-color);
@@ -74,18 +76,36 @@
         grid-area: text;
     }
 
-    .universal-slider-contents .main-slider-text::-webkit-scrollbar {
-        width: 5px;               
-    }
+    .universal-slider-contents .main-slider-text::-webkit-scrollbar { width: 5px; }
     
-    .universal-slider-contents .main-slider-text::-webkit-scrollbar-track {
-        background: transparent;        
-    }
+    .universal-slider-contents .main-slider-text::-webkit-scrollbar-track { background: transparent; }
     
     .universal-slider-contents .main-slider-text::-webkit-scrollbar-thumb {
         background-color: var(--cinza-color);  
 
         border-radius: 20px;      
+    }
+
+    #main_carousel_button {
+        grid-area: buttons;
+    }
+
+    .genders {
+        grid-area: genders;
+
+        height: auto;
+
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+    }
+    .genders p {
+        padding: 3px 5px;
+        margin: 0 5px;
+        background-color: var(--shadow-color);
+        border-radius: 10px;
+
+        color: #fff;
     }
     /* FIM DO STYLE DOS CONTEUDOS DO SLIDER */
 
@@ -142,11 +162,14 @@
 
     grid-template-areas: 
     ' image title '
+    ' image genders '
     ' image text '
-    ' image text ';
+    ' image buttons ';
+
+    grid-template-rows: 50px 25px 200px 70px;
 
     column-gap: 20px;
-    row-gap: 50px;
+    row-gap: 0px;
 
     visibility: hidden;
     clip-path: inset(50% 0 50% 0);

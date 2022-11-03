@@ -213,23 +213,25 @@ exports.relatorioSimpleRe = async function(req, res, next) {
   if(callBook.message.length > 0) {
     req.flash('errors', callBook.message);
     return req.session.save(() => res.redirect('/'));
-}
+  }
 
 let idBook = req.params.id.replace(/}/, '');
 
 if(idBook == req.session.user._id) idBook = null;
 
  res.render("relatorioSimple.ejs", { books: books }, function(err, html) {
-    if (err) return res.send(err);
+    if (err) {
+      req.flash('errors', "Erro ao tentar gerar relatório");
+      return req.session.save(() => res.redirect('back'));
+    }
     res.send(html)
     pdf.create(html, optionsPDF).toFile(path.resolve(__dirname, "../../upload/relatorios", "relatorioSimple.pdf"), function(err, res) {
       if (err) {
         req.flash('errors', `Erro ao tentar gerar Relatório`);
         return req.session.save(() => res.redirect(`back`));
       };
+    });
   });
-  });
-
 }
 
 exports.relatorioSimpleReDo = function(req, res) {

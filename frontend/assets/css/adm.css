@@ -5,6 +5,38 @@
     min-height: 90vh;
 }
 
+.report-style {
+    width: 80%;
+
+    margin: 50px auto;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.report-style a {
+    width: auto;
+}
+
+.report-style a:link, .report-style a:visited {
+    width: 20%;
+
+    padding: 10px 0;
+
+    text-align: center;
+    text-decoration: none;
+
+    border-radius: 20px;
+
+    color: white;
+    background-color: #239273;
+}
+
+.report-style a:hover, .report-style a:active {
+    background-color: #4ec07d;
+}
+
 .user {
     width: auto;
     height: auto;

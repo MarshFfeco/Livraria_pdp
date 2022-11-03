@@ -107,14 +107,14 @@
     <body>
         <a class="print" href="/adm/:id/relatorioSimpleRe/dowload">baixar</a>
         <h1>Relatório Simples</h1>
+        <small>Gerado:</small>
+        <small><%= new Date().toLocaleDateString() %></small>
+        <small>as</small>
+        <small><%= new Date().toLocaleTimeString() %></small>
         <hr>
 
         <div class="cabeca">
             <h2>Usuário Logado</h2>
-
-            <small>Gerado:</small>
-            <small><%= new Date().toLocaleDateString() %> as</small>
-            <small><%= new Date().toLocaleTimeString() %></small>
         </div>
 
         <div class="tables">
@@ -151,6 +151,7 @@
                         <th>Capa</th>
                         <th>ID</th>
                         <th>Titulo</th>
+                        <th>Autor</th>
                         <th>Preço</th>
                         <th>Gêneros</th>
                         <th>editora</th>
@@ -163,6 +164,7 @@
                         <td><img src="<%= book.capa %>" alt="Foto da capa do livor" width="100px"> </td>
                         <td><p><%= String(book._id) %></p></td>
                         <td><%= book.titulo %></td>
+                        <td><%= book.autor %></td>
                         <td>R$<%= book.preco.toFixed(2) %></td>
                         <% if(book.generos && book.generos.length > 0) { %>
                             <td>
