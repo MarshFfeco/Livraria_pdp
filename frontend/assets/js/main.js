@@ -9,14 +9,13 @@ import "../css/home.css"
 import "../css/book.css"
 import "../css/adm.css"
 import "../css/message.css"
-import "../css/table.css"
 import "../css/carrinho.css"
 import "../css/post.css"
 import "../css/search.css"
+import "../css/contrato.css"
 
 import * as img from "../img/image_erro.png";
 import * as logo from "../img/logo.png";
-
 
 import load from "./load"
 import MudaCor from "./nav"
@@ -28,14 +27,24 @@ import BestSlider from "./slider/BestSlider"
 
 /* SUMIR COM FLASH-MESSAGE  */
 const message = document.querySelectorAll(".position-message");
+const messageW = document.querySelectorAll(".warning-message");
 if(message.length > 0) {
     let button = document.getElementById("close");
-    
     button.onclick = function() {fechar()};
+}
+
+if(messageW.length > 0) {
+    let button = document.getElementById("closeW");
+    button.onclick = function() {fecharW()};
 }
 
 function fechar() {
     message[0].style.display = "none";
+}
+
+function fecharW() {
+    messageW[0].style.display = "none";
+    location.href = '/accept';
 }
 
 /* FIM DO SUMIR COM FLASH-MESSAGE  */
@@ -105,27 +114,23 @@ if(isUrl("http://localhost:3000/")) {
 }
 /* FIM MAIN SLIDER */
 
-/* BEST SLIDER */
+/* SLIDERS */
 if(isUrl("http://localhost:3000/")) {
-    const bestControls = document.querySelectorAll(".best-carousel-control");
-    const bestScroll = document.getElementById("best-slider-limit");
-    const bestItens = document.querySelectorAll(".best-slider");
-    const bestMaxItens = bestItens.length;
+    const acaoAventuraControls = document.querySelectorAll(".first-carousel-control");
+    const acaoAventuraScroll = document.getElementById("first-slider");
+    const acaoAventuraItens = document.querySelectorAll(".first-slider-div");
+    const acaoAventuraMaxItens = acaoAventuraItens.length;
 
-    const bestSlider = new BestSlider(bestControls, bestItens, bestScroll, bestMaxItens);
-}
-/* FIM BEST SLIDER */
+    new BestSlider(acaoAventuraControls, acaoAventuraItens, acaoAventuraScroll, acaoAventuraMaxItens);
 
-/* BEST AVALIABLE SLIDER */
-if(isUrl("http://localhost:3000/")) {
-    const bestAvaliableControls = document.querySelectorAll(".bestAvaliable-carousel-control");
-    const bestAvaliableScroll = document.getElementById("bestAvaliable-slider-limit");
-    const bestAvaliableItens = document.querySelectorAll(".bestAvaliable-slider");
-    const bestAvaliableMaxItens = bestAvaliableItens.length;
-    
-    const bestAvaliableSlider = new BestSlider(bestAvaliableControls, bestAvaliableItens, bestAvaliableScroll, bestAvaliableMaxItens);
+    const terrorDramaControls = document.querySelectorAll(".second-carousel-control");
+    const terrorDramaScroll = document.getElementById("second-slider");
+    const terrorDramaItens = document.querySelectorAll(".second-slider-div");
+    const terrorDramaMaxItens = terrorDramaItens.length;
+
+    new BestSlider(terrorDramaControls, terrorDramaItens, terrorDramaScroll, terrorDramaMaxItens);
 }
-/* END BEST AVALIABLE SLIDER  */
+/* SLIDERS */
 
 /* FIM CARROSSEL */
 

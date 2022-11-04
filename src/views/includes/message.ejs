@@ -46,3 +46,22 @@
         </div>
     </div>
 <% } %>
+
+<% if(user && !user.coockieAccept) { %>
+    <div class="warning-message">
+        <div class="warning-box">
+            <div class="message-w">
+                <h3 class="alert">Aviso!</h3>
+                <p>
+                    Aceita o contrato para conseguir utilizar as funções do site! 
+                    
+                    <a href="/contrato" target="_blank" style="margin-top: 10px;"><u>Política de privacidade</u></a>
+                </p>
+                
+            </div>
+            <button class="button-box-warning" id="closeW">
+                <h4 class="orange">Aceitar</h4>
+            </button>
+        </div>
+    </div>
+<% } %>

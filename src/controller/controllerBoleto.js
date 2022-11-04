@@ -16,17 +16,22 @@ exports.boleto = async function(req, res) {
             return req.session.save(() => res.redirect(`back`));
         }
 
+         function replaceAT(value, index, replacement) {
+          return value.substring(0, index) + replacement + value.substring(index + replacement.length);
+        }
+
         const dateNow = new Date();
         var numberOfDaysToAdd = 6;
         var expirationDay = new Date();
         expirationDay.setDate(dateNow.getDate() + numberOfDaysToAdd);
+        var cpf = replaceAT(req.session.user.cpf, 2, "xxxxxx");
 
         const boleto = {
             barcodeData: '23797726700000009997506091900000120800542910',
             digitableLine: '23797.50603 91900.000125 08005.429108 7 72670000000999',
             paymentPlace:
             'Pagável preferencialmente na rede Bradesco ou Bradesco Expresso.',
-            beneficiary: 'Faculdade Adventista da Bahia - CNPJ: 07.114.699/0001-60',
+            beneficiary: 'Livraria Saber - CNPJ: 07.114.699/0001-60',
             beneficiaryAddress:
             'Rodovia BR 101, km 197 - Capoeiruçu, Cachoeira - BA, 44300-000',
             instructions:
@@ -54,7 +59,7 @@ exports.boleto = async function(req, res) {
             chargeValue: '',
             payer: {
             name: `${req.session.user.nome}`,
-            registerNumber: `${req.session.user.cpf}`,
+            registerNumber: `${cpf}`,
             street: `${req.session.user.endereco}`,
             number: '',
             complement: '',
@@ -64,7 +69,7 @@ exports.boleto = async function(req, res) {
             postalCode: ''
             },
             guarantor: {
-            name: 'Faculdade Adventista da Bahia',
+            name: 'Livraria Saber',
             registerNumber: '07.114.699/0001-60',
             street: 'Rodovia BR 101, km 197',
             number: '',
@@ -89,10 +94,11 @@ exports.boleto = async function(req, res) {
         };
 
           res.download("boleto.pdf", options);
-          return req.flash('success', `Boleto baixado.`);
+          req.flash('success', `Boleto baixado.`);
         }); 
       });
     } catch (error) {
+      console.log(error)
         req.flash('errors', `Erro ao tentar gerar Boleto`);
         return req.session.save(() => res.redirect(`back`));
       }
@@ -110,7 +116,7 @@ exports.boletoAll = async function(req, res) {
       return req.session.save(() => res.redirect(`back`));
     }
   
-    const bookName = [];
+    var bookName = [];
     var bookValue = 0;
     var quantidade = 0;
     const dateNow = new Date();
@@ -124,12 +130,14 @@ exports.boletoAll = async function(req, res) {
       quantidade += value.quantidade;
     }
 
+    if(bookName.length > 3) bookName = `${bookName[0]}, ${bookName[1]} e mais ${bookName.length - 2} livros.`;
+
     const boleto = {
       barcodeData: '23797726700000009997506091900000120800542910',
       digitableLine: '23797.50603 91900.000125 08005.429108 7 72670000000999',
       paymentPlace:
       'Pagável preferencialmente na rede Bradesco ou Bradesco Expresso.',
-      beneficiary: 'Faculdade Adventista da Bahia - CNPJ: 07.114.699/0001-60',
+      beneficiary: 'Livraria Saber - CNPJ: 07.114.699/0001-60',
       beneficiaryAddress:
       'Rodovia BR 101, km 197 - Capoeiruçu, Cachoeira - BA, 44300-000',
       instructions:
@@ -167,7 +175,7 @@ exports.boletoAll = async function(req, res) {
       postalCode: ''
       },
       guarantor: {
-      name: 'Faculdade Adventista da Bahia',
+      name: 'Livraria Saber',
       registerNumber: '07.114.699/0001-60',
       street: 'Rodovia BR 101, km 197',
       number: '',
@@ -177,7 +185,7 @@ exports.boletoAll = async function(req, res) {
       state: 'BA',
       postalCode: 'Caixa Postal 18'
       }
-  }
+    }
 
   bradesco(boleto).then( data => {
     fs.writeFile(path.resolve(__dirname, "../../upload/boletos", "boleto.pdf"), data, err => {

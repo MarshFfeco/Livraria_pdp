@@ -50,7 +50,17 @@
                 <!--CAMPO PARA DATA NASCIMENTO-->
                 <div class="textfield textfieldLogSig">
                     <label>Data de Nascimento</label>
-                    <input type="date" name="nascimento" >
+                    <% const data = new Date(user.nascimento) %>
+
+                    <% let year = data.getFullYear().toString() %>
+                    <% let month = (1 + data.getMonth()).toString() %>
+                    <% let day = (1 + data.getDate()).toString() %>
+
+                    <% if(day.length < 2) day = "0" + day %>
+                    <% if(month.length < 2) month = "0" + month %>
+
+                    <% var newData = year + "-" + month + "-" + day %>
+                    <input type="date" name="nascimento" value="<%= newData %>" >
                 </div>
 
                 <!--CAMPO PARA SENHA-->

@@ -26,7 +26,7 @@ const sessionOptions = session({
 const routes = require('./routes/routes');
 const path = require('path');
 const csrf = require('csurf');
-const { sessionUser, rotasExist, nnn, checkCsrfError, csrfMiddleware } = require("./src/middlewares/middleware.js");
+const { sessionUser, rotasExist, nnn, aaa, checkCsrfError, csrfMiddleware } = require("./src/middlewares/middleware.js");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

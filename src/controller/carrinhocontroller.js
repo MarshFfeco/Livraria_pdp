@@ -48,6 +48,7 @@ exports.delete = async function(req, res) {
         req.session.save(() => res.redirect(`/carrinho/`));
         return;
     } catch (error) {
+        console.log(error)
         req.flash('errors', 'Erro ao tentar remover os livros do carrinho');
         return req.session.save(() => res.redirect(`back`));
     }

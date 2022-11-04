@@ -851,6 +851,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./frontend/assets/css/contrato.css":
+/*!******************************************!*\
+  !*** ./frontend/assets/css/contrato.css ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./frontend/assets/css/erro.css":
 /*!**************************************!*\
   !*** ./frontend/assets/css/erro.css ***!
@@ -981,18 +993,6 @@ __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
 
-/***/ }),
-
-/***/ "./frontend/assets/css/table.css":
-/*!***************************************!*\
-  !*** ./frontend/assets/css/table.css ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
 /***/ })
 
 /******/ 	});
@@ -1101,10 +1101,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_book_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../css/book.css */ "./frontend/assets/css/book.css");
 /* harmony import */ var _css_adm_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../css/adm.css */ "./frontend/assets/css/adm.css");
 /* harmony import */ var _css_message_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../css/message.css */ "./frontend/assets/css/message.css");
-/* harmony import */ var _css_table_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../css/table.css */ "./frontend/assets/css/table.css");
-/* harmony import */ var _css_carrinho_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../css/carrinho.css */ "./frontend/assets/css/carrinho.css");
-/* harmony import */ var _css_post_css__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../css/post.css */ "./frontend/assets/css/post.css");
-/* harmony import */ var _css_search_css__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../css/search.css */ "./frontend/assets/css/search.css");
+/* harmony import */ var _css_carrinho_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../css/carrinho.css */ "./frontend/assets/css/carrinho.css");
+/* harmony import */ var _css_post_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../css/post.css */ "./frontend/assets/css/post.css");
+/* harmony import */ var _css_search_css__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../css/search.css */ "./frontend/assets/css/search.css");
+/* harmony import */ var _css_contrato_css__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../css/contrato.css */ "./frontend/assets/css/contrato.css");
 /* harmony import */ var _img_image_erro_png__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../img/image_erro.png */ "./frontend/assets/img/image_erro.png");
 /* harmony import */ var _img_logo_png__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../img/logo.png */ "./frontend/assets/img/logo.png");
 /* harmony import */ var _load__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./load */ "./frontend/assets/js/load.js");
@@ -1141,6 +1141,7 @@ __webpack_require__.r(__webpack_exports__);
 /* SUMIR COM FLASH-MESSAGE  */
 
 var message = document.querySelectorAll(".position-message");
+var messageW = document.querySelectorAll(".warning-message");
 
 if (message.length > 0) {
   var button = document.getElementById("close");
@@ -1150,8 +1151,21 @@ if (message.length > 0) {
   };
 }
 
+if (messageW.length > 0) {
+  var _button = document.getElementById("closeW");
+
+  _button.onclick = function () {
+    fecharW();
+  };
+}
+
 function fechar() {
   message[0].style.display = "none";
+}
+
+function fecharW() {
+  messageW[0].style.display = "none";
+  location.href = '/accept';
 }
 /* FIM DO SUMIR COM FLASH-MESSAGE  */
 
@@ -1229,29 +1243,22 @@ if (isUrl("http://localhost:3000/")) {
 }
 /* FIM MAIN SLIDER */
 
-/* BEST SLIDER */
+/* SLIDERS */
 
 
 if (isUrl("http://localhost:3000/")) {
-  var bestControls = document.querySelectorAll(".best-carousel-control");
-  var bestScroll = document.getElementById("best-slider-limit");
-  var bestItens = document.querySelectorAll(".best-slider");
-  var bestMaxItens = bestItens.length;
-  var bestSlider = new _slider_BestSlider__WEBPACK_IMPORTED_MODULE_23__["default"](bestControls, bestItens, bestScroll, bestMaxItens);
+  var acaoAventuraControls = document.querySelectorAll(".first-carousel-control");
+  var acaoAventuraScroll = document.getElementById("first-slider");
+  var acaoAventuraItens = document.querySelectorAll(".first-slider-div");
+  var acaoAventuraMaxItens = acaoAventuraItens.length;
+  new _slider_BestSlider__WEBPACK_IMPORTED_MODULE_23__["default"](acaoAventuraControls, acaoAventuraItens, acaoAventuraScroll, acaoAventuraMaxItens);
+  var terrorDramaControls = document.querySelectorAll(".second-carousel-control");
+  var terrorDramaScroll = document.getElementById("second-slider");
+  var terrorDramaItens = document.querySelectorAll(".second-slider-div");
+  var terrorDramaMaxItens = terrorDramaItens.length;
+  new _slider_BestSlider__WEBPACK_IMPORTED_MODULE_23__["default"](terrorDramaControls, terrorDramaItens, terrorDramaScroll, terrorDramaMaxItens);
 }
-/* FIM BEST SLIDER */
-
-/* BEST AVALIABLE SLIDER */
-
-
-if (isUrl("http://localhost:3000/")) {
-  var bestAvaliableControls = document.querySelectorAll(".bestAvaliable-carousel-control");
-  var bestAvaliableScroll = document.getElementById("bestAvaliable-slider-limit");
-  var bestAvaliableItens = document.querySelectorAll(".bestAvaliable-slider");
-  var bestAvaliableMaxItens = bestAvaliableItens.length;
-  var bestAvaliableSlider = new _slider_BestSlider__WEBPACK_IMPORTED_MODULE_23__["default"](bestAvaliableControls, bestAvaliableItens, bestAvaliableScroll, bestAvaliableMaxItens);
-}
-/* END BEST AVALIABLE SLIDER  */
+/* SLIDERS */
 
 /* FIM CARROSSEL */
 

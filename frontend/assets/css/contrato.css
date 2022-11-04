@@ -1,0 +1,60 @@
+.contrato {
+    width: 100%;
+    min-height: 90vh;
+}
+
+.contrato h4 {
+    margin: 30px 0 10px 0;
+
+    font-size: 1.4em;
+
+    font-weight: bold;
+}
+
+.contrato h5 {
+    margin: 30px 0 10px 0;
+
+    font-size: 1.2em;
+
+    font-weight: bold;
+}
+
+.contrato h2 {
+    margin-top: 10px;
+    margin-bottom: 70px;
+
+    font-size: 1em;
+
+}
+.contrato h1 {
+    text-align: center;
+
+    font-size: 1.7em;
+}
+
+.contrato p {
+    font-size: 1.0em;
+
+    text-align: justify;
+
+
+    margin: 10px 50px;
+}
+
+.contrato ul {
+    margin-left: 100px;
+}
+
+.contrato ul, .contrato li {
+    font-size: .9em;
+    list-style: initial;
+}
+
+.contrato section {
+    width: 90%;
+    height: auto;
+
+    padding: 0px 20px;
+
+    margin: 50px auto;
+}

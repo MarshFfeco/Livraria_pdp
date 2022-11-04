@@ -2,6 +2,7 @@ const express = require('express');
 const route = express.Router();
 
 const home = require("../src/controller/homecontroller");
+const contrato = require("../src/controller/contratocontroller");
 const loginorsignup = require("../src/controller/loginorsignupcontroller");
 const book = require("../src/controller/bookcontroller")
 const adm = require("../src/controller/admcontroller");
@@ -9,11 +10,16 @@ const carrinho = require("../src/controller/carrinhocontroller");
 const search = require("../src/controller/searchcontroller");
 const boleto = require("../src/controller/controllerBoleto");
 
-const { loginRequired } = require("../src/middlewares/middleware")
+const { loginRequired, coockieAccept } = require("../src/middlewares/middleware")
 
 /* ROTA DO INDEX */
 route.get("/", home.index);
+route.get("/accept", loginorsignup.accept);
 /* FIM DA ROTA DO INDEX */
+
+/* ROTA DO CONTRATO */
+route.get("/contrato", contrato.index);
+/* FIM DA ROTA DO CONTRATO */
 
 /* ROTAS DO LOGIN E CADASTRO */
 route.get("/LoginOrSignUp", loginorsignup.index);
@@ -27,24 +33,24 @@ route.get("/book/:id", book.index);
 /* FIM DA ROTA DO LIVRO  */
 
 /* ROTAS DO ADM */
-route.get("/adm/:id", loginRequired, adm.index);
-route.post("/adm/:id/RegisterBookComplete", loginRequired, adm.register);
-route.post("/adm/:id/EditBookComplete", loginRequired, adm.editBook);
-route.get("/adm/:id/Edit", loginRequired, adm.edit);
-route.get("/adm/:id/Delete", loginRequired, adm.delete);
+route.get("/adm/:id", coockieAccept, loginRequired, adm.index);
+route.post("/adm/:id/RegisterBookComplete", coockieAccept, loginRequired, adm.register);
+route.post("/adm/:id/EditBookComplete", coockieAccept, loginRequired, adm.editBook);
+route.get("/adm/:id/Edit", coockieAccept, loginRequired, adm.edit);
+route.get("/adm/:id/Delete", coockieAccept, loginRequired, adm.delete);
 
-route.get("/adm/:id/editUser", loginRequired, loginorsignup.editUser);
-route.post("/adm/:id/editUserComplete", loginRequired, loginorsignup.editUserComplete);
-route.get("/adm/:id/deleteUser", loginRequired, loginorsignup.deleteUser);
+route.get("/adm/:id/editUser", coockieAccept, loginRequired, loginorsignup.editUser);
+route.post("/adm/:id/editUserComplete", coockieAccept, loginRequired, loginorsignup.editUserComplete);
+route.get("/adm/:id/deleteUser", coockieAccept, loginRequired, loginorsignup.deleteUser);
 
-route.get("/adm/:id/removeADM", loginRequired, adm.removeADM);
-route.get("/adm/:id/becomeADM", loginRequired, adm.becomeADM);
+route.get("/adm/:id/removeADM", coockieAccept, loginRequired, adm.removeADM);
+route.get("/adm/:id/becomeADM", coockieAccept, loginRequired, adm.becomeADM);
 /* FIM DAS ROTAS DO ADM */
 
 /* ROTAS DO CARRINHO */
-route.get("/carrinho", loginRequired, carrinho.index);
-route.get("/carrinho/:id", loginRequired, carrinho.addBook);
-route.get("/carrinho/:id/delete", loginRequired, carrinho.delete);
+route.get("/carrinho", coockieAccept, loginRequired, carrinho.index);
+route.get("/carrinho/:id", coockieAccept, loginRequired, carrinho.addBook);
+route.get("/carrinho/:id/delete", coockieAccept, loginRequired, carrinho.delete);
 /* FIM DAS ROTAS DO CARRINHO */
 
 /* ROTAS DE PESQUISA  */

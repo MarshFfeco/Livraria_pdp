@@ -1,6 +1,7 @@
 exports.sessionUser = function(req, res, next) {
     res.locals.errors = req.flash('errors');
     res.locals.success = req.flash('success');
+    res.locals.warning = req.flash("warning");
     res.locals.user = req.session.user;
     next();
 }
@@ -21,6 +22,15 @@ exports.loginRequired = function(req, res, next) {
     }
     next();
 };
+
+exports.coockieAccept = function(req, res, next) {
+    if(!req.session.user.coockieAccept) {
+        req.flash('errors', "Aceite os coockies para usar essa função");
+        return res.redirect("back");
+    }
+    
+    next();
+}
 
 exports.checkCsrfError = (err, req, res, next) => {
     if(err) {

@@ -35,7 +35,6 @@ exports.login = async function(req, res) {
             req.flash('errors', login.message);
             return req.session.save(() => res.redirect(`back`));
         }
-
         req.session.user = login.user;
         req.flash('success', 'Login realizado com sucesso.');
         return req.session.save(() => res.redirect(`/`));
@@ -104,5 +103,31 @@ exports.deleteUser = async function(req, res) {
     } catch (error) {
         req.flash('errors', 'Seu usuário não foi deletado');
         return req.session.save(() => res.redirect(`/`));
+    }
+}
+
+exports.accept = async function(req, res) {
+    try {
+        let idUser = req.session.user._id;
+
+        if(!idUser) return res.redirect(`back`)
+
+        const userEdit = new Login();
+        await userEdit.aceptCoockie(idUser);
+
+        if(userEdit.message.length > 0) {
+            req.flash('errors', userEdit.message);
+            return req.session.save(() => res.redirect("back"));
+        }
+
+        req.session.user = userEdit.user;
+
+        req.flash('success', `Contrato aceito.`);
+        req.session.save(() => res.redirect(`back`));
+        return;
+    } catch (error) {
+        console.log(error)
+        req.flash('errors', 'Erro ao tentar aceitar o contrato');
+        return req.session.save(() => res.redirect(`back`));
     }
 }

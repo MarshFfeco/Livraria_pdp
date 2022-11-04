@@ -9,83 +9,23 @@
 <%- include("includes/message")%>
 <!-- FIM MESSAGES -->
 
-<main id="carrinho-main">
+<main id="carrinho-main" class="flex-center">
      <!-- TEM LIVROS CADASTRADOS? -->
      <% if(books.length > 0) { %>
-        <div class="table-wrapper margin-center margin-top">
-            <table class="fl-table">
-                <thead>
-                    <tr>
-                        <th>Título</th>
-                        <th>Capa</th>
-                        <th>Preço</th>
-                        <th>Quantidade</th>
-                        <th>Valor</th>
-                        <th colspan="2">Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% books.forEach((book, index) => {%>
-                       <tr>
-                            <td><%= book.books.titulo %></td>
+        <%- include("includes/post2")%>
 
-                            <td>
-                                <figure>
-                                    <img src="<%= book.books.capa %>" alt="Foto da capa do livor" width="100px">
-                                </figure>
-                            </td>
+        <div class="quantTotal flex-center">
+            <% var max = 0 %>
+            <% var maxQtd = 0 %>
+            <% for(let i = 0; i < books.length; i++) { %>
+                <% max += books[i].books.preco * books[i].quantidade; %>
+                <% maxQtd += books[i].quantidade %>
+            <% } %>
 
-                            <td>R$<%= book.books.preco.toFixed(2) %></td>
+            <h3>Quantidade: <%= maxQtd %></h3>
 
-                            <% if(book.books.quantidade) { %> 
-                                <td><%= book.quantidade %></td> 
-                            <% } else { %>
-                                <td>Ebook</td>
-                            <% }  %>
-
-                            <td id="total">R$<%= (book.books.preco * book.quantidade).toFixed(2) %></td>
-
-                            <% if(book.books.quantidade) { %> 
-                                <td>
-                                    <a href="/carrinho/<%= book.books._id %>" class="edit-book">Adicionar</a>
-                                </td>
-
-                                <td>
-                                    <a href="/carrinho/<%= book.books._id %>/delete" class="delete-book">Excluir</a>
-                                </td>
-                            <% } else { %>
-                                <td colspan="2">
-                                    <a href="/carrinho/<%= book.books._id %>/delete" class="delete-book">Excluir</a>
-                                </td>
-                            <% } %>
-
-                        </tr>
-                    <% }); %>
-                <tbody>
-                    <tfoot>
-                        <th colspan="3">
-                            Quantidade
-                        </th>
-                        <th colspan="4">
-                            Total
-                        </th>
-                        <tr>
-                            <% var max = 0 %>
-                            <% var maxQtd = 0 %>
-                            <% for(let i = 0; i < books.length; i++) { %>
-                                <% max += books[i].books.preco * books[i].quantidade; %>
-                                <% maxQtd += books[i].quantidade %>
-                            <% } %>
-                            <td colspan="3"><%= maxQtd %></td>
-                            <td colspan="4">
-                                R$
-                                <%= max.toFixed(2) %>
-                            </td>
-                        </tr>
-                    </tfoot>
-            </table>
+            <h3>Total: R$<%= max.toFixed(2) %></h3>
         </div>
-
 
         <!-- finalizar -->
         <div class="button-finalizar">

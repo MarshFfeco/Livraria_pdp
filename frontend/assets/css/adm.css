@@ -15,12 +15,17 @@
     align-items: center;
 }
 
+#carrinho-main {
+    flex-direction: column;
+}
+
+
 .report-style a {
     width: auto;
 }
 
 .report-style a:link, .report-style a:visited {
-    width: 20%;
+    width: 40%;
 
     padding: 10px 0;
 
@@ -190,7 +195,6 @@
 
 /*.generos li input:checked { background-color: var(--active-color); }*/
 
-
 .textfieldAdm textarea {
     padding: 10px;
     width: 100%;
@@ -221,10 +225,25 @@ details[open] summary h2 {
 }
 
 @media (max-width: 700px) {
+    .cardadm {
+        width: 100%;
+    }
+
+    .report-style {
+        width: 100%;
+    }
+
     .user ul {
         flex-wrap: wrap;
+
+        padding: 20px 0;
     }
+
     .user li {
         border: none;
+    }
+    
+    .user svg {
+        display: none;
     }
 }

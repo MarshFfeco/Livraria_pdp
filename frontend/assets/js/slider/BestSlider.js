@@ -17,7 +17,7 @@ export default class BestSlide extends Slider {
             const isLeft = control.classList.contains("left");
 
             if(isLeft) { this.moveScroll -= this.scroll.offsetWidth; } 
-            else { this.moveScroll += this.scroll.offsetWidth;}  
+            else { this.moveScroll += this.scroll.offsetWidth; }  
 
             if(!isLeft && this.moveScroll > lastItem) { this.moveScroll = firstItem; }
             if(isLeft && this.scroll.scrollLeft == 0) { this.moveScroll = lastItem; }

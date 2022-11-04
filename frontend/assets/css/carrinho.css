@@ -2,10 +2,22 @@
     min-height: 90vh;
 }
 
+.quantTotal {
+    width: 90%;
+
+    padding: 20px 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 4px var(--shadow-color);
+
+    justify-content: space-evenly;
+
+    background-color: white;
+}
+
 .button-finalizar {
     width: 95%;
 
-    margin: 0 auto;
+    margin: 50px 0;
 }
 
 .button-finalizar button {
@@ -29,3 +41,13 @@
 .button-finalizar button:active { background-color: var(--active-color); }
 
 .button-finalizar button:focus { background-color: var(--active-color); }
+
+@media (max-width: 600px) {
+    .quantTotal {
+        width: 100%;
+    
+        padding: 20px 0px;
+        border-radius: 0;
+        box-shadow: 0 4px 4px var(--shadow-color);
+    }
+}

@@ -15,6 +15,7 @@ const RegisterSchema = new mongoose.Schema({
     endereco: { type: String },
     telefone: { type: Number },
     nascimento: { type: Date },
+    coockieAccept: { Boolean },
 });
   
 const RegisterModel = mongoose.model('Register', RegisterSchema);
@@ -31,6 +32,14 @@ class LoginOrSignUp {
         var users = await RegisterModel.find().sort({ adm: -1 });
  
         return users;
+     }
+
+     async aceptCoockie(id) {
+        this.user = await RegisterModel.findByIdAndUpdate(id, { coockieAccept: true }, { new: true });
+
+        if(!this.user) this.message.push("Erro ao tentar aceitar o contrato");
+
+        return;
      }
 
     async removeADM(id){
@@ -91,11 +100,14 @@ class LoginOrSignUp {
 
     async userEdit(id) {
         this.cleanUp();
-        let validaCPF = this.validaCPF();
 
-        if(!validaCPF) {
-            this.message.push("CPF inválido ou Inexistente!")
-            return;
+        if(this.body.cpf) {
+            let validaCPF = this.validaCPF();
+
+            if(!validaCPF) {
+                this.message.push("CPF inválido ou Inexistente!")
+                return;
+            }
         }
 
         const salt = bcrypt.genSaltSync();
@@ -132,8 +144,6 @@ class LoginOrSignUp {
         if(!validator.isEmail(this.body.email)){
             this.message.push("Email inválido");
         }
-
-
     }
 
     cleanUp() {
