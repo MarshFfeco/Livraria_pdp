@@ -37,7 +37,7 @@
 
         <div class="report-style">
             <a href="/adm/:id/relatorioSimpleRe" target="_blank">Relatório Simples</a>
-            <a href="/adm/:id/relatorioSimpleRe" target="_blank">Relatório Completo</a>
+            <a href="/adm/:id/relatorioCompostRe" target="_blank">Relatório Completo</a>
         </div>
 
         <hr class="custom-hr">
@@ -67,7 +67,7 @@
                             
                             <!-- ADICIONAR -->
                             <div class="button-add">
-                                <button aria-label="remove book" class="btn book-container-add outline" style="background-color: #ff6347;" onclick="location.href = '/adm/<%= book._id %>/Delete%>';">Excluir</button>
+                                <button aria-label="remove book" class="btn book-container-adm outline" style="background-color: #ff6347; padding: 5px;" onclick="location.href = '/adm/<%= book._id %>/Delete%>';">Excluir</button>
                             </div>
                             <!-- FIM DO ADICIONAR -->
                         </div>
@@ -253,7 +253,7 @@
                             <!-- CAMPO PARA QUANTIDADE -->
                             <div class="textfield textfieldAdm">
                                 <label>Quantidade</label>
-                                <input type="number" name="quantidade" value="<%= editbook.quantidade %>">
+                                <input type="number" name="quantidade" value="<%= editbook.quantidade %>" placeholder="Deixe vazio caso queira que seja Ebook">
                             </div>
 
                             <!-- CAMPO PARA TITULO -->

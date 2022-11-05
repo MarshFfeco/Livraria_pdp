@@ -18,15 +18,15 @@ class Carrinho {
 
     async addBook() {
         this.cleanUp();
-        let isEqual = await this.isEqual();
+        let isEqual = await this.isEqual(); 
 
         if(this.message.length > 0) return;
 
         if(!isEqual) { 
-            this.cart = await CartModel.create(this.idBook);
-        } else {
-            this.addMore(isEqual.quantidade)
+            return this.cart = await CartModel.create(this.idBook);
         }
+
+        return this.addMore(isEqual.quantidade)
     }
 
     async deleteBook(id) {
@@ -34,26 +34,25 @@ class Carrinho {
 
         this.cart = await CartModel.findOneAndDelete({ books: id });
 
-        return cart;
+        return this.cart;
       };
 
     async addMore(quantidade) {
-            const book = await this.buscarLivro(this.idBook.books);
+        const book = await this.buscarLivro(this.idBook.books);
 
-            if(this.message.length > 0) return;
+        if(this.message.length > 0) return;
 
-            const maxQuantidade = book.books.quantidade;
+        const maxQuantidade = book.books.quantidade;
 
-            quantidade += 1;
+        quantidade += 1;
 
-            if(quantidade > maxQuantidade) { 
-                this.message.push("Quantidade maior que a de estoque");
-                return;
-            }
+        if(quantidade > maxQuantidade) { 
+            this.message.push("Quantidade maior que a de estoque");
+        }
 
-            if(this.message.length > 0) return;
+        if(this.message.length > 0) return;
 
-            return this.cart = await CartModel.findOneAndUpdate({ books: this.idBook.books } , { quantidade: quantidade }, { new: true });
+        return this.cart = await CartModel.findOneAndUpdate({ books: this.idBook.books } , { quantidade: quantidade }, { new: true });
     }
 
     async buscarLivro(id) {

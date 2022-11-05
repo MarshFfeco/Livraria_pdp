@@ -9,7 +9,11 @@ class Home {
     }
 
     async buscarLivros() {
-        const books = await (await BookModel.find());
+        var books = await (await BookModel.find());
+
+       books = books.filter(book => {
+            if(book.quantidade || book.quantidade == null || book.quantidade > 0) return book;
+        })
 
         return books;
     }

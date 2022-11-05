@@ -156,7 +156,7 @@ header {
     
     outline: none;
 
-    background: transparent;
+    background: white;
 
     color: var(--main-color);
 }

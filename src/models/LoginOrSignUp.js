@@ -28,7 +28,7 @@ class LoginOrSignUp {
         this.adm = adm;
     }
 
-    async users(id) {
+    async users() {
         var users = await RegisterModel.find().sort({ adm: -1 });
  
         return users;

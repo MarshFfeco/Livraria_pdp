@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/images/report.png">
     <title>Report</title>
     <style>
         * {
@@ -28,10 +29,12 @@
         .tables {
             width: auto;
 
-            margin-top: 25px;
+            margin: 25px 0;
         }
 
         table {
+            width: 100%;
+
             margin-left: auto;
             margin-right: auto;
         }
@@ -113,8 +116,9 @@
         <small><%= new Date().toLocaleTimeString() %></small>
         <hr>
 
+        <!-- USUARIO LOGADO -->
         <div class="cabeca">
-            <h2>Usuário Logado</h2>
+            <h2>ADM que gerou o relatório</h2>
         </div>
 
         <div class="tables">
@@ -134,12 +138,10 @@
                     </tr>
                 </tbody>
             </table>
-
-            <table>
-
-            </table>
         </div>
+        <!-- USUARIO LOGADO -->
 
+        <!-- LIVROS DO USUARIO LOGADO -->
         <div class="cabeca" style="margin-top: 50px;">
             <h2>Livros que o(a) <%= user.nome %> inseriu na base de dados</h2>
         </div>
@@ -148,11 +150,9 @@
             <table class="styled-table">
                 <thead>
                     <tr>
-                        <th>Capa</th>
                         <th>ID</th>
                         <th>Titulo</th>
                         <th>Autor</th>
-                        <th>Preço</th>
                         <th>Gêneros</th>
                         <th>editora</th>
                         <th>lançamento</th>
@@ -161,11 +161,12 @@
                 <tbody>
                     <% books.forEach(book => { %>
                     <tr>
-                        <td><img src="<%= book.capa %>" alt="Foto da capa do livor" width="100px"> </td>
                         <td><p><%= String(book._id) %></p></td>
+
                         <td><%= book.titulo %></td>
+
                         <td><%= book.autor %></td>
-                        <td>R$<%= book.preco.toFixed(2) %></td>
+
                         <% if(book.generos && book.generos.length > 0) { %>
                             <td>
                                 <% for(genero of book.generos) { %>
@@ -176,16 +177,140 @@
                         <% } else { %>
                             <td>Sem gênero</td>
                         <% } %>
+
                         <td><%= book.editora %></td>
+
                         <td><%= book.dataLancamento.toLocaleDateString('pt-br') %></td>
                     </tr>
                     <% }); %>
                 </tbody>
             </table>
+        </div>
 
-            <table>
+        <div class="tables">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Preço</th>
+                        <th>Estoque</th>
+                        <th>Vendas</th>
+                        <th>Lucro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% var totalLivros = 0; %>
+                    <% var ValorTotal = 0; %>
+                    <% books.forEach((book, index) => { %>
+                        <% totalLivros = totalLivros + index + 1; %>
+                        <% ValorTotal = ValorTotal + (book.vendas * book.preco); %>
+                    <tr>
+                        <td><p><%= String(book._id) %></p></td>
 
+                        <td>R$<%= book.preco.toFixed(2) %></td>
+
+                        <td>
+                            <% if(book.quantidade > 0) { %>
+                                <%= book.quantidade %>
+                            <% } else if(book.quantidade == null) { %>
+                                Ebook
+                            <% } else { %>
+                                Vendeu Todos
+                            <% }  %>
+                        </td>
+
+                        <td>
+                            <% if(book.vendas > 0) { %>
+                                <%= book.vendas %>
+                            <% } else if(book.vendas == null) { %>
+                                0
+                            <% } else { %>
+                                0
+                            <% }  %>
+                        </td>
+
+                        <td>
+                            R$<%= (book.vendas * book.preco).toFixed(2) %>
+                        </td>
+                    </tr>
+                    <% }); %>
+                </tbody>
             </table>
         </div>
+
+        <div class="tables">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Livros</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><%= totalLivros %></td>
+
+                        <td>R$<%= ValorTotal.toFixed(2) %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- LIVROS DO USUARIO LOGADO -->
+
+        <!-- USUARIOS DO BANCO DE DADOS -->
+        <div class="cabeca" style="margin-top: 50px;">
+            <h2>Usuários do banco de dados</h2>
+        </div>
+
+        <div class="tables">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach(user => { %>
+                        <% if(user.adm) return; %>
+                    <tr>
+                        <td><%= user._id %></td>
+                        <td><%= user.nome %></td>
+                        <td><%= user.email %></td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+        <!-- USUARIOS DO BANCO DE DADOS -->
+
+        <!-- ADMS -->
+        <div class="cabeca" style="margin-top: 50px;">
+            <h2>Administradores</h2>
+        </div>
+
+        <div class="tables">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach(user => { %>
+                        <% if(!user.adm) return; %>
+                    <tr>
+                        <td><%= user._id %></td>
+                        <td><%= user.nome %></td>
+                        <td><%= user.email %></td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+        <!-- ADMS -->
     </body>
 </html>

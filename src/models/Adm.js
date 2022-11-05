@@ -5,6 +5,7 @@ exports.BookSchema = BookSchema = new mongoose.Schema ({
     autor: { type: String, required: true },
     editora: { type: String, required: true },
     quantidade: { type: Number },
+    vendas: { type: Number },
     preco: { type: Number, require: true },
     capa: { type: String,  required: true },
     dataLancamento: { type: Date, required: true },
@@ -73,7 +74,7 @@ class Adm {
 
         if(this.message.length > 0) return;
 
-        this.cleanUp();
+        this.cleanUpEdit();
 
         this.book = await BookModel.findByIdAndUpdate(id, this.body, { new: true });
 
@@ -97,6 +98,23 @@ class Adm {
     }
 
     cleanUp() {
+        this.body = {
+            titulo: this.body.titulo,
+            autor: this.body.autor,
+            editora: this.body.editora,
+            quantidade: this.body.quantidade,
+            vendas: null,
+            preco: this.body.preco,
+            capa: this.body.capa,
+            dataLancamento: this.body.dataLancamento,
+            generos: this.body.genero,
+            resumo: this.body.resumo,
+            detalheProduto: this.body.detalheProduto,
+            user: this.user,
+        }
+    }
+
+    cleanUpEdit() {
         this.body = {
             titulo: this.body.titulo,
             autor: this.body.autor,

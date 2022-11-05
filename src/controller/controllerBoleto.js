@@ -3,6 +3,7 @@ const Boleto = require("../models/Boleto");
 const fs = require('fs')
 
 const Book = require("../models/Adm");
+const User = require("../models/LoginOrSignUp")
 
 exports.boleto = async function(req, res) {
     const { bradesco } = require('boleto-pdf')
@@ -115,6 +116,14 @@ exports.boletoAll = async function(req, res) {
       req.flash('errors', boletoCall.message);
       return req.session.save(() => res.redirect(`back`));
     }
+
+
+    for(value of req.session.carrinho) { 
+      if(!(value.books.quantidade || value.books.quantidade == null || value.books.quantidade > 0)) {
+        req.flash('errors', "No carrinho existem livro(s) indisponíveis!");
+        return req.session.save(() => res.redirect(`back`));
+      }
+     }
   
     var bookName = [];
     var bookValue = 0;
@@ -223,11 +232,18 @@ exports.relatorioSimpleRe = async function(req, res, next) {
     return req.session.save(() => res.redirect('/'));
   }
 
-let idBook = req.params.id.replace(/}/, '');
+  const callUsers = new User();
+  const users =  await callUsers.users();
 
-if(idBook == req.session.user._id) idBook = null;
+  if(callUsers.message.length > 0) {
+    req.flash('errors', callUsers.message);
+    return req.session.save(() => res.redirect('/'));
+  }
 
- res.render("relatorioSimple.ejs", { books: books }, function(err, html) {
+  let idBook = req.params.id;
+  if(idBook == req.session.user._id) idBook = null;
+
+  res.render("relatorioSimple.ejs", { books: books, users, users }, function(err, html) {
     if (err) {
       req.flash('errors', "Erro ao tentar gerar relatório");
       return req.session.save(() => res.redirect('back'));
@@ -248,5 +264,54 @@ exports.relatorioSimpleReDo = function(req, res) {
   };
 
   res.sendFile("relatorioSimple.pdf", options);
+  return req.flash('success', `Boleto baixado.`);
+}
+
+exports.relatorioCompostRe = async function(req, res, next) {
+  var pdf = require('html-pdf');
+  var optionsPDF = { 
+    format: 'A3',
+  };
+
+  const callBook = new Boleto();
+  const books =  await callBook.buscarLivros();
+
+  if(callBook.message.length > 0) {
+    req.flash('errors', callBook.message);
+    return req.session.save(() => res.redirect('/'));
+  }
+
+  const callUsers = new User();
+  const users =  await callUsers.users();
+
+  if(callUsers.message.length > 0) {
+    req.flash('errors', callUsers.message);
+    return req.session.save(() => res.redirect('/'));
+  }
+
+  let idBook = req.params.id;
+  if(idBook == req.session.user._id) idBook = null;
+
+  res.render("relatorioCompost.ejs", { books: books, users: users }, function(err, html) {
+    if (err) {
+      req.flash('errors', "Erro ao tentar gerar relatório");
+      return req.session.save(() => res.redirect('back'));
+    }
+    res.send(html)
+    pdf.create(html, optionsPDF).toFile(path.resolve(__dirname, "../../upload/relatorios", "relatorioCompost.pdf"), function(err, res) {
+      if (err) {
+        req.flash('errors', `Erro ao tentar gerar Relatório`);
+        return req.session.save(() => res.redirect(`back`));
+      };
+    });
+  });
+}
+
+exports.relatorioCompostReDo = function(req, res) {
+  var options = {
+    root: path.join(__dirname, "../../upload/relatorios")
+  };
+
+  res.sendFile("relatorioCompost.pdf", options);
   return req.flash('success', `Boleto baixado.`);
 }

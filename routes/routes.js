@@ -60,8 +60,11 @@ route.get("/search", search.index);
 /* ROTA DO BOLETO */
 route.get("/comprar/:name/:id", loginRequired, boleto.boleto);
 route.get("/comprar/carrinho/", loginRequired, boleto.boletoAll);
+
 route.get("/adm/:id/relatorioSimpleRe", loginRequired, boleto.relatorioSimpleRe);
 route.get("/adm/:id/relatorioSimpleRe/dowload", loginRequired, boleto.relatorioSimpleReDo);
+route.get("/adm/:id/relatorioCompostRe", loginRequired, boleto.relatorioCompostRe);
+route.get("/adm/:id/relatorioCompostRe/dowload", loginRequired, boleto.relatorioCompostReDo);
 /* FIM DA ROTA DO BOLETO */
 
 module.exports = route;

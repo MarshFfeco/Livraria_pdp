@@ -14,7 +14,7 @@ exports.index = async function(req, res) {
 exports.addBook = async function(req, res) {
     try {
         let idBook = req.params.id;
-
+        
         const cartAdd = new Carrinho(idBook, req.session.user);
         await cartAdd.addBook();
 
@@ -27,6 +27,7 @@ exports.addBook = async function(req, res) {
         req.flash('success', `Livro adicionado ao carrinho.`);
         return req.session.save(() => res.redirect(`back`));
     } catch (error) {
+        console.log(error)
         req.flash('errors', 'Erro ao tentar adicionar mais livros');
         return req.session.save(() => res.redirect(`back`));
     }
@@ -45,7 +46,7 @@ exports.delete = async function(req, res) {
     
         req.session.carrinho = deleteBook.cart;
         req.flash('success', 'Livro Removido da lista.');
-        req.session.save(() => res.redirect(`/carrinho/`));
+        req.session.save(() => res.redirect(`back`));
         return;
     } catch (error) {
         console.log(error)

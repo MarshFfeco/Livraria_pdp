@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/images/report.png">
+    <title>Report</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            word-break: break-all;
+        }
+
+        .hr {
+            width: 100%;
+            margin: 50px auto;
+            overflow: visible; /* For IE */
+            border: none;
+            border-top: medium double #239273;
+            color:#175E4A;
+            text-align: center;
+        }
+        .hr:after {
+            content: "§";
+            display: inline-block;
+            position: relative;
+            top: -0.7em;
+            font-size: 1.5em;
+            padding: 0 0.25em;
+            background: white;
+        }
+
+        body {
+            width: 95%;
+
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1 {
+            margin-top: 25px;
+
+            text-align: left;
+        }
+
+        .tables {
+            width: auto;
+
+            margin: 25px 0;
+        }
+
+        table {
+            width: 100%;
+
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        a:link, a:visited {
+            width: 100%;
+
+            display: block;
+
+            margin-top: 20px;
+            padding: 10px 0;
+
+            text-align: center;
+            text-decoration: none;
+
+            border-radius: 20px;
+
+            color: white;
+            background-color: #239273;
+        }
+
+        a:hover, a:active {
+            background-color: #4ec07d;
+        }
+
+        .cabeca {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .styled-table {
+            background-color: #239273;
+            font-size: 0.9em;
+            font-family: 'Nunito', sans-serif;
+
+            border: 1px solid #239273;
+        }
+
+        .styled-table thead tr {
+            background-color: #239273;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .styled-table th,
+        .styled-table td {
+            max-width: 200px;
+            padding: 10px 10px;
+        }
+
+        .styled-table tbody td {
+            text-align: center;
+            background-color: #ffffff;
+        }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr.active-row {
+            font-weight: bold;
+            color: #239273;
+        }
+
+        @media print {
+            body .print {
+                display: none;
+            }
+        }
+
+    </style>
+</head>
+    <body>
+        <a class="print" href="/adm/:id/relatorioCompostRe/dowload">baixar</a>
+        <h1>Relatório Completo</h1>
+        <small>Gerado:</small>
+        <small><%= new Date().toLocaleDateString() %></small>
+        <small>as</small>
+        <small><%= new Date().toLocaleTimeString() %></small>
+        <hr>
+
+        <!-- USUARIO LOGADO -->
+        <div class="cabeca">
+            <h2>ADM que gerou o relatório</h2>
+        </div>
+
+        <div class="tables">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><%= user._id %></td>
+                        <td><%= user.nome %></td>
+                        <td><%= user.email %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- USUARIO LOGADO -->
+
+        <!-- LIVROS DOS ADMS -->
+        <div class="cabeca" style="margin-top: 50px;">
+            <h2>Livros da base da dados</h2>
+        </div>
+
+
+        <% users.forEach(user => { %>
+            <% if(!user.adm) return; %>
+            <% var totalLivros = 0; %>
+            <% var ValorTotal = 0; %>
+
+            <div class="cabeca" style="margin-top: 50px;">
+                <h3>Livros que o(a) <%= user.nome %> inseriu na base de dados</h3>
+            </div>
+
+            <div class="tables">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Titulo</th>
+                            <th>Autor</th>
+                            <th>Gêneros</th>
+                            <th>editora</th>
+                            <th>lançamento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% var index = 0 %>
+                        <% books.forEach(book => { %>
+                            <% if(String(user._id) != String(book.user._id)) return; %>
+                            <% index += 1 %>
+                            <% totalLivros = index; %>
+                            <% ValorTotal = ValorTotal + (book.vendas * book.preco); %>
+                            <tr>
+                                <td><p><%= String(book._id) %></p></td>
+
+                                <td><%= book.titulo %></td>
+
+                                <td><%= book.autor %></td>
+
+                                <% if(book.generos && book.generos.length > 0) { %>
+                                    <td>
+                                        <% for(genero of book.generos) { %>
+                                            <%= genero %>
+                                            <br>
+                                        <% } %>
+                                    </td>
+                                <% } else { %>
+                                    <td>Sem gênero</td>
+                                <% } %>
+
+                                <td><%= book.editora %></td>
+
+                                <td><%= book.dataLancamento.toLocaleDateString('pt-br') %></td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tables">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Preço</th>
+                            <th>Estoque</th>
+                            <th>Vendas</th>
+                            <th>Lucro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% books.forEach(book => { %>
+                            <% if(String(user._id) != String(book.user._id)) return; %>
+                        <tr>
+                            <td><p><%= String(book._id) %></p></td>
+
+                            <td>R$<%= book.preco.toFixed(2) %></td>
+
+                            <td>
+                                <% if(book.quantidade > 0) { %>
+                                    <%= book.quantidade %>
+                                <% } else if(book.quantidade == null) { %>
+                                    Ebook
+                                <% } else { %>
+                                    Vendeu Todos
+                                <% }  %>
+                            </td>
+
+                            <td>
+                                <% if(book.vendas > 0) { %>
+                                    <%= book.vendas %>
+                                <% } else if(book.vendas == null) { %>
+                                    0
+                                <% } else { %>
+                                    0
+                                <% }  %>
+                            </td>
+
+                            <td>
+                                R$<%= (book.vendas * book.preco).toFixed(2) %>
+                            </td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tables">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Livros</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><%= totalLivros %></td>
+    
+                            <td>R$<%= ValorTotal.toFixed(2) %></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <hr class="hr">
+        <% }) %>
+        <!-- LIVROS DO ADMS -->
+
+        <!-- USUARIOS DO BANCO DE DADOS -->
+        <div class="cabeca" style="margin-top: 50px;">
+            <h2>Usuários do banco de dados</h2>
+        </div>
+
+        <div class="tables">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach(user => { %>
+                        <% if(user.adm) return; %>
+                    <tr>
+                        <td><%= user._id %></td>
+                        <td><%= user.nome %></td>
+                        <td><%= user.email %></td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+        <!-- USUARIOS DO BANCO DE DADOS -->
+
+        <!-- ADMS -->
+        <div class="cabeca" style="margin-top: 50px;">
+            <h2>Administradores</h2>
+        </div>
+
+        <div class="tables">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach(user => { %>
+                        <% if(!user.adm) return; %>
+                    <tr>
+                        <td><%= user._id %></td>
+                        <td><%= user.nome %></td>
+                        <td><%= user.email %></td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+        <!-- ADMS -->
+    </body>
+</html>

@@ -12,6 +12,10 @@
     --warn-color: #ff9800;
 }
 
+.indisponible {
+    border: 2px solid var(--erro-color);
+}
+
 .margin-top {
     margin-top: 50px;
 }
@@ -248,5 +252,18 @@ ul, li {
 @media (max-width: 999px) {
     .margin-center {
         margin: 0;
+    }
+
+    .message-book {
+        width: 60%;
+        height: 50px;
+    }
+}
+
+@media (max-width: 600px) {
+    .message-book {
+        width: 100%;
+
+        border-radius: 0;
     }
 }

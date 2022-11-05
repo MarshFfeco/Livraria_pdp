@@ -65,12 +65,17 @@
     grid-area: buttons;
 }
 
+
 .post-buttons .button-buy {
-    width: 40%;
+    width: 44%;
 }
 
 .post-buttons .button-add {
-    width: 40%;
+    width: 44%;
+}
+
+.post-buttons .button-add button {
+    padding: 0;
 }
 
 .post-image  {
@@ -97,8 +102,6 @@
     grid-template-columns: .5fr 150px 2fr .5fr;
     grid-template-rows: 200px;
 
-    column-gap: 20px;
-
     box-shadow: 0px 2px 2px var(--shadow-color);
 
     border-radius: 10px;
@@ -116,7 +119,7 @@
 }
 
 .post2-image { 
-    border-right: 1px solid black; 
+
     border-color: var(--main-color);
 }
 
@@ -151,6 +154,7 @@
 @media (max-width: 999px) {
     .post-limit {
         width: 80%;
+        column-gap: 20px;
     }
 
     .post2-title-autor h3, p { font-size: 80%; }
@@ -163,6 +167,7 @@
 
     .post-limit, .post2-limit {
         width: 100%;
+        column-gap: 10px;
 
         border-radius: 0;
     }

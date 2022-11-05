@@ -30,10 +30,13 @@
 
             <!-- BOOK OR EBOOK -->
             <div class="book-container-avaliable flex-center">
-                <% if(book.quantidade) { %>
+                
+                <% if(book.quantidade > 0) { %>
                     <p>Livro</p>
-                <% } else { %>
+                <% } else if(book.quantidade == null) { %>
                     <p>Ebook</p>
+                <% } else { %> 
+                    <p>Indisponível</p>
                 <% } %>
             </div>
             <!-- FIM DAO BOOK OR EBOOK -->
@@ -46,6 +49,7 @@
         <h3 class="book-container-price">R$<%= book.preco %></h3>
         <!-- FIM DO PRECO -->
 
+        <% if(book.quantidade || book.quantidade == null || book.quantidade > 0) { %>
         <!-- COMPRAR -->
         <button aria-label="buy" class="btn book-container-buy inline" action="boleto.pdf" onclick="location.href = '/comprar/<%= book.titulo %>/<%= book._id %>';">Comprar</button>
         <!-- FIM DO COMPRAR -->
@@ -53,6 +57,7 @@
         <!-- ADICIONAR -->
         <button aria-label="wish cart" class="btn book-container-add outline" onclick="location.href = '/carrinho/<%= book._id %>';">Adicionar à lista</button>
         <!-- FIM DO ADICIONAR -->
+        <% } %>
     </section>
     <!-- FIM DA SEÇÃO DO LIVRO -->
 

@@ -16,6 +16,7 @@ import "../css/contrato.css"
 
 import * as img from "../img/image_erro.png";
 import * as logo from "../img/logo.png";
+import * as report from "../img/report.png";
 
 import load from "./load"
 import MudaCor from "./nav"
