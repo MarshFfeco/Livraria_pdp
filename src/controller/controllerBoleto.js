@@ -27,8 +27,14 @@ exports.boleto = async function(req, res) {
         expirationDay.setDate(dateNow.getDate() + numberOfDaysToAdd);
         var cpf = replaceAT(req.session.user.cpf, 2, "xxxxxx");
 
+        var barcode = 0;
+        for(let i = 0; i < 44; i++) { 
+          barcode += Math.floor(Math.random() * 10).toString() 
+        };
+        /*44 */
+
         const boleto = {
-            barcodeData: '23797726700000009997506091900000120800542910',
+            barcodeData: `${barcode}`,
             digitableLine: '23797.50603 91900.000125 08005.429108 7 72670000000999',
             paymentPlace:
             'Pagável preferencialmente na rede Bradesco ou Bradesco Expresso.',

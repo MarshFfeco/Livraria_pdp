@@ -24,10 +24,15 @@ exports.loginRequired = function(req, res, next) {
 };
 
 exports.coockieAccept = function(req, res, next) {
-    if(!req.session.user.coockieAccept) {
-        req.flash('errors', "Aceite os coockies para usar essa função");
-        return res.redirect("back");
+    try {
+        if(!req.session.user.coockieAccept) {
+            req.flash('errors', "Aceite os coockies para usar essa função");
+            return res.redirect("back");
+        }
+    } catch (error) {
+        res.render("home");
     }
+
     
     next();
 }

@@ -168,11 +168,13 @@ ul, li {
     color: white;
     background-color: var(--hover-color);
 
+    opacity: 0.5;
+
     border:2px solid transparent;
     border-radius: 30px;
 }
 
-.outline2:hover { background-color: var(--back-load); }
+.outline2:hover { opacity: 1; }
 
 .outline2:active { background-color: var(--active-color); }
 
@@ -188,7 +190,7 @@ ul, li {
     color: var(--cinza-color);
 }
 
-.inline2:hover { border: 2px solid var(--back-load); color: var(--back-loadr); }
+.inline2:hover {border: 2px solid var(--hover-color); color: var(--hover-color); }
 .inline2:active { border: 2px solid var(--active-color); color: var(--active-color); }
 .inline2:focus { border: 2px solid var(--active-color); color: var(--active-color); }
 

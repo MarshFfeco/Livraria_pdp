@@ -46,7 +46,7 @@
         <hr class="book-container-hr">
 
         <!-- PRECO -->
-        <h3 class="book-container-price">R$<%= book.preco %></h3>
+        <h3 class="book-container-price">R$<%= book.preco.toFixed(2) %></h3>
         <!-- FIM DO PRECO -->
 
         <% if(book.quantidade || book.quantidade == null || book.quantidade > 0) { %>

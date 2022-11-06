@@ -125,3 +125,48 @@
     font-size: 13px;
 }
 /* FIM DA DESCRIÇÃO DO LIVRO */
+
+@media (max-width: 999px) { 
+    #book-style {
+        width: 90%;
+        height: auto;
+    
+        margin: 50px auto;
+    
+        display: grid;
+        grid-template-areas: 
+        'book'
+        'figure'
+        'des'
+        ;
+
+        grid-template-columns: 100%;
+    }
+
+    .book-container {
+        grid-area: book;
+
+        border-radius: 40px;
+    }
+
+    .book-figure {
+        height: auto;
+
+        display: block;
+        position: static;
+
+        grid-area: figure;
+    }
+    
+    .book-figure img { 
+        width: 100%;    
+        display: block;
+        position: static;
+
+        margin: 50px 0;
+    }
+
+    .book-description {
+        grid-area: des;
+    }
+}

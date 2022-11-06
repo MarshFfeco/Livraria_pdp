@@ -103,7 +103,7 @@ class Adm {
             autor: this.body.autor,
             editora: this.body.editora,
             quantidade: this.body.quantidade,
-            vendas: null,
+            vendas: 0,
             preco: this.body.preco,
             capa: this.body.capa,
             dataLancamento: this.body.dataLancamento,

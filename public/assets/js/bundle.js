@@ -251,35 +251,84 @@ var BestSlide = /*#__PURE__*/function (_Slider) {
     _this.itens = itens;
     _this.scroll = scroll;
     _this.moveScroll = 0;
+    _this.currentItem = 0;
     return _this;
   }
 
   _createClass(BestSlide, [{
-    key: "event",
-    value: function event(control) {
+    key: "controlle",
+    value: function controlle() {
       var _this2 = this;
 
+      this.controls.forEach(function (control) {
+        _this2.verifyWidth(control);
+      });
+    }
+  }, {
+    key: "verifyWidth",
+    value: function verifyWidth(control) {
+      var _this3 = this;
+
+      control.addEventListener("click", function () {
+        var windowWidth = window.innerWidth;
+
+        if (windowWidth <= 470) {
+          _this3.eventCell(control);
+        } else {
+          _this3.event(control);
+        }
+
+        ;
+      });
+    }
+  }, {
+    key: "event",
+    value: function event(control) {
       var firstItem = this.itens[0].getBoundingClientRect().left;
       var lastItem = this.itens[this.itens.length - 1].getBoundingClientRect().left;
-      control.addEventListener("click", function () {
-        var isLeft = control.classList.contains("left");
+      var isLeft = control.classList.contains("left");
 
-        if (isLeft) {
-          _this2.moveScroll -= _this2.scroll.offsetWidth;
-        } else {
-          _this2.moveScroll += _this2.scroll.offsetWidth;
-        }
+      if (isLeft) {
+        this.moveScroll -= this.scroll.offsetWidth;
+      } else {
+        this.moveScroll += this.scroll.offsetWidth;
+      }
 
-        if (!isLeft && _this2.moveScroll > lastItem) {
-          _this2.moveScroll = firstItem;
-        }
+      if (!isLeft && this.moveScroll > lastItem) {
+        this.moveScroll = firstItem;
+      }
 
-        if (isLeft && _this2.scroll.scrollLeft == 0) {
-          _this2.moveScroll = lastItem;
-        }
+      if (isLeft && this.scroll.scrollLeft == 0) {
+        this.moveScroll = lastItem;
+      }
 
-        _this2.movementScroll();
+      this.movementScroll();
+    }
+  }, {
+    key: "eventCell",
+    value: function eventCell(control) {
+      var isLeft = control.classList.contains("left");
+
+      if (isLeft) {
+        this.currentItem -= 1;
+      } else {
+        this.currentItem += 1;
+      }
+
+      this.verifyCurrentItem();
+      this.addOrRemove();
+    }
+  }, {
+    key: "addOrRemove",
+    value: function addOrRemove() {
+      this.itens.forEach(function (item) {
+        return item.classList.remove("current-item");
       });
+      this.itens[this.currentItem].scrollIntoView({
+        inlile: 'center',
+        behavior: "smooth"
+      });
+      this.itens[this.currentItem].classList.add("current-item");
     }
   }, {
     key: "movementScroll",
