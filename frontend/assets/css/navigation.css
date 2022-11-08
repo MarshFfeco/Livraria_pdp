@@ -213,6 +213,10 @@ header {
        transition: visibility 0.2s ease-in-out;
     }
 
+    #options .active-search button {
+        width: 20%;
+    }
+
     #options .active {
         background-color: #ffffff;
 

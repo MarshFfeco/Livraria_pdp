@@ -92,9 +92,10 @@ class Adm {
     valida() {
         this.cleanUp();
 
-        for(const key in this.body) {
+        /*for(const key in this.body) {
+            if(key == this.body.quantidade) return;
             if(!this.body[key]) this.message.push(`${this.body[key]} é um campo obrigatório!`);
-        }
+        }*/
     }
 
     cleanUp() {

@@ -9,7 +9,7 @@ class Home {
     }
 
     async buscarLivros() {
-        var books = await (await BookModel.find());
+        var books = await (await BookModel.find().sort({ dataLancamento: -1 }));
 
        books = books.filter(book => {
             if(book.quantidade || book.quantidade == null || book.quantidade > 0) return book;

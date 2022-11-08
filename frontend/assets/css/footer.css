@@ -28,7 +28,7 @@ footer #social_media {
 
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -38,4 +38,14 @@ footer #social_media a:hover svg path {
 
 #social_media a:active svg path {
     fill: var(--active-color)
+}
+
+@media (max-width: 600px) {
+    footer #social_media {
+        width: 40%;
+    }
+
+    footer p, #social_media {
+        margin: 0;
+    }
 }

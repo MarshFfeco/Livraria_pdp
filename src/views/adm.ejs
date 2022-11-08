@@ -24,8 +24,8 @@
             </li> 
             <li><h4><%= user.nome %></h4></li>
             <li><h4><%= user.email %></h4></li>
-            <li><a href="/adm/<%= user._id %>/editUser " style="color: #239273;">Editar</a></li>
-            <li><a href="/adm/<%= user._id %>/deleteUser " style="color: #ff6347;">Excluir</a></li>
+            <li><a href="/adm/<%= user._id %>/editUser">Editar</a></li>
+            <li><a href="/adm/<%= user._id %>/deleteUser">Excluir</a></li>
         </ul>
     </div>
 
@@ -235,7 +235,7 @@
                     </div>
 
                     <!-- ADICIONAR -->
-                    <button aria-label="adicionar livro" class="outline btn">Adicionar Livro</button>
+                    <button aria-label="adicionar livro" class="outline btn" style="padding: 10px;">Adicionar Livro</button>
                     <!-- FIM DO ADICIONAR -->
                 </form>
             </article>
@@ -441,7 +441,7 @@
                         </div>
 
                         <!-- ADICIONAR -->
-                        <button aria-label="adicionar livro" class="outline btn">Editar Livro</button>
+                        <button aria-label="adicionar livro" class="outline btn" style="padding: 10px;">Editar Livro</button>
                         <!-- FIM DO ADICIONAR -->
                     </form>
                 </article>
@@ -473,9 +473,9 @@
                         <li><h4><%= user.nome %></h4></li>
                         <li><h4><%= user.email %></h4></li>
                         <% if(user.adm) { %>
-                            <li><a href="/adm/<%= user._id %>/removeADM " style="color: #ff6347;">Tirar ADM</a></li>
+                            <li style=" background-color: #ff6347; "><a href="/adm/<%= user._id %>/removeADM">Tirar ADM</a></li>
                         <% } else { %>
-                            <li><a href="/adm/<%= user._id %>/becomeADM " style="color: #239273;">Torna ADM</a></li>
+                            <li><a href="/adm/<%= user._id %>/becomeADM">Torna ADM</a></li>
                         <% } %>
                     </ul>
                 </div>

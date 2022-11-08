@@ -5,6 +5,16 @@ const fs = require('fs')
 const Book = require("../models/Adm");
 const User = require("../models/LoginOrSignUp")
 
+function geraBarCode() {
+  let barcode = 0;
+
+  for(let i = 0; i < 44; i++) { 
+    barcode += Math.floor(Math.random() * 10).toString() 
+  };
+
+  return barcode
+}
+
 exports.boleto = async function(req, res) {
     const { bradesco } = require('boleto-pdf')
 
@@ -27,10 +37,11 @@ exports.boleto = async function(req, res) {
         expirationDay.setDate(dateNow.getDate() + numberOfDaysToAdd);
         var cpf = replaceAT(req.session.user.cpf, 2, "xxxxxx");
 
-        var barcode = 0;
-        for(let i = 0; i < 44; i++) { 
-          barcode += Math.floor(Math.random() * 10).toString() 
-        };
+        //var barcode = 0;
+        //for(let i = 0; i < 44; i++) { 
+         // barcode += Math.floor(Math.random() * 10).toString() 
+        //};
+        barcode = geraBarCode();
         /*44 */
 
         const boleto = {
@@ -138,6 +149,8 @@ exports.boletoAll = async function(req, res) {
     var numberOfDaysToAdd = 6;
     var expirationDay = new Date();
     expirationDay.setDate(dateNow.getDate() + numberOfDaysToAdd);
+
+    barcode = geraBarCode();
   
     for(value of req.session.carrinho) {
       bookName.push(value.books.titulo);
@@ -148,7 +161,7 @@ exports.boletoAll = async function(req, res) {
     if(bookName.length > 3) bookName = `${bookName[0]}, ${bookName[1]} e mais ${bookName.length - 2} livros.`;
 
     const boleto = {
-      barcodeData: '23797726700000009997506091900000120800542910',
+      barcodeData: `${barcode}`,
       digitableLine: '23797.50603 91900.000125 08005.429108 7 72670000000999',
       paymentPlace:
       'Pagável preferencialmente na rede Bradesco ou Bradesco Expresso.',

@@ -64,8 +64,12 @@ export default class BestSlide extends Slider {
     addOrRemove() {
         this.itens.forEach(item => item.classList.remove("current-item"));
 
-        this.itens[this.currentItem].scrollIntoView({
-            inlile: 'center',
+        let xItem = this.itens[this.currentItem].getBoundingClientRect().left + this.scroll.scrollLeft;
+
+        console.log(this.itens[this.currentItem])
+
+        this.scroll.scrollTo({
+            left: xItem,
             behavior: "smooth",
         });
 

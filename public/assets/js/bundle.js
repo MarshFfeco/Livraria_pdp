@@ -324,8 +324,10 @@ var BestSlide = /*#__PURE__*/function (_Slider) {
       this.itens.forEach(function (item) {
         return item.classList.remove("current-item");
       });
-      this.itens[this.currentItem].scrollIntoView({
-        inlile: 'center',
+      var xItem = this.itens[this.currentItem].getBoundingClientRect().left + this.scroll.scrollLeft;
+      console.log(this.itens[this.currentItem]);
+      this.scroll.scrollTo({
+        left: xItem,
         behavior: "smooth"
       });
       this.itens[this.currentItem].classList.add("current-item");
