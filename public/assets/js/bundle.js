@@ -424,10 +424,12 @@ var MainSlider = /*#__PURE__*/function (_Slider) {
   }, {
     key: "addOrRemove",
     value: function addOrRemove() {
+      var _this$itens$this$curr;
+
       this.itens.forEach(function (item) {
         return item.classList.remove("current-item");
       });
-      this.itens[this.currentItem].classList.add("current-item");
+      (_this$itens$this$curr = this.itens[this.currentItem]) === null || _this$itens$this$curr === void 0 ? void 0 : _this$itens$this$curr.classList.add("current-item");
     }
   }]);
 
@@ -1287,7 +1289,9 @@ var mudaCor = new _nav__WEBPACK_IMPORTED_MODULE_19__["default"](nav, mobileMenu,
 
 /* MAIN SLIDER */
 
-if (isUrl("http://localhost:3000/")) {
+{
+  var _controls$, _controls$2;
+
   var controls = document.querySelectorAll(".main-carousel-control");
   var itens = document.querySelectorAll(".main-slide");
   var maxItens = itens.length;
@@ -1295,13 +1299,13 @@ if (isUrl("http://localhost:3000/")) {
   var auto = setInterval(function () {
     mainSlider.movement();
   }, 5000);
-  controls[0].addEventListener("click", function (e) {
+  (_controls$ = controls[0]) === null || _controls$ === void 0 ? void 0 : _controls$.addEventListener("click", function (e) {
     clearInterval(auto);
     auto = setInterval(function () {
       mainSlider.movement();
     }, 5000);
   });
-  controls[1].addEventListener("click", function (e) {
+  (_controls$2 = controls[1]) === null || _controls$2 === void 0 ? void 0 : _controls$2.addEventListener("click", function (e) {
     clearInterval(auto);
     auto = setInterval(function () {
       mainSlider.movement();
@@ -1312,8 +1316,7 @@ if (isUrl("http://localhost:3000/")) {
 
 /* SLIDERS */
 
-
-if (isUrl("http://localhost:3000/")) {
+{
   var acaoAventuraControls = document.querySelectorAll(".first-carousel-control");
   var acaoAventuraScroll = document.getElementById("first-slider");
   var acaoAventuraItens = document.querySelectorAll(".first-slider-div");
@@ -1330,7 +1333,6 @@ if (isUrl("http://localhost:3000/")) {
 /* FIM CARROSSEL */
 
 /* VALIDAÇÃO DE URL */
-
 
 function isUrl(url) {
   if (document.location.href == url) {

@@ -31,6 +31,6 @@ export default class MainSlider extends Slider {
 
     addOrRemove() {
         this.itens.forEach(item => item.classList.remove("current-item"));
-        this.itens[this.currentItem].classList.add("current-item");
+        this.itens[this.currentItem]?.classList.add("current-item");
     }
 }

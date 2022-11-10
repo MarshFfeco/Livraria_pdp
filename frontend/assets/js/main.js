@@ -95,7 +95,7 @@ const mudaCor = new MudaCor(nav, mobileMenu, mobileNav, options);
 
 /* CARROSSEL */
 /* MAIN SLIDER */
-if(isUrl("http://localhost:3000/")) {
+{
     const controls = document.querySelectorAll(".main-carousel-control");
     const itens = document.querySelectorAll(".main-slide");
     const maxItens = itens.length;
@@ -104,11 +104,11 @@ if(isUrl("http://localhost:3000/")) {
 
     var auto = setInterval(function() {mainSlider.movement()}, 5000);
 
-    controls[0].addEventListener("click", e => { 
+    controls[0]?.addEventListener("click", e => { 
         clearInterval(auto);
         auto = setInterval(function() {mainSlider.movement()}, 5000);
      });
-     controls[1].addEventListener("click", e => { 
+     controls[1]?.addEventListener("click", e => { 
         clearInterval(auto);
         auto = setInterval(function() {mainSlider.movement()}, 5000);
      });
@@ -116,7 +116,7 @@ if(isUrl("http://localhost:3000/")) {
 /* FIM MAIN SLIDER */
 
 /* SLIDERS */
-if(isUrl("http://localhost:3000/")) {
+{
     const acaoAventuraControls = document.querySelectorAll(".first-carousel-control");
     const acaoAventuraScroll = document.getElementById("first-slider");
     const acaoAventuraItens = document.querySelectorAll(".first-slider-div");
