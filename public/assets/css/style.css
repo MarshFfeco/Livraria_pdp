@@ -1298,7 +1298,10 @@ header {
     }
 
     .book-container {
+        width: 100%;
         grid-area: book;
+
+        padding: 25px 25px;
 
         border-radius: 40px;
     }
@@ -1321,8 +1324,18 @@ header {
     }
 
     .book-description {
+        width: 100%;
+
+        padding: 25px 25px;
+
+        gap: 50px;
+
         grid-area: des;
     }
+}
+
+@media (max-width: 500px) {
+    
 }
 /*!*******************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./frontend/assets/css/adm.css ***!
