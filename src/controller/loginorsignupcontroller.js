@@ -126,12 +126,9 @@ exports.accept = async function(req, res) {
         } else {
             let options = {
                 maxAge: 1000 * 60 * 15, // would expire after 15 minutes
-                httpOnly: true, // The cookie only accessible by the web server
+                httpOnly: false, // The cookie only accessible by the web server
             }
-
-            console.log("mudei");
-
-            res.cookie("cookieTermo", "true", options);
+            res.cookie("cookieTermo", true, options);
         }
 
         req.flash('success', `Contrato aceito.`);

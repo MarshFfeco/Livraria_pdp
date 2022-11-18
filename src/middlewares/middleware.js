@@ -1,5 +1,4 @@
 exports.sessionUser = function(req, res, next) {
-    res.locals.termo = "true";
     res.locals.errors = req.flash('errors');
     res.locals.success = req.flash('success');
     res.locals.warning = req.flash("warning");
@@ -29,21 +28,19 @@ exports.setCookie = function(req, res, next) {
         if(!req.cookies.cookieTermo) {
             let options = {
                 maxAge: 1000 * 60 * 15, // would expire after 15 minutes
-                httpOnly: true, // The cookie only accessible by the web server
+                httpOnly: false, // The cookie only accessible by the web server
             }
-
-            res.cookie("cookieTermo", "false", options) // options is optional
+            res.cookie("cookieTermo", false, options) // options is optional
         }
     }
-    res.locals.termo = "true";
+
     next();
 }
 
 exports.allCookie = function(req, res, next ) {
-    res.locals.termo = null;
-    console.log(req.cookies)
     if(!req.session.user) {
-        res.locals.termo = req.cookies.cookieTermo;
+        let boolOutput = (req.cookies.cookieTermo === "true");
+        res.locals.termo = boolOutput;
     } else {
         res.locals.termo = true
     }

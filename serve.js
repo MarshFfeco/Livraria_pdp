@@ -6,7 +6,6 @@ const app = express();
 
 app.use(cookieParser());
 
-
 const mariaDB = require("./database/connection");
 
 const flash = require("connect-flash");
