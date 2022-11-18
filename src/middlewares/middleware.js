@@ -23,6 +23,30 @@ exports.loginRequired = function(req, res, next) {
     next();
 };
 
+exports.setCookie = function(req, res, next) {
+    if(!req.session.user) {
+        if(!req.cookies.cookieTermo) {
+            let options = {
+                maxAge: 1000 * 60 * 15, // would expire after 15 minutes
+                httpOnly: true, // The cookie only accessible by the web server
+            }
+
+            res.cookie("cookieTermo", "false", options) // options is optional
+        }
+    }
+    next();
+}
+
+exports.allCookie = function(req, res, next ) {
+    console.log(req.cookies)
+    if(!req.session.user) {
+        res.locals.termo = req.cookies.cookieTermo;
+    } else {
+        res.locals.termo = true
+    }
+    next();
+};
+
 exports.coockieAccept = function(req, res, next) {
     try {
         if(!req.session.user.coockieAccept) {
@@ -32,8 +56,6 @@ exports.coockieAccept = function(req, res, next) {
     } catch (error) {
         res.render("home");
     }
-
-    
     next();
 }
 

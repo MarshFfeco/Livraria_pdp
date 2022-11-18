@@ -47,7 +47,7 @@
     </div>
 <% } %>
 
-<% if(user && !user.coockieAccept) { %>
+<% if((user && !user.coockieAccept) || termo == "false") { %>
     <div class="warning-message">
         <div class="warning-box">
             <div class="message-w">

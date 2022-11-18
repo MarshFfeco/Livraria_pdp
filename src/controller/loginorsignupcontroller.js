@@ -108,19 +108,31 @@ exports.deleteUser = async function(req, res) {
 
 exports.accept = async function(req, res) {
     try {
-        let idUser = req.session.user._id;
+        
+       if(req.session.user) {
+            let idUser = req.session.user._id;
 
-        if(!idUser) return res.redirect(`back`)
+            if(!idUser) return res.redirect(`back`)
 
-        const userEdit = new Login();
-        await userEdit.aceptCoockie(idUser);
+            const userEdit = new Login();
+            await userEdit.aceptCoockie(idUser);
 
-        if(userEdit.message.length > 0) {
-            req.flash('errors', userEdit.message);
-            return req.session.save(() => res.redirect("back"));
+            if(userEdit.message.length > 0) {
+                req.flash('errors', userEdit.message);
+                return req.session.save(() => res.redirect("back"));
+            }
+
+            req.session.user = userEdit.user;
+        } else {
+            let options = {
+                maxAge: 1000 * 60 * 15, // would expire after 15 minutes
+                httpOnly: true, // The cookie only accessible by the web server
+            }
+
+            console.log("mudei");
+
+            res.cookie("cookieTermo", "true", options);
         }
-
-        req.session.user = userEdit.user;
 
         req.flash('success', `Contrato aceito.`);
         req.session.save(() => res.redirect(`back`));

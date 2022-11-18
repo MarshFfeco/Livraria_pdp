@@ -1,7 +1,11 @@
 require("dotenv").config;
 
+var cookieParser = require('cookie-parser');
 const express = require("express");
 const app = express();
+
+app.use(cookieParser());
+
 
 const mariaDB = require("./database/connection");
 
@@ -26,7 +30,7 @@ const sessionOptions = session({
 const routes = require('./routes/routes');
 const path = require('path');
 const csrf = require('csurf');
-const { sessionUser, rotasExist, nnn, aaa, checkCsrfError, csrfMiddleware } = require("./src/middlewares/middleware.js");
+const { sessionUser, rotasExist, checkCsrfError, csrfMiddleware, setCookie, allCookie } = require("./src/middlewares/middleware.js");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -46,6 +50,9 @@ app.use(sessionUser);
 
 app.use(csrfMiddleware);
 app.use(checkCsrfError);
+
+app.use(setCookie);
+app.use(allCookie);
 
 //PEGA AS ROTAS DA PASTA ROUTES
 app.use(routes);

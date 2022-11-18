@@ -268,4 +268,8 @@ ul, li {
 
         border-radius: 0;
     }
+
+    .quadrado{
+        height: 100%;
+    }
 }

@@ -271,6 +271,10 @@ ul, li {
 
         border-radius: 0;
     }
+
+    .quadrado{
+        height: 100%;
+    }
 }
 
 /*!**********************************************************************************!*\
@@ -1114,6 +1118,10 @@ header {
 /* END EXCLUSIVE STYLE FOR OTHER STYLE */
 
 @media (max-width: 560px) {
+    #arrow_bottom {
+        margin-top: 50px;
+    }
+
     .universal-slider-contents .main-slider-img img {
         width: 100%;
         height: auto;
@@ -1121,6 +1129,8 @@ header {
 
     #main-slider-limit .universal-slider-contents  {
         width: 80%;
+
+        margin-top: 50px;
     }
 
     .main-slider-text {
@@ -1145,7 +1155,6 @@ header {
         padding: 10px 5px;
 
         border-radius: 20px;
-        background-color: rgba(0, 0, 0, 0.164);
     }
 }
 
