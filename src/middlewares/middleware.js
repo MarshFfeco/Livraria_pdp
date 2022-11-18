@@ -34,10 +34,12 @@ exports.setCookie = function(req, res, next) {
             res.cookie("cookieTermo", "false", options) // options is optional
         }
     }
+    res.locals.termo = "true";
     next();
 }
 
 exports.allCookie = function(req, res, next ) {
+    res.locals.termo = null;
     console.log(req.cookies)
     if(!req.session.user) {
         res.locals.termo = req.cookies.cookieTermo;
