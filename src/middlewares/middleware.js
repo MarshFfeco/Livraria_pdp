@@ -1,4 +1,5 @@
 exports.sessionUser = function(req, res, next) {
+    res.locals.termo = "true";
     res.locals.errors = req.flash('errors');
     res.locals.success = req.flash('success');
     res.locals.warning = req.flash("warning");
