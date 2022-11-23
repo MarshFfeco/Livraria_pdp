@@ -125,7 +125,7 @@ exports.accept = async function(req, res) {
             req.session.user = userEdit.user;
         } else {
             let options = {
-                maxAge: 1000 * 60 * 15, // would expire after 15 minutes
+                //maxAge: 1000 * 60 * 15, // would expire after 15 minutes
                 httpOnly: false, // The cookie only accessible by the web server
             }
             res.cookie("cookieTermo", true, options);

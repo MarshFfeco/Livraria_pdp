@@ -27,7 +27,7 @@ exports.setCookie = function(req, res, next) {
     if(!req.session.user) {
         if(!req.cookies.cookieTermo) {
             let options = {
-                maxAge: 1000 * 60 * 15, // would expire after 15 minutes
+                //maxAge: 1000 * 60 * 15, // would expire after 15 minutes
                 httpOnly: false, // The cookie only accessible by the web server
             }
             res.cookie("cookieTermo", false, options) // options is optional
@@ -38,6 +38,7 @@ exports.setCookie = function(req, res, next) {
 }
 
 exports.allCookie = function(req, res, next ) {
+
     if(!req.session.user) {
         let boolOutput = (req.cookies.cookieTermo === "true");
         res.locals.termo = boolOutput;

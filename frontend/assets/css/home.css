@@ -16,6 +16,13 @@
         cursor: pointer;
     }
 
+    .arrow-right svg path,
+    .arrow-left svg path {
+        stroke: #000000;
+        stroke-width: 2px;
+
+    }
+
     .arrow-right:hover, 
     .arrow-left:hover {
         border-radius: 50px;
@@ -277,8 +284,10 @@
     }
 
     .universal-slider-contents .main-slider-img img {
-        width: 100%;
-        height: auto;
+        width: auto;
+        height: 100%;
+
+        object-fit: cover;
     }
 
     #main-slider-limit .universal-slider-contents  {
@@ -293,6 +302,7 @@
 
     .main-slider-title {
         text-align: center;
+        color: black !important;
     }
 
     .genders {
