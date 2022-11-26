@@ -6,9 +6,9 @@ export default function MobileNavBar(mobileMenu, nav, options){
     this.options = options;
 
     const active = "active";
+    this.options.style.visibility = "hidden";
 
     this.init = function() {
-        this.options.style.visibility = "hidden";
         mobileMenu.addEventListener("click", () => {
             this.verifyClass();
         });

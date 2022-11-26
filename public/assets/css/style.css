@@ -778,14 +778,12 @@ header {
     }
 
     #options {
-        visibility: hidden;
-
         position: absolute;
         top: 5vh;
         right: 0;
 
         width: 100%;
-        height: 50vh;
+        height: 20rem;
 
         margin: 0;
 
@@ -795,7 +793,7 @@ header {
 
         background-color: #ffffff;
 
-       transition: visibility 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
     }
 
     #options .active-search button {
@@ -803,9 +801,11 @@ header {
     }
 
     #options .active {
-        background-color: #ffffff;
+        transition: all 0.2s ease-in-out;
+    }
 
-        transition: visibility 0.2s ease-in-out;
+    #options .active-search {
+        padding: 10px;
     }
 
     .input-search {

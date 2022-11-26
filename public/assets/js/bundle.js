@@ -36,11 +36,11 @@ function MobileNavBar(mobileMenu, nav, options) {
   this.nav = nav;
   this.options = options;
   var active = "active";
+  this.options.style.visibility = "hidden";
 
   this.init = function () {
     var _this = this;
 
-    this.options.style.visibility = "hidden";
     mobileMenu.addEventListener("click", function () {
       _this.verifyClass();
     });
@@ -1250,7 +1250,7 @@ document.body.addEventListener("load", (0,_load__WEBPACK_IMPORTED_MODULE_18__["d
 
 var formRegister = document.getElementById("form-register");
 
-if (isUrl("http://localhost:3000/LoginOrSignUp")) {
+if (isUrl("/LoginOrSignUp")) {
   formRegister.addEventListener("submit", exeFormRegister());
 }
 
@@ -1265,7 +1265,7 @@ function exeFormRegister() {
 
 var formLogin = document.getElementById("form-login");
 
-if (isUrl("http://localhost:3000/LoginOrSignUp")) {
+if (isUrl("/LoginOrSignUp")) {
   formLogin.addEventListener("submit", exeFormLogin());
 }
 
@@ -1282,7 +1282,7 @@ var options = document.getElementById("options");
 var nav = document.getElementById("navegacao");
 var mobileMenu = document.getElementById("mobile_menu");
 var mobileNav = new _mobileNav__WEBPACK_IMPORTED_MODULE_20__["default"](mobileMenu, nav, options);
-var mudaCor = new _nav__WEBPACK_IMPORTED_MODULE_19__["default"](nav, mobileMenu, mobileNav, options);
+new _nav__WEBPACK_IMPORTED_MODULE_19__["default"](nav, mobileMenu, mobileNav, options);
 /* FIM DO MENU DE NAVEGAÇÃO */
 
 /* CARROSSEL */

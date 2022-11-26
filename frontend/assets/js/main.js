@@ -60,7 +60,7 @@ document.body.addEventListener("load", load(conteudo, loadind));
 /* CHAMA A VALIDAÇÃO DO FORMULÁRIO DE REGISTRO */
 const formRegister = document.getElementById("form-register");
 
-if(isUrl("http://localhost:3000/LoginOrSignUp")) {
+if(isUrl("/LoginOrSignUp")) {
     formRegister.addEventListener("submit", exeFormRegister());
 }
 
@@ -73,7 +73,7 @@ function exeFormRegister() {
 /* CHAMADA A VALIDAÇÃO DO FORMULÁRIO DE LOGIN */
 const formLogin = document.getElementById("form-login");
 
-if(isUrl("http://localhost:3000/LoginOrSignUp")) {
+if(isUrl("/LoginOrSignUp")) {
     formLogin.addEventListener("submit", exeFormLogin());
 }
 
@@ -83,13 +83,15 @@ function exeFormLogin() {
 }
 /* FIM DA CHAMADA A VALIDAÇÃO DO FORMULÁRIO DE LOGIN */
 
+
 /* MENU DE NAVEGAÇÃO */
+
 const options = document.getElementById("options");
 const nav = document.getElementById("navegacao");
 const mobileMenu = document.getElementById("mobile_menu");
 const mobileNav = new MobileNav(mobileMenu, nav, options)
 
-const mudaCor = new MudaCor(nav, mobileMenu, mobileNav, options);
+new MudaCor(nav, mobileMenu, mobileNav, options);
 
 /* FIM DO MENU DE NAVEGAÇÃO */
 
